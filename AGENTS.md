@@ -30,6 +30,9 @@ repository imposes no experiment-folder, notebook-render or package-build steps.
   inspected only after seeing the image itself; bytes and pixel statistics
   do not count. Antigravity through Paseo cannot view images.
 
+- Open a figure only when no printed number answers the question.
+- Find a report table's caption in the report source before naming its number.
+
 ## Preservation and work rules
 
 - Preserve others' edits. Never delete or move a file you did not create
@@ -43,8 +46,9 @@ repository imposes no experiment-folder, notebook-render or package-build steps.
 - Keep code simple. Do not write defensive checks for known research inputs.
   Print properties needed for conclusions; do not stop or branch on them.
 - Start agents only through Paseo `list_profiles` then `create_agent`.
-  Copy the chosen profile settings unchanged, label `profile=<name>`, and
-  pass the workspace ID from the task. Re-read profiles at each launch.
+  Copy the chosen profile settings unchanged, label `profile=<name>`.
+  If no profile fits, say why before starting an agent.
+  Pass the workspace ID from the task. Re-read profiles at each launch.
   Do not start a Paseo daemon or use the built-in Agent tool.
 - Print `/sys/fs/cgroup/pids.current` before each agent launch. Read each
   agent's last message with `get_agent_activity`, then archive it.

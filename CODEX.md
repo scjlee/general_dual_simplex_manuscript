@@ -11,4 +11,4 @@ AGENTS.md applies. Take the assigned role and state it once.
 - Finish authorized work and choose routine details yourself. Ask the
   supervisor before changing scientific claims or the agreed manuscript scope.
 - Preserve others' edits and stage files by name. Send handoffs to the actual
-  supervisor and leave a resumable record of unfinished work.
+  supervisor; record role changes and leave a resumable record of unfinished work.
