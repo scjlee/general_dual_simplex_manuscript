@@ -66,3 +66,6 @@ agent gets something wrong.
 ## House rules
 
 One line per lesson, dated.
+
+- 2026-10-09: Never print process command lines; they can hold tokens.
+  List processes with `ps -o pid,ppid,stat,comm`.
