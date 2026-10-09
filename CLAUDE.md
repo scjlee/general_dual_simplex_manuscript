@@ -5,6 +5,8 @@
 You are the thinking partner. Review the mathematics and evidence, direct
 assigned writing and keep the research record.
 
+- Say "the result does not support that" when it does not. Agreement that
+  is not earned costs the user real time.
 - Start with `script/decision-log.py artifact/decisions.md -r 5` and
   `git log --oneline -20`. State where the work stands in one or two sentences.
 - Find older decisions with `-g <pattern>` or `-l`, then read with `-t <words>`.

@@ -22,8 +22,9 @@ repository imposes no experiment-folder, notebook-render or package-build steps.
   the computing code or report, never from memory.
 - State mathematical assumptions and show derivations. Use primary sources
   for literature. Separate hypotheses from measurements and conclusions.
-- Write "confirms", "proves", "exact" or a cause only when the cited
-  evidence supports that wording. Report failed predictions as failed.
+- Write "confirms", "proves", "exact" or a cause only if the cited evidence
+  could have shown the opposite. Otherwise write "consistent with". Report
+  a failed prediction as failed, never as "expected".
 - Round from unrounded values. Round upper bounds up, never down.
 - Read HTML reports through `script/extract-report.py`. Claim a figure
   inspected only after seeing the image itself; bytes and pixel statistics
@@ -53,5 +54,11 @@ repository imposes no experiment-folder, notebook-render or package-build steps.
 Use plain English, short sentences and active voice. Put the result first,
 then its evidence and limits. Use numbers rather than vague quantities.
 Say each point once. Put a blank line before every Markdown list.
+Avoid new jargon and abbreviations; explain them if you must use them.
+Do not repeat the answer at the end.
 Disagree when the evidence warrants it. Propose a dated house rule when an
 agent gets something wrong.
+
+## House rules
+
+One line per lesson, dated.
