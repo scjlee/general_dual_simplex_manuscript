@@ -76,3 +76,30 @@ chmod +x .git/hooks/pre-push
 
 Cloning does not install the hook. Do not bypass push protections or copy
 credentials and local configuration from another repository.
+
+
+## Mathematical Notation
+
+For all notations, capital letters indicate real matrices and $\mathbf{bold}$ lower case letters indicate column vectors. We assume $k \ll n < m$. $\mathbf{1}$ indicates a column vector of all 1s with appropriate dimensionality. $D_x$ denotes the diagonal matrix formed from vector $\mathbf{x}$. For any matrix $A$, $A_{i..j, \ast}$ denotes rows $i$ to $j$; $A_{\ast, i..j}$ denotes columns $i$ to $j$.
+
+For the noiseless theoretical model, we assume $\mathrm{rank}(V)=k$. Scaling weights $\mathbf{r}, \mathbf{c}$ and the entries of $\mathbf{a}, \mathbf{b}, \mathbf{w}, \mathbf{h}$ are positive, so all diagonal inverses below exist. We choose the first singular vectors as $S_{1,\ast}=(\sqrt{\mathbf{a}})^T$ and $R_{1,\ast}=(\sqrt{\mathbf{b}})^T$, with square roots taken entrywise.
+
+| Notation | Dimension | Description |
+|:---|:---|:---|
+| $V$ | $m \times n$ | Ground truth signal matrix $V = W H$ ($m$ features, $n$ samples) |
+| $W$ | $m \times k$ | Basis matrix with non-negative feature profiles |
+| $H$ | $k \times n$ | Coefficient matrix with non-negative entries |
+| $\mathbf{r}, \mathbf{c}$ | $m, n$ | Scaling weights defining the pre-processing |
+| $\widetilde{V}$ | $m \times n$ | Scaled matrix $\widetilde{V} = D_r V D_c$ where $\sum_{ij} \widetilde{V}_{ij} = 1$. $\widetilde{V} = \widetilde{W} M \widetilde{H}$ |
+| $\widetilde{W}, \widetilde{H}$ | $m \times k, k \times n$ | Weighted factor matrices $\widetilde{W} = D_r W D_w^{-1}$ with columns sum 1, $\widetilde{H} = D_h^{-1} H D_c$ with rows sum 1 |
+| $\mathbf{w}, \mathbf{h}$ | $k, k$ | Column sums of $D_r W$ and row sums of $H D_c$ respectively, with $\mathbf{w} = W^T \mathbf{r}, \mathbf{h} = H \mathbf{c}$ |
+| $M$ | $k \times k$ | Diagonal component mass matrix $M = D_w D_h$ with $\sum_j M_{jj} = 1$ |
+| $\mathbf{a}, \mathbf{b}$ | $m, n$ | Row marginals $\mathbf{a} = \widetilde{V} \mathbf{1}$ and column marginals $\mathbf{b} = \widetilde{V}^T \mathbf{1}$ |
+| $Z$ | $m \times n$ | Bi-whitened matrix $Z = D_a^{-1/2} \widetilde{V} D_b^{-1/2}$ |
+| $S, \Sigma, R$ | $n \times m, n \times n, n \times n$ | Singular value decomposition:  $Z  = S^T \Sigma R$ |
+| $\sigma_i$ | Scalar | $i^{th}$ singular value of $Z$ in descending order ($\sigma_1 = 1$) |
+| $\Phi, \Psi$ | $k \times m, k \times n$ | Coordinate bases (generalized singular vectors): $\Phi = S_{1..k,\ast} D_a^{-1/2}$, $\Psi = R_{1..k,\ast} D_b^{-1/2}$ where $\Phi_{1,\ast} = \mathbf{1}^T$ and $\Psi_{1,\ast} = \mathbf{1}^T$ |
+| $V_{\text{fs}}, V_{\text{ss}}$ | $m \times n, m \times n$ | Normalized profiles: sample-space $V_{\text{ss}} = D_a^{-1} \widetilde{V}$ with $V_{\text{ss}} \mathbf{1} = \mathbf{1}$; feature-space $V_{\text{fs}} = \widetilde{V} D_b^{-1}$ with $V_{\text{fs}}^T \mathbf{1} = \mathbf{1}$ |
+| $B_{\text{fs}}, B_{\text{ss}}$ | $k \times n, m \times k$ | Barycentric coordinates: $B_{\text{fs}} = M\widetilde{H}D_b^{-1}$ with columns sum 1 and $V_{\text{fs}} = \widetilde{W}B_{\text{fs}}$; $B_{\text{ss}} = D_a^{-1}\widetilde{W}M$ with rows sum 1 and $V_{\text{ss}} = B_{\text{ss}}\widetilde{H}$ |
+| $\Omega, X$ | $k \times k, k \times k$ | Theoretical simplex vertices in GSVD space: $\Omega = \Phi \widetilde{W}$ and $X = \widetilde{H} \Psi^T$ satisfying the link $\Omega M X = \Sigma_{1..k,1..k}$ |
+
