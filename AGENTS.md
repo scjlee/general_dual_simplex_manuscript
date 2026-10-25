@@ -1,71 +1,126 @@
 # AGENTS.md
 
-Shared brief for agents working on `general_dual_simplex_manuscript`.
-The user often reads from a phone: be complete and compact.
+Rules for Claude and Codex in `general_dual_simplex_manuscript`. The user often
+reads from a phone: be complete and compact.
 
-## Roles and scope
+This repository holds manuscript text, figures and the research record. It
+holds no algorithm code. Read `README.md` first.
 
-The thinking partner interprets evidence, checks mathematics and keeps
-`artifact/`. An assigned writer drafts manuscript text. A reviewer checks
-claims, sources and derivations. Codex takes its assigned role and states it.
+## Roles
 
-Read `README.md` first. Claude Code follows `CLAUDE.md`, Codex reads
-`CODEX.md`, and Antigravity follows `GEMINI.md`. Edit only your assigned
-repository and files. Cross-repository changes require a handoff. This
-repository imposes no experiment-folder, notebook-render or package-build steps.
+Each session has one role. State it once at the start.
+
+- **Lead** (usually Claude, working with the user): discusses the science,
+  drafts text, makes figures, keeps `artifact/`. Start with
+  `script/decision-log.py artifact/decisions.md -r 5` and
+  `git log --oneline -20`; state where the work stands in one or two sentences.
+- **Reviewer** (usually Codex, started by the lead): read-only unless the
+  prompt assigns edits. Checks mathematics, evidence, figures or language.
+  Returns a verdict, findings with file and line, and open questions.
+- Either agent may take either role. Ask the user before changing scientific
+  claims, mathematical assumptions, manuscript format or scope.
+
+## Sources
+
+- Package `GeneralDualSimplex`: `/workspace/dual_simplex_functional/general_dual_simplex`
+  (`<package>` below).
+- Package discussion: `<package>/.ai/`. **Read only**; never edit, stage or
+  commit in another repository. Search with
+  `<package>/.ai/tool/decision-log.py <package>/.ai/decisions.md -g <pattern>`,
+  then read one entry with `-t <words>`. Do not read the whole file.
+- When a package note informs a claim or figure, cite the note path and the
+  package commit (`git -C <package> rev-parse HEAD`).
+- Changes needed in another repository go to the user as a proposal. Do not
+  symlink to another repository.
 
 ## Evidence
 
-- Cite experiment findings with the report path, section or table caption,
-  and full experiment commit. Cite package version and full package commit
-  for implementation-dependent claims. Copy formulas and parameters from
-  the computing code or report, never from memory.
-- State mathematical assumptions and show derivations. Use primary sources
-  for literature. Separate hypotheses from measurements and conclusions.
-- Write "confirms", "proves", "exact" or a cause only if the cited evidence
-  could have shown the opposite. Otherwise write "consistent with". Report
-  a failed prediction as failed, never as "expected".
-- Round from unrounded values. Round upper bounds up, never down.
-- Read HTML reports through `script/extract-report.py`. Claim a figure
-  inspected only after seeing the image itself; bytes and pixel statistics
-  do not count. Antigravity through Paseo cannot view images.
+- Cite each numerical finding with its source: report or note path, section or
+  table caption, and the full commit of the repository that produced it. Cite
+  package version and full commit for claims that depend on the implementation.
+  Copy formulas and parameters from the code or report, never from memory.
+- Figure data computed here are illustrative unless a cited result backs them;
+  say so in the caption draft.
+- State assumptions and show derivations. Use primary sources for literature.
+  Separate hypotheses, measurements and conclusions.
+- Write "confirms", "proves", "exact" or a cause only if the evidence could
+  have shown the opposite; otherwise "consistent with". Report a failed
+  prediction as failed. Say "the result does not support that" when it does not.
+- Round from unrounded values. Round upper bounds up.
+- Read HTML reports with `script/extract-report.py <report.html> --out out/<name>`.
+  Claim a figure inspected only after opening the image itself. Find a table's
+  caption in the report source before naming its number.
 
-- Open a figure only when no printed number answers the question.
-- Find a report table's caption in the report source before naming its number.
+## Figures
 
-## Preservation and work rules
+- Layout: `figure/<figN>/<panel>/` with the SVG, its generator, input data and
+  `package_commit.txt` (package commit, version, and `git status --porcelain R src`).
+- R runs in this repository's renv. Generators may compute illustrative data
+  and draw; they print the properties a caption needs and do not stop or
+  branch on them.
+- After the first hand edit the SVG is the master. Generators replace data
+  groups by id inside it; they never rewrite the file.
+- SVG conventions: mm `viewBox`; Inkscape layers; readable ids on every object;
+  real text in Liberation Sans/Arial, 5–8 pt; lines 0.4–0.6 pt. A `<text>` with
+  `sodipodi:role="line"` tspans needs its own `x`/`y`.
+- Verify each change: render with `inkscape <svg> --export-type=png --export-dpi=600`,
+  open the PNG, and check with `inkscape --query-all` that text lies inside the
+  canvas and inside its box. Inkscape's GTK warnings are harmless.
+- Editing with the user: the user saves as Inkscape SVG; the agent keeps a
+  numbered backup, edits, and asks the user to use File → Revert. Diff by
+  meaning (query boxes and text by id), not by Git lines: Inkscape reformats.
 
-- Preserve others' edits. Never delete or move a file you did not create
-  to make Git status clean; list untracked files instead.
-- Ask before deleting a tracked file, adding a dependency, `git push --force`,
-  `git reset --hard` or `git clean -fdx`.
-- Stage files by name, never `git add -A` or `git add .`. Use ordinary pushes
-  and do not bypass push protections.
-- Never create, change or print keys, tokens or SSH configuration.
-- Keep tools local; do not symlink to another repository.
-- Keep code simple. Do not write defensive checks for known research inputs.
-  Print properties needed for conclusions; do not stop or branch on them.
-- Start agents only through Paseo `list_profiles` then `create_agent`.
-  Copy the chosen profile settings unchanged, label `profile=<name>`.
-  If no profile fits, say why before starting an agent.
-  Pass the workspace ID from the task. Re-read profiles at each launch.
-  Do not start a Paseo daemon or use the built-in Agent tool.
-- Print `/sys/fs/cgroup/pids.current` before each agent launch. Read each
-  agent's last message with `get_agent_activity`, then archive it.
+## Writing and language checks
+
+- Plain English, short sentences, active voice. Define a term once and keep it.
+  Prefer numbers to vague quantities.
+- A language check changes wording, never meaning. Report each change as
+  location, original, suggestion and reason. Flag, do not fix, any sentence
+  whose claim the evidence does not support.
+- Edit only the files assigned in the task. Preserve others' edits.
+
+## Record
+
+- `artifact/decisions.md` is written only by the lead. Entries start
+  `## YYYY-MM-DD — Title`, with the title naming the decision, followed by
+  context, options, decision, evidence and revisit-if. Append one after a
+  conversation that changes direction. Find old ones with `-l` or `-g`.
+- Long material goes in `artifact/YYYYMMDD_<topic>.md`; reply with its path.
+- Tasks for another agent go in `artifact/handoff/YYYYMMDD-HHMM_<recipient>_<topic>.md`
+  (local time). Never rename old files.
+
+## Agents
+
+- Start agents only through Paseo `list_profiles` then `create_agent`; copy the
+  profile settings unchanged and label `profile=<name>`. Put the recipient,
+  repository and workspace ID in the prompt. Do not use the built-in Agent tool.
+- Use a fresh reviewer from the other provider for substantive mathematical,
+  evidence or figure-data changes. Language checks need no second reviewer.
+- Print `/sys/fs/cgroup/pids.current` before each launch. Read each agent's last
+  message with `get_agent_activity`, then archive it.
+- One new task, one new agent.
+
+## Git and safety
+
+- Stage files by name; never `git add -A` or `git add .`.
+- Ask before deleting a tracked file, adding a dependency (R package or system
+  tool), `git push --force`, `git reset --hard` or `git clean -fdx`. Never
+  rewrite history. Use ordinary pushes only when the user asks; do not bypass
+  push protections.
+- Never delete or move a file you did not create to clean Git status; list
+  untracked files instead.
+- Never create, change or print keys, tokens or SSH configuration. Never print
+  process command lines; list processes with `ps -o pid,ppid,stat,comm`.
 
 ## Communication
 
-Use plain English, short sentences and active voice. Put the result first,
-then its evidence and limits. Use numbers rather than vague quantities.
-Say each point once. Put a blank line before every Markdown list.
-Avoid new jargon and abbreviations; explain them if you must use them.
-Do not repeat the answer at the end.
-Disagree when the evidence warrants it. Propose a dated house rule when an
-agent gets something wrong.
+Result first, then evidence and limits. Say each point once. Put a blank line
+before every Markdown list. Avoid new jargon and abbreviations. Disagree when
+the evidence warrants it. When an agent gets something wrong, propose a dated
+house rule.
 
 ## House rules
 
 One line per lesson, dated.
 
 - 2026-10-09: Never print process command lines; they can hold tokens.
-  List processes with `ps -o pid,ppid,stat,comm`.

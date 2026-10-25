@@ -13,15 +13,13 @@ state; cite the versions actually supporting each later claim.
 
 ## Working here
 
-Read `AGENTS.md` and the rule file for your agent before editing. Work only
-on assigned writing or review. Changes to experiments or package code require
-a handoff to that repository. Do not import the historical slide deck.
-This repository has no R environment or package build workflow.
+Read `AGENTS.md` before editing; it holds the rules for Claude and Codex.
+Work only on assigned writing, figures or review. Changes needed in package
+code go to the user as a proposal. Do not import the historical slide deck.
+The R environment for figure scripts is not set up yet; there is no package
+build workflow.
 
-Cite numerical findings with the experiment repository, full commit, report
-path and section or table caption. Cite the package version and full package
-commit when a claim depends on its implementation. State mathematical
-assumptions and cite primary sources for literature claims.
+Cite numerical findings as `AGENTS.md` (Evidence) describes.
 
 ## Local tools and record
 

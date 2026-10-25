@@ -25,3 +25,33 @@ agree on every verdict.
 Revisit if: the user chooses a manuscript format, or the experiment
 repository is renamed on GitHub (README names it
 `scjlee/dual_simplex_functional`).
+
+## 2026-10-25 — One AGENTS.md for Claude and Codex; lead and reviewer roles; package .ai is read-only
+
+Context: the user will not implement code here and now plans to use only
+Claude and Codex, for figures, writing discussion and language checks.
+Figure work moved here from the package repository (package
+`.ai/decisions.md`, entry of 2026-10-25; handover
+`.ai/20261025_fig1A-handover.md`). The user may retire the experiment
+repository, so the rules do not name it.
+
+Options: keep per-agent files (CLAUDE.md, CODEX.md, GEMINI.md); merge
+them into one AGENTS.md.
+
+Decision (user, 2026-10-25): one AGENTS.md. CLAUDE.md only imports it;
+CODEX.md and GEMINI.md are deleted. Roles are lead (usually Claude) and
+reviewer (usually Codex, read-only). Package `.ai/` is read-only and is
+cited by note path and package commit. New Figures and Language-check
+sections. Pushes only when the user asks. Second-provider review for
+mathematical, evidence or figure-data changes, not for language checks.
+Changes were written by the package thinking partner at the user's request.
+
+Evidence: proposal in the package repository,
+`.ai/20261025_manuscript-agents-md-proposal.md` (commit
+21e061c1affa137fae3abb067ef968e2d3d6fb59), with the experiment-repository mentions removed as the user
+asked. README "Working here" now points to AGENTS.md and says the figure R
+environment is not set up yet.
+
+Revisit if: the renv for figures is set up (update README), the
+experiment repository is retired or kept (README still records it as setup
+history and as the source of `script/`), or another agent type joins.
