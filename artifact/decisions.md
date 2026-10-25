@@ -90,3 +90,30 @@ deletion was blocked by a permission check.
 Revisit if: the user retires or revives the pilot study, package commits are
 pushed routinely (pin GeneralDualSimplex by GitHub commit), or `make_fig1A.py`
 is changed to update data groups by id (needed before it runs again).
+
+## 2026-10-25 — Preserve Figure 1A labels during data refresh; use V* for signal and V for observations
+
+Context: the user requested a generator that updates data groups inside the
+hand-edited master and notation aligned between Figure 1A and README.
+README used V for ground truth, while the figure used V* for signal and V
+for observed data.
+
+Options: change the figure's symbols to README's convention, or retain the
+figure's symbols and update README. For SVG updates, serialize the complete
+document or replace only the named data-group contents.
+
+Decision (user): retain V* = WH for the true signal and V for observed data.
+README now uses that convention and explicitly limits its existing noiseless
+formulas to V = V*. The generator replaces only contents of the four heatmap
+and two scatter groups by id, preserving their attributes and every byte
+outside them. Labels remain part of the hand-edited master; the generator
+prints RMSE for separate label checks.
+
+Evidence: `artifact/20261025_fig1A-update-verification.md` records checks
+against manuscript commit `cfe53929a7c2a5f891dbcdcd2145af6bb0a062a7`.
+All text contents and query boxes are unchanged; the before/after PNGs are
+byte-identical and were opened. Figure data and theoretical formulas did not
+change.
+
+Revisit if: data change (check the RMSE labels separately), the target group
+ids change, or a noisy theoretical model is introduced.

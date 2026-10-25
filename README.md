@@ -82,11 +82,12 @@ credentials and local configuration from another repository.
 
 For all notations, capital letters indicate real matrices and $\mathbf{bold}$ lower case letters indicate column vectors. We assume $k \ll n < m$. $\mathbf{1}$ indicates a column vector of all 1s with appropriate dimensionality. $D_x$ denotes the diagonal matrix formed from vector $\mathbf{x}$. For any matrix $A$, $A_{i..j, \ast}$ denotes rows $i$ to $j$; $A_{\ast, i..j}$ denotes columns $i$ to $j$.
 
-For the noiseless theoretical model, we assume $\mathrm{rank}(V)=k$. Scaling weights $\mathbf{r}, \mathbf{c}$ and the entries of $\mathbf{a}, \mathbf{b}, \mathbf{w}, \mathbf{h}$ are positive, so all diagonal inverses below exist. We choose the first singular vectors as $S_{1,\ast}=(\sqrt{\mathbf{a}})^T$ and $R_{1,\ast}=(\sqrt{\mathbf{b}})^T$, with square roots taken entrywise.
+We write $V^* = WH$ for the ground-truth signal and $V$ for the observed data. In the noiseless theoretical model below, $V = V^*$ and $\mathrm{rank}(V)=k$. Scaling weights $\mathbf{r}, \mathbf{c}$ and the entries of $\mathbf{a}, \mathbf{b}, \mathbf{w}, \mathbf{h}$ are positive, so all diagonal inverses below exist. We choose the first singular vectors as $S_{1,\ast}=(\sqrt{\mathbf{a}})^T$ and $R_{1,\ast}=(\sqrt{\mathbf{b}})^T$, with square roots taken entrywise.
 
 | Notation | Dimension | Description |
 |:---|:---|:---|
-| $V$ | $m \times n$ | Ground truth signal matrix $V = W H$ ($m$ features, $n$ samples) |
+| $V^*$ | $m \times n$ | Ground-truth signal matrix $V^* = W H$ ($m$ features, $n$ samples) |
+| $V$ | $m \times n$ | Observed data matrix; $V = V^*$ in the noiseless theoretical model |
 | $W$ | $m \times k$ | Basis matrix with non-negative feature profiles |
 | $H$ | $k \times n$ | Coefficient matrix with non-negative entries |
 | $\mathbf{r}, \mathbf{c}$ | $m, n$ | Scaling weights defining the pre-processing |
