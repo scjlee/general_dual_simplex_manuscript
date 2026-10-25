@@ -30,6 +30,11 @@ Each session has one role. State it once at the start.
   then read one entry with `-t <words>`. Do not read the whole file.
 - When a package note informs a claim or figure, cite the note path and the
   package commit (`git -C <package> rev-parse HEAD`).
+- Legacy pilot study (experiments and reports from before the package):
+  `/workspace/dual_simplex_functional/general_dual_simplex_experiment`. Read
+  only; cite its reports with the full commit. It is not developed further.
+- Legacy DSO package `DualSimplex` (`artyomovlab/dualsimplex`), installed in
+  this renv for comparison. Cite the commit recorded in `renv.lock`.
 - Changes needed in another repository go to the user as a proposal. Do not
   symlink to another repository.
 
@@ -55,7 +60,8 @@ Each session has one role. State it once at the start.
 
 - Layout: `figure/<figN>/<panel>/` with the SVG, its generator, input data and
   `package_commit.txt` (package commit, version, and `git status --porcelain R src`).
-- R runs in this repository's renv. Generators may compute illustrative data
+- R runs in this repository's renv, started from the repository root. Approved
+  packages are listed in `README.md`. Generators may compute illustrative data
   and draw; they print the properties a caption needs and do not stop or
   branch on them.
 - After the first hand edit the SVG is the master. Generators replace data

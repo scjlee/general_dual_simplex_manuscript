@@ -55,3 +55,38 @@ environment is not set up yet.
 Revisit if: the renv for figures is set up (update README), the
 experiment repository is retired or kept (README still records it as setup
 history and as the source of `script/`), or another agent type joins.
+
+## 2026-10-25 — Manuscript renv with GeneralDualSimplex and legacy DualSimplex; experiment repo marked legacy pilot study
+
+Context: the user asked to clean up this repository, approved the proposed
+figure packages, asked to add the legacy DSO package
+(`artyomovlab/dualsimplex`), and has not decided whether to retire the
+experiment repository.
+
+Options for the experiment repository: drop it from the rules, keep it as
+the evidence source, or mark it as a legacy pilot study.
+
+Decision (user, 2026-10-25): mark it as a legacy pilot study, read only, cited
+by full commit, not developed further. The renv holds GeneralDualSimplex (local
+install), DualSimplex (GitHub), ggplot2, patchwork, scales and svglite. Panel A
+moved here as `figure/fig1/panelA/`; the handover note is
+`artifact/20261025_fig1A-handover.md`. README rewritten (related repositories,
+layout, R environment, tools); AGENTS.md lists the legacy sources.
+Written by the package thinking partner at the user's request.
+
+Evidence: R 4.5.3, Bioconductor 3.22, 90 packages in `renv.lock`.
+GeneralDualSimplex 0.28.0 is `Source: Local` with no commit, so figure scripts
+write `package_commit.txt` (package checkout at
+156152b445d9e511e3bcf0080d8344b38fd2122b, no uncommitted `R/` or `src/`
+changes; package code unchanged since e73fef4620adf03da7c46cbf2101724194adc329).
+DualSimplex 1.2 is pinned at 089c982f8ea41e60365675c8e8013d095c3e5eaf; limma
+3.66.0 and Biobase 2.70.0 come from Bioconductor. Rerunning `points.R` here
+reproduced `tiles.csv` and `points_frac0.1_seed1.csv` byte for byte (oracle RMSE
+uniform 0.0815, expression 0.0634). `fig1A.svg` is the user-edited master
+(V* = WH, V); previews re-rendered from it and inspected. The ignored scratch
+folder `out/step5c/` (2026-10-09 setup push record) was left in place: its
+deletion was blocked by a permission check.
+
+Revisit if: the user retires or revives the pilot study, package commits are
+pushed routinely (pin GeneralDualSimplex by GitHub commit), or `make_fig1A.py`
+is changed to update data groups by id (needed before it runs again).
