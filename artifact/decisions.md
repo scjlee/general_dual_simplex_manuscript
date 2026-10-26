@@ -464,3 +464,43 @@ and A's labels fit their boxes. Plot data groups are unchanged. A's PDF
 was refreshed. No review required: wording and label typography only.
 
 Revisit if: the user chooses a different term or revises the panel layout.
+
+## 2026-10-26 — Collect Figure 1 data and plotting in one editable R Markdown notebook
+
+Context: the user wants to explore Figure 1 parameters independently and
+does not require the SVG layouts or colours to be reproduced.
+
+Options: run the existing generators in sequence, or collect their data
+calculations and redraw their plot content in one notebook.
+
+Decision: add `figure/fig1/fig1_playground.Rmd`, with all simulation and
+plotting code inline. Cover A–F, the sample simplex companion, the Vtilde
+alternative, cumulative B and the signal/perturbation diagnostic. Preserve
+source defaults and oracle definitions. Expose simulation, noise, seed,
+heatmap and display settings; document the three-component geometry and
+fixed scaling/model comparisons. Do not refresh existing figure files.
+All notebook figures remain illustrative and support no manuscript claim.
+
+Evidence: the notebook's source table identifies the eight R generators at
+manuscript base `85af3ab076de2a0fe9c4e9c71fc6ec88036b37b3`.
+GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`.
+Default render and saved-data comparisons pass, including B's complete
+summary; a changed-parameter render also passes. Logs and opened previews
+are under `out/fig1_playground/`; the HTML preview is
+`out/fig1_playground/fig1_playground.html`.
+
+Review: fresh Advisor - Claude approved after correction of ambiguous
+variance wording, legend labels and documentation, and restoration of the
+full B summary. It independently rendered the final notebook and reran
+the data comparisons. Handoff:
+`artifact/handoff/20261026-1344_claude_fig1-playground-review.md`;
+report: `out/fig1_playground_review/review.md`. Its last message was read
+and the agent archived. No commit or push was requested.
+
+House-rule proposal, not applied to AGENTS.md:
+2026-10-26: Name the matrix and weighting whenever comparing variance definitions.
+
+Revisit if: the notebook becomes the canonical figure generator, component
+count or model/scaling choices must vary, or these illustrative data are
+used to support a manuscript claim.

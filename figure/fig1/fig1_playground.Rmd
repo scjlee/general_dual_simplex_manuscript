@@ -1,0 +1,721 @@
+---
+title: "Figure 1: data and plotting playground"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    self_contained: true
+---
+
+Run the chunks from top to bottom, or use **Knit** in RStudio. Change the
+parameters below, then rerun from the simulation chunk onward. Plot objects
+and data tables stay in the R session when you run chunks interactively.
+All simulation and plotting code is in this file; it does not source the
+panel scripts or read their saved data. It uses this repository's renv.
+
+From the repository root, render an HTML copy into the ignored `out/` folder:
+
+```{r render-example, eval=FALSE}
+dir.create("out/fig1_playground", recursive = TRUE, showWarnings = FALSE)
+rmarkdown::render("figure/fig1/fig1_playground.Rmd",
+                  output_dir = "out/fig1_playground")
+```
+
+The plots use ggplot2 and patchwork. They show the same quantities as the
+panel generators with simpler layouts. Running this notebook does not
+refresh the existing panel CSVs, RDS, SVGs or previews.
+
+**Caption convention for every plot below:** illustrative simulated data
+for figure development; no benchmark or general ranking is claimed.
+
+## Parameters
+
+Keep three components: the simplex plots show the two nontrivial dimensions
+of a three-component model. Use at least two markers per component and two
+background genes for the default heatmap selection. Seeds in `draw_seeds`
+vary both signal and noise. Within a seed, all noise models share the signal;
+both scalings share the observed matrix. Keep `representative_draw` in
+`draw_seeds`. Keep the definitions and order of `scalings` and `models`
+unchanged: these lists define the fixed comparisons used throughout. Defaults match the current
+Figure 1 generators.
+
+```{r setup, message=FALSE}
+library(GeneralDualSimplex)
+library(ggplot2)
+library(patchwork)
+knitr::opts_chunk$set(fig.width = 10, fig.height = 5, dpi = 120,
+                      message = FALSE, warning = TRUE, cache = FALSE)
+theme_set(theme_bw(base_size = 11))
+```
+
+```{r parameters}
+mixture_parameters <- list(
+  n_feature = 500L,
+  n_sample = 200L,
+  n_component = 3L,
+  n_marker = 20L,
+  marker_fold = 5,
+  profile_spread_sd = 0.2
+)
+library_fraction <- 0.04
+# A's signal also determines automatic phi and sigma for panels C–F.
+panel_A_seed <- 1L
+draw_seeds <- 1:5
+representative_draw <- 1L
+# Fixed comparison definitions; retain their entries and order.
+scalings <- c("uniform", "expression")
+models <- c("Poisson", "Proportional", "Normal, floored at 0")
+
+# NULL matches relative noise at panel A's median expected count, before flooring.
+proportional_phi <- NULL
+normal_sigma <- NULL
+
+# Heatmap controls; only these displays select genes and samples.
+heatmap_genes <- c(paste0("marker", rep(1:3, each = 2), ".", 1:2),
+                   "background1", "background2")
+heatmap_min_fraction <- 0.1
+heatmap_targets <- rbind(
+  c(.65, .20, .15), c(.55, .30, .15), c(.40, .40, .20),
+  c(.20, .60, .20), c(.15, .55, .30), c(.20, .35, .45),
+  c(.20, .20, .60), c(.33, .33, .34)
+)
+
+# Display controls: changing these does not require recomputing data.
+scaling_colours <- c(uniform = "#E07B28", expression = "#2A7BBF")
+gene_colours <- c(background = "#B8B8B8", marker1 = "#009E73",
+                  marker2 = "#CC79A7", marker3 = "#D69B00", samples = "#929292")
+point_size <- 0.8
+point_alpha <- 0.8
+band_alpha <- 0.18
+```
+
+Additional `GenerateMixture` arguments can go in `mixture_parameters` (for
+example `alpha`, `cell_size`, `marker_range`, `background_range`, or
+`marker_spread_sd`). Unlisted arguments retain the installed package defaults.
+Smaller `library_fraction` means shallower sampling. Changing a distribution
+parameter regenerates the signal and changes all dependent panels.
+
+## Shared simulation and projection code
+
+The baseline expected count matrix is `mu = library_fraction * W %*% H`.
+Poisson noise uses `ApplyNBNoise` with dispersion zero. Proportional noise is
+`mu * Gamma(shape = 1/phi, rate = 1/phi)`, with variance `phi * mu^2`.
+Normal noise is `pmax(mu + N(0, sigma^2), 0)`. Flooring raises its mean above
+`mu` and lowers its variance below `sigma^2`. With automatic noise settings,
+`phi = 1/median(mu_A)` and `sigma = sqrt(median(mu_A))`; the relative noise
+matches at that one count **before flooring**.
+
+```{r simulation}
+generate_signal <- function(seed) {
+  set.seed(seed)
+  do.call(GenerateMixture, mixture_parameters)
+}
+
+A <- generate_signal(panel_A_seed)
+A$signal <- A$W %*% A$H
+A$observed <- ApplyNBNoise(A, dispersion = 0,
+                           library_size_fraction = library_fraction)$Observed
+median_expected_count_A <- median(library_fraction * A$signal)
+phi <- if (is.null(proportional_phi)) 1 / median_expected_count_A else proportional_phi
+sigma <- if (is.null(normal_sigma)) sqrt(median_expected_count_A) else normal_sigma
+noise_parameters <- data.frame(
+  model = models, library_fraction, median_expected_count_A,
+  phi = c(NA, phi, NA), sigma = c(NA, NA, sigma),
+  replicates = length(draw_seeds), representative_draw
+)
+print(noise_parameters, row.names = FALSE)
+
+simulate_draw <- function(seed, model) {
+  sim <- generate_signal(seed)
+  sim$signal <- sim$W %*% sim$H
+  sim$mu <- library_fraction * sim$signal
+  sim$observed <- switch(model,
+    Poisson = ApplyNBNoise(sim, dispersion = 0,
+                          library_size_fraction = library_fraction)$Observed,
+    Proportional = sim$mu * matrix(rgamma(length(sim$mu), shape = 1 / phi,
+                                         rate = 1 / phi), nrow(sim$mu)),
+    `Normal, floored at 0` = pmax(sim$mu + matrix(rnorm(length(sim$mu), 0, sigma),
+                                                nrow(sim$mu)), 0)
+  )
+  sim
+}
+
+fit_view <- function(sim, scaling) {
+  keep <- rowSums(sim$observed) > 0
+  V <- sim$observed[keep, , drop = FALSE]
+  object <- CreateDSO(V) |> ScaleDSO(type = scaling) |>
+    FindProjection(k = mixture_parameters$n_component, method = "svd")
+  s <- object@scaling
+  g <- object@projection$gsvd()
+  W <- sim$W[keep, , drop = FALSE]
+  basis_H <- t(g$Psi) * (g$b / s$c)
+  basis_W <- t(g$Phi) * (g$a / s$r)
+  Q <- qr.Q(qr(basis_H))
+  Qw <- qr.Q(qr(basis_W))
+  Hor <- t(Q %*% crossprod(Q, t(sim$H)))
+  Wor <- Qw %*% crossprod(Qw, W)
+  list(V = V, mu = (library_fraction * sim$signal)[keep, , drop = FALSE],
+       W = W, H = sim$H, s = s, g = g, oracle_H = Hor, oracle_W = Wor,
+       metrics = data.frame(
+         oracle_H_rmse = sqrt(mean((Hor - sim$H)^2)),
+         oracle_W_rmse = sqrt(mean((Wor - W)^2)), genes = nrow(V),
+         uniform_converged = if (scaling == "uniform") isTRUE(s$sinkhorn$converged) else NA,
+         residual_orthogonality_error = max(abs((sim$H - Hor) %*% Q)),
+         least_squares_agreement_error = max(abs(Hor - t(basis_H %*% qr.coef(qr(basis_H), t(sim$H))))),
+         W_residual_orthogonality_error = max(abs(crossprod(Qw, W - Wor))),
+         W_least_squares_agreement_error = max(abs(Wor - basis_W %*% qr.coef(qr(basis_W), W)))))
+}
+
+# Only a rigid rotation/reflection and translation: no axis stretching.
+orient_simplex <- function(coordinates, vertices) {
+  target <- rbind(c(0, 2 / sqrt(6)), c(1 / sqrt(2), -1 / sqrt(6)),
+                  c(-1 / sqrt(2), -1 / sqrt(6)))
+  centre <- colMeans(vertices[, 2:3])
+  v <- sweep(vertices[, 2:3], 2, centre, "-")
+  rotation <- svd(crossprod(v, target))
+  rotation <- rotation$u %*% t(rotation$v)
+  list(points = sweep(coordinates[, 2:3], 2, centre, "-") %*% rotation,
+       vertices = v %*% rotation)
+}
+
+gene_geometry <- function(fit) {
+  s <- fit$s; g <- fit$g
+  F <- sweep(fit$V, 2, s$c, "*"); F <- F / rowSums(F)
+  T <- sweep(fit$H, 2, s$c, "*"); T <- T / rowSums(T)
+  C <- F %*% t(g$Psi)
+  xy <- orient_simplex(C, T %*% t(g$Psi))
+  group <- ifelse(grepl("^marker", rownames(fit$V)),
+                   sub("^marker([0-9]+)\\..*$", "marker\\1", rownames(fit$V)), "background")
+  F0 <- sweep(fit$mu, 2, s$c, "*"); F0 <- F0 / rowSums(F0)
+  B0 <- sweep(fit$W, 2, rowSums(sweep(fit$H, 2, s$c, "*")), "*")
+  B0 <- B0 / rowSums(B0)
+  list(points = data.frame(gene = rownames(fit$V), group, x = xy$points[, 1], y = xy$points[, 2]),
+       vertices = data.frame(component = 1:3, x = xy$vertices[, 1], y = xy$vertices[, 2]),
+       checks = data.frame(
+         coordinate_identity_error = max(abs(C - t(g$Phi) %*% diag(g$sigma[1:3]))),
+         constant_coordinate_error = max(abs(C[, 1] - 1)),
+         noiseless_convex_error = max(abs(F0 - B0 %*% T))))
+}
+
+sample_geometry <- function(fit) {
+  s <- fit$s; g <- fit$g
+  F <- fit$V * s$r; F <- sweep(F, 2, colSums(F), "/")
+  T <- fit$W * s$r; T <- sweep(T, 2, colSums(T), "/")
+  C <- t(g$Phi %*% F)
+  xy <- orient_simplex(C, t(g$Phi %*% T))
+  F0 <- fit$mu * s$r; F0 <- sweep(F0, 2, colSums(F0), "/")
+  B0 <- fit$H * colSums(fit$W * s$r); B0 <- sweep(B0, 2, colSums(B0), "/")
+  list(points = data.frame(sample = colnames(fit$V), group = "samples",
+                          x = xy$points[, 1], y = xy$points[, 2]),
+       vertices = data.frame(component = 1:3, x = xy$vertices[, 1], y = xy$vertices[, 2]),
+       checks = data.frame(
+         constant_coordinate_error = max(abs(C[, 1] - 1)),
+         svd_coordinate_identity_error = max(abs(t(C) - g$sigma * g$Psi)),
+         noiseless_convex_error = max(abs(F0 - T %*% B0))))
+}
+
+project_nontrivial <- function(X, u, v) {
+  X <- X - u %o% as.vector(crossprod(u, X))
+  X - as.vector(X %*% v) %o% v
+}
+```
+
+The gene simplex maps normalized observed rows and known normalized H rows
+with the same `Psi`. The sample simplex maps normalized observed columns
+and known normalized W columns with the same `Phi`. Dashed triangles join
+known projected components; no vertices are fitted. All nonzero observed
+genes and all samples are retained in their respective point clouds.
+
+Oracle errors are unconstrained Euclidean least-squares projections. The H
+row space is spanned by the rows of `Psi D_b D_c^-1`; the W column space is
+`span(D_r^-1 D_a Phi^T)`. Orthonormalizing these bases gives
+`H_oracle = H Q Q^T` and `W_oracle = Qw Qw^T W`. There is no clipping or
+factor normalization. W errors use the original simulated expression units,
+before the library fraction; H errors use fraction units. These errors do
+not measure distances from plotted points to a triangle.
+
+## Shared plotting code
+
+Each simplex plot has its own limits and equal aspect. Coordinates are
+rigidly oriented mixtures of GSVD dimensions 2 and 3.
+
+```{r plotting-helpers}
+simplex_panel <- function(points, vertices, title, error, sample_side) {
+  triangle <- rbind(vertices, vertices[1, ])
+  vertices$group <- paste0("marker", vertices$component)
+  plot <- ggplot(points, aes(x, y)) +
+    geom_point(aes(colour = group), size = point_size, alpha = point_alpha) +
+    geom_path(data = triangle, colour = "grey40", linetype = "dashed") +
+    scale_colour_manual(values = gene_colours, labels = function(groups) {
+      if (sample_side) sub("^marker", "component", groups) else groups
+    }) + coord_equal() +
+    labs(title = title, subtitle = sprintf("oracle RMSE: %.3f", error),
+         x = "Projection 2", y = "Projection 3", colour = NULL)
+  if (sample_side) plot <- plot + geom_point(data = vertices, aes(colour = group), size = 2)
+  plot
+}
+
+plot_simplices <- function(points, vertices, metrics, side, ncol) {
+  plots <- list()
+  for (sc in scalings) for (noise_model in unique(as.character(points$model))) {
+    p <- subset(points, scaling == sc & model == noise_model)
+    v <- subset(vertices, scaling == sc & model == noise_model)
+    m <- subset(metrics, scaling == sc & model == noise_model)
+    plots[[length(plots) + 1]] <- simplex_panel(
+      p, v, paste(noise_model, sc, sep = "\n"), m[[paste0("oracle_", side, "_rmse")]],
+      sample_side = side == "H")
+  }
+  wrap_plots(plots, ncol = ncol, guides = "collect")
+}
+```
+
+## A: one simulated mixture, heatmaps and gene simplices
+
+W is scaled within each displayed row. H shows its actual fractions.
+Signal and observation share a per-gene display maximum, after adjusting
+the observation by the known library fraction for display only. The
+selected mixed samples affect the heatmaps only.
+
+```{r panel-a-data}
+A_fits <- lapply(scalings, function(sc) fit_view(A, sc))
+names(A_fits) <- scalings
+A_gene_points <- A_vertices <- A_metrics <- A_checks <- list()
+for (sc in scalings) {
+  geometry <- gene_geometry(A_fits[[sc]])
+  A_gene_points[[sc]] <- cbind(model = "Poisson", scaling = sc, geometry$points)
+  A_vertices[[sc]] <- cbind(model = "Poisson", scaling = sc, geometry$vertices)
+  A_metrics[[sc]] <- cbind(model = "Poisson", scaling = sc, A_fits[[sc]]$metrics)
+  A_checks[[sc]] <- cbind(scaling = sc, geometry$checks)
+}
+A_gene_points <- do.call(rbind, A_gene_points)
+A_vertices <- do.call(rbind, A_vertices)
+A_metrics <- do.call(rbind, A_metrics)
+A_checks <- do.call(rbind, A_checks)
+
+available <- which(apply(A$H, 2, min) >= heatmap_min_fraction)
+heatmap_sample_indices <- integer(nrow(heatmap_targets))
+for (i in seq_len(nrow(heatmap_targets))) {
+  distance <- colSums((A$H[, available, drop = FALSE] - heatmap_targets[i, ])^2)
+  heatmap_sample_indices[i] <- available[which.min(distance)]
+  available <- setdiff(available, heatmap_sample_indices[i])
+}
+Wshow <- A$W[heatmap_genes, , drop = FALSE]
+Hshow <- A$H[, heatmap_sample_indices, drop = FALSE]
+Xshow <- A$signal[heatmap_genes, heatmap_sample_indices, drop = FALSE]
+Yshow <- A$observed[heatmap_genes, heatmap_sample_indices, drop = FALSE]
+shared_max <- apply(cbind(Xshow, Yshow / library_fraction), 1, max)
+tile <- function(name, raw, display) data.frame(
+  matrix = name, row = c(row(raw)), col = c(col(raw)),
+  value = c(display), raw_value = c(raw))
+A_tiles <- rbind(tile("W", Wshow, Wshow / apply(Wshow, 1, max)),
+                 tile("H", Hshow, Hshow),
+                 tile("X", Xshow, Xshow / shared_max),
+                 tile("Y", Yshow, (Yshow / library_fraction) / shared_max))
+heatmap_samples <- data.frame(display_column = seq_along(heatmap_sample_indices),
+  sample = colnames(A$H)[heatmap_sample_indices], t(Hshow))
+print(heatmap_samples, row.names = FALSE)
+print(A_metrics, row.names = FALSE)
+```
+
+```{r panel-a-plots, fig.height=6}
+heatmap_plots <- lapply(c("W", "H", "X", "Y"), function(name) {
+  ggplot(subset(A_tiles, matrix == name), aes(col, row, fill = value)) +
+    geom_tile(colour = "white", linewidth = 0.2) +
+    scale_y_reverse() + coord_equal() +
+    scale_fill_gradient(low = "white", high = "grey15", limits = c(0, 1)) +
+    labs(title = switch(name, W = "W", H = "H", X = "Signal W H", Y = "Observed V"),
+         x = NULL, y = NULL, fill = "Display value")
+})
+plot_A_heatmaps <- wrap_plots(heatmap_plots, ncol = 4, guides = "collect")
+plot_A_heatmaps
+plot_A_genes <- plot_simplices(A_gene_points, A_vertices, A_metrics, "W", ncol = 2)
+plot_A_genes
+```
+
+## B: gene and sample mass
+
+Masses are the achieved marginals `a` and `b` of the scaled matrix, including
+the fitted uniform scaling's numerical tolerance. Rank items by their
+observed totals, breaking ties by name. The second plot preserves the
+archived cumulative view without duplicating its data generator.
+
+```{r panel-b-data}
+mass_table <- function(totals, uniform_mass, expression_mass) {
+  ord <- order(totals, names(totals))
+  data.frame(rank = seq_along(totals), percent = 100 * seq_along(totals) / length(totals),
+    item = names(totals)[ord], observed_total = totals[ord],
+    uniform_share_percent = 100 * uniform_mass[ord],
+    expression_share_percent = 100 * expression_mass[ord],
+    uniform_cumulative_percent = 100 * cumsum(uniform_mass[ord]),
+    expression_cumulative_percent = 100 * cumsum(expression_mass[ord]),
+    raw_cumulative_percent = 100 * cumsum(totals[ord] / sum(totals)))
+}
+mass_by_gene <- mass_table(rowSums(A_fits$uniform$V), A_fits$uniform$s$a,
+                           A_fits$expression$s$a)
+mass_by_sample <- mass_table(colSums(A_fits$uniform$V), A_fits$uniform$s$b,
+                             A_fits$expression$s$b)
+mass_long <- do.call(rbind, lapply(c("Genes", "Samples"), function(margin) {
+  d <- if (margin == "Genes") mass_by_gene else mass_by_sample
+  do.call(rbind, lapply(scalings, function(sc) data.frame(
+    margin, scaling = sc, rank = d$rank, percent = d$percent,
+    observed_total = d$observed_total, raw_cumulative_percent = d$raw_cumulative_percent,
+    share = d[[paste0(sc, "_share_percent")]],
+    cumulative = d[[paste0(sc, "_cumulative_percent")]])))
+}))
+at_observed_half <- function(data, y) {
+  approx(c(0, data$raw_cumulative_percent), c(0, y), xout = 50, ties = "ordered")$y
+}
+margin_summary <- function(data, prefix, target) {
+  n <- nrow(data)
+  data.frame(
+    quantity = paste0(prefix, c("_count", "_uniform_mass_max_abs_deviation_from_target",
+      "_uniform_cumulative_percent_at_observed_half",
+      "_expression_cumulative_percent_at_observed_half",
+      "_items_percent_at_observed_half", "_max_abs_raw_minus_expression_cumulative_percent",
+      "_observed_total_min", "_observed_total_max", "_expression_share_percent_min",
+      "_expression_share_percent_max", "_expression_share_max_over_min",
+      "_uniform_share_percent_min", "_uniform_share_percent_max",
+      "_items_percent_expression_above_uniform")),
+    value = c(n, max(abs(data$uniform_share_percent / 100 - target)),
+      at_observed_half(data, data$uniform_cumulative_percent),
+      at_observed_half(data, data$expression_cumulative_percent),
+      100 * sum(data$raw_cumulative_percent < 50) / n,
+      max(abs(data$raw_cumulative_percent - data$expression_cumulative_percent)),
+      min(data$observed_total), max(data$observed_total),
+      min(data$expression_share_percent), max(data$expression_share_percent),
+      max(data$expression_share_percent) / min(data$expression_share_percent),
+      min(data$uniform_share_percent), max(data$uniform_share_percent),
+      100 * mean(data$expression_share_percent > data$uniform_share_percent)))
+}
+mass_summary <- rbind(
+  data.frame(quantity = c("genes_removed_by_filter", "uniform_converged", "uniform_iterations",
+      "uniform_max_relative_marginal_error", "expression_total_mass", "uniform_total_mass"),
+    value = c(nrow(A$observed) - nrow(A_fits$uniform$V), A_fits$uniform$s$sinkhorn$converged,
+      A_fits$uniform$s$sinkhorn$iterations, A_fits$uniform$s$sinkhorn$max_relative_marginal_error,
+      sum(A_fits$expression$s$a), sum(A_fits$uniform$s$a))),
+  margin_summary(mass_by_gene, "genes", 1 / nrow(A_fits$uniform$V)),
+  margin_summary(mass_by_sample, "samples", 1 / ncol(A_fits$uniform$V)))
+print(mass_summary, row.names = FALSE)
+```
+
+```{r panel-b-plots}
+plot_B <- ggplot(mass_long, aes(rank, share, colour = scaling)) +
+  geom_point(size = point_size) + scale_y_log10() +
+  scale_colour_manual(values = scaling_colours) + facet_wrap(~margin, scales = "free") +
+  labs(x = "Rank by observed total (low to high)", y = "Share of scaled total (%)")
+plot_B
+cumulative_origin <- mass_long[!duplicated(mass_long[c("margin", "scaling")]), ]
+cumulative_origin$percent <- cumulative_origin$raw_cumulative_percent <- cumulative_origin$cumulative <- 0
+plot_B_cumulative <- ggplot(rbind(cumulative_origin, mass_long),
+  aes(raw_cumulative_percent, cumulative, colour = scaling)) +
+  geom_abline(slope = 1, intercept = 0, colour = "grey75") + geom_line() +
+  scale_colour_manual(values = scaling_colours) + facet_wrap(~margin) +
+  labs(x = "Cumulative observed total (%)", y = "Cumulative scaled mass (%)")
+plot_B_cumulative
+```
+
+## C–F and sample companion: shared repeated draws
+
+One loop supplies all remaining panels. The weights are refitted to each
+observed matrix. The representative draw is selected by seed in advance,
+rather than by the appearance of its simplex. The tables include each
+oracle factor entry, per-gene quantities, projection checks, and noiseless
+oracle controls for later inspection.
+
+```{r repeated-draws}
+projection_metrics <- oracle_W <- oracle_H <- noiseless_metrics <- list()
+C_gene_data <- signal_noise_split <- list()
+D_genes <- D_vertices <- S_samples <- S_vertices <- projection_checks <- list()
+for (noise_model in models) for (seed in draw_seeds) {
+  sim <- simulate_draw(seed, noise_model)
+  for (sc in scalings) {
+    fit <- fit_view(sim, sc)
+    key <- data.frame(model = noise_model, draw = seed, scaling = sc)
+    projection_metrics[[length(projection_metrics) + 1]] <- cbind(key, fit$metrics)
+    oracle_W[[length(oracle_W) + 1]] <- cbind(key, data.frame(
+      component = rep(1:3, each = nrow(fit$W)), gene = rep(rownames(fit$W), 3),
+      true_W = c(fit$W), oracle_W = c(fit$oracle_W)))
+    oracle_H[[length(oracle_H) + 1]] <- cbind(key, data.frame(
+      component = rep(1:3, ncol(fit$H)), sample = rep(colnames(fit$H), each = 3),
+      true_H = c(fit$H), oracle_H = c(fit$oracle_H)))
+
+    s <- fit$s
+    Vtilde <- s$r * sweep(fit$V, 2, s$c, "*")
+    Z <- s$r / sqrt(s$a) * sweep(fit$V, 2, s$c / sqrt(s$b), "*")
+    u <- sqrt(s$a); v <- sqrt(s$b)
+    E <- Z - u %o% v
+    inertia <- rowSums(E^2)
+    variance <- rowSums((Vtilde - rowMeans(Vtilde))^2) / (ncol(Vtilde) - 1)
+    ordering <- order(rowSums(fit$V))
+    C_gene_data[[length(C_gene_data) + 1]] <- cbind(key, data.frame(
+      gene = rownames(fit$V)[ordering], rank = seq_len(nrow(fit$V)),
+      observed_total = rowSums(fit$V)[ordering],
+      inertia_Z = inertia[ordering], share_Z = 100 * inertia[ordering] / sum(inertia),
+      variance_vtilde = variance[ordering], share_vtilde = 100 * variance[ordering] / sum(variance)))
+
+    S <- s$r / sqrt(s$a) * sweep(fit$mu, 2, s$c / sqrt(s$b), "*")
+    S0 <- project_nontrivial(S, u, v)
+    N0 <- project_nontrivial(Z - S, u, v)
+    total <- sum(E^2)
+    signal_noise_split[[length(signal_noise_split) + 1]] <- cbind(key, data.frame(
+      signal_pct = 100 * sum(S0^2) / total,
+      noise_pct = 100 * sum(N0^2) / total,
+      cross_pct = 200 * sum(S0 * N0) / total,
+      decomposition_error = max(abs(E - S0 - N0)),
+      left_trivial_pair_error = max(abs(Z %*% v - u)),
+      right_trivial_pair_error = max(abs(crossprod(Z, u) - v)),
+      ordinary_variance_error = max(abs(variance - apply(Vtilde, 1, var)))))
+
+    if (seed == representative_draw) {
+      genes <- gene_geometry(fit)
+      samples <- sample_geometry(fit)
+      D_genes[[length(D_genes) + 1]] <- cbind(key, genes$points)
+      D_vertices[[length(D_vertices) + 1]] <- cbind(key, genes$vertices)
+      S_samples[[length(S_samples) + 1]] <- cbind(key, samples$points)
+      S_vertices[[length(S_vertices) + 1]] <- cbind(key, samples$vertices)
+      projection_checks[[length(projection_checks) + 1]] <- cbind(
+        key, side = "genes", genes$checks)
+      names(samples$checks)[names(samples$checks) == "svd_coordinate_identity_error"] <- "coordinate_identity_error"
+      projection_checks[[length(projection_checks) + 1]] <- cbind(
+        key, side = "samples", samples$checks[names(genes$checks)])
+    }
+  }
+  if (noise_model == "Poisson") {
+    sim$observed <- sim$mu
+    for (sc in scalings) {
+      fit0 <- fit_view(sim, sc)
+      noiseless_metrics[[length(noiseless_metrics) + 1]] <- data.frame(
+        draw = seed, scaling = sc,
+        oracle_W_rmse = fit0$metrics$oracle_W_rmse,
+        oracle_H_rmse = fit0$metrics$oracle_H_rmse)
+    }
+  }
+}
+projection_metrics <- do.call(rbind, projection_metrics)
+oracle_W <- do.call(rbind, oracle_W)
+oracle_H <- do.call(rbind, oracle_H)
+noiseless_metrics <- do.call(rbind, noiseless_metrics)
+C_gene_data <- do.call(rbind, C_gene_data)
+signal_noise_split <- do.call(rbind, signal_noise_split)
+D_genes <- do.call(rbind, D_genes)
+D_vertices <- do.call(rbind, D_vertices)
+S_samples <- do.call(rbind, S_samples)
+S_vertices <- do.call(rbind, S_vertices)
+projection_checks <- do.call(rbind, projection_checks)
+print(projection_metrics, row.names = FALSE)
+```
+
+## C: where variation sits after bi-marginal whitening
+
+For gene g, `q_g = sum_i (Z_gi - sqrt(a_g * b_i))^2`; its share is
+`100 * q_g / sum(q)`. This is weighted variation, or correspondence-analysis
+inertia, including both signal and noise. In profile notation it is
+`a_g * sum_i (p_gi - b_i)^2 / b_i`, where `p_gi = Vtilde_gi / a_g`.
+The total equals the sum of squared nontrivial singular values.
+When b is uniform, `q_g = (n - 1) * var(Z[g, ])`: this comparison to ordinary
+variance concerns rows of Z. The Vtilde variance below is a different
+quantity. The figure is not a plot of noise alone.
+
+Each draw ranks its own genes by observed total. Lines show the arithmetic
+mean at each rank; bands show the minimum and maximum across draws, not a
+confidence interval. When zero-row filtering leaves different gene counts,
+retain ranks through the smallest count, as in the original C generator.
+
+```{r panel-c-data}
+summarise_ranks <- function(value_column) {
+  rows <- list()
+  for (noise_model in models) for (sc in scalings) {
+    d <- subset(C_gene_data, model == noise_model & scaling == sc)
+    m <- min(table(d$draw))
+    mat <- vapply(draw_seeds, function(seed) {
+      z <- subset(d, draw == seed)
+      z[[value_column]][order(z$rank)][seq_len(m)]
+    }, numeric(m))
+    rows[[length(rows) + 1]] <- data.frame(model = noise_model, scaling = sc,
+      rank = seq_len(m), mean = rowMeans(mat), lo = apply(mat, 1, min), hi = apply(mat, 1, max))
+  }
+  do.call(rbind, rows)
+}
+C_share_Z <- summarise_ranks("share_Z")
+C_share_vtilde <- summarise_ranks("share_vtilde")
+
+plot_rank_shares <- function(data, title, y_title) {
+  ggplot(data, aes(rank, mean, colour = scaling, fill = scaling)) +
+    geom_ribbon(aes(ymin = lo, ymax = hi), alpha = band_alpha, colour = NA) +
+    geom_line(linewidth = 0.4) + scale_y_log10() +
+    scale_colour_manual(values = scaling_colours) +
+    scale_fill_manual(values = scaling_colours) +
+    facet_wrap(~model, nrow = 1, scales = "free_y") +
+    labs(title = title, x = "Gene rank by observed total (low to high)", y = y_title)
+}
+```
+
+```{r panel-c-plot}
+plot_C <- plot_rank_shares(C_share_Z, "After bi-marginal whitening",
+                           "Gene share of variation in Z (%)")
+plot_C
+```
+
+## Alternative C: ordinary variance before bi-marginal whitening
+
+This alternative uses `var(Vtilde[g, ])`, the ordinary within-gene variance
+across samples, and divides it by the sum of gene variances. It includes
+signal and noise. Its denominator is neither inertia in Z nor variation
+of all entries about one grand mean. This is the `panelC_vtilde` alternative.
+
+```{r panel-c-vtilde-plot}
+plot_C_vtilde <- plot_rank_shares(C_share_vtilde, "Before bi-marginal whitening",
+                                 "Gene share of total variance in Vtilde (%)")
+plot_C_vtilde
+```
+
+## Signal, perturbation and cross term diagnostic
+
+This retains `panelC/signal_noise_split.R`. With fitted weights
+`l = r/sqrt(a)`, `t = c/sqrt(b)`, let `S = D_l mu D_t`, `N = Z - S`,
+`P = I - sqrt(a) sqrt(a)^T` and `Q = I - sqrt(b) sqrt(b)^T`.
+Then `E = Z - sqrt(a) sqrt(b)^T = P S Q + P N Q` and
+`||E||^2 = ||PSQ||^2 + ||PNQ||^2 + 2 <PSQ, PNQ>`.
+The terms below divide by `||E||^2` and sum to 100%; the cross term can be
+negative. The perturbation for floored normal noise includes the flooring
+bias relative to the pre-floor `mu`.
+
+```{r signal-noise-diagnostic}
+split_long <- do.call(rbind, lapply(c("signal_pct", "noise_pct", "cross_pct"), function(term) {
+  data.frame(signal_noise_split[c("model", "draw", "scaling")],
+             term, percent = signal_noise_split[[term]])
+}))
+plot_signal_noise <- ggplot(split_long, aes(term, percent, colour = scaling)) +
+  geom_hline(yintercept = 0, colour = "grey70") +
+  geom_point(position = position_dodge(width = 0.4)) +
+  scale_colour_manual(values = scaling_colours) + facet_wrap(~model) +
+  labs(x = NULL, y = "Term / total nontrivial variation (%)")
+plot_signal_noise
+```
+
+## D and sample companion: representative simplices
+
+The representative gene plot reports W oracle RMSE; the sample companion
+reports H oracle RMSE. They use the same representative signal/noise draws
+and match individual points in E/F, rather than their across-draw means.
+
+```{r panel-d-plots, fig.height=8}
+representative_metrics <- subset(projection_metrics, draw == representative_draw)
+plot_D <- plot_simplices(D_genes, D_vertices, representative_metrics, "W", ncol = length(models))
+plot_D
+plot_S <- plot_simplices(S_samples, S_vertices, representative_metrics, "H", ncol = length(models))
+plot_S
+```
+
+## E and F: paired oracle errors
+
+Dots are individual draws. Grey lines pair the two scalings of the same
+observed matrix; short bars show arithmetic means. The W and H panels have
+separate vertical scales because their units differ.
+
+```{r panel-ef-plots}
+oracle_means <- aggregate(cbind(oracle_W_rmse, oracle_H_rmse) ~ model + scaling,
+                          projection_metrics, mean)
+print(oracle_means, row.names = FALSE)
+plot_oracle <- function(side) {
+  d <- projection_metrics
+  d$scaling <- factor(d$scaling, levels = scalings)
+  d$error <- d[[paste0("oracle_", side, "_rmse")]]
+  ggplot(d, aes(scaling, error)) +
+    geom_line(aes(group = draw), colour = "grey70", linewidth = 0.4) +
+    geom_point(aes(colour = scaling), size = 2) +
+    stat_summary(aes(colour = scaling), fun = mean, geom = "point", shape = 95, size = 9) +
+    scale_colour_manual(values = scaling_colours) + facet_wrap(~model, nrow = 1) +
+    expand_limits(y = 0) +
+    labs(title = paste(side, "oracle error"), x = NULL, y = "oracle RMSE")
+}
+plot_E <- plot_oracle("W")
+plot_F <- plot_oracle("H")
+plot_E / plot_F
+```
+
+## Diagnostics, provenance and saving experiments
+
+These diagnostics print properties for inspection; they do not reject or
+select a simulated draw. Uniform scaling convergence is in
+`projection_metrics$uniform_converged`; individual oracle factor entries
+are in `oracle_W` and `oracle_H`. `A_fits` retains A's observed matrix,
+fitted weights and GSVD. `C_gene_data` retains every gene's unrounded
+variation, share and rank for every draw/scaling/model.
+
+```{r diagnostics}
+print(A_checks, row.names = FALSE)
+print(projection_checks, row.names = FALSE)
+cat("Heatmap fraction range:", range(Hshow), "; column sums:", range(colSums(Hshow)), "\n")
+cat("Genes removed from A:", nrow(A$observed) - nrow(A_fits$uniform$V), "\n")
+cat("Maximum decomposition error:", max(signal_noise_split$decomposition_error), "\n")
+cat("Maximum trivial-pair errors:", max(signal_noise_split$left_trivial_pair_error),
+    max(signal_noise_split$right_trivial_pair_error), "\n")
+cat("Maximum ordinary-variance discrepancy:", max(signal_noise_split$ordinary_variance_error), "\n")
+cat("Range of summed decomposition terms (%):",
+    range(rowSums(signal_noise_split[c("signal_pct", "noise_pct", "cross_pct")])), "\n")
+cat("Maximum noiseless W/H RMSE:", max(noiseless_metrics$oracle_W_rmse),
+    max(noiseless_metrics$oracle_H_rmse), "\n")
+cat("All outputs are illustrative simulations.\n")
+```
+
+Optional exports go to a new experiment folder. Run this chunk yourself
+after choosing a folder name; it is disabled during knitting.
+
+```{r save-experiment, eval=FALSE}
+experiment_dir <- "out/fig1_experiment_01"
+dir.create(experiment_dir, recursive = TRUE, showWarnings = FALSE)
+ggsave(file.path(experiment_dir, "gene_simplices.png"), plot_D, width = 10, height = 8, dpi = 300)
+ggsave(file.path(experiment_dir, "sample_simplices.png"), plot_S, width = 10, height = 8, dpi = 300)
+ggsave(file.path(experiment_dir, "oracle_errors.png"), plot_E / plot_F, width = 10, height = 7, dpi = 300)
+write.csv(projection_metrics, file.path(experiment_dir, "projection_metrics.csv"), row.names = FALSE)
+saveRDS(list(mixture_parameters = mixture_parameters, library_fraction = library_fraction,
+  panel_A_seed = panel_A_seed, draw_seeds = draw_seeds, noise_parameters = noise_parameters,
+  A = A, mass_by_gene = mass_by_gene, mass_by_sample = mass_by_sample,
+  C_gene_data = C_gene_data, signal_noise_split = signal_noise_split,
+  projection_metrics = projection_metrics, oracle_W = oracle_W, oracle_H = oracle_H,
+  D_genes = D_genes, D_vertices = D_vertices, S_samples = S_samples, S_vertices = S_vertices,
+  noiseless_metrics = noiseless_metrics, session_info = sessionInfo()),
+  file.path(experiment_dir, "experiment.rds"))
+```
+
+Source snapshot: manuscript commit
+`85af3ab076de2a0fe9c4e9c71fc6ec88036b37b3`; existing figure data record
+GeneralDualSimplex **0.28.0** at package commit
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`.
+The notebook was assembled from:
+
+| Sources under `figure/fig1/` | Content retained here |
+|:---|:---|
+| `panelA/points.R` | Signal, Poisson observation, gene simplex, W/H oracles, heatmap selection and display scaling |
+| `panelB/mass.R`; `panelB/archive/20261026_cumulative/mass.R` | Gene/sample mass tables and cumulative interpolation |
+| `panelC/noise_share.R` | Repeated noise draws and ranked shares of nontrivial variation in Z |
+| `panelC/signal_noise_split.R` | Signal/perturbation/cross-term decomposition |
+| `panelC_vtilde/variance_share.R` | Ordinary within-gene variance shares before bi-marginal whitening |
+| `panelD/projections.R` | Gene/sample geometry, paired W/H oracles and noiseless controls |
+| `panelD/make_mock_panels.R` | Simplex and paired-error plot content, redrawn here in ggplot2 |
+| Panel A/B/C/D/E Python renderers | Heatmap, rank, band and mean-bar plot content, redrawn here in R |
+
+Current definitions and caption conventions are in
+`artifact/20261026_fig1_svg-final.md`, “Current caption text”, and
+`artifact/20261026_fig1C-vtilde-alternative.md`, “Definition and provenance”. The C generator
+header is the source for the current weighted-variation formula. Old SVG
+layout and rendering machinery are unnecessary for parameter exploration.
+
+The runtime record below identifies the installed package and current local
+package checkout. A checkout commit alone does not establish which source
+was installed; compare the installed version and the figure provenance
+files when updating the package.
+
+```{r runtime-provenance}
+cat("Installed GeneralDualSimplex:", as.character(packageVersion("GeneralDualSimplex")), "\n")
+# Edit this path if the package checkout is elsewhere.
+package_checkout <- "/workspace/dual_simplex_functional/general_dual_simplex"
+cat("Package checkout commit:\n")
+cat(system2("git", c("-C", shQuote(package_checkout), "rev-parse", "HEAD"), stdout = TRUE), sep = "\n")
+cat("\nUncommitted package R/src changes:\n")
+cat(system2("git", c("-C", shQuote(package_checkout), "status", "--porcelain", "R", "src"),
+            stdout = TRUE), sep = "\n")
+sessionInfo()
+```
