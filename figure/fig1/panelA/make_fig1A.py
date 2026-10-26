@@ -143,23 +143,24 @@ def main():
         return sets
 
     points, vertices = read_sets(POINTS), read_sets(VERTICES)
-    all_rows = [row for sets in (points, vertices) for rows in sets.values() for row in rows]
-    xs, ys = [float(row["x"]) for row in all_rows], [float(row["y"]) for row in all_rows]
-    centre = ((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2)
-    span = max(max(xs) - min(xs), max(ys) - min(ys)) * 1.06
-
     # CSV names X/Y are historical data keys, independent of displayed notation.
     replacements = {f"heatmap_{name}": heatmap(name, x, y, tiles[name])
                     for name, x, y in [("W", 7.5, 19.5), ("H", 3.0, 41.5),
                                        ("X", 26.0, 26.0), ("Y", 62.8, 26.0)]}
     for key, colour, yc in [("uniform", "#E07B28", 18.0), ("expression", "#2A7BBF", 48.4)]:
+        # Fit each complete cloud and triangle separately; preserve equal aspect.
+        # All points, including outliers, participate in the display limits.
+        rows = points[key] + vertices[key]
+        xs, ys = [float(row["x"]) for row in rows], [float(row["y"]) for row in rows]
+        centre = ((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2)
+        span = max(max(xs) - min(xs), max(ys) - min(ys)) * 1.06
         replacements[f"scatter_{key}"] = scatter(key, colour, yc, points[key], vertices[key], centre, span)
+        print(f"{key} projection limits: centre={centre}, span={span:.6f}; equal aspect, all points retained")
     with (HERE / "projection_metrics.csv").open() as f:
         for row in csv.DictReader(f):
             error = float(row["oracle_H_rmse"])
             print(f'{row["scaling"]}: oracle H RMSE {error:.6f} (label {error:.3f}); check the master label separately')
     print("Gene colours:", GENE_COLOURS)
-    print(f"Shared projection limits: centre={centre}, span={span:.6f}; equal aspect, all points retained")
 
     master = HERE / "fig1A.svg"
     original = master.read_bytes()

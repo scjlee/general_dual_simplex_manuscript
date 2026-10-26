@@ -181,3 +181,27 @@ Inkscape checks.
 
 Revisit if: the user wants unrotated singular axes, a different noise model,
 or a representative multi-seed performance comparison.
+
+## 2026-10-26 — Fit Figure 1A projections independently and remove k beside H
+
+Context: the user asked whether triangle sizes were deliberately similar,
+wanted the expression projection enlarged to make the comparison clearer,
+and requested removal of k to the left of H.
+
+Options: retain one shared display scale or fit each full cloud and its
+triangle separately. The earlier renderer did not normalize triangle sizes;
+it used one common coordinate range.
+
+Decision: fit each projection independently, retaining equal aspect and all
+points. Magnify the entire gene cloud and its triangle together. Add
+“Separate plot scales” to the legend and update the caption interpretation.
+Remove SVG text object label_H_rows. Data and metric values are unchanged.
+
+Evidence: `artifact/20261026_fig1A-separate-scales.md` records the scope,
+caption amendment and checks against manuscript commit
+`e37dac1b8714c0d87d7a9148f0ac8f4ede5dd72e`. The six data files retain their
+hashes; text and point extents fit. The final PNG was opened and inspected.
+No new reviewer was launched for this minor display change.
+
+Revisit if: absolute coordinate sizes need to be compared across panels,
+or the user requests shared scales again.
