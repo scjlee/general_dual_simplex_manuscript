@@ -1,6 +1,7 @@
-# Oracle projection of the true H onto the estimated H space, uniform vs expression scaling.
-# Setting follows the package's .ai/bench/20261022_space-distortion.R (k = 3, Poisson, spread 0.2, marker fold 5).
-# Usage (repo root): Rscript figure/fig1/panelA/points.R [library_size_fraction] [seed]
+# Illustrative noisy gene-simplex projections, uniform vs expression scaling.
+# Run from the manuscript root: Rscript figure/fig1/panelA/points.R [library_fraction] [seed]
+# Source model: package .ai/bench/20261022_space-distortion.R; full provenance
+# and derivation: artifact/20261026_fig1A-gene-simplex.md.
 library(GeneralDualSimplex)
 here <- "figure/fig1/panelA"
 pkg <- "/workspace/dual_simplex_functional/general_dual_simplex"
@@ -17,35 +18,89 @@ orth <- function(A) qr.Q(qr(A))
 set.seed(seed)
 sim <- GenerateMixture(500, 200, k, n_marker = 20, marker_fold = 5, profile_spread_sd = 0.2)
 Yfull <- ApplyNBNoise(sim, dispersion = 0, library_size_fraction = frac)$Observed
-Y <- Yfull[rowSums(Yfull) > 0, ]
+Y <- Yfull[rowSums(Yfull) > 0, , drop = FALSE]
 H <- sim$H
-oracle <- function(type) {
-  V <- CreateDSO(Y) |> ScaleDSO(type = type) |> FindProjection(k = k, method = "svd")
-  s <- V@scaling; g <- V@projection$gsvd()
-  Q <- orth(t(g$Psi) * (g$b / s$c))
-  t(Q %*% crossprod(Q, t(H)))
-}
-# Heatmap tiles: 2 markers per component + 2 background genes, 8 samples ordered by dominant component.
-genes <- c(paste0("marker", rep(1:k, each = 2), ".", 1:2), rownames(sim$W)[k * 20 + 1:2])
-smp <- order(apply(H, 2, which.max), -apply(H, 2, max))
-smp <- unlist(lapply(1:k, function(j) head(smp[apply(H[, smp], 2, which.max) == j], c(3, 3, 2)[j])))
-rescale <- function(M) { L <- log1p(M); (L - min(L)) / (max(L) - min(L)) }
-tile <- function(name, M) data.frame(matrix = name, row = c(row(M)), col = c(col(M)), value = c(rescale(M)))
 X <- sim$W %*% H
-tiles <- rbind(tile("W", sim$W[genes, ]), tile("H", H[, smp]),
-               tile("X", X[genes, smp]), tile("Y", Yfull[genes, smp]))
-write.csv(tiles, file.path(here, "tiles.csv"), row.names = FALSE)
+saveRDS(list(W = sim$W, H = H, signal = X, observed = Yfull,
+             parameters = list(seed = seed, library_fraction = frac, dispersion = 0,
+                               n_feature = 500L, n_sample = 200L, k = k, n_marker = 20L,
+                               marker_fold = 5, profile_spread_sd = 0.2)),
+        file.path(here, "simulation.rds"), version = 3)
 
-pts <- rbind(
-  data.frame(set = "truth", sample = seq_len(ncol(H)), t(H)),
-  data.frame(set = "uniform", sample = seq_len(ncol(H)), t(oracle("uniform"))),
-  data.frame(set = "expression", sample = seq_len(ncol(H)), t(oracle("expression"))))
-names(pts)[3:5] <- paste0("h", 1:k)
-out <- file.path(here, sprintf("points_frac%s_seed%d.csv", frac, seed))
-write.csv(pts, out, row.names = FALSE)
-for (st in c("uniform", "expression")) {
-  e <- as.matrix(pts[pts$set == st, 3:5]) - as.matrix(pts[pts$set == "truth", 3:5])
-  cat(sprintf("%-10s oracle RMSE %.4f  max|colsum-1| %.1e\n", st, sqrt(mean(e^2)),
-              max(abs(rowSums(pts[pts$set == st, 3:5]) - 1))))
+# Noisy normalized gene profiles F = Y D_c / rowsums(Y D_c).
+# Their projected coordinates C = F Psi^T = Phi^T Sigma.
+# Project the true pure component profiles T = H D_c / rowsums(H D_c)
+# by the SAME map. The dashed triangle is T Psi^T, not a fitted envelope.
+project_genes <- function(type) {
+  object <- CreateDSO(Y) |> ScaleDSO(type = type) |> FindProjection(k = k, method = "svd")
+  s <- object@scaling; g <- object@projection$gsvd()
+  F <- sweep(Y, 2, s$c, "*"); F <- F / rowSums(F)
+  T <- sweep(H, 2, s$c, "*"); T <- T / rowSums(T)
+  C <- F %*% t(g$Psi)
+  vertices <- T %*% t(g$Psi)
+  # Rigid rotation/reflection only: orient component identities consistently.
+  # Never stretch the triangle or fit/filter the noisy points for display.
+  target <- rbind(c(0, 2 / sqrt(6)), c(1 / sqrt(2), -1 / sqrt(6)),
+                  c(-1 / sqrt(2), -1 / sqrt(6)))
+  centre <- colMeans(vertices[, 2:3])
+  v <- sweep(vertices[, 2:3], 2, centre, "-")
+  rotation <- svd(crossprod(v, target))
+  rotation <- rotation$u %*% t(rotation$v)
+  xy <- sweep(C[, 2:3], 2, centre, "-") %*% rotation
+  v <- v %*% rotation
+  group <- ifelse(grepl("^marker", rownames(Y)),
+                  sub("^marker([0-9]+)\\..*$", "marker\\1", rownames(Y)), "background")
+  # Existing oracle H-subspace metric; this is NOT a point-cloud RMSE.
+  Q <- orth(t(g$Psi) * (g$b / s$c))
+  Hor <- t(Q %*% crossprod(Q, t(H)))
+  # The true noiseless profiles are convex combinations of the true vertices.
+  F0 <- sweep(X[rownames(Y), , drop = FALSE], 2, s$c, "*"); F0 <- F0 / rowSums(F0)
+  B0 <- sweep(sim$W[rownames(Y), , drop = FALSE], 2, rowSums(sweep(H, 2, s$c, "*")), "*")
+  B0 <- B0 / rowSums(B0)
+  list(
+    points = data.frame(scaling = type, gene = rownames(Y), group = group, x = xy[, 1], y = xy[, 2]),
+    vertices = data.frame(scaling = type, component = seq_len(k), x = v[, 1], y = v[, 2]),
+    metrics = data.frame(scaling = type, oracle_H_rmse = sqrt(mean((Hor - H)^2)),
+                         coordinate_identity_error = max(abs(C - t(g$Phi) %*% diag(g$sigma[1:k]))),
+                         noiseless_convex_error = max(abs(F0 - B0 %*% T)),
+                         genes = nrow(Y), markers = sum(group != "background"),
+                         background = sum(group == "background")))
 }
-cat("wrote", out, "\n")
+projections <- lapply(c("uniform", "expression"), project_genes)
+write.csv(do.call(rbind, lapply(projections, `[[`, "points")), file.path(here, "gene_points.csv"), row.names = FALSE)
+write.csv(do.call(rbind, lapply(projections, `[[`, "vertices")), file.path(here, "simplex_vertices.csv"), row.names = FALSE)
+metrics <- do.call(rbind, lapply(projections, `[[`, "metrics"))
+write.csv(metrics, file.path(here, "projection_metrics.csv"), row.names = FALSE)
+print(metrics, row.names = FALSE, digits = 7)
+
+# Heatmaps: eight genuinely mixed columns, matched to fixed interior targets.
+# No point selection is performed for the projection plots above.
+targets <- rbind(c(.65, .20, .15), c(.55, .30, .15), c(.40, .40, .20),
+                 c(.20, .60, .20), c(.15, .55, .30), c(.20, .35, .45),
+                 c(.20, .20, .60), c(.33, .33, .34))
+available <- which(apply(H, 2, min) >= .1)
+smp <- integer(nrow(targets))
+for (i in seq_len(nrow(targets))) {
+  distance <- colSums((H[, available, drop = FALSE] - targets[i, ])^2)
+  smp[i] <- available[which.min(distance)]
+  available <- setdiff(available, smp[i])
+}
+genes <- c(paste0("marker", rep(1:k, each = 2), ".", 1:2), "background1", "background2")
+Wshow <- sim$W[genes, , drop = FALSE]
+Xshow <- X[genes, smp, drop = FALSE]
+Yshow <- Yfull[genes, smp, drop = FALSE]
+# Show relative profiles: W scaled within rows; H uses its actual fractions.
+# Signal and observed tiles share a per-gene scale after adjusting only the
+# known scalar sampling depth for display. Original observed values are saved.
+shared_max <- apply(cbind(Xshow, Yshow / frac), 1, max)
+tile <- function(name, raw, display) data.frame(matrix = name, row = c(row(raw)), col = c(col(raw)),
+                                              value = c(display), raw_value = c(raw))
+tiles <- rbind(tile("W", Wshow, Wshow / apply(Wshow, 1, max)),
+               tile("H", H[, smp], H[, smp]),
+               tile("X", Xshow, Xshow / shared_max),
+               tile("Y", Yshow, (Yshow / frac) / shared_max))
+write.csv(tiles, file.path(here, "tiles.csv"), row.names = FALSE)
+write.csv(data.frame(display_column = seq_along(smp), sample = colnames(H)[smp],
+                     t(H[, smp])), file.path(here, "heatmap_samples.csv"), row.names = FALSE)
+cat("Heatmap fraction range:", range(H[, smp]), "; column sums:", range(colSums(H[, smp])), "\n")
+cat("All projections contain every nonzero observed gene; heatmap sample selection only affects heatmaps.\n")

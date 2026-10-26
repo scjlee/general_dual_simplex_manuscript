@@ -1,22 +1,24 @@
 """Refresh only the data inside the hand-edited Figure 1A SVG master.
 
 Usage (repo root): python3 figure/fig1/panelA/make_fig1A.py
-Inputs: tiles.csv and points_frac0.1_seed1.csv from points.R; existing fig1A.svg.
+Inputs: tiles.csv, gene_points.csv, simplex_vertices.csv and projection_metrics.csv
+from points.R; existing fig1A.svg.
 The six heatmap_* / scatter_* groups are found by id. Their opening tags
 (including hand-edited transforms) and all bytes outside their contents stay
 untouched. Labels, including RMSE labels, are edited separately in the master;
 this script prints the current RMSE values for checking them.
 """
 import csv
-import math
 from pathlib import Path
 from xml.parsers import expat
 
 HERE = Path(__file__).parent
-POINTS = HERE / "points_frac0.1_seed1.csv"
+POINTS = HERE / "gene_points.csv"
+VERTICES = HERE / "simplex_vertices.csv"
 PT = 0.3528  # mm per point
 CELL = 1.8
-GREY_TRUTH = "#B8B8B8"
+GENE_COLOURS = {"background": "#B8B8B8", "marker1": "#009E73",
+                "marker2": "#CC79A7", "marker3": "#D69B00"}
 SVG_NS = "http://www.w3.org/2000/svg"
 
 
@@ -100,28 +102,31 @@ def heatmap(name, x, y, cells):
     return rects + frame
 
 
-def scatter(key, colour, yc, pts, span, c2_lo, c2_hi):
+def scatter(key, colour, yc, points, vertices, centre, span):
     sx, sw = 115.6, 15.0
     fy, inner = yc - sw / 2, sw - 1.6
 
-    def to_xy(p):
-        return (sx + 0.8 + (p[0] + span / 2) / span * inner,
-                fy + 0.8 + (c2_hi - p[1]) / span * inner + (inner - (c2_hi - c2_lo) / span * inner) / 2)
+    def to_xy(row):
+        return (sx + sw / 2 + (float(row["x"]) - centre[0]) / span * inner,
+                yc - (float(row["y"]) - centre[1]) / span * inner)
 
-    verts = [to_xy(p) for p in [(0, 2 / math.sqrt(6)), (1 / math.sqrt(2), -1 / math.sqrt(6)),
-                              (-1 / math.sqrt(2), -1 / math.sqrt(6))]]
+    verts = [to_xy(row) for row in vertices]
     simplex = (f'<path id="simplex_{key}" d="M {verts[0][0]:.2f},{verts[0][1]:.2f} L {verts[1][0]:.2f},{verts[1][1]:.2f} '
                f'L {verts[2][0]:.2f},{verts[2][1]:.2f} Z" '
-               f'style="fill:none;stroke:#999999;stroke-width:{0.4 * PT:.3f};stroke-dasharray:0.6,0.4"/>')
-
-    def circles(set_):
-        return "".join(f'<circle id="point_{key}_{set_}_{i}" cx="{x:.2f}" cy="{y:.2f}" r="0.28"/>'
-                       for i, (x, y) in enumerate(map(to_xy, pts[set_]), 1))
+               f'style="fill:none;stroke:#666666;stroke-width:{0.4 * PT:.3f};stroke-dasharray:0.6,0.4"/>')
+    groups = []
+    for group, fill in GENE_COLOURS.items():
+        radius = 0.17 if group == "background" else 0.25
+        dots = []
+        for row in points:
+            if row["group"] == group:
+                x, y = to_xy(row)
+                dots.append(f'<circle id="gene_{key}_{row["gene"]}" cx="{x:.2f}" cy="{y:.2f}" r="{radius}"/>')
+        groups.append(f'<g id="genes_{key}_{group}" style="fill:{fill};fill-opacity:0.85">{"".join(dots)}</g>')
 
     frame = (f'<rect id="frame_{key}" x="{sx}" y="{fy:.2f}" width="{sw}" height="{sw}" '
              f'style="fill:#FFFFFF;stroke:{colour};stroke-width:{0.6 * PT:.3f}"/>')
-    return (f'{frame}{simplex}<g id="points_truth_{key}" style="fill:{GREY_TRUTH}">{circles("truth")}</g>'
-            f'<g id="points_oracle_{key}" style="fill:{colour};fill-opacity:0.85">{circles(key)}</g>')
+    return frame + "".join(groups) + simplex
 
 
 def main():
@@ -130,28 +135,31 @@ def main():
         for row in csv.DictReader(f):
             tiles.setdefault(row["matrix"], []).append((int(row["row"]), int(row["col"]), float(row["value"])))
 
-    pts, hs = {}, {}
-    with POINTS.open() as f:
-        for row in csv.DictReader(f):
-            h1, h2, h3 = (float(row[c]) for c in ("h1", "h2", "h3"))
-            pts.setdefault(row["set"], []).append(((h2 - h3) / math.sqrt(2), (2 * h1 - h2 - h3) / math.sqrt(6)))
-            hs.setdefault(row["set"], []).extend((h1, h2, h3))
+    def read_sets(path):
+        sets = {}
+        with path.open() as f:
+            for row in csv.DictReader(f):
+                sets.setdefault(row["scaling"], []).append(row)
+        return sets
 
-    allp = [p for points in pts.values() for p in points]
-    c1_max = max(abs(p[0]) for p in allp) * 1.06
-    c2_lo, c2_hi = min(p[1] for p in allp), max(p[1] for p in allp)
-    pad = 0.06 * (c2_hi - c2_lo)
-    c2_lo, c2_hi = c2_lo - pad, c2_hi + pad
-    span = max(2 * c1_max, c2_hi - c2_lo)
+    points, vertices = read_sets(POINTS), read_sets(VERTICES)
+    all_rows = [row for sets in (points, vertices) for rows in sets.values() for row in rows]
+    xs, ys = [float(row["x"]) for row in all_rows], [float(row["y"]) for row in all_rows]
+    centre = ((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2)
+    span = max(max(xs) - min(xs), max(ys) - min(ys)) * 1.06
 
     # CSV names X/Y are historical data keys, independent of displayed notation.
     replacements = {f"heatmap_{name}": heatmap(name, x, y, tiles[name])
                     for name, x, y in [("W", 7.5, 19.5), ("H", 3.0, 41.5),
                                        ("X", 26.0, 26.0), ("Y", 62.8, 26.0)]}
     for key, colour, yc in [("uniform", "#E07B28", 18.0), ("expression", "#2A7BBF", 48.4)]:
-        replacements[f"scatter_{key}"] = scatter(key, colour, yc, pts, span, c2_lo, c2_hi)
-        error = math.sqrt(sum((x - y) ** 2 for x, y in zip(hs[key], hs["truth"])) / len(hs[key]))
-        print(f"{key}: oracle RMSE {error:.6f} (label {error:.3f}); check the master label separately")
+        replacements[f"scatter_{key}"] = scatter(key, colour, yc, points[key], vertices[key], centre, span)
+    with (HERE / "projection_metrics.csv").open() as f:
+        for row in csv.DictReader(f):
+            error = float(row["oracle_H_rmse"])
+            print(f'{row["scaling"]}: oracle H RMSE {error:.6f} (label {error:.3f}); check the master label separately')
+    print("Gene colours:", GENE_COLOURS)
+    print(f"Shared projection limits: centre={centre}, span={span:.6f}; equal aspect, all points retained")
 
     master = HERE / "fig1A.svg"
     original = master.read_bytes()

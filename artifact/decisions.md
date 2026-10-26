@@ -117,3 +117,38 @@ change.
 
 Revisit if: data change (check the RMSE labels separately), the target group
 ids change, or a noisy theoretical model is introduced.
+
+## 2026-10-26 — Figure 1A shows noisy genes, mixed-sample heatmaps and a generic noise step
+
+Context: the user requested upright matrix letters, one Noise box without
+model parameters, RMSE labels above the plots, noisy gene projections with
+colored markers and grey background, dashed pure simplex outlines, and
+heatmaps that show linear mixtures rather than nearly pure samples.
+
+Options: keep the H-oracle point clouds or plot observed gene profiles;
+select nearly pure or interior mixture samples for the heatmaps; show a
+model-specific or generic observation step.
+
+Decision (user): show noisy gene profiles and a generic Noise step. The
+existing illustrative simulation is retained. Each scaling projects every
+nonzero observed gene into its estimated GSVD plane; the true component
+profiles define the dashed triangle in that same plane. Marker components
+use green, pink and gold. Interior samples replace the nearly pure heatmap
+selection. Matrix letters are upright. The retained metric is labelled
+H oracle RMSE and moved above each plot; the caption explicitly defines its
+sample-side target. The SVG is edited by id and remains master.
+
+Evidence: `artifact/20261026_fig1A-gene-simplex.md` gives the derivation,
+caption draft, source paths, data roles and validation. Data were generated
+with GeneralDualSimplex 0.28.0 at package checkout
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`, no dirty `R/` or `src/`
+changes; those directories are unchanged since the installed-package commit
+`156152b445d9e511e3bcf0080d8344b38fd2122b`. Data reproduce byte-for-byte,
+the generator preserves the edited master on rerun, and refreshed PNG and
+PDF previews pass the layout checks. A fresh Advisor - Claude reviewer
+approved the math, evidence, data and opened PNG; minor caption and legend
+legibility fixes were then applied. These remain illustrative data, not a
+benchmark conclusion about scaling methods.
+
+Revisit if: a different observation model is chosen, a gene-side error
+metric replaces the H metric, or new data require updated labels.
