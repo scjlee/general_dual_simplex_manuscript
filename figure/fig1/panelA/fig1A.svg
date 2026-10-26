@@ -315,7 +315,7 @@
          x="82.45"
          y="19.77"
          id="tspan999">scaling</tspan></text>
-    <text id="box_biwhitening_uniform_label" xml:space="preserve" x="95.70" y="17.33" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:2.117px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#1A1A1A;"><tspan id="box_biwhitening_uniform_label_1" sodipodi:role="line" x="95.70" y="17.33">Bi-</tspan><tspan id="box_biwhitening_uniform_label_2" sodipodi:role="line" x="95.70" y="19.77">whitening</tspan></text>
+    <text id="box_biwhitening_uniform_label" xml:space="preserve" x="95.70" y="17.33" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:1.764px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#1A1A1A;"><tspan id="box_biwhitening_uniform_label_1" sodipodi:role="line" x="95.70" y="17.33">Bi-marginal</tspan><tspan id="box_biwhitening_uniform_label_2" sodipodi:role="line" x="95.70" y="19.77">whitening</tspan></text>
     <text
        id="box_projection_uniform_label"
        xml:space="preserve"
@@ -368,7 +368,7 @@
          x="82.45"
          y="50.17"
          id="tspan1007">scaling</tspan></text>
-    <text id="box_biwhitening_expression_label" xml:space="preserve" x="95.70" y="47.73" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:2.117px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#1A1A1A;"><tspan id="box_biwhitening_expression_label_1" sodipodi:role="line" x="95.70" y="47.73">Bi-</tspan><tspan id="box_biwhitening_expression_label_2" sodipodi:role="line" x="95.70" y="50.17">whitening</tspan></text>
+    <text id="box_biwhitening_expression_label" xml:space="preserve" x="95.70" y="47.73" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:1.764px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#1A1A1A;"><tspan id="box_biwhitening_expression_label_1" sodipodi:role="line" x="95.70" y="47.73">Bi-marginal</tspan><tspan id="box_biwhitening_expression_label_2" sodipodi:role="line" x="95.70" y="50.17">whitening</tspan></text>
     <text
        id="box_projection_expression_label"
        xml:space="preserve"

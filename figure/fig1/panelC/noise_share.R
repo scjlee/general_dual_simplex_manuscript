@@ -1,4 +1,4 @@
-# Figure 1C data: each gene's share of the variance in Z after bi-whitening.
+# Figure 1C data: each gene's share of the variance in Z after bi-marginal whitening.
 # Run from the manuscript root: Rscript figure/fig1/panelC/noise_share.R
 # then python3 figure/fig1/panelC/make_fig1C.py (SVG master).
 # Settings: panel A's simulation parameters (figure/fig1/panelA/simulation.rds).

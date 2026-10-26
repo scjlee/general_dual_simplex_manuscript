@@ -440,3 +440,27 @@ SVG refresh preservation, renders and bounds. Optional caption unit/vertex
 clarifications and a stale generator header were fixed; data and SVGs did
 not change after review. The reviewer's final message was read and the
 agent archived before committing.
+
+
+## 2026-10-26 — Name the whitening step “bi-marginal whitening” in panels A and C
+
+Context: the user requested a clearer name for first-time readers and a
+term that may distinguish the step from regular bi-whitening terminology.
+
+Options: retain “bi-whitening”, or use “bi-marginal whitening”.
+
+Decision (user): use “bi-marginal whitening” in both branches of A and in
+C's title, including the illustrative Ṽ alternative. Update the C draft
+renderer strings and generator comments. Fit A's two-line labels at 5 pt
+inside their existing boxes. This is a terminology change only; it makes
+no claim that the term is unique in the literature.
+
+Evidence: `figure/fig1/panelA/fig1A.svg`,
+`figure/fig1/panelC/fig1C.svg`, and
+`figure/fig1/panelC_vtilde/fig1C_vtilde.svg`. Numbered pre-edit SVG backups
+are in ignored `out/20261026_bimarginal_whitening/`. All three 600-dpi PNGs
+were opened; Inkscape query boxes confirm that the text fits the canvases
+and A's labels fit their boxes. Plot data groups are unchanged. A's PDF
+was refreshed. No review required: wording and label typography only.
+
+Revisit if: the user chooses a different term or revises the panel layout.

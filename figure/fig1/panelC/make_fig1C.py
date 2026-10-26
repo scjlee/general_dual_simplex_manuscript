@@ -1,4 +1,4 @@
-"""Write or refresh the Figure 1C SVG: per-gene share of the variance in Z after bi-whitening.
+"""Write or refresh the Figure 1C SVG: per-gene share of the variance in Z after bi-marginal whitening.
 
 Usage (repo root): python3 figure/fig1/panelC/make_fig1C.py
 Input: noise_share_by_rank.csv from noise_share.R. One plot per noise model, each with
@@ -133,7 +133,7 @@ def draft(tables):
                    f"Dots: mean of the i-th ranked gene over {REPLICATES} simulated replicates; bands: range.",
                    6, "middle", MUTED)
     title = (text("panel_letter", 1.2, 5.2, "C", 10, weight="bold")
-             + text("panel_title", 7.0, 5.0, "Where the variance sits after bi-whitening", 8, weight="bold"))
+             + text("panel_title", 7.0, 5.0, "Where the variance sits after bi-marginal whitening", 8, weight="bold"))
     return ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n'
             f'<svg width="{W:g}mm" height="{H:g}mm" viewBox="0 0 {W:g} {H:g}" version="1.1" id="fig1C" '
             'xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" '
