@@ -1,0 +1,4 @@
+"model","library_fraction","median_expected_count_A","phi","sigma","replicates","representative_draw"
+"Poisson",0.04,1.09266416121046,NA,NA,5,1
+"Proportional",0.04,1.09266416121046,0.915194288876642,NA,5,1
+"Normal, floored at 0",0.04,1.09266416121046,NA,1.04530577402522,5,1

@@ -51,9 +51,13 @@ project_genes <- function(type) {
   v <- v %*% rotation
   group <- ifelse(grepl("^marker", rownames(Y)),
                   sub("^marker([0-9]+)\\..*$", "marker\\1", rownames(Y)), "background")
-  # Existing oracle H-subspace metric; this is NOT a point-cloud RMSE.
+  # Retain the original H-subspace diagnostic. Figure labels now report W
+  # recovery to match the gene objects (D and E); neither is a point-cloud RMSE.
   Q <- orth(t(g$Psi) * (g$b / s$c))
   Hor <- t(Q %*% crossprod(Q, t(H)))
+  W <- sim$W[rownames(Y), , drop = FALSE]
+  Qw <- orth(t(g$Phi) * (g$a / s$r))
+  Wor <- Qw %*% crossprod(Qw, W)
   # The true noiseless profiles are convex combinations of the true vertices.
   F0 <- sweep(X[rownames(Y), , drop = FALSE], 2, s$c, "*"); F0 <- F0 / rowSums(F0)
   B0 <- sweep(sim$W[rownames(Y), , drop = FALSE], 2, rowSums(sweep(H, 2, s$c, "*")), "*")
@@ -62,6 +66,7 @@ project_genes <- function(type) {
     points = data.frame(scaling = type, gene = rownames(Y), group = group, x = xy[, 1], y = xy[, 2]),
     vertices = data.frame(scaling = type, component = seq_len(k), x = v[, 1], y = v[, 2]),
     metrics = data.frame(scaling = type, oracle_H_rmse = sqrt(mean((Hor - H)^2)),
+                         oracle_W_rmse = sqrt(mean((Wor - W)^2)),
                          coordinate_identity_error = max(abs(C - t(g$Phi) %*% diag(g$sigma[1:k]))),
                          constant_coordinate_error = max(abs(C[, 1] - 1)),
                          noiseless_convex_error = max(abs(F0 - B0 %*% T)),

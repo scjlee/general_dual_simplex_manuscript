@@ -332,7 +332,7 @@
          x="107.85"
          y="19.77"
          id="tspan1002">projection</tspan></text>
-    <text id="label_rmse_uniform" xml:space="preserve" x="123.10" y="9.20" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:1.764px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#555555"><tspan id="label_rmse_uniform_line" sodipodi:role="line" x="123.10" y="9.20">H oracle RMSE = 0.151</tspan></text>
+    <text id="label_rmse_uniform" xml:space="preserve" x="123.10" y="9.20" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:1.764px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#555555"><tspan id="label_rmse_uniform_line" sodipodi:role="line" x="123.10" y="9.20">W oracle RMSE = 6.335</tspan></text>
     <text
        id="label_c1_uniform"
        xml:space="preserve"
@@ -385,7 +385,7 @@
          x="107.85"
          y="50.17"
          id="tspan1010">projection</tspan></text>
-    <text id="label_rmse_expression" xml:space="preserve" x="123.10" y="39.60" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:1.764px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#555555"><tspan id="label_rmse_expression_line" sodipodi:role="line" x="123.10" y="39.60">H oracle RMSE = 0.105</tspan></text>
+    <text id="label_rmse_expression" xml:space="preserve" x="123.10" y="39.60" style="font-family:Liberation Sans, Arial, Helvetica, sans-serif;font-size:1.764px;line-height:1.15;font-weight:normal;text-anchor:middle;fill:#555555"><tspan id="label_rmse_expression_line" sodipodi:role="line" x="123.10" y="39.60">W oracle RMSE = 5.777</tspan></text>
     <text
        id="label_c1_expression"
        xml:space="preserve"

@@ -158,8 +158,8 @@ def main():
         print(f"{key} projection limits: centre={centre}, span={span:.6f}; equal aspect, all points retained")
     with (HERE / "projection_metrics.csv").open() as f:
         for row in csv.DictReader(f):
-            error = float(row["oracle_H_rmse"])
-            print(f'{row["scaling"]}: oracle H RMSE {error:.6f} (label {error:.3f}); check the master label separately')
+            error = float(row["oracle_W_rmse"])
+            print(f'{row["scaling"]}: oracle W RMSE {error:.6f} (label {error:.3f}); check the master label separately')
     print("Gene colours:", GENE_COLOURS)
 
     master = HERE / "fig1A.svg"

@@ -262,3 +262,132 @@ reproduce byte for byte.
 
 Revisit if: the user chooses conditional variance instead of realized
 squared perturbations, or a different simulation design for the final run.
+
+## 2026-10-26 — Prototype D with gene simplices and E with five paired oracle errors, PNG only
+
+Context: the user asked to generate D and E from the Figure 1 discussion,
+specifying a representative gene simplex for every noise/scaling pair in
+D and five draws per pair for E. Output is PNG for layout prototyping.
+
+Options: the discussion's true-versus-oracle H overlays in D and larger
+noise-level experiment in E, or the user's simpler layout request.
+
+Decision: follow the user's request. D uses draw 1, selected in advance,
+with three noise columns and two scaling rows, in A's gene projection
+style. E shows five paired H oracle RMSEs and their arithmetic means per
+noise model. Use C's settings and seeds 1–5: each draw has a fresh signal
+and noise; both scalings share its observed matrix. This pairing convention
+is the lead's implementation choice, stated to the user. D and E remain
+illustrative layout prototypes; no benchmark or general ranking is claimed.
+Keep equations in the caption note and create no SVGs.
+
+Evidence: `artifact/20261026_fig1DE-png-mock.md`, caption drafts and
+“Values and verification”; `figure/fig1/panelD/`, `figure/fig1/panelE/`,
+`figure/fig1/fig1DE_mock.png`. GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`. The Poisson draw-1 matrix and
+gene coordinates reproduce A; H RMSEs were recalculated from saved H
+entries. Existing A–C content is preserved.
+
+Advisor - Claude approved the mathematics, data and plotting; minor
+caption and figure-text clarifications were applied without changing data
+(`artifact/handoff/20261026-0526_claude_fig1DE-png-review.md`).
+
+Revisit if: the user wants noise-only repeats of one fixed signal, a
+different representative draw, D insets, or the full final experiment.
+
+## 2026-10-26 — Narrow E, put W oracle error in E and H oracle error in F, skip review at user request
+
+Context: the user approved the paired-draw plot, then requested no
+highlighting of D's draws, a narrower panel, W-side oracle RMSE in E,
+H-side RMSE in F, and y-axis text “oracle RMSE”.
+
+Options: keep H in E, combine both factors on one scale, or split them.
+
+Decision: follow the requested split. E and F are 100 mm wide instead of
+134 mm, retain five paired draws per noise model, and have no draw-1 rings.
+Use the original known W in expression units and H in fraction units,
+with separate y-ranges. Both are unconstrained Euclidean oracle
+projections into the corresponding recovered subspaces. D is unchanged.
+The new note records the W derivation and current captions.
+
+Evidence: `artifact/20261026_fig1EF-oracle-png.md`, “Oracle W derivation”
+and “Values and checks”; `figure/fig1/panelE/`, `figure/fig1/panelF/`,
+`figure/fig1/fig1EF_mock.png`. GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`. H data and D PNG/data are
+byte-identical to their prior versions; saved W entries reproduce its
+RMSEs. All outputs remain illustrative PNG layout drafts.
+
+Review: the user explicitly said “Skip the review; finish the fixes”.
+The fresh Claude review was cancelled before a verdict and archived;
+local checks were completed. This overrides review for this revision only.
+
+Revisit if: the user requests another width or normalization of W, or
+these illustrative values are used for a manuscript claim.
+
+## 2026-10-26 — Match gene labels to W and sample labels to H; make representative D and E/F SVGs
+
+Context: the user approved D's layout after requesting shorter error
+labels, rotated scaling labels closer to the plots, “Representative” in
+the title, a companion sample simplex, and E/F SVGs. They then asked why
+D's values differed from E and requested matching gene plots to W error,
+sample plots to H error, including A.
+
+Options: retain the original ambient-profile-space assignment, or assign
+oracle targets by the plotted entities for consistency with E/F.
+
+Decision: gene projections A/D report W oracle RMSE; the sample companion
+reports H oracle RMSE. Preserve each representative draw and all plotted
+coordinates. A/D values match one E point, whereas E's labels are means;
+the sample companion similarly matches one F point. Simplify D's labels
+to “oracle RMSE: <value>”, rotate scaling text 90°, and move the first
+plot column left. Keep D/sample as PNG drafts. Create E/F SVG masters
+with editable text/layers and data-only refresh groups. All data remain
+illustrative, with no manuscript claim relying on them.
+
+Evidence: `artifact/20261026_fig1D-samples-and-EF-svg.md`, “Provenance and
+checks”; `figure/fig1/panelA/`, `panelD/`, `panelD_samples/`, `panelE/`,
+`panelF/`. GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`. A's SVG differs only in the
+two error labels. Its simulation and point/triangle data are unchanged,
+as are D coordinates and all E/F data. Sample projection identities and
+text bounds were checked, and final PNGs opened. No fresh review under
+the illustrative-data/layout exemption and the user's skip-review request.
+
+Revisit if: the user wants normalized rather than native-unit W error,
+estimated rather than known vertices, or these drafts support a claim.
+
+## 2026-10-26 — Finalize D/S SVGs, remove panel footers and obtain fresh review before commit
+
+Context: the user asked to remove the “Draw 1…” footer from D and S,
+generate their SVGs, remove bottom notes from E/F, and send the completed
+work to a reviewer before committing.
+
+Options: retain PNG-only D/S drafts, or make all four projections/error
+panels editable SVG masters with the requested text reduction.
+
+Decision: create D/S masters at 119 × 107 mm, keep their legends and
+separate-scale note, and remove the draw footer. Remove all three
+explanatory bottom notes from E/F and trim their canvases to 100 × 54 mm.
+Preserve axes, data and W/H assignments. Put replicate, pairing and
+illustrative-data information in the captions. Generators update named
+data groups only; preview rendering uses the masters. The latest review
+request supersedes the earlier skip-review instruction.
+
+Evidence: `artifact/20261026_fig1_svg-final.md`, current captions and
+validation; handoff
+`artifact/handoff/20261026-0603_claude_fig1-ADS-EF-final-review.md`.
+GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`. Input CSVs are unchanged;
+all four PNGs were opened, all text/point bounds fit, and SVG data refresh
+leaves the masters byte-identical.
+
+Revisit if: supplementary placement changes, the user edits SVG layout,
+or the final analyses replace the illustrative data.
+
+Fresh review outcome: Advisor - Claude approved for commit with no
+blocking findings (`out/20261026_fig1_final_review/review.md`). It checked
+the W/H oracle spaces independently, all saved RMSEs and displayed values,
+SVG refresh preservation, renders and bounds. Optional caption unit/vertex
+clarifications and a stale generator header were fixed; data and SVGs did
+not change after review. The reviewer's final message was read and the
+agent archived before committing.
