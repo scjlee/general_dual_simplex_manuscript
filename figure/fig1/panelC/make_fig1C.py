@@ -1,4 +1,4 @@
-"""Write or refresh the Figure 1C SVG: per-gene share of squared noise after bi-whitening.
+"""Write or refresh the Figure 1C SVG: per-gene share of the variance in Z after bi-whitening.
 
 Usage (repo root): python3 figure/fig1/panelC/make_fig1C.py
 Input: noise_share_by_rank.csv from noise_share.R. One plot per noise model, each with
@@ -81,7 +81,7 @@ def data_groups(model, rows):
         groups[f"band_{model}_{key}"] = f'<path id="band_{model}_{key}_area" d="M {upper} L {lower} Z"/>'
         groups[f"points_{model}_{key}"] = "".join(
             f'<circle id="pt_{model}_{key}_{x["rank"]}" cx="{p.px(int(x["rank"])):.3f}" '
-            f'cy="{p.py(float(x["mean"])):.3f}" r="0.08"/>' for x in r)
+            f'cy="{p.py(float(x["mean"])):.3f}" r="0.14"/>' for x in r)
     return groups
 
 
@@ -111,7 +111,7 @@ def draft(tables):
         groups.update(data_groups(model, tables[model]))
     colour = {key: c for key, _, c in SCALINGS}
     bands = "".join(f'<g id="{id_}" inkscape:label="{id_.replace("_", " ")}" '
-                    f'style="fill:{colour[id_.rsplit("_", 1)[1]]};fill-opacity:0.2;stroke:none">{body}</g>'
+                    f'style="fill:{DOT[id_.rsplit("_", 1)[1]]};fill-opacity:0.15;stroke:none">{body}</g>'
                     for id_, body in groups.items() if id_.startswith("band_"))
     points = "".join(f'<g id="{id_}" inkscape:label="{id_.replace("_", " ")}" '
                      f'style="fill:{DOT[id_.rsplit("_", 1)[1]]};fill-opacity:0.9;stroke:none">{body}</g>'
@@ -122,18 +122,18 @@ def draft(tables):
         labels += text(f"plot_title_{model}", x0, Y0 - 2.0, title, 7, weight="bold")
     mid = plot_for("proportional", n)
     labels += text("axis_title_x", mid.px((n + 1) / 2), Y1 + 6.2, "Gene rank by observed total", 6, "middle")
-    labels += text("axis_title_y", -(Y0 + Y1) / 2, 3.6, "Gene share of squared noise (%)", 6, "middle",
+    labels += text("axis_title_y", -(Y0 + Y1) / 2, 3.6, "Gene share of variance in Z (%)", 6, "middle",
                    transform="rotate(-90)")
     legend, y = "", 61.3
-    for key, label, c, x in [("uniform", "Uniform scaling", UNIFORM, 44.0),
-                             ("expression", "Expression scaling", EXPRESSION, 70.0)]:
+    for key, label, c, x in [("uniform", "Uniform scaling", DOT["uniform"], 44.0),
+                             ("expression", "Expression scaling", DOT["expression"], 70.0)]:
         legend += (f'<circle id="legend_dot_{key}" cx="{x:.2f}" cy="{y - 0.6:.2f}" r="0.55" style="fill:{c}"/>'
                    + text(f"legend_{key}", x + 1.4, y, label, 6))
     legend += text("replicate_note", W / 2, 65.4,
                    f"Dots: mean of the i-th ranked gene over {REPLICATES} simulated replicates; bands: range.",
                    6, "middle", MUTED)
     title = (text("panel_letter", 1.2, 5.2, "C", 10, weight="bold")
-             + text("panel_title", 7.0, 5.0, "Where the noise sits after bi-whitening", 8, weight="bold"))
+             + text("panel_title", 7.0, 5.0, "Where the variance sits after bi-whitening", 8, weight="bold"))
     return ('<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n'
             f'<svg width="{W:g}mm" height="{H:g}mm" viewBox="0 0 {W:g} {H:g}" version="1.1" id="fig1C" '
             'xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" '

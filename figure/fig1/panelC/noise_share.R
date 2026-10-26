@@ -1,4 +1,4 @@
-# Figure 1C data: where the noise sits after bi-whitening, per gene.
+# Figure 1C data: each gene's share of the variance in Z after bi-whitening.
 # Run from the manuscript root: Rscript figure/fig1/panelC/noise_share.R
 # then python3 figure/fig1/panelC/make_fig1C.py (SVG master).
 # Settings: panel A's simulation parameters (figure/fig1/panelA/simulation.rds).
@@ -13,11 +13,17 @@
 #     E[V] above mu and lowers the variance below sigma^2.
 #   phi = 1/median(mu_A), sigma = sqrt(median(mu_A)) from panel A's signal: the three
 #   models have equal relative noise at that median count BEFORE flooring only.
-# Quantity: realized squared perturbation, not a variance. In each replicate and scaling,
-# the scaling is fitted on the observed V (zero genes removed); the same fitted weights
-# transform V - mu: N = D_l (V - mu) D_t, l = r/sqrt(a), t = c/sqrt(b) (the noise part of
-# Z = D_a^-1/2 V~ D_b^-1/2). Gene share = row sum of N^2 / total, in percent. For the
-# floored normal model V - mu includes the clipping bias.
+# Quantity: each gene's variance in Z, signal and noise together, as the SVD sees it.
+# In each replicate and scaling, the scaling is fitted on the observed V (zero genes
+# removed). Z = D_a^-1/2 V~ D_b^-1/2 has the trivial leading singular pair sqrt(a) sqrt(b)^T
+# with singular value 1 (checked below). Gene g's variance in Z is
+# sum_i (Z_gi - sqrt(a_g b_i))^2; summed over genes it equals sum_{j>=2} sigma_j^2, the
+# L2 budget left for the non-trivial SVD dimensions. Gene share = variance / total, in
+# percent. Needs only the observed V; mu is used only to simulate it.
+# 'Variance' here is weighted variation (correspondence-analysis inertia):
+# q_g = a_g sum_i (p_gi - b_i)^2 / b_i with p_gi = V~_gi / a_g, i.e. the b-weighted variance
+# of Z_gi / sqrt(b_i) about its weighted mean sqrt(a_g). It equals the ordinary across-sample
+# variance only when b is uniform. Signal/noise split: signal_noise_split.R.
 # Output: x = rank by observed total within each replicate; mean, min and max over the
 # replicates of the share of the i-th ranked gene. Ranks condition on the noise.
 # Discussion: artifact/20261026_fig1C-narrative-options.md. Illustrative, not a benchmark.
@@ -48,7 +54,12 @@ replicate_shares <- function(r, model) {
   for (sc in c("Uniform", "Expression")) {
     s <- (CreateDSO(V) |> ScaleDSO(type = tolower(sc)))@scaling
     if (sc == "Uniform") res$converged <- isTRUE(s$sinkhorn$converged)
-    q <- rowSums((s$r / sqrt(s$a) * sweep(V - mu, 2, s$c / sqrt(s$b), "*"))^2)
+    Z <- s$r / sqrt(s$a) * sweep(V, 2, s$c / sqrt(s$b), "*")
+    if (r == 1) {  # trivial pair: Z sqrt(b) = sqrt(a), Z^T sqrt(a) = sqrt(b)
+      stopifnot(max(abs(Z %*% sqrt(s$b) - sqrt(s$a))) < 1e-8,
+                max(abs(crossprod(Z, sqrt(s$a)) - sqrt(s$b))) < 1e-8)
+    }
+    q <- rowSums((Z - sqrt(s$a) %o% sqrt(s$b))^2)
     res[[sc]] <- 100 * q / sum(q)
   }
   res

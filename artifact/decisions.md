@@ -206,6 +206,30 @@ No new reviewer was launched for this minor display change.
 Revisit if: absolute coordinate sizes need to be compared across panels,
 or the user requests shared scales again.
 
+## 2026-10-26 — Define which changes skip second-provider review; exempt illustrative figure data
+
+Context: AGENTS.md required review for "substantive" mathematical,
+evidence or figure-data changes but did not define "substantive". The
+user asked whether any rule lets an agent skip review for small changes.
+
+Options: keep the undefined term; define exemptions by size; define them
+by what the change can affect; also exempt illustrative figure data or not.
+
+Decision (user, 2026-10-26): exemptions depend on what a change can
+affect, not on its size. A change skips review only if it cannot alter a
+formula, a claim or a cited number. Exempt: wording, typos, layout, colour,
+fonts, label position, file moves, README or AGENTS.md edits, and
+illustrative figure data that no claim relies on and whose caption draft
+says it is illustrative. Any other change to a generator's data or
+parameters needs review. A skipped review is recorded as
+"No review: <reason>" at the end of the commit message. If unsure, review.
+A house rule was added.
+
+Evidence: AGENTS.md, Agents section and House rules (this edit).
+
+Revisit if: an exempt change later turns out to alter a result or claim,
+or illustrative figure data becomes backed by a cited result.
+
 ## 2026-10-26 — Figure 1 after B: raw noise (C), true vs projected H (D), replicated RMSE (E)
 
 Context: the user rejected panel C measures in `Z` or the reduced space
@@ -262,6 +286,31 @@ reproduce byte for byte.
 
 Revisit if: the user chooses conditional variance instead of realized
 squared perturbations, or a different simulation design for the final run.
+
+## 2026-10-26 — Figure 1C plots each gene's variation in Z (signal and noise), not noise
+
+Context: panel D will bridge C to the projection, and the truncated SVD
+minimizes squared reconstruction error, so the user asked for the variance
+of genes in `Z` rather than noise. The previous C plotted one draw's squared
+noise; a noise-variance version was briefly drafted and withdrawn.
+
+Options: realized squared noise; noise variance `l_g² Σ_i t_i² Var(V_gi)`;
+each gene's total variation in `Z`.
+
+Decision (user): y = gene share of `q_g = Σ_i (Z_gi − √(a_g b_i))²`, which sums
+to `Σ_{j≥2} σ_j²`. It is weighted variation (inertia), defined in the legend.
+Title "Where the variance sits after bi-whitening". Bands and dots share a
+colour; dots larger. The discussion note was rewritten around the current
+designs (A–E).
+
+Evidence: `artifact/20261026_fig1C-noise-share.md`,
+`artifact/20261026_figure1_discussion.md`, `figure/fig1/panelC/`
+(`noise_share.R`, `signal_noise_split.R`). Advisor - Codex review approved with
+two fixes, both applied. GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`.
+
+Revisit if: the label "variance" misleads readers (use "variation"), or D
+shows that the allocation in C does not track the projection error.
 
 ## 2026-10-26 — Prototype D with gene simplices and E with five paired oracle errors, PNG only
 

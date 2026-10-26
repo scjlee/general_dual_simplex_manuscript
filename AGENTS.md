@@ -100,8 +100,14 @@ Each session has one role. State it once at the start.
 - Start agents only through Paseo `list_profiles` then `create_agent`; copy the
   profile settings unchanged and label `profile=<name>`. Put the recipient,
   repository and workspace ID in the prompt. Do not use the built-in Agent tool.
-- Use a fresh reviewer from the other provider for substantive mathematical,
-  evidence or figure-data changes. Language checks need no second reviewer.
+- A fresh reviewer from the other provider checks every change to
+  mathematics, evidence or figure data, however small. Skip review only when
+  the change cannot alter a formula, a claim or a cited number: wording,
+  typos, layout, colour, fonts, label position, file moves, README or
+  AGENTS.md edits, and illustrative figure data that no claim relies on
+  and whose caption draft says it is illustrative. Any other change to a
+  generator's data or parameters needs review. When skipping, end the
+  commit message with "No review: <reason>". If unsure, review.
 - Print `/sys/fs/cgroup/pids.current` before each launch. Read each agent's last
   message with `get_agent_activity`, then archive it.
 - One new task, one new agent.
@@ -130,3 +136,5 @@ house rule.
 One line per lesson, dated.
 
 - 2026-10-09: Never print process command lines; they can hold tokens.
+- 2026-10-26: "Small" does not exempt a change from review. A change is exempt
+  only if it cannot alter a formula, a claim or a cited number.

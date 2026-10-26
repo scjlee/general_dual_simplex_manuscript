@@ -1,179 +1,170 @@
-# Figure 1 discussion: scaling, noise, and retained mixture information
+# Figure 1 discussion: scaling, noise, and the variation the SVD sees
 
-> **Status (2026-10-26, later):** superseded in part. The current design is
-> bi-whitening in panel A and per-gene squared-noise shares in `Z` in panel C;
-> see `artifact/20261026_fig1C-noise-share.md`, `artifact/20261026_fig1B-rank-log-share.md`
-> and the last Figure 1 entries in `artifact/decisions.md`. Text below is kept as history.
+Date: 2026-10-26, rewritten at the end of the day to focus on the current
+panel designs. Status: layout drafts for discussion. All data are
+illustrative simulations, not benchmarks; the user plans to rerun the
+analyses at the end. Package: GeneralDualSimplex 0.28.0 at commit
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`, no uncommitted `R/` or `src/`.
+Manuscript base: `c29f61dd9936840883af47cbea1fbd4521eee36d`. Notation
+([README](../README.md), Mathematical Notation): signal `V* = WH`, observed
+`V`, scaled `Ṽ = D_r V D_c` with row sums `a` and column sums `b`,
+bi-whitened `Z = D_a^(-1/2) Ṽ D_b^(-1/2)`, which goes to the SVD. Equations
+go in the figure legend, not in the panels (user decision).
 
-Date: 2026-10-26. This records the current brainstorming direction, not an
-approved final figure or a benchmark result. The package context is
-GeneralDualSimplex 0.28.0 at commit
-`af56ff97da8e38af7c304513c5d26f1c2ff0c910`, with no uncommitted `R/` or
-`src/` changes. Earlier background and derivations are in the package's
-read-only, untracked working-tree note
-`.ai/20261026_manuscript-figure1-discussion-summary.md`, read on 2026-10-26
-with that package HEAD; the note itself is not part of the commit. The
-current manuscript notation is `V* = WH` for the signal, `V` for
-observations, `Ṽ = D_r V D_c` for the scaled matrix, and
-`Z = D_a^(-1/2) Ṽ D_b^(-1/2)` for the matrix sent to the SVD
-([README](../README.md), Mathematical Notation).
+## Message and panel sequence
 
-## Reader narrative
+Figure 1 introduces the elements of panel A one at a time and primes one
+point: **both the scaling and the noise model decide where the variation sits
+in `Z`, and so what the SVD works with.** Under Poisson noise, uniform
+scaling gives low-count genes a larger share; under proportional noise the
+pattern reverses.
 
-The early Figure 1 mock used phrases such as “survived information,”
-“exposure versus RMSE,” and “noise concentrate.” The user found them too
-vague for a first-time reader. The discussion moved toward one question per
-panel:
+| Panel | Element of A | Reader question | Status |
+| --- | --- | --- | --- |
+| A | Whole pipeline | What is compared? | Drawn; bi-whitening step added |
+| B | Scaling | What weight does each scaling give each gene and sample? | Drawn |
+| C | Bi-whitening | Where does the variation sit in `Z`, for each noise model? | Layout draft |
+| D | Projection | What mixture structure survives? | Proposed |
+| E | Error label | Does the difference hold across draws and noise levels? | Proposed |
 
-| Panel | Question | Current direction |
+D may become insets in E for a four-panel figure (open).
+
+## A: pipeline
+
+`figure/fig1/panelA/fig1A.svg`. One mixture `W, H` → `V* = WH` → Noise →
+observed `V` → {uniform, expression} scaling → **Bi-whitening** → rank-k
+projection → projected genes, with an H oracle RMSE label above each
+projection (0.151 uniform, 0.105 expression;
+`figure/fig1/panelA/projection_metrics.csv`). The bi-whitening box was added
+on 2026-10-26 so that C can show `Z`; it is per branch because `a` and `b`
+depend on the scaling. Plot scales are separate, so cloud sizes are not
+compared. One fixed-seed example (500 genes, 200 samples, k = 3, Poisson at
+library-size fraction 0.04), chosen for readability; its labels are not a
+general ranking. In the 10-draw check below, the exposure-0.04 means were
+0.153 and 0.106, so A's draw is typical for that signal.
+
+## B: what scaling does
+
+`figure/fig1/panelB/`; record `artifact/20261026_fig1B-rank-log-share.md`.
+Each gene (500) and sample (200) of A's matrix, ranked by observed total; y
+is its share of `Ṽ` (that is, `a` or `b`), log scale, separate y-ranges.
+Uniform scaling is a flat line (1/500 = 0.2% per gene, 1/200 = 0.5% per
+sample). Expression scaling equals the raw count share: genes 0.021–0.645%
+(31-fold), samples 1.2-fold. B defines the scalings; it does not show that
+either improves projection. The earlier cumulative version is archived in
+`figure/fig1/panelB/archive/20261026_cumulative/`.
+
+## C: where the variation sits after bi-whitening
+
+`figure/fig1/panelC/`; record and caption draft
+`artifact/20261026_fig1C-noise-share.md`.
+
+**Quantity.** For each gene, its variation in `Z` beyond the trivial
+singular pair: `q_g = Σ_i (Z_gi − √(a_g b_i))²`. Bi-whitening makes
+`√a √bᵀ` the leading singular pair with singular value 1, the same for every
+sample. Summed over genes, `Σ_g q_g = Σ_{j≥2} σ_j²`: the squared singular
+values the truncated SVD ranks beyond the first. This is the bridge to D,
+since the truncated SVD minimizes squared (Frobenius) reconstruction error.
+`q_g` is weighted variation (correspondence-analysis inertia), not the
+ordinary across-sample variance of a row; the legend must say so. It needs
+only the observed `V`, so it also applies to real data.
+
+**Display.** Three plots side by side (Poisson, proportional, normal floored
+at 0), each with its own log y-scale; x = gene rank by observed total; y =
+gene share of variance in `Z` (%). Five independent replicates with A's
+settings (replicate r: `set.seed(r)`, then signal, then noise; replicate 1
+with Poisson noise is A's matrix). Dot: mean share of the i-th ranked gene;
+band: range. Uniform in orange, expression in blue.
+
+**Noise models** on baseline `μ = 0.04 · WH`: Poisson (`ApplyNBNoise`,
+dispersion 0, as in A); proportional `μ · Gamma(1/φ, 1/φ)`; normal
+`max(μ + N(0, σ²), 0)`. `φ = 1/m̃`, `σ = √m̃`, with m̃ = 1.093 the median
+of A's `μ`, so all three have equal relative noise at m̃ before flooring.
+Flooring raises the normal model's mean above `μ`.
+
+**Results** (`noise_share_by_rank.csv`; lowest quarter = 125 lowest-ranked
+genes; an even spread gives 25%):
+
+| Noise | Uniform | Expression |
 | --- | --- | --- |
-| A | What is being compared? | Keep the existing schematic: one mixture and observation, two scaling choices, and projected gene clouds. |
-| B | How does each scaling allocate mass across genes? | A cumulative gene-rank versus cumulative mass-share plot. |
-| C | Where does measurement variability enter the matrix being projected? | Conditional noise contribution in `Z`, shown against gene abundance, with a composition-related signal comparison if it can be defined clearly. |
-| D | What mixture information remains after projection? | A paired oracle projection-error comparison across several exposures. |
+| Poisson | 51.0% | 25.0% |
+| Proportional | 25.9% | 8.4% |
+| Normal, floored | 47.5% | 31.7% |
 
-Panel B defines the scaling choices; it cannot establish that either one
-improves projection. Panel C supplies a proposed mechanism, and D is needed
-to test the outcome. A compact three-panel fallback would combine the mass
-definition and noise diagnostic into B and retain the outcome as C. This is
-a layout option, not a decision to drop a panel.
-This sequence replaces the older B/C/D order in section 7 of the package
-discussion note, which put the projection outcome in B, exposure in C, and
-the noise diagnostic in D.
+At these counts 97–98% of the variation is noise: with a consistent
+projected split, the signal term is 1.60–4.02% across all models, scalings
+and replicates (`signal_noise_split.R`). That does not mean noise dominates
+the leading singular directions.
 
-## A: what is already drawn
+**Why `Z` and not a simpler matrix.** Binned noise-variance shares, computed
+on a wider design (3,000 genes, 400 samples, background range 1–1000,
+expected variances, weights fitted on the noise-free matrix;
+`out/20261026_fig1C_noise/binned_variance.R`, ignored, exploratory), lowest to
+highest abundance quartile:
 
-[Current panel A](../figure/fig1/panelA/fig1A.png) uses the same simulated
-observation for both scaling branches. It shows noisy gene projections and
-the component-profile triangle in each branch's projection plane. The plots
-have **separate display scales**, so triangle or cloud size across branches
-is not a direct quantitative comparison. Axes 2 and 3 name the nonconstant
-plane after rigid orientation. Its H oracle RMSE labels (0.151 for uniform,
-0.105 for expression) measure a sample-side projection residual, not the
-distance of displayed genes from a triangle. The single seed and exposure
-were selected for a readable illustration; the labels are not evidence of a
-general ranking. See [panel A's noise/axes record](20261026_fig1A-noise-and-axes.md)
-and [separate-scale record](20261026_fig1A-separate-scales.md). The values
-come from `figure/fig1/panelA/projection_metrics.csv`, generated with
-GeneralDualSimplex 0.28.0 at package commit
-`af56ff97da8e38af7c304513c5d26f1c2ff0c910`.
+| Noise, scaling | Raw `V` | Scaled `Ṽ` | `Z` |
+| --- | --- | --- | --- |
+| Poisson, uniform | 0.4 / 2.5 / 16.9 / 80.2 | 83.1 / 14.2 / 2.3 / 0.4 | 83.1 / 14.2 / 2.3 / 0.4 |
+| Poisson, expression | 0.4 / 2.5 / 16.9 / 80.2 | 0.4 / 2.5 / 16.9 / 80.2 | 25.0 / 25.0 / 25.0 / 25.0 |
 
-## B: choices considered and current preference
+Raw `V` cannot show a scaling effect (identical for both scalings).
+Expression-scaled `Ṽ` equals raw and would suggest that expression scaling
+is the bad choice under Poisson noise, the opposite of the outcome. Only
+`Z` shows the pattern, which is why bi-whitening was added to A.
 
-The first ideas were row and column sums and then row and column variances.
-Sums of `Ṽ` help define the choices: converged uniform balancing gives each
-gene mass `1/m` and each sample mass `1/n`; expression scaling divides `V`
-by its grand total, preserving the observed gene-total and sample-total
-proportions. These are properties of the scaling, not measurements of
-information or denoising. Raw row/column variance would mix composition,
-depth, and measurement fluctuations; variance across genes within a sample
-does not treat genes as replicate measurements.
+**Reviews.** Two Advisor - Codex reviews (handoffs
+`20261026-0440_codex_fig1ABC-review.md`, `20261026-0510_codex_fig1C-gene-variance-review.md`):
+both approve with fixes; fixes applied. The second confirmed `σ₁ = 1` is
+the largest singular value and the sum identity in all 30 matrices, and
+reproduced the data, SVG and PNG byte for byte.
 
-Several B displays were discussed. The first per-gene ranked mass plot had
-a difficult y-axis; equal-size low/middle/high gene-bin bars were simpler
-but hid the continuous distribution. A plot with **genes ordered by observed
-total count** on the x-axis and **cumulative share of matrix total** on the
-y-axis became the preferred direction. Both axes can be percentages. Under
-converged uniform scaling the curve lies on the diagonal because the
-achieved gene masses are equal. That diagonal is **equal mass by
-construction, not an ideal fit or an accuracy target**. The other curve is
-the observed distribution of counts over those ordered genes.
+## D (proposed): what survives projection
 
-Expression scaling multiplies every entry by the same `1/sum(V)`
-([package scaling code](../../general_dual_simplex/R/dso-scaling.R),
-lines 134–138 and 177 at the package commit above). Thus its mass fraction
-for gene `g` is `V[g,+] / sum(V)`, exactly the raw count share; multiply by
-100 to express this as a percentage. A requested
-dashed “raw, unscaled” curve therefore coincides with the expression curve;
-it is not a third result. The current [overlap mock](../out/20261026_fig1B_layouts/layout1_raw_overlap.png)
-draws it at the same coordinates and says so. A final panel may use one
-legend entry, “Raw counts = expression scaling,” to reduce clutter. The
-diagonal must use achieved uniform masses, with balancing convergence
-checked; a target line alone would conceal a failed balance.
+2×2 or 3×2 grid, noise model × scaling, in panel A's style but on H: true H
+in grey and oracle-projected H in colour, on identical fixed contrasts of
+the original H coordinates, paired observations within a row. The H oracle
+RMSE is then literally the grey-to-colour gap, which links C (what the SVD
+sees) to E (the error). "Oracle" means the projection of the known H; no
+simplex vertices are estimated. Suggested by the first independent review;
+close to panel B of the user's conceptual mock (`/data/figure1_mock.png`).
 
-A fixed-seed simulation matching panel A's observed matrix was used to
-compare three layouts: [percentage on both axes](../out/20261026_fig1B_layouts/layout1_cumulative_gene_percent.png),
-[absolute rank versus cumulative share](../out/20261026_fig1B_layouts/layout2_rank_cumulative_mass.png),
-and [absolute rank versus per-gene share on a log y-axis](../out/20261026_fig1B_layouts/layout3_rank_log_per_gene_mass.png).
-The first two have the same curve, differing only in x-axis units. The
-third recreates the per-gene reading burden. The simulated matrix has 500
-genes, 200 samples, seed 1, marker fold 5, and Poisson observation at
-`library_size_fraction = 0.04`; all genes and samples remained after zero
-filtering. In this **one illustrative matrix**, the lowest 50% of genes
-account for 23.0741% of raw/expression mass versus 50% of uniform mass.
-Uniform balancing converged with maximum relative marginal error
-`7.98623320252823e-13`. The raw and expression cumulative shares differ
-only by floating-point rounding.
-These values come from [generator](../out/20261026_fig1B_layouts/generate.R),
-[per-gene data](../out/20261026_fig1B_layouts/mass_by_gene.csv), and
-[provenance](../out/20261026_fig1B_layouts/provenance.txt), run with
-GeneralDualSimplex 0.28.0 at package commit
-`af56ff97da8e38af7c304513c5d26f1c2ff0c910`. The `out/` files are
-ignored exploratory outputs, and the plot says “illustrative, not a
-benchmark.”
+## E (proposed): does it hold?
 
-Ranking by *observed* totals is deliberate for B because that is what
-expression scaling uses and what real data provide. Any C/D gene-abundance
-diagnostic should instead consider *expected* abundance in a simulation:
-ranking by noisy observations can partly select for the fluctuation being
-studied. B concentrates on genes; uniform scaling also changes sample
-masses and gene profiles, which needs a caption sentence or a small inset
-if sample depth becomes central to the explanation.
+Paired H oracle RMSE, both scalings on the same observed matrix: Poisson
+against exposure; proportional against φ (exposure would be flat by
+construction, since both scalings ignore a constant factor and the noise is
+relative); normal against σ. Noiseless reference. Suggested minimum: 10
+independent signals × 5 paired draws, at least three levels per model;
+include designs with low- versus high-abundance distinctive genes and
+unequal sample depths. Weights refitted per draw.
 
-## C: proposed mechanism, not yet drawn with final data
+**Evidence so far (one signal, exploratory).** Panel A's signal, 10 paired
+draws per setting (`out/20261026_fig1C_explore/noise_models.R`, ignored):
+expression had lower RMSE in all 40 Poisson draws (exposures 0.01–4); uniform
+had lower RMSE in all 30 proportional draws (φ 0.05–0.5). Normal noise is
+untested. This is consistent with the reversal in C but is one signal, not
+a result.
 
-“Row and column variance” needs a more precise definition. The reviewers
-recommended the conditional measurement variability after the full
-transformation to `Z`, where projection occurs. For fixed effective row
-and column weights `l_g = r_g/sqrt(a_g)` and `t_i = c_i/sqrt(b_i)`, with
-conditional mean `μ[g,i]`, the expected squared perturbation attributed to
-gene `g` is
+## Open decisions
 
-```text
-Q_g = l_g^2 × sum_i t_i^2 Var(V[g,i] | μ).
-```
+1. Axis wording in C: keep "variance" with the weighted definition in the
+   legend, or use "variation".
+2. D as its own panel or as insets in E (five versus four panels).
+3. Whether normal noise stays in C, D and E, and whether proportional noise
+   is an equal partner or a labelled control (its levels are matched to
+   Poisson only at the median count).
+4. Final simulation design for the user's rerun (A's settings or a wider
+   background range), applied to all panels.
+5. Run and review the replicated D/E experiment before any claim about
+   projection quality.
 
-Population-derived weights give this fixed-transform diagnostic a clear
-meaning. If weights are refitted to every observed matrix, that formula
-alone is not the unconditional variability of the whole fitted procedure.
-Neither raw across-sample gene variance nor across-gene sample variance
-isolates this quantity. A proposed C plot places expected gene abundance
-on x and transformed noise contribution on y, ideally alongside the
-composition-related signal contribution. The bin definition (total or
-per-gene average) must be stated. Even a flatter noise distribution cannot
-by itself establish better mixture retention; signal direction and
-alignment with noise also matter. The fixed-weight derivation and caveats
-are in section 9 of the package's untracked working-tree discussion note
-(read 2026-10-26 with the package HEAD stated above).
+## History
 
-## D: proposed outcome and limits
-
-The proposed outcome is **paired oracle H projection error**: apply both
-scalings to the same observed matrix, then compare how much of the known
-`H` remains in each retained space, in common original coordinates. This
-does not fit simplex vertices and does not report final factor recovery.
-In this conversation, a reviewer proposed at least three declared exposures
-(including A's `0.04` setting), repeated latent signals and observation draws,
-with fitted weights; a suggested minimum was 10 signals × 5 draws. These
-specific counts are a discussion proposal, not a result in the package
-note. Marking A's example as one
-point would make clear that A illustrates a single draw. A noiseless
-reference and a population-weight control could help interpretation.
-These are **proposed experiment settings**, not completed runs or an
-agreed final design. Any caption must report the actual sampling protocol,
-uncertainty, and provenance. A one-setting comparison cannot establish
-how the scaling difference changes with exposure.
-
-## Next decisions
-
-1. Decide whether B's final legend should combine raw and expression into
-   one entry; the dashed overlap mock is available for comparison. Consider
-   “share of that matrix's total” for the y-axis, since each curve uses its
-   own matrix total.
-2. Define and compute C's signal comparison without mixing composition
-   effects into its noise metric.
-3. Run and review a replicated paired D experiment before writing any
-   claim about projection quality or exposure dependence.
-4. Keep the earlier [B–D conceptual mock](../out/figure1_BCD_mock.png) and
-   [fictional B mocks](../out/figure1B_cumulative_rank_mock.png) as layout
-   history only; their invented values are not evidence.
+Earlier directions are kept in Git (this file at `c29f61d` and before) and
+in `artifact/20261026_fig1C-narrative-options.md`: a cumulative B; `Z`-free
+C options (per-gene reliability against B's weights, relative noise against
+expected count, displacement of projected gene points); noise-share bars in
+`Z`; and noise variance rather than total variation. They were replaced
+because they either avoided the matrix the SVD sees or measured noise alone.
+The decision log (`artifact/decisions.md`, 2026-10-26 Figure 1 entries)
+records each change.
