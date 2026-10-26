@@ -205,3 +205,60 @@ No new reviewer was launched for this minor display change.
 
 Revisit if: absolute coordinate sizes need to be compared across panels,
 or the user requests shared scales again.
+
+## 2026-10-26 — Figure 1 after B: raw noise (C), true vs projected H (D), replicated RMSE (E)
+
+Context: the user rejected panel C measures in `Z` or the reduced space
+(bi-whitening is not introduced in the figure; "energy" was unclear), asked
+that panels introduce panel A's elements step by step, and asked Figure 1 to
+prime that both scaling and noise model matter (proportional noise expected
+to reverse the ranking). An independent Advisor - Codex review was obtained.
+
+Options: lead's Option 1 (C overlays per-gene reliability on B's weights),
+Option 2 (weight × relative variance table), Option 3 (negative binomial
+bridge), or the reviewer's revised Option 1.
+
+Decision (user): adopt the reviewer's sequence as the working direction.
+C: typical noise ÷ expected count against expected count, per noise model.
+D: true H against oracle-projected H, noise model × scaling. E: paired,
+replicated H oracle RMSE against exposure (Poisson) or noise level
+(proportional). Work on C first. Add a normal noise model centred at 0,
+with the observed matrix floored at 0. Use a wider background range so
+low-count genes are present. The reviewer's proposed house rule is dropped.
+
+Evidence: `artifact/20261026_fig1C-narrative-options.md` (sections 3, 6),
+exploratory scripts in ignored `out/20261026_fig1C_explore/` and
+`out/20261026_fig1C_noise/`, GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910`. The ranking reversal was seen
+on one signal (10 paired draws per setting) and is not yet a result.
+
+Revisit if: the replicated experiment does not show the reversal, or C's
+mock fails to carry the "why" without the weights overlay.
+
+## 2026-10-26 — Figure 1 introduces bi-whitening (A) and shows per-gene squared-noise shares in Z (C)
+
+Context: computing gene noise variance in raw `V` or scaled `Ṽ` cannot show
+the scaling effect (raw is identical for both scalings; `Ṽ` under expression
+scaling equals raw and points the wrong way). Only `Z` shows it. This
+supersedes the previous entry's panel C (raw relative noise against
+expected count).
+
+Options: keep `Z` out of the figure, or introduce bi-whitening in A and show
+noise in `Z` in C; quartile bars or per-gene rank plots; fixed or independent
+replicates; panel A's settings or a wider background range.
+
+Decision (user): add a Bi-whitening step between scaling and projection in
+panel A. Panel C: per gene, share of squared noise in `Z` against gene rank by
+observed total, as in B; Poisson, proportional and floored normal noise; each
+plot its own log y-scale; five independent replicates (signal and noise from
+seeds 1–5) with panel A's settings; dots = mean of the i-th ranked gene,
+bands = range. Equations go in the figure legend, not the panels. Panel C is a
+layout draft; the user will rerun analyses at the end.
+
+Evidence: `artifact/20261026_fig1C-noise-share.md`; `figure/fig1/panelC/`.
+GeneralDualSimplex 0.28.0 at `af56ff97da8e38af7c304513c5d26f1c2ff0c910`.
+Reviewed by Advisor - Codex (approve with fixes; fixes applied). A and B data
+reproduce byte for byte.
+
+Revisit if: the user chooses conditional variance instead of realized
+squared perturbations, or a different simulation design for the final run.
