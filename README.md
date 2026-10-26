@@ -77,6 +77,13 @@ chmod +x .git/hooks/pre-push
 Cloning does not install the hook. Do not bypass push protections or copy
 credentials and local configuration from another repository.
 
+## Coding style guides
+
+- **Code should explain itself.**
+- **Use comments wisely.** Comments mainly convey intent, rationale, or context that cannot be expressed clearly in the code itself.
+- **DO NOT over-engineer.** Start with the simplest, most straightforward approach that solves the problem. Add complexity only when it is justified.
+- **DO NOT write defensive code.** This is research code, and its inputs are known. Add a check only after a real run gave a wrong result without an error.
+- **DO NOT copy a value just to rename it.** Read a field where you use it. Add a variable only to change a value or to avoid repeating work.
 
 ## Mathematical Notation
 
