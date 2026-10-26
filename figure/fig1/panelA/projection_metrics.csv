@@ -1,3 +1,3 @@
-"scaling","oracle_H_rmse","coordinate_identity_error","noiseless_convex_error","genes","markers","background"
-"uniform",0.0815465438288529,1.765254609154e-14,3.46944695195361e-18,500,60,440
-"expression",0.0633564783699423,2.09832151654155e-14,5.20417042793042e-18,500,60,440
+"scaling","oracle_H_rmse","coordinate_identity_error","constant_coordinate_error","noiseless_convex_error","genes","markers","background"
+"uniform",0.151064802186862,6.10622663543836e-15,8.88178419700125e-16,5.20417042793042e-18,500,60,440
+"expression",0.10467779445742,5.21804821573824e-15,3.21964677141295e-15,5.20417042793042e-18,500,60,440

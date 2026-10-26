@@ -152,3 +152,32 @@ benchmark conclusion about scaling methods.
 
 Revisit if: a different observation model is chosen, a gene-side error
 metric replaces the H metric, or new data require updated labels.
+
+## 2026-10-26 — Increase illustrative Figure 1A noise and label the nonconstant plane 2/3
+
+Context: the user liked the revised figure and requested more noise to make
+the weighting difference clearer, axis numbering 2/3 because dimension 1
+is constant, and no further reviewer.
+
+Options: retain the existing sampling fraction 0.1, or lower it to increase
+relative sampling noise. Fixed-seed trials used 0.05, 0.04 and 0.02.
+
+Decision: use 0.04 as the generator default. This preserves readable
+triangles with more visibly scattered points under uniform weighting; the
+0.02 trial nearly erased the geometry. Keep the latent mixture and seed,
+all genes, the shared scale rule, and the rigid orientation. Rename the
+axes Projection 2 and Projection 3 and update both H oracle RMSE labels.
+The labels name the nonconstant plane; the caption records its rotation.
+No fresh reviewer was launched, following the user's explicit instruction.
+
+Evidence: `artifact/20261026_fig1A-noise-and-axes.md` records the trial
+selection, values, package provenance, current caption addition, and
+validation. Sources are the generated `projection_metrics.csv` and RDS
+under `figure/fig1/panelA/`, produced by GeneralDualSimplex 0.28.0 at
+`af56ff97da8e38af7c304513c5d26f1c2ff0c910` with no dirty R/src changes.
+This is an appearance-selected illustrative example, not a new benchmark
+conclusion. The final PNG was opened; text and point extents pass the
+Inkscape checks.
+
+Revisit if: the user wants unrotated singular axes, a different noise model,
+or a representative multi-seed performance comparison.

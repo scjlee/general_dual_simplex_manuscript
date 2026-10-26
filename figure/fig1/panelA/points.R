@@ -1,7 +1,8 @@
 # Illustrative noisy gene-simplex projections, uniform vs expression scaling.
 # Run from the manuscript root: Rscript figure/fig1/panelA/points.R [library_fraction] [seed]
-# Source model: package .ai/bench/20261022_space-distortion.R; full provenance
-# and derivation: artifact/20261026_fig1A-gene-simplex.md.
+# Source model: package .ai/bench/20261022_space-distortion.R.
+# Original derivation: artifact/20261026_fig1A-gene-simplex.md; current noise/axes:
+# artifact/20261026_fig1A-noise-and-axes.md.
 library(GeneralDualSimplex)
 here <- "figure/fig1/panelA"
 pkg <- "/workspace/dual_simplex_functional/general_dual_simplex"
@@ -11,7 +12,7 @@ writeLines(c(
   "uncommitted_R_src:", system2("git", c("-C", pkg, "status", "--porcelain", "R", "src"), stdout = TRUE)),
   file.path(here, "package_commit.txt"))
 args <- commandArgs(TRUE)
-frac <- if (length(args) >= 1) as.numeric(args[1]) else 0.1
+frac <- if (length(args) >= 1) as.numeric(args[1]) else 0.04
 seed <- if (length(args) >= 2) as.integer(args[2]) else 1L
 k <- 3
 orth <- function(A) qr.Q(qr(A))
@@ -62,6 +63,7 @@ project_genes <- function(type) {
     vertices = data.frame(scaling = type, component = seq_len(k), x = v[, 1], y = v[, 2]),
     metrics = data.frame(scaling = type, oracle_H_rmse = sqrt(mean((Hor - H)^2)),
                          coordinate_identity_error = max(abs(C - t(g$Phi) %*% diag(g$sigma[1:k]))),
+                         constant_coordinate_error = max(abs(C[, 1] - 1)),
                          noiseless_convex_error = max(abs(F0 - B0 %*% T)),
                          genes = nrow(Y), markers = sum(group != "background"),
                          background = sum(group == "background")))
