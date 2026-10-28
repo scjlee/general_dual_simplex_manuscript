@@ -504,3 +504,44 @@ House-rule proposal, not applied to AGENTS.md:
 Revisit if: the notebook becomes the canonical figure generator, component
 count or model/scaling choices must vary, or these illustrative data are
 used to support a manuscript claim.
+
+## 2026-10-28 — Match noise sweeps on mean noise variance; Normal before clipping
+
+Context: the user found additive Normal noise milder than expected in the
+pilot sweep (`/data/261027_experiment_script_check.html`, “evaluation”).
+The Normal SDs (5–25) reached a mean noise variance of only 625, against
+about 4000 for Poisson at fraction 0.01. The user asked for a better sweep
+and a helper that finds the grid for any base simulation.
+
+Options: match models on mean per-entry noise variance in units of
+V* = W H, on variance relative to each gene's level, or on the measured
+spectral ratio (an outcome, not an input).
+
+Decision: match Poisson, multiplicative and unclipped Normal noise on mean
+per-entry noise variance, 7 doubling targets 100–6400. NB reuses the
+Poisson fractions with dispersion 0.01 and 0.1 (14 points). Normal SD is
+matched before the package's clipping (user approved); runs should save the
+measured noise error. Values are rounded to the coarsest decimal step within
+a 3% preference tolerance, not a hard limit (user approved). Helper:
+`artifact/20261028_noise_grid.R`, `find_grid_points()`.
+
+Evidence: `artifact/20261028_noise_grid.md`, “Matched quantity” and
+“Validation”; GeneralDualSimplex 0.29.0 at
+`bfd5ce69987c17e5a1253a477e9b73e965afc1aa`. For K = 3, fold 5, seeds 1–10,
+largest implied errors are 1.1% (Poisson), 2.0% (Normal), 2.5% (Mul);
+one Monte Carlo draw agrees within 0.5% except multiplicative at the two
+highest levels. Equal mean variance does not give equal recovery error: in
+the pilot, Normal SD 20 had about twice the W error of Poisson fraction 0.1
+at variance 400. A 3-seed check at target 3200 was consistent with expression
+marginals beating uniform for Poisson and uniform beating expression for
+multiplicative noise (scratch output `out/20261028_marginal_check/`,
+not tracked).
+
+Review: Advisor - Codex approved with changes
+(`artifact/handoff/20261028-0342_codex_noise-grid-review.md`,
+`out/20261028_noise_grid_review/review.md`). A single-target crash and three
+note statements were fixed as specified; the fixes were not re-reviewed.
+
+Revisit if: clipped Normal error should be matched instead, the simulation
+moments change by more than the tolerance, or a full sweep shows another
+axis predicts recovery error better.
