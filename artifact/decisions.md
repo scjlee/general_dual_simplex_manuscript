@@ -505,6 +505,50 @@ Revisit if: the notebook becomes the canonical figure generator, component
 count or model/scaling choices must vary, or these illustrative data are
 used to support a manuscript claim.
 
+## 2026-10-28 — Plot saved scaled-matrix gene variances across noise parameters
+
+Context: the user supplied `/data/simulation_runs_k3.rds` and the accompanying
+experiment HTML report, asking for a panel like C colored by noise parameter.
+They then identified the saved `scaled_var` and `scaled_total` fields computed
+from `GetData(dso, "scaled")`.
+
+Options: retain old C's bi-whitened Z metric, or use the user's saved
+across-sample variances in Vtilde and identify the changed matrix explicitly.
+
+Decision: make a separate illustrative draft in `figure/fig1/panelC_sweep/`
+using saved row `scaled_var` divided by its sum across genes, in percent.
+Label the y-axis “Gene share of variance in scaled matrix (%)”. Only uniform
+scaling is present. Show all four saved noise models; colors identify library
+fraction, log SD or additive SD as appropriate, with negative-binomial
+line styles for dispersion. Order genes by observed total, low to high,
+within each run. For readability, average adjacent groups of 30 ranks per
+seed, then show the mean and min–max across ten seeds. Preserve unbinned
+rank summaries. Keep the previous panel C master unchanged.
+
+Evidence: `artifact/20261028_panelC_noise_sweep.md`, “Metric and display”,
+“Input and provenance”, “Extraction checks” and “Caption draft”; run index,
+checks, plotted input CSV and available package provenance are in the new
+figure folder. Supplied report: `/data/261027_experiment_script_check.html`,
+“load” and “evaluation”. Archive records GeneralDualSimplex 0.29.0 but no
+generating commit. The current source commit is
+`bfd5ce69987c17e5a1253a477e9b73e965afc1aa`; it is context, not verified
+archive-generation provenance. Both supplied files have recorded SHA-256
+checksums. Independent review is recorded in the accompanying artifact note.
+
+Revisit if: the user wants Z instead, expression scaling is supplied,
+binning or panel arrangement changes, or these illustrative data support
+a manuscript claim. Establish the generating package commit before relying
+on implementation provenance for such a claim.
+
+Review correction for this draft: Advisor - Claude accepted after two fixes,
+both completed. Under uniform scaling, the saved-variance percentages
+equal the old Z-based shares (q_g = mn(n-1) v_g, so normalization cancels
+the constant). The definitions can differ for other scalings; the earlier
+explanation to the user was corrected. PNG export now uses opaque white
+and the bands have opacity 0.15. No numerical data changed after review.
+The user requested PNG only for now; SVG/PDF remain internal supporting
+artifacts. Review: `out/panelC_sweep_review/review.md`.
+
 ## 2026-10-28 — Match noise sweeps on mean noise variance; Normal before clipping
 
 Context: the user found additive Normal noise milder than expected in the
@@ -545,3 +589,75 @@ note statements were fixed as specified; the fixes were not re-reviewed.
 Revisit if: clipped Normal error should be matched instead, the simulation
 moments change by more than the tolerance, or a full sweep shows another
 axis predicts recovery error better.
+
+## 2026-10-29 — Review the proposed noise-level formulation before changing the grid
+
+Context: the user discussed alternative definitions of noise level for comparing
+marginal choices, proposed expressing noise relative to the variance across
+noiseless matrix entries, and requested an independent Claude review plus a
+comparison with the current settings.
+
+Options: relabel the existing settings, choose new dimensionless targets and
+rerun, or change additional conventions such as NB matching or Normal clipping.
+
+Decision: record the reviewed formulation and quantitative alternatives without
+changing the current helper or adopting a replacement grid. The illustrative
+replacement levels in the comparison are not approved defaults. The existing
+pre-clipping Normal convention remains the baseline for this comparison.
+
+Evidence: `artifact/20261029_noise_level_comparison.md` and its companion R
+script; independent report `artifact/20261029_noise_formulation_review.md`;
+handoff `artifact/handoff/20261029-0204_claude_noise-formulation-review.md`.
+Analysis base: manuscript `29cb5265b0ad7795666f17ab26fbd317c39ff21b`.
+The comparison records the supplied ground-truth checksum, calculation-script
+checksum and implementation provenance; archive-generation provenance remains
+unestablished. No recovery experiments were rerun.
+
+Review: fresh Advisor - Claude independently recomputed the numerical results,
+initially accepted with explanatory changes, then accepted the revised note.
+The review distinguishes paired experimental design from the choice of
+calibration denominator. Its last message was read and the reviewer archived.
+
+Revisit if: the user selects a replacement grid or changes the denominator,
+pooling convention, NB matching or clipping convention. The proposed house rule
+in the comparison note has not been applied to AGENTS.md.
+
+## 2026-10-29 — Retain the current grid and treat NB as overdispersed Poisson
+
+Context: continuing the simulation design discussion, the user clarified when
+the proposed noise-level calibration would be used and how NB should relate
+to Poisson. They also asked whether Normal could target a level after clipping.
+
+Options: change the current grid or defer calibration changes to the next
+round; match NB by total noise level or retain Poisson exposure; accept and
+report NB's excess variance or impose a cap. Normal could remain calibrated
+before clipping, or prospectively target conditional variance or MSE after
+clipping, which are distinct when clipping introduces bias.
+
+Decision (user): retain the current grid for now; the proposed calibration
+modification is for the next round. Treat NB as overdispersed Poisson at shared
+exposure. The user explicitly chose "Accept and report higher level" rather
+than a cap on excess variance. No new target levels, pooled/shared grid or
+after-clipping Normal convention have been adopted. Pre-clipping Normal
+remains the baseline. Do not modify the helper or launch recovery experiments
+at this design stage.
+
+Evidence: the user's messages in this session;
+`artifact/20261029_noise_level_comparison.md`, "Mapping to the current helper"
+and "Separate NB and clipping consequences", with accepted independent review
+in `artifact/20261029_noise_formulation_review.md`. Calculation base:
+manuscript `29cb5265b0ad7795666f17ab26fbd317c39ff21b`; implementation context:
+GeneralDualSimplex 0.29.0 at
+`bfd5ce69987c17e5a1253a477e9b73e965afc1aa`. New feasibility explanation,
+`artifact/20261029_normal_after_clipping.md`, distinguishes variance from
+MSE matching and does not itself select either convention.
+
+Review: fresh Advisor - Claude independently verified the new Normal moment
+and inversion derivation, initially accepted with minor clarifications, then
+accepted the revised note. Report:
+`artifact/20261029_normal_after_clipping_review.md`. Its final message was
+read and the reviewer archived. The helper and existing grid are unchanged;
+no noise draws or recovery runs were made.
+
+Revisit if: the user selects next-round targets or pooling, explicitly changes
+the Normal matching convention, or requests a cap on NB overdispersion.

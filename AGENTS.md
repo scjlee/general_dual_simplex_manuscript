@@ -138,3 +138,9 @@ One line per lesson, dated.
 - 2026-10-09: Never print process command lines; they can hold tokens.
 - 2026-10-26: "Small" does not exempt a change from review. A change is exempt
   only if it cannot alter a formula, a claim or a cited number.
+- 2026-10-29: Do not name a cause for a failure without a test that could show
+  otherwise; a broken file link was blamed on the link format, then on message
+  age, and the evidence ruled out both.
+- 2026-10-29: Use LaTeX formulas freely, but a `\( \)` formula breaks every
+  file link in the same message. In a message with a formula, give file paths
+  in inline code instead of links; elsewhere, follow each link with its path.

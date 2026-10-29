@@ -1,0 +1,6 @@
+input /data/simulation_runs_k3.rds
+saved_package_version 0.29.0
+installed_version 0.28.0
+current_checkout_commit bfd5ce69987c17e5a1253a477e9b73e965afc1aa
+current_checkout_uncommitted_R_src:
+The generating commit is not embedded in the supplied RDS; current checkout is context, not verified generation provenance.
