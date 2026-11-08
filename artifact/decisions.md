@@ -661,3 +661,23 @@ no noise draws or recovery runs were made.
 
 Revisit if: the user selects next-round targets or pooling, explicitly changes
 the Normal matching convention, or requests a cap on NB overdispersion.
+
+## 2026-11-08 — Restart Figure 1 from an empty folder and keep the old work on a branch
+
+Context: the user wants to re-do Figure 1 and asked to back up current progress
+and clean up `main`.
+
+Options: remove only `figure/fig1/`; also remove the Figure 1 notes and handoffs
+in `artifact/`; keep only the R Markdown playground; or review a file list first.
+
+Decision (user): remove only the tracked files in `figure/fig1/` from `main`, in
+an ordinary commit with no history rewrite. Keep all of `artifact/`. Old notes
+that cite `figure/fig1/` paths now refer to files on branch `261029-figure1`.
+The backup branch is pushed to origin.
+
+Evidence: branch `261029-figure1` and `main` before removal are both at
+`dc1ebda8a40da9c55dd09b6deddede69dbc66fd0`; `git ls-remote` shows the same commit
+on origin. Ignored `out/` is on no branch and stays on disk.
+
+Revisit if: any old panel, data file or generator is needed for the new figure;
+restore it from `261029-figure1`.
