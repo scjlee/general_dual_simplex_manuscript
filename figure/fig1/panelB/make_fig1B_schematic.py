@@ -27,7 +27,7 @@ DARK = "#404040"
 
 rng = random.Random(20261109)
 m, k, n = 6, 3, 5
-noise_fraction = 0.3
+noise_fraction = 0.7
 
 
 def dirichlet(alpha, size):
@@ -49,8 +49,14 @@ def blend(low, high, t):
     return "#" + "".join(f"{round(a + (b - a) * t):02x}" for a, b in channels)
 
 
-def pale(colour):
-    return blend("#ffffff", colour, 0.12)
+def single_colour(colour):
+    return [blend("#ffffff", colour, 0.12), colour]
+
+
+def gradient(stops, t):
+    position = t * (len(stops) - 1)
+    segment = min(int(position), len(stops) - 2)
+    return blend(stops[segment], stops[segment + 1], position - segment)
 
 
 def entries(values):
@@ -79,12 +85,11 @@ def group(id_, items):
     return f'<g id="{id_}">\n' + "\n".join(items) + "\n</g>"
 
 
-def matrix(name, values, low, high, x, pool):
-    ranked = sorted(pool)
+def matrix(name, values, stops, scale, x):
     cells = []
     for i, row in enumerate(values, 1):
         for j, value in enumerate(row, 1):
-            fill = blend(low, high, ranked.index(value) / (len(ranked) - 1))
+            fill = gradient(stops, scale(value))
             cells.append(rect(f"{name}_r{i}_c{j}", x + (j - 1) * CELL, TOP + (i - 1) * CELL, CELL, CELL,
                               f"fill:{fill};stroke:#ffffff;stroke-width:{0.4 * PT:.4f}"))
     frame = rect(f"{name}_frame", x, TOP, len(values[0]) * CELL, len(values) * CELL,
@@ -104,23 +109,25 @@ def annotation(name, symbol, word, x_centre):
     return text(f"label_{name}", x_centre, TOP - 0.9, content)
 
 
-def right_brace(id_, x0, x1, y0, y1):
-    mid_x, mid_y, curl = (x0 + x1) / 2, (y0 + y1) / 2, 1.3
-    path = (f"M {x0},{y0} Q {mid_x},{y0} {mid_x},{y0 + curl} L {mid_x},{mid_y - curl} "
-            f"Q {mid_x},{mid_y} {x1},{mid_y} Q {mid_x},{mid_y} {mid_x},{mid_y + curl} "
-            f"L {mid_x},{y1 - curl} Q {mid_x},{y1} {x0},{y1}")
-    return (f'<path id="{id_}" d="{path}" style="fill:none;stroke:#000000;'
-            f'stroke-width:{0.6 * PT:.4f};stroke-linecap:round;stroke-linejoin:round"/>')
+def rank_scale(values):
+    ranked = sorted(entries(values))
+    return lambda value: ranked.index(value) / (len(ranked) - 1)
 
 
-signal_pool = entries(Vstar) + entries(V)
-matrices = [("W", "W", "profile", W, pale("#D55E00"), "#D55E00", 4.2, entries(W)),
-            ("H", "H", "proportions", H, pale("#0072B2"), "#0072B2", 23.0, entries(H)),
-            ("Vstar", "V*", "true signal", Vstar, "#56B4E9", "#E69F00", 51.0, signal_pool),
-            ("epsilon", "ε", "noise", epsilon, pale(DARK), DARK, 81.5, entries(epsilon)),
-            ("V", "V", "observed data", V, "#56B4E9", "#E69F00", 112.0, signal_pool)]
-headers = [("signal_generation", "Signal generation", 0.4, 69.6),
-           ("perturbation", "Perturbation", 71.2, 133.6)]
+def linear_scale(values):
+    low, high = min(values), max(values)
+    return lambda value: (value - low) / (high - low)
+
+
+signal_stops = ["#56B4E9", "#009E73", "#E69F00"]
+signal_scale = linear_scale(entries(Vstar) + entries(V))
+matrices = [("W", "W", "profiles", W, single_colour("#D55E00"), rank_scale(W), 4.2),
+            ("H", "H", "proportions", H, single_colour("#0072B2"), rank_scale(H), 23.0),
+            ("Vstar", "V*", "true signal", Vstar, signal_stops, signal_scale, 51.0),
+            ("epsilon", "ε", "noise", epsilon, single_colour(DARK), rank_scale(epsilon), 81.5),
+            ("V", "V", "observed data", V, signal_stops, signal_scale, 112.0)]
+headers = [("signal_generation", "Signal generation", 0.4, 73.2),
+           ("perturbation", "Perturbation", 74.8, 133.6)]
 operators = [("times", "×", 18.25), ("plus", "+", 74.0), ("equals", "=", 104.5)]
 
 layers = [
@@ -128,11 +135,13 @@ layers = [
     layer("layer_signal_outline", "W times H outline",
           [rect("signal_outline", 0.4, 6.4, 42.0, 23.6,
                 f"fill:none;stroke:{DARK};stroke-width:{0.5 * PT:.4f};stroke-dasharray:1.2,0.8", rx=0.8)]),
-    layer("layer_brace", "brace", [right_brace("brace_factors_to_signal", 43.8, 46.4, TOP, TOP + 6 * CELL)]),
-    *[matrix(name, values, low, high, x, pool) for name, _, _, values, low, high, x, pool in matrices],
+    layer("layer_arrow", "arrow to true signal",
+          [f'<path id="arrow_factors_to_signal" d="M 43.4,{ROW_CENTRE} L 49.9,{ROW_CENTRE}" style="fill:none;'
+           f'stroke:#000000;stroke-width:{0.6 * PT:.4f};marker-end:url(#marker_arrow_head)"/>']),
+    *[matrix(name, values, stops, scale, x) for name, _, _, values, stops, scale, x in matrices],
     layer("layer_labels", "matrix annotations",
           [annotation(name, symbol, word, x + len(values[0]) * CELL / 2)
-           for name, symbol, word, values, _, _, x, _ in matrices]),
+           for name, symbol, word, values, _, _, x in matrices]),
     layer("layer_operators", "operators",
           [text(f"operator_{name}", x, ROW_CENTRE + MATH_AXIS, symbol, "bold", size=OPERATOR_FONT)
            for name, symbol, x in operators]),
@@ -147,6 +156,12 @@ svg = f"""<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <title id="fig1B_schematic_title">Figure 1B schematic of the simulation study</title>
 <sodipodi:namedview id="namedview_fig1B_schematic" inkscape:document-units="mm" pagecolor="#ffffff"
    inkscape:pageopacity="1" inkscape:current-layer="layer_headers"/>
+<defs id="defs_fig1B_schematic">
+<marker id="marker_arrow_head" orient="auto" markerUnits="strokeWidth" markerWidth="9" markerHeight="9"
+   viewBox="0 0 9 9" refX="8.5" refY="4.5" style="overflow:visible">
+<path id="marker_arrow_head_shape" d="M 0,0.5 L 9,4.5 L 0,8.5 Z" style="fill:#000000;stroke:none"/>
+</marker>
+</defs>
 {chr(10).join(layers)}
 </svg>
 """
@@ -170,5 +185,6 @@ noise = [x for row in epsilon for x in row]
 print(f"m={m} k={k} n={n} seed=20261109 canvas={WIDTH}x{HEIGHT} mm ratio={WIDTH / HEIGHT:.3f}")
 print(f"V* mean={mean(entries):.3f} sd={pstdev(entries):.3f}; noise sd before clipping={noise_sd:.3f}")
 print(f"epsilon = V - V*: min={min(noise):.3f} max={max(noise):.3f}")
-print("cell colour: rank within each matrix; V* and V ranked together on one #56B4E9 to #E69F00 ramp")
+print("cell colour: V* and V are linear in value on one shared #56B4E9-#009E73-#E69F00 scale; "
+      "W, H and epsilon show rank within each matrix")
 print(f"entries clipped at zero: {sum(x == 0 for row in V for x in row)}")
