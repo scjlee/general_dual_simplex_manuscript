@@ -1,0 +1,2142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="fig1A"
+   version="1.1"
+   width="134mm"
+   height="67mm"
+   viewBox="0 0 134 67"
+   sodipodi:docname="fig1A.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <title
+     id="fig1A_title">Figure 1A schematic of the DualSimplex method</title>
+  <sodipodi:namedview
+     id="namedview_fig1A"
+     inkscape:document-units="mm"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     inkscape:pageopacity="1"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.0782494"
+     inkscape:cx="253.22835"
+     inkscape:cy="126.53296"
+     inkscape:window-width="2048"
+     inkscape:window-height="1115"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer_feature_dots" />
+  <defs
+     id="defs_fig1A">
+    <marker
+       id="marker_axis_arrow"
+       orient="auto"
+       markerUnits="strokeWidth"
+       markerWidth="5"
+       markerHeight="5"
+       viewBox="0 0 5 5"
+       refX="3.9"
+       refY="2.5"
+       style="overflow:visible">
+      <path
+         id="marker_axis_arrow_head"
+         d="M 1,0.7 L 3.9,2.5 L 1,4.3"
+         style="fill:none;stroke:#000000;stroke-width:0.8;stroke-linecap:round;stroke-linejoin:miter" />
+    </marker>
+  </defs>
+  <g
+     id="layer_feature"
+     inkscape:groupmode="layer"
+     inkscape:label="feature simplex">
+    <g
+       id="layer_feature_plane"
+       inkscape:groupmode="layer"
+       inkscape:label="feature plane"
+       style="display:inline">
+      <path
+         id="feature_plane"
+         d="M 1,26.547 29.182,2.391 68.344,29.475 40.162,53.631 Z"
+         style="fill:#e69f00;fill-opacity:0.28;stroke:none" />
+    </g>
+    <g
+       id="layer_feature_origin_lines"
+       inkscape:groupmode="layer"
+       inkscape:label="feature origin to vertex lines">
+      <path
+         id="feature_origin_to_green_vertex"
+         d="M 10.15,50.117 43.822,16.884"
+         style="display:inline;fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3;stroke-dashoffset:0" />
+      <path
+         id="feature_origin_to_red_vertex"
+         d="M 10.150,50.117 L 19.666,22.521"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3;stroke-dashoffset:0" />
+      <path
+         id="feature_origin_to_blue_vertex"
+         d="M 10.150,50.117 L 35.038,44.115"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3;stroke-dashoffset:0" />
+    </g>
+    <g
+       id="layer_feature_dots"
+       inkscape:groupmode="layer"
+       inkscape:label="feature dots"
+       style="fill:#666666">
+      <circle
+         id="feature_dot_001"
+         cx="38.028"
+         cy="22.962"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_002"
+         cx="31.366"
+         cy="29.307"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_003"
+         cx="32.508"
+         cy="28.152"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_004"
+         cx="40.425"
+         cy="20.768"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_005"
+         cx="40.743"
+         cy="18.693"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_006"
+         cx="31.914"
+         cy="36.236"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_007"
+         cx="35.138"
+         cy="25.771"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_008"
+         cx="39.765"
+         cy="23.837"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_009"
+         cx="22.286"
+         cy="24.261"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_010"
+         cx="41.235"
+         cy="18.426"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_011"
+         cx="32.064"
+         cy="26.744"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_012"
+         cx="42.622"
+         cy="18.153"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_013"
+         cx="33.393"
+         cy="35.504"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_014"
+         cx="28.258"
+         cy="27.329"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_015"
+         cx="25.452"
+         cy="25.063"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_016"
+         cx="33.405"
+         cy="37.788"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_017"
+         cx="37.327"
+         cy="21.378"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_018"
+         cx="24.935"
+         cy="25.679"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_019"
+         cx="24.760"
+         cy="24.462"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_020"
+         cx="32.960"
+         cy="32.737"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_021"
+         cx="38.699"
+         cy="23.310"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_022"
+         cx="33.227"
+         cy="36.572"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_023"
+         cx="23.022"
+         cy="24.395"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_024"
+         cx="34.140"
+         cy="39.217"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_025"
+         cx="42.985"
+         cy="17.524"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_026"
+         cx="25.436"
+         cy="27.963"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_027"
+         cx="24.037"
+         cy="23.851"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_028"
+         cx="33.704"
+         cy="28.781"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_029"
+         cx="33.765"
+         cy="38.790"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_030"
+         cx="34.998"
+         cy="42.346"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_031"
+         cx="33.470"
+         cy="30.173"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_032"
+         cx="32.482"
+         cy="34.033"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_033"
+         cx="26.936"
+         cy="26.890"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_034"
+         cx="34.265"
+         cy="37.338"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_035"
+         cx="34.339"
+         cy="25.492"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_036"
+         cx="35.512"
+         cy="23.880"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_037"
+         cx="34.930"
+         cy="39.716"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_038"
+         cx="34.911"
+         cy="41.654"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_039"
+         cx="26.089"
+         cy="26.128"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_040"
+         cx="40.876"
+         cy="19.386"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_041"
+         cx="38.215"
+         cy="21.881"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_042"
+         cx="33.142"
+         cy="24.902"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_043"
+         cx="31.223"
+         cy="26.635"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_044"
+         cx="23.043"
+         cy="23.283"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_045"
+         cx="26.109"
+         cy="24.870"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_046"
+         cx="39.613"
+         cy="23.173"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_047"
+         cx="32.898"
+         cy="29.221"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_048"
+         cx="29.700"
+         cy="27.030"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_049"
+         cx="24.456"
+         cy="25.060"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_050"
+         cx="24.072"
+         cy="24.463"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_051"
+         cx="40.720"
+         cy="20.187"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_052"
+         cx="34.060"
+         cy="34.795"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_053"
+         cx="39.304"
+         cy="22.437"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_054"
+         cx="38.983"
+         cy="21.968"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_055"
+         cx="35.701"
+         cy="25.275"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_056"
+         cx="23.271"
+         cy="23.825"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_057"
+         cx="34.918"
+         cy="38.668"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_058"
+         cx="30.790"
+         cy="28.761"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_059"
+         cx="37.943"
+         cy="22.413"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_060"
+         cx="33.601"
+         cy="26.167"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_061"
+         cx="42.097"
+         cy="18.992"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_062"
+         cx="39.732"
+         cy="20.801"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_063"
+         cx="34.981"
+         cy="40.858"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_064"
+         cx="30.466"
+         cy="27.898"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_065"
+         cx="28.935"
+         cy="26.187"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_066"
+         cx="34.003"
+         cy="39.784"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_067"
+         cx="26.892"
+         cy="25.484"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_068"
+         cx="41.534"
+         cy="20.604"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_069"
+         cx="36.923"
+         cy="23.788"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_070"
+         cx="27.050"
+         cy="26.177"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_071"
+         cx="42.672"
+         cy="18.705"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_072"
+         cx="32.296"
+         cy="32.163"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_073"
+         cx="33.547"
+         cy="31.257"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_074"
+         cx="33.197"
+         cy="40.333"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_075"
+         cx="34.316"
+         cy="29.343"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_076"
+         cx="20.486"
+         cy="22.765"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_077"
+         cx="33.362"
+         cy="37.165"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_078"
+         cx="32.660"
+         cy="35.613"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_079"
+         cx="31.379"
+         cy="25.896"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_080"
+         cx="33.379"
+         cy="27.142"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_081"
+         cx="37.586"
+         cy="23.574"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_082"
+         cx="27.737"
+         cy="26.233"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_083"
+         cx="21.428"
+         cy="23.089"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_084"
+         cx="24.087"
+         cy="25.491"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_085"
+         cx="32.321"
+         cy="27.246"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_086"
+         cx="34.304"
+         cy="40.631"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_087"
+         cx="41.262"
+         cy="18.989"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_088"
+         cx="34.452"
+         cy="26.648"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_089"
+         cx="37.533"
+         cy="24.197"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_090"
+         cx="34.537"
+         cy="33.941"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_091"
+         cx="35.742"
+         cy="26.896"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_092"
+         cx="32.424"
+         cy="32.898"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_093"
+         cx="42.012"
+         cy="18.182"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_094"
+         cx="33.675"
+         cy="33.990"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_095"
+         cx="32.259"
+         cy="30.723"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_096"
+         cx="32.120"
+         cy="34.811"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_097"
+         cx="31.638"
+         cy="33.514"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_098"
+         cx="28.371"
+         cy="25.471"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_099"
+         cx="34.129"
+         cy="36.133"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_100"
+         cx="33.248"
+         cy="32.181"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_101"
+         cx="35.083"
+         cy="36.549"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_102"
+         cx="22.320"
+         cy="22.843"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_103"
+         cx="32.834"
+         cy="30.878"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_104"
+         cx="36.799"
+         cy="26.055"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_105"
+         cx="39.772"
+         cy="20.018"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_106"
+         cx="36.092"
+         cy="25.825"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_107"
+         cx="37.030"
+         cy="24.726"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_108"
+         cx="34.037"
+         cy="32.150"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_109"
+         cx="22.773"
+         cy="24.988"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_110"
+         cx="25.220"
+         cy="23.844"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_111"
+         cx="34.082"
+         cy="41.691"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_112"
+         cx="33.421"
+         cy="34.746"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_113"
+         cx="35.025"
+         cy="27.207"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_114"
+         cx="33.775"
+         cy="40.814"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_115"
+         cx="37.555"
+         cy="27.648"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_116"
+         cx="31.714"
+         cy="31.611"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_117"
+         cx="25.301"
+         cy="26.493"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_118"
+         cx="22.174"
+         cy="23.486"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_119"
+         cx="31.062"
+         cy="27.382"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_120"
+         cx="30.514"
+         cy="27.292"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_121"
+         cx="34.297"
+         cy="38.025"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_122"
+         cx="29.490"
+         cy="28.202"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_123"
+         cx="33.179"
+         cy="33.544"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_124"
+         cx="41.109"
+         cy="20.982"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_125"
+         cx="34.809"
+         cy="25.038"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_126"
+         cx="34.303"
+         cy="42.449"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_127"
+         cx="34.172"
+         cy="33.438"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_128"
+         cx="26.628"
+         cy="24.657"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_129"
+         cx="41.360"
+         cy="19.942"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_130"
+         cx="27.686"
+         cy="26.950"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_131"
+         cx="32.069"
+         cy="28.709"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_132"
+         cx="37.975"
+         cy="25.337"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_133"
+         cx="28.266"
+         cy="24.618"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_134"
+         cx="20.977"
+         cy="23.561"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_135"
+         cx="38.972"
+         cy="20.304"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_136"
+         cx="36.650"
+         cy="24.316"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_137"
+         cx="29.537"
+         cy="26.494"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_138"
+         cx="34.712"
+         cy="28.567"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_139"
+         cx="34.914"
+         cy="27.931"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_140"
+         cx="34.485"
+         cy="24.106"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_141"
+         cx="34.918"
+         cy="43.183"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_142"
+         cx="38.856"
+         cy="24.590"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_143"
+         cx="27.906"
+         cy="27.971"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_144"
+         cx="31.261"
+         cy="34.499"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_145"
+         cx="37.399"
+         cy="22.676"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_146"
+         cx="28.845"
+         cy="25.163"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_147"
+         cx="37.426"
+         cy="26.192"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_148"
+         cx="30.530"
+         cy="26.721"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_149"
+         cx="40.409"
+         cy="22.228"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_150"
+         cx="24.441"
+         cy="26.681"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_151"
+         cx="22.933"
+         cy="25.898"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_152"
+         cx="30.696"
+         cy="29.376"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_153"
+         cx="21.714"
+         cy="23.983"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_154"
+         cx="34.657"
+         cy="35.924"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_155"
+         cx="39.307"
+         cy="19.708"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_156"
+         cx="33.445"
+         cy="25.614"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_157"
+         cx="32.231"
+         cy="30.103"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_158"
+         cx="29.225"
+         cy="27.644"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_159"
+         cx="29.259"
+         cy="29.282"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_160"
+         cx="25.521"
+         cy="25.752"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_161"
+         cx="29.748"
+         cy="25.737"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_162"
+         cx="38.635"
+         cy="25.479"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_163"
+         cx="36.832"
+         cy="22.664"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_164"
+         cx="36.514"
+         cy="25.435"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_165"
+         cx="33.259"
+         cy="27.731"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_166"
+         cx="35.398"
+         cy="26.334"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_167"
+         cx="28.947"
+         cy="26.802"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_168"
+         cx="28.924"
+         cy="30.969"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_169"
+         cx="33.019"
+         cy="26.415"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_170"
+         cx="35.572"
+         cy="39.026"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_171"
+         cx="39.234"
+         cy="21.368"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_172"
+         cx="31.597"
+         cy="27.113"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_173"
+         cx="31.361"
+         cy="28.572"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_174"
+         cx="40.020"
+         cy="21.397"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_175"
+         cx="34.963"
+         cy="29.992"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_176"
+         cx="32.295"
+         cy="37.122"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_177"
+         cx="31.396"
+         cy="30.621"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_178"
+         cx="42.043"
+         cy="19.722"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_179"
+         cx="34.780"
+         cy="22.890"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_180"
+         cx="30.868"
+         cy="31.788"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_181"
+         cx="38.588"
+         cy="22.666"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_182"
+         cx="38.853"
+         cy="20.878"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_183"
+         cx="33.785"
+         cy="36.722"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_184"
+         cx="32.896"
+         cy="38.422"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_185"
+         cx="38.282"
+         cy="24.656"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_186"
+         cx="23.555"
+         cy="25.289"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_187"
+         cx="32.201"
+         cy="29.481"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_188"
+         cx="24.115"
+         cy="26.073"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_189"
+         cx="32.786"
+         cy="31.460"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="feature_dot_190"
+         cx="31.303"
+         cy="30.062"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+    </g>
+    <g
+       id="layer_feature_true_simplex"
+       inkscape:groupmode="layer"
+       inkscape:label="feature true simplex">
+      <path
+         id="feature_true_simplex"
+         d="M 19.666,22.521 L 43.822,16.884 L 35.038,44.115 Z"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linejoin:miter;stroke-dasharray:1.3,0.9" />
+    </g>
+    <g
+       id="layer_feature_trajectories"
+       inkscape:groupmode="layer"
+       inkscape:label="feature trajectories">
+      <path
+         id="feature_trajectory_red"
+         d="M 17.982,21.935 L 17.690,18.495 L 20.398,18.129 L 21.716,18.861 L 22.960,17.543 L 23.033,14.469"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="feature_trajectory_green"
+         d="M 45.652,17.250 L 48.360,17.909 L 48.946,21.057 L 47.848,22.521 L 48.580,23.253 L 46.750,25.083 L 47.262,27.645 L 49.312,27.645 L 51.508,29.475"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="feature_trajectory_blue"
+         d="M 39.284,43.602 L 37.234,45.579 L 37.966,47.043 L 39.942,47.189 L 40.016,48.873 L 38.698,51.069"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="layer_feature_solutions"
+       inkscape:groupmode="layer"
+       inkscape:label="feature solutions">
+      <circle
+         id="feature_solution_red"
+         cx="17.982"
+         cy="21.934999"
+         r="0.47499999"
+         style="fill:#d7191c;stroke:#000000;stroke-width:0.175;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         id="feature_solution_green"
+         cx="45.652"
+         cy="17.25"
+         r="0.47499999"
+         style="fill:#1a9641;stroke:#000000;stroke-width:0.175;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         id="feature_solution_blue"
+         cx="39.284"
+         cy="43.602001"
+         r="0.47499999"
+         style="fill:#1f4fd8;stroke:#000000;stroke-width:0.175;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="layer_feature_axes"
+       inkscape:groupmode="layer"
+       inkscape:label="feature axes">
+      <path
+         id="feature_axis_up"
+         d="M 10.150,50.117 L 10.150,42.651"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+      <path
+         id="feature_axis_right"
+         d="M 10.150,50.117 L 15.420,50.117"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+      <path
+         id="feature_axis_downleft"
+         d="M 10.150,50.117 L 6.051,54.363"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+      <path
+         id="feature_axis_short"
+         d="M 10.150,50.117 L 12.053,52.313"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+    </g>
+    <g
+       id="layer_feature_title"
+       inkscape:groupmode="layer"
+       inkscape:label="feature title">
+      <rect
+         id="feature_title_box"
+         x="13.022"
+         y="59.400"
+         width="25.0"
+         height="6.2"
+         style="fill:none;stroke:#000000;stroke-width:0.212" />
+      <text
+         id="feature_title_text"
+         xml:space="preserve"
+         x="25.522"
+         y="63.389"
+         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.469px;text-anchor:middle;text-align:center;fill:#000000;stroke:none"><tspan
+           id="feature_title_tspan"
+           sodipodi:role="line"
+           x="25.522"
+           y="63.389">Feature simplex</tspan></text>
+    </g>
+  </g>
+  <g
+     id="layer_sample"
+     inkscape:groupmode="layer"
+     inkscape:label="sample simplex">
+    <g
+       id="layer_sample_plane"
+       inkscape:groupmode="layer"
+       inkscape:label="sample plane">
+      <path
+         id="sample_plane"
+         d="M 69.442,24.351 L 97.331,1.000 L 133.053,24.204 L 105.164,47.555 Z"
+         style="fill:#56B4E9;fill-opacity:0.3;stroke:none" />
+    </g>
+    <g
+       id="layer_sample_origin_lines"
+       inkscape:groupmode="layer"
+       inkscape:label="sample origin to vertex lines">
+      <path
+         id="sample_origin_to_red_vertex"
+         d="M 74.054,50.117 L 79.324,20.105"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3;stroke-dashoffset:0" />
+      <path
+         id="sample_origin_to_green_vertex"
+         d="M 74.054,50.117 L 106.774,10.809"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3;stroke-dashoffset:0" />
+      <path
+         id="sample_origin_to_blue_vertex"
+         d="M 74.054,50.117 L 110.434,38.259"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3;stroke-dashoffset:0" />
+    </g>
+    <g
+       id="layer_sample_dots"
+       inkscape:groupmode="layer"
+       inkscape:label="sample dots"
+       style="fill:#666666">
+      <circle
+         id="sample_dot_001"
+         cx="92.785"
+         cy="18.114"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_002"
+         cx="105.576"
+         cy="32.546"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_003"
+         cx="102.063"
+         cy="21.806"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_004"
+         cx="92.923"
+         cy="27.200"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_005"
+         cx="83.595"
+         cy="20.667"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_006"
+         cx="103.178"
+         cy="15.118"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_007"
+         cx="89.136"
+         cy="22.674"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_008"
+         cx="109.960"
+         cy="36.994"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_009"
+         cx="96.754"
+         cy="14.304"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_010"
+         cx="107.717"
+         cy="20.959"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_011"
+         cx="107.465"
+         cy="26.274"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_012"
+         cx="103.440"
+         cy="26.675"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_013"
+         cx="88.174"
+         cy="18.449"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_014"
+         cx="98.441"
+         cy="26.326"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_015"
+         cx="105.663"
+         cy="11.963"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_016"
+         cx="100.795"
+         cy="32.266"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_017"
+         cx="92.357"
+         cy="24.347"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_018"
+         cx="99.754"
+         cy="18.068"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_019"
+         cx="104.197"
+         cy="19.099"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_020"
+         cx="103.531"
+         cy="30.210"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_021"
+         cx="80.014"
+         cy="20.354"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_022"
+         cx="97.010"
+         cy="20.618"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_023"
+         cx="109.230"
+         cy="31.523"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_024"
+         cx="95.772"
+         cy="28.102"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_025"
+         cx="105.340"
+         cy="23.514"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_026"
+         cx="106.945"
+         cy="17.316"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_027"
+         cx="107.098"
+         cy="14.864"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_028"
+         cx="90.848"
+         cy="19.223"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_029"
+         cx="97.872"
+         cy="30.617"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_030"
+         cx="101.512"
+         cy="28.486"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_031"
+         cx="105.103"
+         cy="34.451"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_032"
+         cx="93.535"
+         cy="21.930"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_033"
+         cx="96.160"
+         cy="16.874"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_034"
+         cx="86.632"
+         cy="19.603"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_035"
+         cx="85.585"
+         cy="21.841"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_036"
+         cx="109.034"
+         cy="28.349"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_037"
+         cx="102.250"
+         cy="12.987"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_038"
+         cx="101.209"
+         cy="24.916"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_039"
+         cx="95.716"
+         cy="24.504"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_040"
+         cx="105.853"
+         cy="29.062"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_041"
+         cx="93.301"
+         cy="15.442"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_042"
+         cx="109.517"
+         cy="35.011"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_043"
+         cx="105.519"
+         cy="30.683"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_044"
+         cx="94.529"
+         cy="25.337"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_045"
+         cx="99.920"
+         cy="13.795"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_046"
+         cx="98.255"
+         cy="22.441"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_047"
+         cx="90.699"
+         cy="22.882"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_048"
+         cx="100.218"
+         cy="20.273"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_049"
+         cx="89.082"
+         cy="25.593"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_050"
+         cx="94.517"
+         cy="19.218"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_051"
+         cx="87.539"
+         cy="24.594"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_052"
+         cx="102.323"
+         cy="31.672"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_053"
+         cx="100.342"
+         cy="15.938"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_054"
+         cx="105.489"
+         cy="26.712"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_055"
+         cx="102.609"
+         cy="17.450"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_056"
+         cx="99.860"
+         cy="26.401"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_057"
+         cx="89.911"
+         cy="17.638"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_058"
+         cx="107.053"
+         cy="24.005"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_059"
+         cx="91.831"
+         cy="20.690"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_060"
+         cx="107.387"
+         cy="34.658"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_061"
+         cx="82.046"
+         cy="20.170"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_062"
+         cx="83.871"
+         cy="18.825"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_063"
+         cx="107.165"
+         cy="18.978"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_064"
+         cx="103.863"
+         cy="20.919"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_065"
+         cx="107.528"
+         cy="28.907"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_066"
+         cx="100.249"
+         cy="30.155"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_067"
+         cx="104.594"
+         cy="16.831"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_068"
+         cx="85.980"
+         cy="18.302"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_069"
+         cx="99.193"
+         cy="28.243"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_070"
+         cx="100.145"
+         cy="23.856"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_071"
+         cx="98.088"
+         cy="15.597"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_072"
+         cx="92.341"
+         cy="25.706"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_073"
+         cx="88.120"
+         cy="21.292"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_074"
+         cx="103.705"
+         cy="24.651"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_075"
+         cx="100.592"
+         cy="27.824"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_076"
+         cx="108.344"
+         cy="24.827"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_077"
+         cx="104.005"
+         cy="12.172"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_078"
+         cx="98.819"
+         cy="20.679"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_079"
+         cx="102.125"
+         cy="25.908"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_080"
+         cx="96.374"
+         cy="22.347"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_081"
+         cx="96.941"
+         cy="18.662"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_082"
+         cx="87.956"
+         cy="23.245"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_083"
+         cx="90.340"
+         cy="24.470"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_084"
+         cx="108.765"
+         cy="33.049"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_085"
+         cx="95.604"
+         cy="20.508"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_086"
+         cx="108.687"
+         cy="30.261"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_087"
+         cx="105.157"
+         cy="20.664"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_088"
+         cx="96.150"
+         cy="25.669"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_089"
+         cx="102.381"
+         cy="20.143"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_090"
+         cx="104.657"
+         cy="14.429"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_091"
+         cx="90.397"
+         cy="21.525"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_092"
+         cx="108.380"
+         cy="22.959"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_093"
+         cx="103.700"
+         cy="34.323"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_094"
+         cx="97.199"
+         cy="28.267"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_095"
+         cx="98.398"
+         cy="23.755"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_096"
+         cx="94.274"
+         cy="23.095"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_097"
+         cx="104.425"
+         cy="29.235"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_098"
+         cx="107.471"
+         cy="32.580"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_099"
+         cx="107.637"
+         cy="31.319"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_100"
+         cx="107.882"
+         cy="36.025"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_101"
+         cx="94.768"
+         cy="16.941"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_102"
+         cx="102.193"
+         cy="23.272"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_103"
+         cx="101.518"
+         cy="16.603"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_104"
+         cx="98.097"
+         cy="17.425"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_105"
+         cx="94.798"
+         cy="15.411"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_106"
+         cx="106.796"
+         cy="30.012"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_107"
+         cx="101.035"
+         cy="31.017"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_108"
+         cx="104.222"
+         cy="27.785"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_109"
+         cx="86.922"
+         cy="22.420"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_110"
+         cx="94.569"
+         cy="27.055"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_111"
+         cx="93.940"
+         cy="28.411"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_112"
+         cx="98.478"
+         cy="14.554"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_113"
+         cx="106.407"
+         cy="13.692"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_114"
+         cx="89.649"
+         cy="18.987"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+      <circle
+         id="sample_dot_115"
+         cx="88.510"
+         cy="24.689"
+         r="0.26"
+         style="fill:#666666;stroke:none" />
+    </g>
+    <g
+       id="layer_sample_true_simplex"
+       inkscape:groupmode="layer"
+       inkscape:label="sample true simplex">
+      <path
+         id="sample_true_simplex"
+         d="M 79.324,20.105 L 106.774,10.809 L 110.434,38.259 Z"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linejoin:miter;stroke-dasharray:1.3,0.9" />
+    </g>
+    <g
+       id="layer_sample_trajectories"
+       inkscape:groupmode="layer"
+       inkscape:label="sample trajectories">
+      <path
+         id="sample_trajectory_red"
+         d="M 82.472,19.593 L 84.448,20.837 L 86.644,21.203 L 89.206,22.740 L 90.670,22.155 L 90.450,19.227 L 92.866,17.763"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="sample_trajectory_green"
+         d="M 107.140,10.809 L 106.408,12.273 L 104.944,13.371 L 104.578,15.567 L 103.114,15.567 L 100.918,16.299 L 100.772,18.129 L 102.748,17.763 L 103.480,19.593"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="sample_trajectory_blue"
+         d="M 104.724,32.988 L 102.162,32.549 L 102.162,31.305 L 103.846,30.573 L 105.530,29.109 L 103.700,27.132 L 101.650,28.011 L 100.552,26.547 L 98.942,26.181"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="layer_sample_solutions"
+       inkscape:groupmode="layer"
+       inkscape:label="sample solutions">
+      <circle
+         id="sample_solution_red"
+         cx="82.472"
+         cy="19.593"
+         style="fill:#d7191c;stroke:#000000;stroke-width:0.175;stroke-dasharray:none;stroke-opacity:1"
+         r="0.47499999" />
+      <circle
+         id="sample_solution_green"
+         cx="107.14"
+         cy="10.809"
+         r="0.47499999"
+         style="fill:#1a9641;stroke:#000000;stroke-width:0.175;stroke-dasharray:none;stroke-opacity:1" />
+      <circle
+         id="sample_solution_blue"
+         cx="104.724"
+         cy="32.987999"
+         r="0.47499999"
+         style="fill:#1f4fd8;stroke:#000000;stroke-width:0.175;stroke-dasharray:none;stroke-opacity:1" />
+    </g>
+    <g
+       id="layer_sample_axes"
+       inkscape:groupmode="layer"
+       inkscape:label="sample axes">
+      <path
+         id="sample_axis_up"
+         d="M 74.054,50.117 L 74.054,42.651"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+      <path
+         id="sample_axis_right"
+         d="M 74.054,50.117 L 79.324,50.117"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+      <path
+         id="sample_axis_downleft"
+         d="M 74.054,50.117 L 69.954,54.363"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+      <path
+         id="sample_axis_short"
+         d="M 74.054,50.117 L 75.957,52.313"
+         style="fill:none;stroke:#000000;stroke-width:0.423;stroke-linecap:round;marker-end:url(#marker_axis_arrow)" />
+    </g>
+    <g
+       id="layer_sample_title"
+       inkscape:groupmode="layer"
+       inkscape:label="sample title">
+      <rect
+         id="sample_title_box"
+         x="83.587"
+         y="59.400"
+         width="25.0"
+         height="6.2"
+         style="fill:none;stroke:#000000;stroke-width:0.212" />
+      <text
+         id="sample_title_text"
+         xml:space="preserve"
+         x="96.087"
+         y="63.389"
+         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.469px;text-anchor:middle;text-align:center;fill:#000000;stroke:none"><tspan
+           id="sample_title_tspan"
+           sodipodi:role="line"
+           x="96.087"
+           y="63.389">Sample simplex</tspan></text>
+    </g>
+  </g>
+</svg>
