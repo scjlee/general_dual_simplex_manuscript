@@ -8,6 +8,7 @@ import random
 import re
 import subprocess
 from pathlib import Path
+from math import log1p
 from statistics import mean, pstdev
 
 HERE = Path(__file__).parent
@@ -20,8 +21,8 @@ FONT = 8 * PT
 OPERATOR_FONT = 14 * PT
 CAP_HEIGHT = 0.716 * FONT
 MATH_AXIS = 0.34 * OPERATOR_FONT
-CELL = 3.1
-TOP = 10.3
+CELL = 3.0
+TOP = 10.9
 ROW_CENTRE = TOP + 3 * CELL
 DARK = "#404040"
 
@@ -106,7 +107,7 @@ def header(name, title, x0, x1):
 
 def annotation(name, symbol, word, x_centre):
     content = f'<tspan id="label_{name}_symbol" style="font-weight:bold">{symbol}</tspan> ({word})'
-    return text(f"label_{name}", x_centre, TOP - 0.9, content)
+    return text(f"label_{name}", x_centre, TOP - 1.7, content)
 
 
 def rank_scale(values):
@@ -114,18 +115,18 @@ def rank_scale(values):
     return lambda value: ranked.index(value) / (len(ranked) - 1)
 
 
-def linear_scale(values):
-    low, high = min(values), max(values)
-    return lambda value: (value - low) / (high - low)
+def log_scale(values):
+    low, high = log1p(min(values)), log1p(max(values))
+    return lambda value: (log1p(value) - low) / (high - low)
 
 
 signal_stops = ["#56B4E9", "#009E73", "#E69F00"]
-signal_scale = linear_scale(entries(Vstar) + entries(V))
-matrices = [("W", "W", "profiles", W, single_colour("#D55E00"), rank_scale(W), 4.2),
-            ("H", "H", "proportions", H, single_colour("#0072B2"), rank_scale(H), 23.0),
-            ("Vstar", "V*", "true signal", Vstar, signal_stops, signal_scale, 51.0),
-            ("epsilon", "ε", "noise", epsilon, single_colour(DARK), rank_scale(epsilon), 81.5),
-            ("V", "V", "observed data", V, signal_stops, signal_scale, 112.0)]
+signal_scale = log_scale(entries(Vstar) + entries(V))
+matrices = [("W", "W", "profiles", W, single_colour("#D55E00"), rank_scale(W), 4.35),
+            ("H", "H", "proportions", H, single_colour("#0072B2"), rank_scale(H), 23.25),
+            ("Vstar", "V*", "true signal", Vstar, signal_stops, signal_scale, 51.25),
+            ("epsilon", "ε", "noise", epsilon, single_colour(DARK), rank_scale(epsilon), 81.75),
+            ("V", "V", "observed data", V, signal_stops, signal_scale, 112.25)]
 headers = [("signal_generation", "Signal generation", 0.4, 73.2),
            ("perturbation", "Perturbation", 74.8, 133.6)]
 operators = [("times", "×", 18.25), ("plus", "+", 74.0), ("equals", "=", 104.5)]
@@ -136,7 +137,7 @@ layers = [
           [rect("signal_outline", 0.4, 6.4, 42.0, 23.6,
                 f"fill:none;stroke:{DARK};stroke-width:{0.5 * PT:.4f};stroke-dasharray:1.2,0.8", rx=0.8)]),
     layer("layer_arrow", "arrow to true signal",
-          [f'<path id="arrow_factors_to_signal" d="M 43.4,{ROW_CENTRE} L 49.9,{ROW_CENTRE}" style="fill:none;'
+          [f'<path id="arrow_factors_to_signal" d="M 43.4,{ROW_CENTRE} L 50.15,{ROW_CENTRE}" style="fill:none;'
            f'stroke:#000000;stroke-width:{0.6 * PT:.4f};marker-end:url(#marker_arrow_head)"/>']),
     *[matrix(name, values, stops, scale, x) for name, _, _, values, stops, scale, x in matrices],
     layer("layer_labels", "matrix annotations",
@@ -185,6 +186,6 @@ noise = [x for row in epsilon for x in row]
 print(f"m={m} k={k} n={n} seed=20261109 canvas={WIDTH}x{HEIGHT} mm ratio={WIDTH / HEIGHT:.3f}")
 print(f"V* mean={mean(entries):.3f} sd={pstdev(entries):.3f}; noise sd before clipping={noise_sd:.3f}")
 print(f"epsilon = V - V*: min={min(noise):.3f} max={max(noise):.3f}")
-print("cell colour: V* and V are linear in value on one shared #56B4E9-#009E73-#E69F00 scale; "
+print("cell colour: V* and V are linear in log(1 + value) on one shared #56B4E9-#009E73-#E69F00 scale; "
       "W, H and epsilon show rank within each matrix")
 print(f"entries clipped at zero: {sum(x == 0 for row in V for x in row)}")
