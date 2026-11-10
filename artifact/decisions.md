@@ -681,3 +681,32 @@ on origin. Ignored `out/` is on no branch and stays on disk.
 
 Revisit if: any old panel, data file or generator is needed for the new figure;
 restore it from `261029-figure1`.
+
+## 2026-11-10 — Redraw Figure 1A as a pipeline row over two perspective simplex planes
+
+Context: over one session the user redesigned Figure 1A from hand drawings,
+asking for the style of Figure 1B and comparing designs side by side.
+
+Options: flat rectangles with thick axes beside them (v3), or trapezoid planes in
+perspective with thin axes underneath (v4 onwards); straight zigzag paths, spirals,
+or curved paths.
+
+Decision (user): a pipeline row (V data, Sinkhorn scaling, Find subspace, Find
+solution) above two linked planes ("Feature simplex", "Sample simplex"). Both planes
+are level trapezoids (lower corners 66 degrees) with identical thin grey axes
+underneath; triangles are turned 8 and 10 degrees clockwise so no dotted origin line
+lies within 12 degrees of an arrow. Solutions are #CC79A7, #009E73 and #0072B2
+ellipses: one at a corner, one inside and one outside, with the inside/outside
+roles swapped between the planes. Every path has 8 steps; matched paths move in
+opposite directions (pink and green in on the feature plane and out on the sample
+plane; blue the reverse). Spirals were dropped: at 8 steps they looked like
+polygons and blurred the direction of travel.
+
+Evidence: `figure/fig1/panelA/fig1A.svg` is the master. It is a schematic: the dots
+are illustrative random draws and support no claim. The scratch generators and
+numbered backups are in ignored `out/20261108_fig1A_draft/` to
+`out/20261110_fig1A_v8/`; the user asked for the SVG only, so no generator or
+`package_commit.txt` is tracked for this panel.
+
+Revisit if: the panel should show computed data, a caption draft is written, or the
+user wants a tracked generator for this panel.
