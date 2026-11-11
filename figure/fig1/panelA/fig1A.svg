@@ -385,11 +385,11 @@
              id="step_subspace_text_line1"
              sodipodi:role="line"
              x="76.500"
-             y="8.717">Find</tspan><tspan
+             y="8.717">Subspace</tspan><tspan
              id="step_subspace_text_line2"
              sodipodi:role="line"
              x="76.500"
-             y="12.104">subspace</tspan></text>
+             y="12.104">estimation</tspan></text>
       </g>
       <g
          id="step_solution">
@@ -527,21 +527,12 @@
          id="feature_axis_downleft"
          d="M 33.000,54.500 L 2.900,60.200"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
-      <text
-         id="feature_axis_downleft_label"
-         x="16.820"
-         y="59.615"
-         xml:space="preserve"
-         transform="rotate(-10.723 16.820 59.615)"
-         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;font-weight:bold;text-anchor:middle;text-align:center;fill:#4D4D4D"><tspan
-           id="feature_axis_downleft_label_line"
-           sodipodi:role="line"
-           x="16.820"
-           y="59.615">scaled sample space</tspan></text>
+      <text id="feature_axis_downleft_label" x="4.407" y="61.709" xml:space="preserve" transform="rotate(-10.723 4.407 61.709)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:start;text-align:start;fill:#4D4D4D"><tspan id="feature_axis_downleft_label_line" sodipodi:role="line" x="4.407" y="61.709">scaled sample<tspan id="feature_axis_downleft_label_sub" style="font-size:1.2347px;baseline-shift:sub">1</tspan> expr.</tspan></text>
       <path
          id="feature_axis_downright"
          d="M 33.000,54.500 L 55.900,63.850"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+      <text id="feature_axis_downright_label" x="54.123" y="65.029" xml:space="preserve" transform="rotate(22.210 54.123 65.029)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:end;text-align:end;fill:#4D4D4D"><tspan id="feature_axis_downright_label_line" sodipodi:role="line" x="54.123" y="65.029">scaled sample<tspan id="feature_axis_downright_label_sub" style="font-size:1.2347px;baseline-shift:sub">2</tspan> expr.</tspan></text>
     </g>
     <g
        id="layer_feature_origin_lines"
@@ -2459,21 +2450,12 @@
          id="sample_axis_downleft"
          d="M 101.000,54.500 L 70.900,60.200"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
-      <text
-         id="sample_axis_downleft_label"
-         x="84.820"
-         y="59.615"
-         xml:space="preserve"
-         transform="rotate(-10.723 84.820 59.615)"
-         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;font-weight:bold;text-anchor:middle;text-align:center;fill:#4D4D4D"><tspan
-           id="sample_axis_downleft_label_line"
-           sodipodi:role="line"
-           x="84.820"
-           y="59.615">scaled feature space</tspan></text>
+      <text id="sample_axis_downleft_label" x="72.407" y="61.709" xml:space="preserve" transform="rotate(-10.723 72.407 61.709)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:start;text-align:start;fill:#4D4D4D"><tspan id="sample_axis_downleft_label_line" sodipodi:role="line" x="72.407" y="61.709">scaled feature<tspan id="sample_axis_downleft_label_sub" style="font-size:1.2347px;baseline-shift:sub">1</tspan> expr.</tspan></text>
       <path
          id="sample_axis_downright"
          d="M 101.000,54.500 L 123.900,63.850"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+      <text id="sample_axis_downright_label" x="122.123" y="65.029" xml:space="preserve" transform="rotate(22.210 122.123 65.029)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:end;text-align:end;fill:#4D4D4D"><tspan id="sample_axis_downright_label_line" sodipodi:role="line" x="122.123" y="65.029">scaled feature<tspan id="sample_axis_downright_label_sub" style="font-size:1.2347px;baseline-shift:sub">2</tspan> expr.</tspan></text>
     </g>
     <g
        id="layer_sample_origin_lines"
