@@ -1,643 +1,3773 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg id="fig1A" version="1.1" width="134mm" height="67mm" viewBox="0 0 134 67"
+<svg
+   id="fig1A"
+   version="1.1"
+   width="134mm"
+   height="67mm"
+   viewBox="0 0 134 67"
    sodipodi:docname="fig1A.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-<title id="fig1A_title">Figure 1A schematic of the DualSimplex method</title>
-<sodipodi:namedview id="namedview_fig1A" inkscape:document-units="mm" pagecolor="#ffffff"
-   inkscape:pageopacity="1" inkscape:current-layer="layer_pipeline"/>
-<defs id="defs_fig1A">
-<marker id="marker_arrow_head" orient="auto-start-reverse" markerUnits="strokeWidth" markerWidth="9"
-   markerHeight="9" viewBox="0 0 9 9" refX="8.5" refY="4.5" style="overflow:visible">
-<path id="marker_arrow_head_shape" d="M 0,0.5 L 9,4.5 L 0,8.5 Z" style="fill:#000000;stroke:none"/>
-</marker>
-<marker id="marker_axis_head" orient="auto" markerUnits="strokeWidth" markerWidth="4.5"
-   markerHeight="4.5" viewBox="0 0 9 9" refX="7" refY="4.5" style="overflow:visible">
-<path id="marker_axis_head_shape" d="M 0,0.5 L 9,4.5 L 0,8.5 Z" style="fill:#000000;stroke:none"/>
-</marker>
-<marker id="marker_axis_head_grey" orient="auto" markerUnits="strokeWidth" markerWidth="9" markerHeight="9" viewBox="0 0 9 9" refX="8.5" refY="4.5" style="overflow:visible">
-<path id="marker_axis_head_grey_shape" d="M 0,0.5 L 9,4.5 L 0,8.5 Z" style="fill:#4D4D4D;stroke:none"/>
-</marker>
-</defs>
-<g id="layer_pipeline" inkscape:groupmode="layer" inkscape:label="pipeline">
-<g id="layer_pipeline_data" inkscape:groupmode="layer" inkscape:label="pipeline data">
-<g id="data_V_cells">
-<rect id="data_V_r1_c1" x="3.000" y="4.600" width="1.600" height="1.600" style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r1_c2" x="4.600" y="4.600" width="1.600" height="1.600" style="fill:#10a289;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r1_c3" x="6.200" y="4.600" width="1.600" height="1.600" style="fill:#469e50;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r1_c4" x="7.800" y="4.600" width="1.600" height="1.600" style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r1_c5" x="9.400" y="4.600" width="1.600" height="1.600" style="fill:#7c9f35;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r2_c1" x="3.000" y="6.200" width="1.600" height="1.600" style="fill:#0b9e6e;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r2_c2" x="4.600" y="6.200" width="1.600" height="1.600" style="fill:#df9f03;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r2_c3" x="6.200" y="6.200" width="1.600" height="1.600" style="fill:#ad9f1c;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r2_c4" x="7.800" y="6.200" width="1.600" height="1.600" style="fill:#419e52;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r2_c5" x="9.400" y="6.200" width="1.600" height="1.600" style="fill:#e69f00;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r3_c1" x="3.000" y="7.800" width="1.600" height="1.600" style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r3_c2" x="4.600" y="7.800" width="1.600" height="1.600" style="fill:#049f79;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r3_c3" x="6.200" y="7.800" width="1.600" height="1.600" style="fill:#6c9e3d;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r3_c4" x="7.800" y="7.800" width="1.600" height="1.600" style="fill:#019e75;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r3_c5" x="9.400" y="7.800" width="1.600" height="1.600" style="fill:#229e62;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r4_c1" x="3.000" y="9.400" width="1.600" height="1.600" style="fill:#1a9e66;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r4_c2" x="4.600" y="9.400" width="1.600" height="1.600" style="fill:#629e42;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r4_c3" x="6.200" y="9.400" width="1.600" height="1.600" style="fill:#12a38c;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r4_c4" x="7.800" y="9.400" width="1.600" height="1.600" style="fill:#2c9e5d;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r4_c5" x="9.400" y="9.400" width="1.600" height="1.600" style="fill:#19a495;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r5_c1" x="3.000" y="11.000" width="1.600" height="1.600" style="fill:#aa9f1e;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r5_c2" x="4.600" y="11.000" width="1.600" height="1.600" style="fill:#989f27;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r5_c3" x="6.200" y="11.000" width="1.600" height="1.600" style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r5_c4" x="7.800" y="11.000" width="1.600" height="1.600" style="fill:#bf9f14;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r5_c5" x="9.400" y="11.000" width="1.600" height="1.600" style="fill:#39adc2;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r6_c1" x="3.000" y="12.600" width="1.600" height="1.600" style="fill:#9e9f24;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r6_c2" x="4.600" y="12.600" width="1.600" height="1.600" style="fill:#1da59a;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r6_c3" x="6.200" y="12.600" width="1.600" height="1.600" style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r6_c4" x="7.800" y="12.600" width="1.600" height="1.600" style="fill:#939f2a;stroke:#ffffff;stroke-width:0.106"/>
-<rect id="data_V_r6_c5" x="9.400" y="12.600" width="1.600" height="1.600" style="fill:#239e62;stroke:#ffffff;stroke-width:0.106"/>
-</g>
-<rect id="data_V_frame" x="3.000" y="4.600" width="8.000" height="9.600" style="fill:none;stroke:#000000;stroke-width:0.176"/>
-<text id="data_V_label" x="7.000" y="3.200" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:normal;text-anchor:middle;text-align:center;fill:#000000"><tspan id="data_V_label_line1" sodipodi:role="line" x="7.000" y="3.200"><tspan id="data_V_label_symbol" style="font-weight:bold">V</tspan> (data)</tspan></text>
-</g>
-<g id="layer_pipeline_steps" inkscape:groupmode="layer" inkscape:label="pipeline steps">
-<g id="step_sinkhorn"><rect id="step_sinkhorn_box" x="22.000" y="4.600" width="29.000" height="9.600" rx="0.8" style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176"/><text id="step_sinkhorn_text" x="36.500" y="8.717" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan id="step_sinkhorn_text_line1" sodipodi:role="line" x="36.500" y="8.717">Sinkhorn</tspan><tspan id="step_sinkhorn_text_line2" sodipodi:role="line" x="36.500" y="12.104">scaling</tspan></text></g>
-<g id="step_subspace"><rect id="step_subspace_box" x="62.000" y="4.600" width="29.000" height="9.600" rx="0.8" style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176"/><text id="step_subspace_text" x="76.500" y="8.717" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan id="step_subspace_text_line1" sodipodi:role="line" x="76.500" y="8.717">Find</tspan><tspan id="step_subspace_text_line2" sodipodi:role="line" x="76.500" y="12.104">subspace</tspan></text></g>
-<g id="step_solution"><rect id="step_solution_box" x="102.000" y="4.600" width="29.000" height="9.600" rx="0.8" style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176"/><text id="step_solution_text" x="116.500" y="8.717" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan id="step_solution_text_line1" sodipodi:role="line" x="116.500" y="8.717">Find</tspan><tspan id="step_solution_text_line2" sodipodi:role="line" x="116.500" y="12.104">solution</tspan></text></g>
-</g>
-<g id="layer_pipeline_arrows" inkscape:groupmode="layer" inkscape:label="pipeline arrows">
-<path id="arrow_to_sinkhorn" d="M 12.000,9.400 L 21.000,9.400" style="fill:none;stroke:#000000;stroke-width:0.212;marker-end:url(#marker_arrow_head)"/>
-<path id="arrow_to_subspace" d="M 52.000,9.400 L 61.000,9.400" style="fill:none;stroke:#000000;stroke-width:0.212;marker-end:url(#marker_arrow_head)"/>
-<path id="arrow_to_solution" d="M 92.000,9.400 L 101.000,9.400" style="fill:none;stroke:#000000;stroke-width:0.212;marker-end:url(#marker_arrow_head)"/>
-</g>
-</g>
-<g id="layer_linked_titles" inkscape:groupmode="layer" inkscape:label="linked titles">
-<g id="layer_titles" inkscape:groupmode="layer" inkscape:label="titles">
-<g id="title_feature"><rect id="title_feature_box" x="18.000" y="18.600" width="30.000" height="4.600" rx="0.8" style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176"/><text id="title_feature_text" x="33.000" y="21.910" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan id="title_feature_text_line1" sodipodi:role="line" x="33.000" y="21.910">Feature simplex</tspan></text></g>
-<g id="title_sample"><rect id="title_sample_box" x="86.000" y="18.600" width="30.000" height="4.600" rx="0.8" style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176"/><text id="title_sample_text" x="101.000" y="21.910" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan id="title_sample_text_line1" sodipodi:role="line" x="101.000" y="21.910">Sample simplex</tspan></text></g>
-</g>
-<g id="layer_link" inkscape:groupmode="layer" inkscape:label="link arrow and label">
-<path id="link_double_arrow" d="M 49.000,21.900 L 85.000,21.900" style="fill:none;stroke:#000000;stroke-width:0.212;marker-start:url(#marker_arrow_head);marker-end:url(#marker_arrow_head)"/>
-<text id="link_label" x="67.000" y="20.500" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:normal;text-anchor:middle;text-align:center;fill:#000000"><tspan id="link_label_line1" sodipodi:role="line" x="67.000" y="20.500">linked dual simplex</tspan></text>
-</g>
-</g>
-<g id="layer_feature" inkscape:groupmode="layer" inkscape:label="feature simplex">
-<g id="layer_feature_axes" inkscape:groupmode="layer" inkscape:label="feature axes">
-<path id="feature_axis_up" d="M 33.000,54.500 L 33.000,47.500" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-<path id="feature_axis_upright" d="M 33.000,54.500 L 36.000,51.900" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-<path id="feature_axis_downleft" d="M 33.000,54.500 L 2.900,60.200" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-<path id="feature_axis_downright" d="M 33.000,54.500 L 55.900,63.850" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-</g>
-<g id="layer_feature_origin_lines" inkscape:groupmode="layer" inkscape:label="feature origin to vertex lines">
-<path id="feature_origin_to_pink_vertex" d="M 33.000,54.500 L 16.057,43.888" style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3"/>
-<path id="feature_origin_to_green_vertex" d="M 33.000,54.500 L 42.302,28.392" style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3"/>
-<path id="feature_origin_to_blue_vertex" d="M 33.000,54.500 L 57.067,50.117" style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3"/>
-</g>
-<g id="layer_feature_subspace" inkscape:groupmode="layer" inkscape:label="feature subspace">
-<path id="feature_subspace" d="M 14.857,26.000 L 51.143,26.000 L 64.500,56.000 L 1.500,56.000 Z" style="fill:#E69F00;fill-opacity:0.15;stroke:#E69F00;stroke-opacity:1;stroke-width:0.176;stroke-linejoin:miter"/>
-</g>
-<g id="layer_feature_dots" inkscape:groupmode="layer" inkscape:label="feature dots">
-<circle id="feature_dot_001" cx="37.035" cy="39.246" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_002" cx="42.319" cy="40.604" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_003" cx="22.484" cy="42.620" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_004" cx="18.332" cy="43.903" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_005" cx="41.955" cy="41.677" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_006" cx="25.833" cy="43.615" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_007" cx="51.027" cy="47.043" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_008" cx="41.774" cy="29.860" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_009" cx="41.651" cy="29.037" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_010" cx="25.484" cy="42.269" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_011" cx="43.675" cy="43.106" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_012" cx="41.178" cy="38.905" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_013" cx="20.157" cy="42.754" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_014" cx="27.320" cy="41.408" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_015" cx="30.582" cy="42.533" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_016" cx="40.148" cy="31.444" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_017" cx="31.346" cy="41.709" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_018" cx="49.893" cy="46.663" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_019" cx="47.743" cy="45.725" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_020" cx="41.639" cy="33.013" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_021" cx="41.190" cy="34.773" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_022" cx="48.270" cy="46.689" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_023" cx="39.312" cy="42.311" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_024" cx="32.088" cy="40.639" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_025" cx="53.639" cy="48.554" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_026" cx="30.706" cy="40.935" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_027" cx="43.199" cy="42.153" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_028" cx="31.965" cy="42.727" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_029" cx="42.233" cy="29.325" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_030" cx="28.320" cy="41.824" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_031" cx="34.389" cy="40.761" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_032" cx="25.780" cy="41.645" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_033" cx="45.596" cy="42.436" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_034" cx="42.421" cy="42.571" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_035" cx="40.464" cy="30.403" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_036" cx="39.369" cy="35.820" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_037" cx="35.940" cy="40.228" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_038" cx="30.366" cy="39.906" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_039" cx="34.431" cy="38.582" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_040" cx="39.635" cy="37.279" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_041" cx="41.301" cy="31.330" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_042" cx="25.679" cy="42.884" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_043" cx="40.455" cy="42.269" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_044" cx="53.485" cy="47.751" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_045" cx="37.020" cy="38.678" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_046" cx="24.576" cy="42.625" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_047" cx="29.226" cy="42.716" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_048" cx="39.852" cy="35.317" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_049" cx="47.378" cy="45.091" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_050" cx="37.880" cy="34.538" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_051" cx="20.829" cy="43.404" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_052" cx="43.485" cy="31.258" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_053" cx="28.967" cy="40.772" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_054" cx="18.932" cy="43.390" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_055" cx="21.971" cy="43.315" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_056" cx="34.219" cy="41.989" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_057" cx="23.976" cy="42.225" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_058" cx="35.982" cy="43.682" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_059" cx="39.393" cy="34.032" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_060" cx="41.204" cy="30.458" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_061" cx="43.695" cy="43.789" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_062" cx="54.995" cy="49.331" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_063" cx="30.264" cy="40.545" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_064" cx="37.061" cy="37.533" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_065" cx="19.503" cy="43.267" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_066" cx="41.209" cy="31.880" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_067" cx="40.198" cy="32.810" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_068" cx="38.180" cy="41.010" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_069" cx="40.013" cy="40.312" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_070" cx="36.539" cy="42.216" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_071" cx="26.666" cy="42.460" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_072" cx="41.266" cy="41.682" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_073" cx="38.448" cy="38.280" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_074" cx="46.820" cy="44.036" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_075" cx="46.139" cy="43.968" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_076" cx="32.318" cy="42.167" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_077" cx="35.936" cy="39.428" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_078" cx="48.525" cy="44.796" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_079" cx="40.606" cy="31.854" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_080" cx="38.821" cy="35.556" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_081" cx="36.273" cy="37.160" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_082" cx="41.052" cy="29.833" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_083" cx="42.386" cy="31.020" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_084" cx="27.186" cy="42.667" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_085" cx="32.829" cy="42.429" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_086" cx="39.429" cy="41.181" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_087" cx="40.652" cy="34.563" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_088" cx="27.540" cy="42.063" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_089" cx="36.272" cy="35.882" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_090" cx="28.818" cy="39.736" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_091" cx="44.833" cy="43.881" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_092" cx="41.959" cy="31.509" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_093" cx="54.564" cy="48.373" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_094" cx="40.326" cy="41.442" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_095" cx="21.494" cy="41.889" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_096" cx="52.968" cy="48.298" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_097" cx="39.932" cy="42.579" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_098" cx="37.909" cy="37.162" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_099" cx="46.866" cy="45.564" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_100" cx="45.426" cy="44.396" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_101" cx="41.487" cy="33.883" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_102" cx="39.103" cy="36.534" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_103" cx="26.812" cy="40.884" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_104" cx="39.255" cy="35.003" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_105" cx="44.248" cy="44.987" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_106" cx="54.411" cy="49.338" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_107" cx="42.732" cy="44.214" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_108" cx="35.527" cy="40.645" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_109" cx="23.057" cy="42.503" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_110" cx="46.173" cy="45.472" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_111" cx="55.390" cy="48.943" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_112" cx="39.448" cy="31.544" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_113" cx="37.760" cy="38.830" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_114" cx="38.297" cy="35.323" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_115" cx="52.188" cy="46.691" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_116" cx="39.373" cy="40.213" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_117" cx="52.435" cy="47.507" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_118" cx="39.957" cy="36.447" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_119" cx="20.853" cy="42.434" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_120" cx="24.493" cy="41.806" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_121" cx="37.071" cy="35.581" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_122" cx="40.220" cy="33.388" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_123" cx="50.853" cy="47.682" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_124" cx="37.924" cy="41.540" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_125" cx="21.824" cy="42.336" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_126" cx="43.496" cy="44.934" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_127" cx="23.367" cy="41.805" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_128" cx="29.550" cy="41.314" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_129" cx="39.485" cy="33.283" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_130" cx="42.488" cy="43.283" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_131" cx="49.156" cy="46.260" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_132" cx="45.656" cy="45.202" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_133" cx="39.692" cy="34.508" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_134" cx="37.731" cy="36.317" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_135" cx="38.379" cy="38.936" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_136" cx="38.255" cy="36.650" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_137" cx="33.816" cy="40.153" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_138" cx="48.559" cy="47.173" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_139" cx="36.823" cy="39.965" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_140" cx="34.663" cy="41.643" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_141" cx="41.851" cy="42.318" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_142" cx="38.812" cy="33.938" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_143" cx="17.549" cy="43.450" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_144" cx="22.448" cy="41.551" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_145" cx="28.686" cy="42.285" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_146" cx="51.068" cy="46.367" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_147" cx="35.120" cy="40.015" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_148" cx="40.570" cy="36.988" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_149" cx="41.420" cy="43.323" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_150" cx="20.052" cy="43.379" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_151" cx="40.313" cy="33.980" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_152" cx="39.017" cy="39.701" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_153" cx="35.676" cy="41.787" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_154" cx="35.498" cy="38.398" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_155" cx="45.033" cy="42.949" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_156" cx="40.553" cy="40.594" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_157" cx="22.598" cy="43.463" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_158" cx="44.157" cy="44.096" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_159" cx="25.139" cy="41.208" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_160" cx="29.676" cy="40.203" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_161" cx="44.384" cy="42.243" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_162" cx="36.336" cy="39.017" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_163" cx="30.298" cy="41.318" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_164" cx="43.025" cy="36.188" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_165" cx="38.512" cy="37.556" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_166" cx="31.915" cy="39.691" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_167" cx="40.798" cy="30.923" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_168" cx="47.346" cy="46.385" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_169" cx="39.645" cy="32.179" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_170" cx="40.508" cy="39.030" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_171" cx="36.730" cy="41.153" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_172" cx="26.033" cy="42.342" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_173" cx="18.154" cy="43.154" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_174" cx="39.539" cy="43.008" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_175" cx="47.966" cy="43.293" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_176" cx="23.501" cy="43.373" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_177" cx="45.664" cy="45.786" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_178" cx="40.841" cy="33.558" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_179" cx="32.159" cy="41.208" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_180" cx="31.642" cy="42.183" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_181" cx="51.670" cy="47.224" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_182" cx="30.748" cy="41.683" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_183" cx="42.349" cy="29.944" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_184" cx="47.525" cy="44.164" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_185" cx="50.523" cy="45.880" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_186" cx="27.403" cy="43.187" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_187" cx="34.717" cy="39.571" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_188" cx="29.122" cy="43.340" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_189" cx="21.607" cy="43.986" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_190" cx="31.483" cy="40.555" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_191" cx="34.610" cy="43.069" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_192" cx="48.376" cy="45.413" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_193" cx="42.152" cy="32.410" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_194" cx="24.140" cy="41.192" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_195" cx="45.641" cy="43.213" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_196" cx="33.178" cy="41.517" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_197" cx="38.745" cy="34.762" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_198" cx="50.229" cy="47.517" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_199" cx="40.906" cy="32.691" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_200" cx="37.918" cy="42.120" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_201" cx="28.348" cy="40.707" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_202" cx="32.531" cy="42.899" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_203" cx="29.792" cy="42.346" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_204" cx="39.069" cy="38.687" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_205" cx="19.363" cy="42.707" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_206" cx="51.648" cy="46.100" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_207" cx="41.720" cy="30.776" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_208" cx="51.907" cy="48.299" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_209" cx="37.137" cy="36.767" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_210" cx="41.196" cy="36.007" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_211" cx="42.262" cy="39.684" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_212" cx="31.616" cy="43.290" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_213" cx="38.711" cy="33.011" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_214" cx="40.289" cy="36.000" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_215" cx="24.534" cy="43.709" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_216" cx="25.771" cy="41.050" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_217" cx="38.502" cy="40.446" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_218" cx="39.461" cy="39.289" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_219" cx="55.513" cy="49.518" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_220" cx="33.316" cy="39.630" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_221" cx="47.294" cy="43.429" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_222" cx="42.249" cy="43.951" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_223" cx="40.544" cy="43.097" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_224" cx="49.691" cy="45.783" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_225" cx="28.548" cy="41.284" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_226" cx="37.238" cy="42.264" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_227" cx="34.820" cy="42.231" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_228" cx="39.571" cy="38.227" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_229" cx="38.196" cy="33.359" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_230" cx="32.903" cy="40.821" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_231" cx="39.010" cy="41.538" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_232" cx="46.304" cy="44.681" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_233" cx="49.090" cy="45.168" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_234" cx="41.008" cy="42.392" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_235" cx="52.398" cy="46.074" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_236" cx="30.230" cy="43.128" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_237" cx="34.726" cy="35.693" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_238" cx="50.545" cy="46.728" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_239" cx="43.371" cy="41.527" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_240" cx="18.719" cy="42.742" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_241" cx="40.457" cy="39.887" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_242" cx="37.316" cy="41.137" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_243" cx="38.949" cy="32.417" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_244" cx="48.239" cy="43.930" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_245" cx="42.879" cy="31.634" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_246" cx="27.964" cy="41.224" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_247" cx="26.968" cy="41.934" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_248" cx="28.021" cy="42.519" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_249" cx="37.510" cy="40.487" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_250" cx="29.079" cy="41.799" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_251" cx="42.185" cy="34.810" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_252" cx="31.126" cy="43.002" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_253" cx="30.729" cy="39.260" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_254" cx="48.197" cy="46.127" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_255" cx="33.686" cy="40.780" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_256" cx="50.076" cy="45.271" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_257" cx="36.375" cy="37.718" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_258" cx="50.932" cy="44.936" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_259" cx="53.976" cy="46.987" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_260" cx="35.323" cy="38.999" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_261" cx="41.167" cy="40.262" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_262" cx="27.386" cy="40.408" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_263" cx="38.453" cy="42.727" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_264" cx="19.350" cy="44.011" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_265" cx="33.267" cy="40.355" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_266" cx="52.869" cy="48.906" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_267" cx="37.624" cy="33.496" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_268" cx="24.065" cy="43.134" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_269" cx="39.839" cy="38.711" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_270" cx="42.422" cy="44.859" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_271" cx="23.572" cy="42.723" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_272" cx="36.870" cy="43.093" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_273" cx="32.777" cy="39.390" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_274" cx="21.288" cy="43.004" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_275" cx="39.854" cy="30.282" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_276" cx="22.960" cy="44.351" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_277" cx="54.498" cy="47.811" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_278" cx="51.158" cy="48.355" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_279" cx="38.121" cy="40.028" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_280" cx="28.126" cy="43.161" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_281" cx="41.208" cy="44.628" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_282" cx="36.923" cy="34.689" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_283" cx="53.155" cy="46.939" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_284" cx="37.530" cy="39.654" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_285" cx="42.688" cy="41.526" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_286" cx="41.296" cy="35.421" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_287" cx="20.014" cy="44.026" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_288" cx="44.233" cy="43.443" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_289" cx="43.208" cy="37.472" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_290" cx="51.537" cy="47.827" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_291" cx="33.672" cy="38.062" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_292" cx="46.552" cy="43.464" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_293" cx="45.071" cy="41.876" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_294" cx="40.306" cy="37.994" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_295" cx="47.732" cy="46.962" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_296" cx="36.667" cy="36.435" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_297" cx="25.273" cy="40.561" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_298" cx="41.474" cy="32.389" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_299" cx="46.834" cy="42.840" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="feature_dot_300" cx="20.549" cy="41.810" r="0.26" style="fill:#666666;stroke:none"/>
-</g>
-<g id="layer_feature_true_simplex" inkscape:groupmode="layer" inkscape:label="feature true simplex">
-<path id="feature_true_simplex" d="M 16.057,43.888 L 42.302,28.392 L 57.067,50.117 Z" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linejoin:miter;stroke-dasharray:1.3,0.9"/>
-</g>
-<g id="layer_feature_trajectories" inkscape:groupmode="layer" inkscape:label="feature trajectories">
-<path id="feature_trajectory_pink" d="M 10.833,44.996 L 10.850,46.551 L 13.101,47.379 L 14.099,49.278 L 17.049,47.618 L 20.564,47.602 L 24.407,47.298 L 28.378,47.448 L 30.084,44.106" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round"/>
-<path id="feature_trajectory_green" d="M 42.355,28.246 L 42.649,29.029 L 44.502,29.450 L 44.643,30.563 L 46.415,31.421 L 46.318,32.762 L 47.296,34.429 L 45.450,35.883 L 44.781,38.022" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round"/>
-<path id="feature_trajectory_blue" d="M 48.736,45.240 L 49.953,45.938 L 51.454,45.395 L 53.068,46.635 L 54.765,45.864 L 57.338,46.272 L 56.139,44.306 L 56.729,42.657 L 55.393,40.865" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round"/>
-</g>
-<g id="layer_feature_solutions" inkscape:groupmode="layer" inkscape:label="feature solutions">
-<ellipse id="feature_solution_pink" cx="10.833" cy="44.996" rx="0.659" ry="0.428" style="fill:#CC79A7;stroke:#000000;stroke-width:0.175"/>
-<ellipse id="feature_solution_green" cx="42.355" cy="28.246" rx="0.659" ry="0.428" style="fill:#009E73;stroke:#000000;stroke-width:0.175"/>
-<ellipse id="feature_solution_blue" cx="48.736" cy="45.240" rx="0.659" ry="0.428" style="fill:#0072B2;stroke:#000000;stroke-width:0.175"/>
-</g>
-</g>
-<g id="layer_sample" inkscape:groupmode="layer" inkscape:label="sample simplex">
-<g id="layer_sample_axes" inkscape:groupmode="layer" inkscape:label="sample axes">
-<path id="sample_axis_up" d="M 101.000,54.500 L 101.000,47.500" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-<path id="sample_axis_upright" d="M 101.000,54.500 L 104.000,51.900" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-<path id="sample_axis_downleft" d="M 101.000,54.500 L 70.900,60.200" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-<path id="sample_axis_downright" d="M 101.000,54.500 L 123.900,63.850" style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)"/>
-</g>
-<g id="layer_sample_origin_lines" inkscape:groupmode="layer" inkscape:label="sample origin to vertex lines">
-<path id="sample_origin_to_pink_vertex" d="M 101.000,54.500 L 81.422,42.364" style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3"/>
-<path id="sample_origin_to_green_vertex" d="M 101.000,54.500 L 106.861,27.716" style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3"/>
-<path id="sample_origin_to_blue_vertex" d="M 101.000,54.500 L 118.716,48.478" style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3"/>
-</g>
-<g id="layer_sample_subspace" inkscape:groupmode="layer" inkscape:label="sample subspace">
-<path id="sample_subspace" d="M 82.857,26.000 L 119.143,26.000 L 132.500,56.000 L 69.500,56.000 Z" style="fill:#56B4E9;fill-opacity:0.18;stroke:#56B4E9;stroke-opacity:1;stroke-width:0.176;stroke-linejoin:miter"/>
-</g>
-<g id="layer_sample_dots" inkscape:groupmode="layer" inkscape:label="sample dots">
-<circle id="sample_dot_001" cx="95.451" cy="36.480" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_002" cx="103.811" cy="44.865" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_003" cx="102.553" cy="35.173" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_004" cx="85.221" cy="40.700" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_005" cx="84.146" cy="41.838" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_006" cx="102.108" cy="34.158" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_007" cx="104.302" cy="38.626" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_008" cx="107.080" cy="43.348" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_009" cx="105.171" cy="32.580" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_010" cx="101.893" cy="37.447" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_011" cx="92.762" cy="39.712" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_012" cx="96.207" cy="39.122" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_013" cx="94.729" cy="41.807" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_014" cx="97.491" cy="39.409" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_015" cx="96.683" cy="37.969" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_016" cx="93.786" cy="35.977" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_017" cx="102.438" cy="37.930" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_018" cx="111.932" cy="38.899" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_019" cx="99.783" cy="40.246" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_020" cx="108.272" cy="34.563" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_021" cx="107.822" cy="36.153" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_022" cx="106.660" cy="29.939" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_023" cx="102.166" cy="41.666" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_024" cx="103.995" cy="33.183" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_025" cx="89.188" cy="38.287" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_026" cx="104.351" cy="29.678" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_027" cx="100.007" cy="41.223" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_028" cx="106.594" cy="34.584" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_029" cx="103.922" cy="30.329" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_030" cx="100.351" cy="35.664" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_031" cx="103.178" cy="41.151" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_032" cx="116.666" cy="47.535" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_033" cx="90.322" cy="40.627" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_034" cx="106.302" cy="37.216" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_035" cx="90.743" cy="41.007" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_036" cx="102.318" cy="31.943" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_037" cx="111.323" cy="39.513" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_038" cx="97.811" cy="41.335" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_039" cx="112.922" cy="39.571" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_040" cx="98.363" cy="33.190" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_041" cx="99.686" cy="35.407" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_042" cx="111.473" cy="40.423" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_043" cx="103.804" cy="40.474" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_044" cx="106.384" cy="28.835" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_045" cx="103.562" cy="37.601" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_046" cx="108.882" cy="41.086" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_047" cx="106.072" cy="40.698" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_048" cx="103.666" cy="44.312" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_049" cx="106.040" cy="36.307" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_050" cx="110.241" cy="36.205" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_051" cx="89.631" cy="39.641" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_052" cx="108.572" cy="43.987" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_053" cx="93.850" cy="37.932" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_054" cx="98.396" cy="38.131" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_055" cx="99.396" cy="33.372" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_056" cx="104.248" cy="32.043" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_057" cx="97.371" cy="42.380" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_058" cx="99.442" cy="36.188" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_059" cx="95.331" cy="38.866" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_060" cx="102.868" cy="34.470" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_061" cx="98.265" cy="37.187" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_062" cx="102.810" cy="40.635" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_063" cx="87.013" cy="42.450" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_064" cx="107.381" cy="30.483" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_065" cx="102.762" cy="30.471" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_066" cx="100.064" cy="38.829" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_067" cx="100.961" cy="45.130" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_068" cx="92.972" cy="38.170" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_069" cx="106.980" cy="31.871" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_070" cx="112.220" cy="39.603" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_071" cx="108.835" cy="31.836" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_072" cx="108.703" cy="35.231" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_073" cx="104.471" cy="41.807" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_074" cx="110.286" cy="34.355" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_075" cx="107.450" cy="38.743" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_076" cx="109.404" cy="32.820" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_077" cx="108.275" cy="40.598" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_078" cx="91.833" cy="39.200" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_079" cx="94.700" cy="36.448" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_080" cx="108.163" cy="33.372" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_081" cx="108.915" cy="33.657" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_082" cx="108.077" cy="42.986" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_083" cx="105.627" cy="41.775" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_084" cx="85.997" cy="40.211" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_085" cx="90.467" cy="38.926" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_086" cx="102.508" cy="33.443" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_087" cx="98.432" cy="41.951" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_088" cx="101.650" cy="33.689" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_089" cx="97.373" cy="38.872" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_090" cx="88.746" cy="39.733" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_091" cx="101.443" cy="31.236" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_092" cx="94.397" cy="37.510" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_093" cx="106.297" cy="45.344" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_094" cx="95.756" cy="41.327" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_095" cx="96.037" cy="38.585" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_096" cx="94.767" cy="42.683" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_097" cx="106.823" cy="28.467" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_098" cx="105.506" cy="34.779" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_099" cx="112.652" cy="43.509" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_100" cx="100.636" cy="32.963" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_101" cx="87.706" cy="40.397" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_102" cx="103.041" cy="31.286" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_103" cx="108.969" cy="36.135" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_104" cx="104.890" cy="43.742" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_105" cx="104.694" cy="35.550" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_106" cx="107.874" cy="39.744" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_107" cx="93.299" cy="36.682" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_108" cx="112.550" cy="47.079" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_109" cx="110.533" cy="39.467" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_110" cx="106.780" cy="40.711" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_111" cx="107.735" cy="45.324" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_112" cx="102.620" cy="44.592" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_113" cx="94.818" cy="40.183" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_114" cx="111.249" cy="37.077" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_115" cx="97.178" cy="40.707" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_116" cx="103.682" cy="39.170" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_117" cx="102.347" cy="39.686" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_118" cx="107.014" cy="29.246" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_119" cx="99.875" cy="34.760" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_120" cx="88.499" cy="41.902" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_121" cx="107.613" cy="33.933" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_122" cx="111.980" cy="37.991" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_123" cx="105.556" cy="28.858" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_124" cx="106.496" cy="38.450" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_125" cx="105.213" cy="37.451" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_126" cx="112.562" cy="42.062" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_127" cx="109.084" cy="38.996" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_128" cx="100.698" cy="38.452" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_129" cx="106.895" cy="30.988" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_130" cx="98.101" cy="38.732" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_131" cx="104.066" cy="45.570" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_132" cx="108.633" cy="36.913" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_133" cx="102.149" cy="40.337" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_134" cx="99.202" cy="38.378" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_135" cx="110.113" cy="40.352" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_136" cx="96.748" cy="36.331" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_137" cx="116.337" cy="46.141" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_138" cx="87.732" cy="39.145" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_139" cx="113.906" cy="43.170" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_140" cx="106.397" cy="33.206" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_141" cx="101.431" cy="32.953" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_142" cx="100.071" cy="44.220" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_143" cx="111.040" cy="42.694" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_144" cx="99.661" cy="32.344" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_145" cx="109.772" cy="34.646" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_146" cx="97.057" cy="34.348" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_147" cx="96.051" cy="36.328" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_148" cx="105.161" cy="35.882" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_149" cx="96.842" cy="37.117" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_150" cx="107.169" cy="34.542" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_151" cx="105.835" cy="38.904" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_152" cx="110.707" cy="41.201" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_153" cx="89.408" cy="42.422" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_154" cx="107.619" cy="29.797" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_155" cx="109.002" cy="39.882" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_156" cx="99.215" cy="44.574" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_157" cx="97.299" cy="44.363" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_158" cx="103.666" cy="36.649" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_159" cx="84.845" cy="42.613" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_160" cx="91.816" cy="41.055" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_161" cx="88.495" cy="42.846" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_162" cx="98.183" cy="42.582" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_163" cx="109.136" cy="34.817" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_164" cx="106.243" cy="32.375" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_165" cx="95.392" cy="43.014" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_166" cx="110.862" cy="44.431" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_167" cx="109.686" cy="45.189" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_168" cx="117.262" cy="47.643" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_169" cx="112.246" cy="42.621" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_170" cx="94.269" cy="39.118" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_171" cx="105.396" cy="31.916" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_172" cx="108.140" cy="39.088" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_173" cx="114.089" cy="42.421" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_174" cx="93.701" cy="39.832" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_175" cx="107.823" cy="30.911" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_176" cx="92.654" cy="37.190" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_177" cx="105.577" cy="33.362" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_178" cx="105.137" cy="42.153" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_179" cx="106.645" cy="39.982" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_180" cx="85.581" cy="42.382" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_181" cx="94.774" cy="43.691" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_182" cx="91.161" cy="38.431" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_183" cx="96.849" cy="39.769" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_184" cx="112.722" cy="45.173" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_185" cx="104.178" cy="43.737" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_186" cx="110.887" cy="45.287" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_187" cx="105.428" cy="43.079" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_188" cx="105.154" cy="29.353" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_189" cx="101.006" cy="34.602" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_190" cx="102.034" cy="32.883" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_191" cx="95.781" cy="42.545" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_192" cx="89.802" cy="43.285" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_193" cx="103.744" cy="41.541" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_194" cx="109.322" cy="37.442" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_195" cx="114.422" cy="47.385" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_196" cx="100.974" cy="40.115" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_197" cx="109.898" cy="33.939" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_198" cx="96.377" cy="41.858" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_199" cx="97.792" cy="35.671" r="0.26" style="fill:#666666;stroke:none"/>
-<circle id="sample_dot_200" cx="88.258" cy="40.584" r="0.26" style="fill:#666666;stroke:none"/>
-</g>
-<g id="layer_sample_true_simplex" inkscape:groupmode="layer" inkscape:label="sample true simplex">
-<path id="sample_true_simplex" d="M 81.422,42.364 L 106.861,27.716 L 118.716,48.478 Z" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linejoin:miter;stroke-dasharray:1.3,0.9"/>
-</g>
-<g id="layer_sample_trajectories" inkscape:groupmode="layer" inkscape:label="sample trajectories">
-<path id="sample_trajectory_pink" d="M 90.185,40.534 L 90.108,39.682 L 88.710,39.234 L 89.120,38.048 L 87.448,37.515 L 87.922,36.146 L 86.142,35.451 L 86.384,33.994 L 85.013,32.967" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round"/>
-<path id="sample_trajectory_green" d="M 106.926,27.570 L 107.485,27.889 L 108.494,27.618 L 109.107,28.294 L 110.246,27.945 L 111.464,28.379 L 112.180,27.721 L 113.832,27.749 L 114.687,27.122" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round"/>
-<path id="sample_trajectory_blue" d="M 123.785,51.718 L 124.469,50.297 L 123.079,48.357 L 124.166,46.777 L 122.770,44.763 L 122.063,42.653 L 118.782,42.776 L 115.108,41.629 L 111.389,42.142" style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round"/>
-</g>
-<g id="layer_sample_solutions" inkscape:groupmode="layer" inkscape:label="sample solutions">
-<ellipse id="sample_solution_pink" cx="90.185" cy="40.534" rx="0.659" ry="0.428" style="fill:#CC79A7;stroke:#000000;stroke-width:0.175"/>
-<ellipse id="sample_solution_green" cx="106.926" cy="27.570" rx="0.659" ry="0.428" style="fill:#009E73;stroke:#000000;stroke-width:0.175"/>
-<ellipse id="sample_solution_blue" cx="123.785" cy="51.718" rx="0.659" ry="0.428" style="fill:#0072B2;stroke:#000000;stroke-width:0.175"/>
-</g>
-</g>
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <title
+     id="fig1A_title">Figure 1A schematic of the DualSimplex method</title>
+  <sodipodi:namedview
+     id="namedview_fig1A"
+     inkscape:document-units="mm"
+     pagecolor="#ffffff"
+     inkscape:pageopacity="1"
+     inkscape:current-layer="layer_feature"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="3.2204136"
+     inkscape:cx="238.63395"
+     inkscape:cy="131.19433"
+     inkscape:window-width="2048"
+     inkscape:window-height="1115"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <defs
+     id="defs_fig1A">
+    <marker
+       id="marker_arrow_head"
+       orient="auto-start-reverse"
+       markerUnits="strokeWidth"
+       markerWidth="9"
+       markerHeight="9"
+       viewBox="0 0 9 9"
+       refX="8.5"
+       refY="4.5"
+       style="overflow:visible">
+      <path
+         id="marker_arrow_head_shape"
+         d="M 0,0.5 L 9,4.5 L 0,8.5 Z"
+         style="fill:#000000;stroke:none" />
+    </marker>
+    <marker
+       id="marker_axis_head"
+       orient="auto"
+       markerUnits="strokeWidth"
+       markerWidth="4.5"
+       markerHeight="4.5"
+       viewBox="0 0 9 9"
+       refX="7"
+       refY="4.5"
+       style="overflow:visible">
+      <path
+         id="marker_axis_head_shape"
+         d="M 0,0.5 L 9,4.5 L 0,8.5 Z"
+         style="fill:#000000;stroke:none" />
+    </marker>
+    <marker
+       id="marker_axis_head_grey"
+       orient="auto"
+       markerUnits="strokeWidth"
+       markerWidth="9"
+       markerHeight="9"
+       viewBox="0 0 9 9"
+       refX="8.5"
+       refY="4.5"
+       style="overflow:visible">
+      <path
+         id="marker_axis_head_grey_shape"
+         d="M 0,0.5 L 9,4.5 L 0,8.5 Z"
+         style="fill:#4D4D4D;stroke:none" />
+    </marker>
+    <marker
+       id="marker_axis_head_black"
+       orient="auto"
+       markerUnits="strokeWidth"
+       markerWidth="9"
+       markerHeight="9"
+       viewBox="0 0 9 9"
+       refX="8.5"
+       refY="4.5"
+       style="overflow:visible">
+      <path
+         id="marker_axis_head_black_shape"
+         d="M 0,0.5 L 9,4.5 L 0,8.5 Z"
+         style="fill:#000000;stroke:none" />
+    </marker>
+  </defs>
+  <g
+     id="layer_pipeline"
+     inkscape:groupmode="layer"
+     inkscape:label="pipeline">
+    <g
+       id="layer_pipeline_data"
+       inkscape:groupmode="layer"
+       inkscape:label="pipeline data">
+      <g
+         id="data_V_cells">
+        <rect
+           id="data_V_r1_c1"
+           x="3.000"
+           y="4.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r1_c2"
+           x="4.600"
+           y="4.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#10a289;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r1_c3"
+           x="6.200"
+           y="4.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#469e50;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r1_c4"
+           x="7.800"
+           y="4.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r1_c5"
+           x="9.400"
+           y="4.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#7c9f35;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r2_c1"
+           x="3.000"
+           y="6.200"
+           width="1.600"
+           height="1.600"
+           style="fill:#0b9e6e;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r2_c2"
+           x="4.600"
+           y="6.200"
+           width="1.600"
+           height="1.600"
+           style="fill:#df9f03;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r2_c3"
+           x="6.200"
+           y="6.200"
+           width="1.600"
+           height="1.600"
+           style="fill:#ad9f1c;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r2_c4"
+           x="7.800"
+           y="6.200"
+           width="1.600"
+           height="1.600"
+           style="fill:#419e52;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r2_c5"
+           x="9.400"
+           y="6.200"
+           width="1.600"
+           height="1.600"
+           style="fill:#e69f00;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r3_c1"
+           x="3.000"
+           y="7.800"
+           width="1.600"
+           height="1.600"
+           style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r3_c2"
+           x="4.600"
+           y="7.800"
+           width="1.600"
+           height="1.600"
+           style="fill:#049f79;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r3_c3"
+           x="6.200"
+           y="7.800"
+           width="1.600"
+           height="1.600"
+           style="fill:#6c9e3d;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r3_c4"
+           x="7.800"
+           y="7.800"
+           width="1.600"
+           height="1.600"
+           style="fill:#019e75;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r3_c5"
+           x="9.400"
+           y="7.800"
+           width="1.600"
+           height="1.600"
+           style="fill:#229e62;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r4_c1"
+           x="3.000"
+           y="9.400"
+           width="1.600"
+           height="1.600"
+           style="fill:#1a9e66;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r4_c2"
+           x="4.600"
+           y="9.400"
+           width="1.600"
+           height="1.600"
+           style="fill:#629e42;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r4_c3"
+           x="6.200"
+           y="9.400"
+           width="1.600"
+           height="1.600"
+           style="fill:#12a38c;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r4_c4"
+           x="7.800"
+           y="9.400"
+           width="1.600"
+           height="1.600"
+           style="fill:#2c9e5d;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r4_c5"
+           x="9.400"
+           y="9.400"
+           width="1.600"
+           height="1.600"
+           style="fill:#19a495;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r5_c1"
+           x="3.000"
+           y="11.000"
+           width="1.600"
+           height="1.600"
+           style="fill:#aa9f1e;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r5_c2"
+           x="4.600"
+           y="11.000"
+           width="1.600"
+           height="1.600"
+           style="fill:#989f27;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r5_c3"
+           x="6.200"
+           y="11.000"
+           width="1.600"
+           height="1.600"
+           style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r5_c4"
+           x="7.800"
+           y="11.000"
+           width="1.600"
+           height="1.600"
+           style="fill:#bf9f14;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r5_c5"
+           x="9.400"
+           y="11.000"
+           width="1.600"
+           height="1.600"
+           style="fill:#39adc2;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r6_c1"
+           x="3.000"
+           y="12.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#9e9f24;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r6_c2"
+           x="4.600"
+           y="12.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#1da59a;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r6_c3"
+           x="6.200"
+           y="12.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r6_c4"
+           x="7.800"
+           y="12.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#939f2a;stroke:#ffffff;stroke-width:0.106" />
+        <rect
+           id="data_V_r6_c5"
+           x="9.400"
+           y="12.600"
+           width="1.600"
+           height="1.600"
+           style="fill:#239e62;stroke:#ffffff;stroke-width:0.106" />
+      </g>
+      <rect
+         id="data_V_frame"
+         x="3.000"
+         y="4.600"
+         width="8.000"
+         height="9.600"
+         style="fill:none;stroke:#000000;stroke-width:0.176" />
+      <text
+         id="data_V_label"
+         x="7.000"
+         y="3.200"
+         xml:space="preserve"
+         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:normal;text-anchor:middle;text-align:center;fill:#000000"><tspan
+           id="data_V_label_line1"
+           sodipodi:role="line"
+           x="7.000"
+           y="3.200"><tspan
+   id="data_V_label_symbol"
+   style="font-weight:bold">V</tspan> (data)</tspan></text>
+    </g>
+    <g
+       id="layer_pipeline_steps"
+       inkscape:groupmode="layer"
+       inkscape:label="pipeline steps">
+      <g
+         id="step_sinkhorn">
+        <rect
+           id="step_sinkhorn_box"
+           x="22.000"
+           y="4.600"
+           width="29.000"
+           height="9.600"
+           rx="0.8"
+           style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176" />
+        <text
+           id="step_sinkhorn_text"
+           x="36.500"
+           y="8.717"
+           xml:space="preserve"
+           style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan
+             id="step_sinkhorn_text_line1"
+             sodipodi:role="line"
+             x="36.500"
+             y="8.717">Sinkhorn</tspan><tspan
+             id="step_sinkhorn_text_line2"
+             sodipodi:role="line"
+             x="36.500"
+             y="12.104">scaling</tspan></text>
+      </g>
+      <g
+         id="step_subspace">
+        <rect
+           id="step_subspace_box"
+           x="62.000"
+           y="4.600"
+           width="29.000"
+           height="9.600"
+           rx="0.8"
+           style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176" />
+        <text
+           id="step_subspace_text"
+           x="76.500"
+           y="8.717"
+           xml:space="preserve"
+           style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan
+             id="step_subspace_text_line1"
+             sodipodi:role="line"
+             x="76.500"
+             y="8.717">Find</tspan><tspan
+             id="step_subspace_text_line2"
+             sodipodi:role="line"
+             x="76.500"
+             y="12.104">subspace</tspan></text>
+      </g>
+      <g
+         id="step_solution">
+        <rect
+           id="step_solution_box"
+           x="102.000"
+           y="4.600"
+           width="29.000"
+           height="9.600"
+           rx="0.8"
+           style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176" />
+        <text
+           id="step_solution_text"
+           x="116.500"
+           y="8.717"
+           xml:space="preserve"
+           style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan
+             id="step_solution_text_line1"
+             sodipodi:role="line"
+             x="116.500"
+             y="8.717">Find</tspan><tspan
+             id="step_solution_text_line2"
+             sodipodi:role="line"
+             x="116.500"
+             y="12.104">solution</tspan></text>
+      </g>
+    </g>
+    <g
+       id="layer_pipeline_arrows"
+       inkscape:groupmode="layer"
+       inkscape:label="pipeline arrows">
+      <path
+         id="arrow_to_sinkhorn"
+         d="M 12.000,9.400 L 21.000,9.400"
+         style="fill:none;stroke:#000000;stroke-width:0.212;marker-end:url(#marker_arrow_head)" />
+      <path
+         id="arrow_to_subspace"
+         d="M 52.000,9.400 L 61.000,9.400"
+         style="fill:none;stroke:#000000;stroke-width:0.212;marker-end:url(#marker_arrow_head)" />
+      <path
+         id="arrow_to_solution"
+         d="M 92.000,9.400 L 101.000,9.400"
+         style="fill:none;stroke:#000000;stroke-width:0.212;marker-end:url(#marker_arrow_head)" />
+    </g>
+  </g>
+  <g
+     id="layer_linked_titles"
+     inkscape:groupmode="layer"
+     inkscape:label="linked titles">
+    <g
+       id="layer_titles"
+       inkscape:groupmode="layer"
+       inkscape:label="titles">
+      <g
+         id="title_feature">
+        <rect
+           id="title_feature_box"
+           x="18.000"
+           y="18.600"
+           width="30.000"
+           height="4.600"
+           rx="0.8"
+           style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176" />
+        <text
+           id="title_feature_text"
+           x="33.000"
+           y="21.910"
+           xml:space="preserve"
+           style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan
+             id="title_feature_text_line1"
+             sodipodi:role="line"
+             x="33.000"
+             y="21.910">Feature simplex</tspan></text>
+      </g>
+      <g
+         id="title_sample">
+        <rect
+           id="title_sample_box"
+           x="86.000"
+           y="18.600"
+           width="30.000"
+           height="4.600"
+           rx="0.8"
+           style="fill:#f2f2f2;stroke:#404040;stroke-width:0.176" />
+        <text
+           id="title_sample_text"
+           x="101.000"
+           y="21.910"
+           xml:space="preserve"
+           style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:bold;text-anchor:middle;text-align:center;fill:#000000"><tspan
+             id="title_sample_text_line1"
+             sodipodi:role="line"
+             x="101.000"
+             y="21.910">Sample simplex</tspan></text>
+      </g>
+    </g>
+    <g
+       id="layer_link"
+       inkscape:groupmode="layer"
+       inkscape:label="link arrow and label">
+      <path
+         id="link_double_arrow"
+         d="M 49.000,21.900 L 85.000,21.900"
+         style="fill:none;stroke:#000000;stroke-width:0.212;marker-start:url(#marker_arrow_head);marker-end:url(#marker_arrow_head)" />
+      <text
+         id="link_label"
+         x="67.000"
+         y="20.500"
+         xml:space="preserve"
+         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;font-weight:normal;text-anchor:middle;text-align:center;fill:#000000"><tspan
+           id="link_label_line1"
+           sodipodi:role="line"
+           x="67.000"
+           y="20.500">linked dual simplex</tspan></text>
+    </g>
+  </g>
+  <g
+     id="layer_feature"
+     inkscape:groupmode="layer"
+     inkscape:label="feature simplex">
+    <g
+       id="layer_feature_axes"
+       inkscape:groupmode="layer"
+       inkscape:label="feature axes">
+      <path
+         id="feature_axis_up"
+         d="M 33,54.5 33,35.504905"
+         style="fill:none;stroke:#4d4d4d;stroke-width:0.176;stroke-linecap:round"
+         sodipodi:nodetypes="cc" />
+      <path
+         id="feature_axis_upright"
+         d="M 33.000,54.500 L 36.000,51.900"
+         style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+      <path
+         id="feature_axis_downleft"
+         d="M 33.000,54.500 L 2.900,60.200"
+         style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+      <text
+         id="feature_axis_downleft_label"
+         x="16.820"
+         y="59.615"
+         xml:space="preserve"
+         transform="rotate(-10.723 16.820 59.615)"
+         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;font-weight:bold;text-anchor:middle;text-align:center;fill:#4D4D4D"><tspan
+           id="feature_axis_downleft_label_line"
+           sodipodi:role="line"
+           x="16.820"
+           y="59.615">scaled sample space</tspan></text>
+      <path
+         id="feature_axis_downright"
+         d="M 33.000,54.500 L 55.900,63.850"
+         style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+    </g>
+    <g
+       id="layer_feature_origin_lines"
+       inkscape:groupmode="layer"
+       inkscape:label="feature origin to vertex lines">
+      <path
+         id="feature_origin_to_pink_vertex"
+         d="M 33.000,54.500 L 16.057,43.888"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3" />
+      <path
+         id="feature_origin_to_green_vertex"
+         d="M 33.000,54.500 L 42.302,28.392"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3" />
+      <path
+         id="feature_origin_to_blue_vertex"
+         d="M 33.000,54.500 L 57.067,50.117"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3" />
+    </g>
+    <g
+       id="layer_feature_subspace"
+       inkscape:groupmode="layer"
+       inkscape:label="feature subspace">
+      <path
+         id="feature_subspace"
+         d="M 14.857,26.000 L 51.143,26.000 L 64.500,56.000 L 1.500,56.000 Z"
+         style="fill:#e69f00;fill-opacity:0.16;stroke:#e59f00;stroke-opacity:1;stroke-width:0.176;stroke-linejoin:miter" />
+    </g>
+    <g
+       id="layer_feature_dots"
+       inkscape:groupmode="layer"
+       inkscape:label="feature dots"
+       style="fill:#4d4d4d">
+      <circle
+         id="feature_dot_001"
+         cx="37.035"
+         cy="39.246"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_002"
+         cx="42.319"
+         cy="40.604"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_003"
+         cx="22.484"
+         cy="42.620"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_004"
+         cx="18.332"
+         cy="43.903"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_005"
+         cx="41.955"
+         cy="41.677"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_006"
+         cx="25.833"
+         cy="43.615"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_007"
+         cx="51.027"
+         cy="47.043"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_008"
+         cx="41.774"
+         cy="29.860"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_009"
+         cx="41.651"
+         cy="29.037"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_010"
+         cx="25.484"
+         cy="42.269"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_011"
+         cx="43.675"
+         cy="43.106"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_012"
+         cx="41.178"
+         cy="38.905"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_013"
+         cx="20.157"
+         cy="42.754"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_014"
+         cx="27.320"
+         cy="41.408"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_015"
+         cx="30.582"
+         cy="42.533"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_016"
+         cx="40.148"
+         cy="31.444"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_017"
+         cx="31.346"
+         cy="41.709"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_018"
+         cx="49.893"
+         cy="46.663"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_019"
+         cx="47.743"
+         cy="45.725"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_020"
+         cx="41.639"
+         cy="33.013"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_021"
+         cx="41.190"
+         cy="34.773"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_022"
+         cx="48.270"
+         cy="46.689"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_023"
+         cx="39.312"
+         cy="42.311"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_024"
+         cx="32.088"
+         cy="40.639"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_025"
+         cx="53.639"
+         cy="48.554"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_026"
+         cx="30.706"
+         cy="40.935"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_027"
+         cx="43.199"
+         cy="42.153"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_028"
+         cx="31.965"
+         cy="42.727"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_029"
+         cx="42.233"
+         cy="29.325"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_030"
+         cx="28.320"
+         cy="41.824"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_031"
+         cx="34.389"
+         cy="40.761"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_032"
+         cx="25.780"
+         cy="41.645"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_033"
+         cx="45.596"
+         cy="42.436"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_034"
+         cx="42.421"
+         cy="42.571"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_035"
+         cx="40.464"
+         cy="30.403"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_036"
+         cx="39.369"
+         cy="35.820"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_037"
+         cx="35.940"
+         cy="40.228"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_038"
+         cx="30.366"
+         cy="39.906"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_039"
+         cx="34.431"
+         cy="38.582"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_040"
+         cx="39.635"
+         cy="37.279"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_041"
+         cx="41.301"
+         cy="31.330"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_042"
+         cx="25.679"
+         cy="42.884"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_043"
+         cx="40.455"
+         cy="42.269"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_044"
+         cx="53.485"
+         cy="47.751"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_045"
+         cx="37.020"
+         cy="38.678"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_046"
+         cx="24.576"
+         cy="42.625"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_047"
+         cx="29.226"
+         cy="42.716"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_048"
+         cx="39.852"
+         cy="35.317"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_049"
+         cx="47.378"
+         cy="45.091"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_050"
+         cx="37.880"
+         cy="34.538"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_051"
+         cx="20.829"
+         cy="43.404"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_052"
+         cx="43.485"
+         cy="31.258"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_053"
+         cx="28.967"
+         cy="40.772"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_054"
+         cx="18.932"
+         cy="43.390"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_055"
+         cx="21.971"
+         cy="43.315"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_056"
+         cx="34.219"
+         cy="41.989"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_057"
+         cx="23.976"
+         cy="42.225"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_058"
+         cx="35.982"
+         cy="43.682"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_059"
+         cx="39.393"
+         cy="34.032"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_060"
+         cx="41.204"
+         cy="30.458"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_061"
+         cx="43.695"
+         cy="43.789"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_062"
+         cx="54.995"
+         cy="49.331"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_063"
+         cx="30.264"
+         cy="40.545"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_064"
+         cx="37.061"
+         cy="37.533"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_065"
+         cx="19.503"
+         cy="43.267"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_066"
+         cx="41.209"
+         cy="31.880"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_067"
+         cx="40.198"
+         cy="32.810"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_068"
+         cx="38.180"
+         cy="41.010"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_069"
+         cx="40.013"
+         cy="40.312"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_070"
+         cx="36.539"
+         cy="42.216"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_071"
+         cx="26.666"
+         cy="42.460"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_072"
+         cx="41.266"
+         cy="41.682"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_073"
+         cx="38.448"
+         cy="38.280"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_074"
+         cx="46.820"
+         cy="44.036"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_075"
+         cx="46.139"
+         cy="43.968"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_076"
+         cx="32.318"
+         cy="42.167"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_077"
+         cx="35.936"
+         cy="39.428"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_078"
+         cx="48.525"
+         cy="44.796"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_079"
+         cx="40.606"
+         cy="31.854"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_080"
+         cx="38.821"
+         cy="35.556"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_081"
+         cx="36.273"
+         cy="37.160"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_082"
+         cx="41.052"
+         cy="29.833"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_083"
+         cx="42.386"
+         cy="31.020"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_084"
+         cx="27.186"
+         cy="42.667"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_085"
+         cx="32.829"
+         cy="42.429"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_086"
+         cx="39.429"
+         cy="41.181"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_087"
+         cx="40.652"
+         cy="34.563"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_088"
+         cx="27.540"
+         cy="42.063"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_089"
+         cx="36.272"
+         cy="35.882"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_090"
+         cx="28.818"
+         cy="39.736"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_091"
+         cx="44.833"
+         cy="43.881"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_092"
+         cx="41.959"
+         cy="31.509"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_093"
+         cx="54.564"
+         cy="48.373"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_094"
+         cx="40.326"
+         cy="41.442"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_095"
+         cx="21.494"
+         cy="41.889"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_096"
+         cx="52.968"
+         cy="48.298"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_097"
+         cx="39.932"
+         cy="42.579"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_098"
+         cx="37.909"
+         cy="37.162"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_099"
+         cx="46.866"
+         cy="45.564"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_100"
+         cx="45.426"
+         cy="44.396"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_101"
+         cx="41.487"
+         cy="33.883"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_102"
+         cx="39.103"
+         cy="36.534"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_103"
+         cx="26.812"
+         cy="40.884"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_104"
+         cx="39.255"
+         cy="35.003"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_105"
+         cx="44.248"
+         cy="44.987"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_106"
+         cx="54.411"
+         cy="49.338"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_107"
+         cx="42.732"
+         cy="44.214"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_108"
+         cx="35.527"
+         cy="40.645"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_109"
+         cx="23.057"
+         cy="42.503"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_110"
+         cx="46.173"
+         cy="45.472"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_111"
+         cx="55.390"
+         cy="48.943"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_112"
+         cx="39.448"
+         cy="31.544"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_113"
+         cx="37.760"
+         cy="38.830"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_114"
+         cx="38.297"
+         cy="35.323"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_115"
+         cx="52.188"
+         cy="46.691"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_116"
+         cx="39.373"
+         cy="40.213"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_117"
+         cx="52.435"
+         cy="47.507"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_118"
+         cx="39.957"
+         cy="36.447"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_119"
+         cx="20.853"
+         cy="42.434"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_120"
+         cx="24.493"
+         cy="41.806"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_121"
+         cx="37.071"
+         cy="35.581"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_122"
+         cx="40.220"
+         cy="33.388"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_123"
+         cx="50.853"
+         cy="47.682"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_124"
+         cx="37.924"
+         cy="41.540"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_125"
+         cx="21.824"
+         cy="42.336"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_126"
+         cx="43.496"
+         cy="44.934"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_127"
+         cx="23.367"
+         cy="41.805"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_128"
+         cx="29.550"
+         cy="41.314"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_129"
+         cx="39.485"
+         cy="33.283"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_130"
+         cx="42.488"
+         cy="43.283"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_131"
+         cx="49.156"
+         cy="46.260"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_132"
+         cx="45.656"
+         cy="45.202"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_133"
+         cx="39.692"
+         cy="34.508"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_134"
+         cx="37.731"
+         cy="36.317"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_135"
+         cx="38.379"
+         cy="38.936"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_136"
+         cx="38.255"
+         cy="36.650"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_137"
+         cx="33.816"
+         cy="40.153"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_138"
+         cx="48.559"
+         cy="47.173"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_139"
+         cx="36.823"
+         cy="39.965"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_140"
+         cx="34.663"
+         cy="41.643"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_141"
+         cx="41.851"
+         cy="42.318"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_142"
+         cx="38.812"
+         cy="33.938"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_143"
+         cx="17.549"
+         cy="43.450"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_144"
+         cx="22.448"
+         cy="41.551"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_145"
+         cx="28.686"
+         cy="42.285"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_146"
+         cx="51.068"
+         cy="46.367"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_147"
+         cx="35.120"
+         cy="40.015"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_148"
+         cx="40.570"
+         cy="36.988"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_149"
+         cx="41.420"
+         cy="43.323"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_150"
+         cx="20.052"
+         cy="43.379"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_151"
+         cx="40.313"
+         cy="33.980"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_152"
+         cx="39.017"
+         cy="39.701"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_153"
+         cx="35.676"
+         cy="41.787"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_154"
+         cx="35.498"
+         cy="38.398"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_155"
+         cx="45.033"
+         cy="42.949"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_156"
+         cx="40.553"
+         cy="40.594"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_157"
+         cx="22.598"
+         cy="43.463"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_158"
+         cx="44.157"
+         cy="44.096"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_159"
+         cx="25.139"
+         cy="41.208"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_160"
+         cx="29.676"
+         cy="40.203"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_161"
+         cx="44.384"
+         cy="42.243"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_162"
+         cx="36.336"
+         cy="39.017"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_163"
+         cx="30.298"
+         cy="41.318"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_164"
+         cx="43.025"
+         cy="36.188"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_165"
+         cx="38.512"
+         cy="37.556"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_166"
+         cx="31.915"
+         cy="39.691"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_167"
+         cx="40.798"
+         cy="30.923"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_168"
+         cx="47.346"
+         cy="46.385"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_169"
+         cx="39.645"
+         cy="32.179"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_170"
+         cx="40.508"
+         cy="39.030"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_171"
+         cx="36.730"
+         cy="41.153"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_172"
+         cx="26.033"
+         cy="42.342"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_173"
+         cx="18.154"
+         cy="43.154"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_174"
+         cx="39.539"
+         cy="43.008"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_175"
+         cx="47.966"
+         cy="43.293"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_176"
+         cx="23.501"
+         cy="43.373"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_177"
+         cx="45.664"
+         cy="45.786"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_178"
+         cx="40.841"
+         cy="33.558"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_179"
+         cx="32.159"
+         cy="41.208"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_180"
+         cx="31.642"
+         cy="42.183"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_181"
+         cx="51.670"
+         cy="47.224"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_182"
+         cx="30.748"
+         cy="41.683"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_183"
+         cx="42.349"
+         cy="29.944"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_184"
+         cx="47.525"
+         cy="44.164"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_185"
+         cx="50.523"
+         cy="45.880"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_186"
+         cx="27.403"
+         cy="43.187"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_187"
+         cx="34.717"
+         cy="39.571"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_188"
+         cx="29.122"
+         cy="43.340"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_189"
+         cx="21.607"
+         cy="43.986"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_190"
+         cx="31.483"
+         cy="40.555"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_191"
+         cx="34.610"
+         cy="43.069"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_192"
+         cx="48.376"
+         cy="45.413"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_193"
+         cx="42.152"
+         cy="32.410"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_194"
+         cx="24.140"
+         cy="41.192"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_195"
+         cx="45.641"
+         cy="43.213"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_196"
+         cx="33.178"
+         cy="41.517"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_197"
+         cx="38.745"
+         cy="34.762"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_198"
+         cx="50.229"
+         cy="47.517"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_199"
+         cx="40.906"
+         cy="32.691"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_200"
+         cx="37.918"
+         cy="42.120"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_201"
+         cx="28.348"
+         cy="40.707"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_202"
+         cx="32.531"
+         cy="42.899"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_203"
+         cx="29.792"
+         cy="42.346"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_204"
+         cx="39.069"
+         cy="38.687"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_205"
+         cx="19.363"
+         cy="42.707"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_206"
+         cx="51.648"
+         cy="46.100"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_207"
+         cx="41.720"
+         cy="30.776"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_208"
+         cx="51.907"
+         cy="48.299"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_209"
+         cx="37.137"
+         cy="36.767"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_210"
+         cx="41.196"
+         cy="36.007"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_211"
+         cx="42.262"
+         cy="39.684"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_212"
+         cx="31.616"
+         cy="43.290"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_213"
+         cx="38.711"
+         cy="33.011"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_214"
+         cx="40.289"
+         cy="36.000"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_215"
+         cx="24.534"
+         cy="43.709"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_216"
+         cx="25.771"
+         cy="41.050"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_217"
+         cx="38.502"
+         cy="40.446"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_218"
+         cx="39.461"
+         cy="39.289"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_219"
+         cx="55.513"
+         cy="49.518"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_220"
+         cx="33.316"
+         cy="39.630"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_221"
+         cx="47.294"
+         cy="43.429"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_222"
+         cx="42.249"
+         cy="43.951"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_223"
+         cx="40.544"
+         cy="43.097"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_224"
+         cx="49.691"
+         cy="45.783"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_225"
+         cx="28.548"
+         cy="41.284"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_226"
+         cx="37.238"
+         cy="42.264"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_227"
+         cx="34.820"
+         cy="42.231"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_228"
+         cx="39.571"
+         cy="38.227"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_229"
+         cx="38.196"
+         cy="33.359"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_230"
+         cx="32.903"
+         cy="40.821"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_231"
+         cx="39.010"
+         cy="41.538"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_232"
+         cx="46.304"
+         cy="44.681"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_233"
+         cx="49.090"
+         cy="45.168"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_234"
+         cx="41.008"
+         cy="42.392"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_235"
+         cx="52.398"
+         cy="46.074"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_236"
+         cx="30.230"
+         cy="43.128"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_237"
+         cx="34.726"
+         cy="35.693"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_238"
+         cx="50.545"
+         cy="46.728"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_239"
+         cx="43.371"
+         cy="41.527"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_240"
+         cx="18.719"
+         cy="42.742"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_241"
+         cx="40.457"
+         cy="39.887"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_242"
+         cx="37.316"
+         cy="41.137"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_243"
+         cx="38.949"
+         cy="32.417"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_244"
+         cx="48.239"
+         cy="43.930"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_245"
+         cx="42.879"
+         cy="31.634"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_246"
+         cx="27.964"
+         cy="41.224"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_247"
+         cx="26.968"
+         cy="41.934"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_248"
+         cx="28.021"
+         cy="42.519"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_249"
+         cx="37.510"
+         cy="40.487"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_250"
+         cx="29.079"
+         cy="41.799"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_251"
+         cx="42.185"
+         cy="34.810"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_252"
+         cx="31.126"
+         cy="43.002"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_253"
+         cx="30.729"
+         cy="39.260"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_254"
+         cx="48.197"
+         cy="46.127"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_255"
+         cx="33.686"
+         cy="40.780"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_256"
+         cx="50.076"
+         cy="45.271"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_257"
+         cx="36.375"
+         cy="37.718"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_258"
+         cx="50.932"
+         cy="44.936"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_259"
+         cx="53.976"
+         cy="46.987"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_260"
+         cx="35.323"
+         cy="38.999"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_261"
+         cx="41.167"
+         cy="40.262"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_262"
+         cx="27.386"
+         cy="40.408"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_263"
+         cx="38.453"
+         cy="42.727"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_264"
+         cx="19.350"
+         cy="44.011"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_265"
+         cx="33.267"
+         cy="40.355"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_266"
+         cx="52.869"
+         cy="48.906"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_267"
+         cx="37.624"
+         cy="33.496"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_268"
+         cx="24.065"
+         cy="43.134"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_269"
+         cx="39.839"
+         cy="38.711"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_270"
+         cx="42.422"
+         cy="44.859"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_271"
+         cx="23.572"
+         cy="42.723"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_272"
+         cx="36.870"
+         cy="43.093"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_273"
+         cx="32.777"
+         cy="39.390"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_274"
+         cx="21.288"
+         cy="43.004"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_275"
+         cx="39.854"
+         cy="30.282"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_276"
+         cx="22.960"
+         cy="44.351"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_277"
+         cx="54.498"
+         cy="47.811"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_278"
+         cx="51.158"
+         cy="48.355"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_279"
+         cx="38.121"
+         cy="40.028"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_280"
+         cx="28.126"
+         cy="43.161"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_281"
+         cx="41.208"
+         cy="44.628"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_282"
+         cx="36.923"
+         cy="34.689"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_283"
+         cx="53.155"
+         cy="46.939"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_284"
+         cx="37.530"
+         cy="39.654"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_285"
+         cx="42.688"
+         cy="41.526"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_286"
+         cx="41.296"
+         cy="35.421"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_287"
+         cx="20.014"
+         cy="44.026"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_288"
+         cx="44.233"
+         cy="43.443"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_289"
+         cx="43.208"
+         cy="37.472"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_290"
+         cx="51.537"
+         cy="47.827"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_291"
+         cx="33.672"
+         cy="38.062"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_292"
+         cx="46.552"
+         cy="43.464"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_293"
+         cx="45.071"
+         cy="41.876"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_294"
+         cx="40.306"
+         cy="37.994"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_295"
+         cx="47.732"
+         cy="46.962"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_296"
+         cx="36.667"
+         cy="36.435"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_297"
+         cx="25.273"
+         cy="40.561"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_298"
+         cx="41.474"
+         cy="32.389"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_299"
+         cx="46.834"
+         cy="42.840"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="feature_dot_300"
+         cx="20.549"
+         cy="41.810"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+    </g>
+    <g
+       id="layer_feature_true_simplex"
+       inkscape:groupmode="layer"
+       inkscape:label="feature true simplex">
+      <path
+         id="feature_true_simplex"
+         d="M 16.057,43.888 L 42.302,28.392 L 57.067,50.117 Z"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linejoin:miter;stroke-dasharray:1.3,0.9" />
+    </g>
+    <g
+       id="layer_feature_axis_above"
+       inkscape:groupmode="layer"
+       inkscape:label="feature up axis above plane">
+      <path
+         id="feature_axis_up_above"
+         d="M 33,35.545984 33,27"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.176;stroke-linecap:round;stroke-opacity:1;marker-end:url(#marker_axis_head_black)"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="layer_feature_trajectories"
+       inkscape:groupmode="layer"
+       inkscape:label="feature trajectories">
+      <path
+         id="feature_trajectory_pink"
+         d="M 10.833,44.996 L 10.850,46.551 L 13.101,47.379 L 14.099,49.278 L 17.049,47.618 L 20.564,47.602 L 24.407,47.298 L 28.378,47.448 L 30.084,44.106"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="feature_trajectory_green"
+         d="M 42.355,28.246 L 42.649,29.029 L 44.502,29.450 L 44.643,30.563 L 46.415,31.421 L 46.318,32.762 L 47.296,34.429 L 45.450,35.883 L 44.781,38.022"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="feature_trajectory_blue"
+         d="M 48.736,45.240 L 49.953,45.938 L 51.454,45.395 L 53.068,46.635 L 54.765,45.864 L 57.338,46.272 L 56.139,44.306 L 56.729,42.657 L 55.393,40.865"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="layer_feature_solutions"
+       inkscape:groupmode="layer"
+       inkscape:label="feature solutions">
+      <ellipse
+         id="feature_solution_pink"
+         cx="10.833"
+         cy="44.996"
+         rx="0.659"
+         ry="0.428"
+         style="fill:#CC79A7;stroke:#000000;stroke-width:0.175" />
+      <ellipse
+         id="feature_solution_green"
+         cx="42.355"
+         cy="28.246"
+         rx="0.659"
+         ry="0.428"
+         style="fill:#009E73;stroke:#000000;stroke-width:0.175" />
+      <ellipse
+         id="feature_solution_blue"
+         cx="48.736"
+         cy="45.240"
+         rx="0.659"
+         ry="0.428"
+         style="fill:#0072B2;stroke:#000000;stroke-width:0.175" />
+    </g>
+  </g>
+  <g
+     id="layer_sample"
+     inkscape:groupmode="layer"
+     inkscape:label="sample simplex">
+    <g
+       id="layer_sample_axes"
+       inkscape:groupmode="layer"
+       inkscape:label="sample axes">
+      <path
+         id="sample_axis_up"
+         d="M 101,54.5 101,35.5"
+         style="fill:none;stroke:#4d4d4d;stroke-width:0.176;stroke-linecap:round"
+         sodipodi:nodetypes="cc" />
+      <path
+         id="sample_axis_upright"
+         d="M 101.000,54.500 L 104.000,51.900"
+         style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+      <path
+         id="sample_axis_downleft"
+         d="M 101.000,54.500 L 70.900,60.200"
+         style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+      <text
+         id="sample_axis_downleft_label"
+         x="84.820"
+         y="59.615"
+         xml:space="preserve"
+         transform="rotate(-10.723 84.820 59.615)"
+         style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;font-weight:bold;text-anchor:middle;text-align:center;fill:#4D4D4D"><tspan
+           id="sample_axis_downleft_label_line"
+           sodipodi:role="line"
+           x="84.820"
+           y="59.615">scaled feature space</tspan></text>
+      <path
+         id="sample_axis_downright"
+         d="M 101.000,54.500 L 123.900,63.850"
+         style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
+    </g>
+    <g
+       id="layer_sample_origin_lines"
+       inkscape:groupmode="layer"
+       inkscape:label="sample origin to vertex lines">
+      <path
+         id="sample_origin_to_pink_vertex"
+         d="M 101.000,54.500 L 81.422,42.364"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3" />
+      <path
+         id="sample_origin_to_green_vertex"
+         d="M 101.000,54.500 L 106.861,27.716"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3" />
+      <path
+         id="sample_origin_to_blue_vertex"
+         d="M 101.000,54.500 L 118.716,48.478"
+         style="fill:none;stroke:#808080;stroke-width:0.15;stroke-linecap:round;stroke-dasharray:0.15,0.3" />
+    </g>
+    <g
+       id="layer_sample_subspace"
+       inkscape:groupmode="layer"
+       inkscape:label="sample subspace">
+      <path
+         id="sample_subspace"
+         d="M 82.857,26.000 L 119.143,26.000 L 132.500,56.000 L 69.500,56.000 Z"
+         style="fill:#56B4E9;fill-opacity:0.18;stroke:#56B4E9;stroke-opacity:1;stroke-width:0.176;stroke-linejoin:miter" />
+    </g>
+    <g
+       id="layer_sample_dots"
+       inkscape:groupmode="layer"
+       inkscape:label="sample dots"
+       style="fill:#4d4d4d">
+      <circle
+         id="sample_dot_001"
+         cx="95.451"
+         cy="36.480"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_002"
+         cx="103.811"
+         cy="44.865"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_003"
+         cx="102.553"
+         cy="35.173"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_004"
+         cx="85.221"
+         cy="40.700"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_005"
+         cx="84.146"
+         cy="41.838"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_006"
+         cx="102.108"
+         cy="34.158"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_007"
+         cx="104.302"
+         cy="38.626"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_008"
+         cx="107.080"
+         cy="43.348"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_009"
+         cx="105.171"
+         cy="32.580"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_010"
+         cx="101.893"
+         cy="37.447"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_011"
+         cx="92.762"
+         cy="39.712"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_012"
+         cx="96.207"
+         cy="39.122"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_013"
+         cx="94.729"
+         cy="41.807"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_014"
+         cx="97.491"
+         cy="39.409"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_015"
+         cx="96.683"
+         cy="37.969"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_016"
+         cx="93.786"
+         cy="35.977"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_017"
+         cx="102.438"
+         cy="37.930"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_018"
+         cx="111.932"
+         cy="38.899"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_019"
+         cx="99.783"
+         cy="40.246"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_020"
+         cx="108.272"
+         cy="34.563"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_021"
+         cx="107.822"
+         cy="36.153"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_022"
+         cx="106.660"
+         cy="29.939"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_023"
+         cx="102.166"
+         cy="41.666"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_024"
+         cx="103.995"
+         cy="33.183"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_025"
+         cx="89.188"
+         cy="38.287"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_026"
+         cx="104.351"
+         cy="29.678"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_027"
+         cx="100.007"
+         cy="41.223"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_028"
+         cx="106.594"
+         cy="34.584"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_029"
+         cx="103.922"
+         cy="30.329"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_030"
+         cx="100.351"
+         cy="35.664"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_031"
+         cx="103.178"
+         cy="41.151"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_032"
+         cx="116.666"
+         cy="47.535"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_033"
+         cx="90.322"
+         cy="40.627"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_034"
+         cx="106.302"
+         cy="37.216"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_035"
+         cx="90.743"
+         cy="41.007"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_036"
+         cx="102.318"
+         cy="31.943"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_037"
+         cx="111.323"
+         cy="39.513"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_038"
+         cx="97.811"
+         cy="41.335"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_039"
+         cx="112.922"
+         cy="39.571"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_040"
+         cx="98.363"
+         cy="33.190"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_041"
+         cx="99.686"
+         cy="35.407"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_042"
+         cx="111.473"
+         cy="40.423"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_043"
+         cx="103.804"
+         cy="40.474"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_044"
+         cx="106.384"
+         cy="28.835"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_045"
+         cx="103.562"
+         cy="37.601"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_046"
+         cx="108.882"
+         cy="41.086"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_047"
+         cx="106.072"
+         cy="40.698"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_048"
+         cx="103.666"
+         cy="44.312"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_049"
+         cx="106.040"
+         cy="36.307"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_050"
+         cx="110.241"
+         cy="36.205"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_051"
+         cx="89.631"
+         cy="39.641"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_052"
+         cx="108.572"
+         cy="43.987"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_053"
+         cx="93.850"
+         cy="37.932"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_054"
+         cx="98.396"
+         cy="38.131"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_055"
+         cx="99.396"
+         cy="33.372"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_056"
+         cx="104.248"
+         cy="32.043"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_057"
+         cx="97.371"
+         cy="42.380"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_058"
+         cx="99.442"
+         cy="36.188"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_059"
+         cx="95.331"
+         cy="38.866"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_060"
+         cx="102.868"
+         cy="34.470"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_061"
+         cx="98.265"
+         cy="37.187"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_062"
+         cx="102.810"
+         cy="40.635"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_063"
+         cx="87.013"
+         cy="42.450"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_064"
+         cx="107.381"
+         cy="30.483"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_065"
+         cx="102.762"
+         cy="30.471"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_066"
+         cx="100.064"
+         cy="38.829"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_067"
+         cx="100.961"
+         cy="45.130"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_068"
+         cx="92.972"
+         cy="38.170"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_069"
+         cx="106.980"
+         cy="31.871"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_070"
+         cx="112.220"
+         cy="39.603"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_071"
+         cx="108.835"
+         cy="31.836"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_072"
+         cx="108.703"
+         cy="35.231"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_073"
+         cx="104.471"
+         cy="41.807"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_074"
+         cx="110.286"
+         cy="34.355"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_075"
+         cx="107.450"
+         cy="38.743"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_076"
+         cx="109.404"
+         cy="32.820"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_077"
+         cx="108.275"
+         cy="40.598"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_078"
+         cx="91.833"
+         cy="39.200"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_079"
+         cx="94.700"
+         cy="36.448"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_080"
+         cx="108.163"
+         cy="33.372"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_081"
+         cx="108.915"
+         cy="33.657"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_082"
+         cx="108.077"
+         cy="42.986"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_083"
+         cx="105.627"
+         cy="41.775"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_084"
+         cx="85.997"
+         cy="40.211"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_085"
+         cx="90.467"
+         cy="38.926"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_086"
+         cx="102.508"
+         cy="33.443"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_087"
+         cx="98.432"
+         cy="41.951"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_088"
+         cx="101.650"
+         cy="33.689"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_089"
+         cx="97.373"
+         cy="38.872"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_090"
+         cx="88.746"
+         cy="39.733"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_091"
+         cx="101.443"
+         cy="31.236"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_092"
+         cx="94.397"
+         cy="37.510"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_093"
+         cx="106.297"
+         cy="45.344"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_094"
+         cx="95.756"
+         cy="41.327"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_095"
+         cx="96.037"
+         cy="38.585"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_096"
+         cx="94.767"
+         cy="42.683"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_097"
+         cx="106.823"
+         cy="28.467"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_098"
+         cx="105.506"
+         cy="34.779"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_099"
+         cx="112.652"
+         cy="43.509"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_100"
+         cx="100.636"
+         cy="32.963"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_101"
+         cx="87.706"
+         cy="40.397"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_102"
+         cx="103.041"
+         cy="31.286"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_103"
+         cx="108.969"
+         cy="36.135"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_104"
+         cx="104.890"
+         cy="43.742"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_105"
+         cx="104.694"
+         cy="35.550"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_106"
+         cx="107.874"
+         cy="39.744"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_107"
+         cx="93.299"
+         cy="36.682"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_108"
+         cx="112.550"
+         cy="47.079"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_109"
+         cx="110.533"
+         cy="39.467"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_110"
+         cx="106.780"
+         cy="40.711"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_111"
+         cx="107.735"
+         cy="45.324"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_112"
+         cx="102.620"
+         cy="44.592"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_113"
+         cx="94.818"
+         cy="40.183"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_114"
+         cx="111.249"
+         cy="37.077"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_115"
+         cx="97.178"
+         cy="40.707"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_116"
+         cx="103.682"
+         cy="39.170"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_117"
+         cx="102.347"
+         cy="39.686"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_118"
+         cx="107.014"
+         cy="29.246"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_119"
+         cx="99.875"
+         cy="34.760"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_120"
+         cx="88.499"
+         cy="41.902"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_121"
+         cx="107.613"
+         cy="33.933"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_122"
+         cx="111.980"
+         cy="37.991"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_123"
+         cx="105.556"
+         cy="28.858"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_124"
+         cx="106.496"
+         cy="38.450"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_125"
+         cx="105.213"
+         cy="37.451"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_126"
+         cx="112.562"
+         cy="42.062"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_127"
+         cx="109.084"
+         cy="38.996"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_128"
+         cx="100.698"
+         cy="38.452"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_129"
+         cx="106.895"
+         cy="30.988"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_130"
+         cx="98.101"
+         cy="38.732"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_131"
+         cx="104.066"
+         cy="45.570"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_132"
+         cx="108.633"
+         cy="36.913"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_133"
+         cx="102.149"
+         cy="40.337"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_134"
+         cx="99.202"
+         cy="38.378"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_135"
+         cx="110.113"
+         cy="40.352"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_136"
+         cx="96.748"
+         cy="36.331"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_137"
+         cx="116.337"
+         cy="46.141"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_138"
+         cx="87.732"
+         cy="39.145"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_139"
+         cx="113.906"
+         cy="43.170"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_140"
+         cx="106.397"
+         cy="33.206"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_141"
+         cx="101.431"
+         cy="32.953"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_142"
+         cx="100.071"
+         cy="44.220"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_143"
+         cx="111.040"
+         cy="42.694"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_144"
+         cx="99.661"
+         cy="32.344"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_145"
+         cx="109.772"
+         cy="34.646"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_146"
+         cx="97.057"
+         cy="34.348"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_147"
+         cx="96.051"
+         cy="36.328"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_148"
+         cx="105.161"
+         cy="35.882"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_149"
+         cx="96.842"
+         cy="37.117"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_150"
+         cx="107.169"
+         cy="34.542"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_151"
+         cx="105.835"
+         cy="38.904"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_152"
+         cx="110.707"
+         cy="41.201"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_153"
+         cx="89.408"
+         cy="42.422"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_154"
+         cx="107.619"
+         cy="29.797"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_155"
+         cx="109.002"
+         cy="39.882"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_156"
+         cx="99.215"
+         cy="44.574"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_157"
+         cx="97.299"
+         cy="44.363"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_158"
+         cx="103.666"
+         cy="36.649"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_159"
+         cx="84.845"
+         cy="42.613"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_160"
+         cx="91.816"
+         cy="41.055"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_161"
+         cx="88.495"
+         cy="42.846"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_162"
+         cx="98.183"
+         cy="42.582"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_163"
+         cx="109.136"
+         cy="34.817"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_164"
+         cx="106.243"
+         cy="32.375"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_165"
+         cx="95.392"
+         cy="43.014"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_166"
+         cx="110.862"
+         cy="44.431"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_167"
+         cx="109.686"
+         cy="45.189"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_168"
+         cx="117.262"
+         cy="47.643"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_169"
+         cx="112.246"
+         cy="42.621"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_170"
+         cx="94.269"
+         cy="39.118"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_171"
+         cx="105.396"
+         cy="31.916"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_172"
+         cx="108.140"
+         cy="39.088"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_173"
+         cx="114.089"
+         cy="42.421"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_174"
+         cx="93.701"
+         cy="39.832"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_175"
+         cx="107.823"
+         cy="30.911"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_176"
+         cx="92.654"
+         cy="37.190"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_177"
+         cx="105.577"
+         cy="33.362"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_178"
+         cx="105.137"
+         cy="42.153"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_179"
+         cx="106.645"
+         cy="39.982"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_180"
+         cx="85.581"
+         cy="42.382"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_181"
+         cx="94.774"
+         cy="43.691"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_182"
+         cx="91.161"
+         cy="38.431"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_183"
+         cx="96.849"
+         cy="39.769"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_184"
+         cx="112.722"
+         cy="45.173"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_185"
+         cx="104.178"
+         cy="43.737"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_186"
+         cx="110.887"
+         cy="45.287"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_187"
+         cx="105.428"
+         cy="43.079"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_188"
+         cx="105.154"
+         cy="29.353"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_189"
+         cx="101.006"
+         cy="34.602"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_190"
+         cx="102.034"
+         cy="32.883"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_191"
+         cx="95.781"
+         cy="42.545"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_192"
+         cx="89.802"
+         cy="43.285"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_193"
+         cx="103.744"
+         cy="41.541"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_194"
+         cx="109.322"
+         cy="37.442"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_195"
+         cx="114.422"
+         cy="47.385"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_196"
+         cx="100.974"
+         cy="40.115"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_197"
+         cx="109.898"
+         cy="33.939"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_198"
+         cx="96.377"
+         cy="41.858"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_199"
+         cx="97.792"
+         cy="35.671"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+      <circle
+         id="sample_dot_200"
+         cx="88.258"
+         cy="40.584"
+         r="0.26"
+         style="fill:#4d4d4d;stroke:none" />
+    </g>
+    <g
+       id="layer_sample_true_simplex"
+       inkscape:groupmode="layer"
+       inkscape:label="sample true simplex">
+      <path
+         id="sample_true_simplex"
+         d="M 81.422,42.364 L 106.861,27.716 L 118.716,48.478 Z"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linejoin:miter;stroke-dasharray:1.3,0.9" />
+    </g>
+    <g
+       id="layer_sample_axis_above"
+       inkscape:groupmode="layer"
+       inkscape:label="sample up axis above plane">
+      <path
+         id="sample_axis_up_above"
+         d="M 101,35.5 101,27.0"
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.176;stroke-linecap:round;stroke-opacity:1;marker-end:url(#marker_axis_head_black)"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <g
+       id="layer_sample_trajectories"
+       inkscape:groupmode="layer"
+       inkscape:label="sample trajectories">
+      <path
+         id="sample_trajectory_pink"
+         d="M 90.185,40.534 L 90.108,39.682 L 88.710,39.234 L 89.120,38.048 L 87.448,37.515 L 87.922,36.146 L 86.142,35.451 L 86.384,33.994 L 85.013,32.967"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="sample_trajectory_green"
+         d="M 106.926,27.570 L 107.485,27.889 L 108.494,27.618 L 109.107,28.294 L 110.246,27.945 L 111.464,28.379 L 112.180,27.721 L 113.832,27.749 L 114.687,27.122"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+      <path
+         id="sample_trajectory_blue"
+         d="M 123.785,51.718 L 124.469,50.297 L 123.079,48.357 L 124.166,46.777 L 122.770,44.763 L 122.063,42.653 L 118.782,42.776 L 115.108,41.629 L 111.389,42.142"
+         style="fill:none;stroke:#000000;stroke-width:0.212;stroke-linecap:round;stroke-linejoin:round" />
+    </g>
+    <g
+       id="layer_sample_solutions"
+       inkscape:groupmode="layer"
+       inkscape:label="sample solutions">
+      <ellipse
+         id="sample_solution_pink"
+         cx="90.185"
+         cy="40.534"
+         rx="0.659"
+         ry="0.428"
+         style="fill:#CC79A7;stroke:#000000;stroke-width:0.175" />
+      <ellipse
+         id="sample_solution_green"
+         cx="106.926"
+         cy="27.570"
+         rx="0.659"
+         ry="0.428"
+         style="fill:#009E73;stroke:#000000;stroke-width:0.175" />
+      <ellipse
+         id="sample_solution_blue"
+         cx="123.785"
+         cy="51.718"
+         rx="0.659"
+         ry="0.428"
+         style="fill:#0072B2;stroke:#000000;stroke-width:0.175" />
+    </g>
+  </g>
 </svg>
