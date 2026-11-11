@@ -18,18 +18,18 @@
      inkscape:document-units="mm"
      pagecolor="#ffffff"
      inkscape:pageopacity="1"
-     inkscape:current-layer="layer_feature"
+     inkscape:current-layer="layer_sample_axes"
      bordercolor="#000000"
      borderopacity="0.25"
      inkscape:showpageshadow="2"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="3.2204136"
-     inkscape:cx="238.63395"
-     inkscape:cy="131.19433"
-     inkscape:window-width="2048"
-     inkscape:window-height="1115"
+     inkscape:zoom="2.2771763"
+     inkscape:cx="211.88522"
+     inkscape:cy="98.147869"
+     inkscape:window-width="1920"
+     inkscape:window-height="1043"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1" />
@@ -527,12 +527,36 @@
          id="feature_axis_downleft"
          d="M 33.000,54.500 L 2.900,60.200"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
-      <text id="feature_axis_downleft_label" x="4.407" y="61.709" xml:space="preserve" transform="rotate(-10.723 4.407 61.709)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:start;text-align:start;fill:#4D4D4D"><tspan id="feature_axis_downleft_label_line" sodipodi:role="line" x="4.407" y="61.709">scaled sample<tspan id="feature_axis_downleft_label_sub" style="font-size:1.2347px;baseline-shift:sub">1</tspan> expr.</tspan></text>
+      <text
+         id="feature_axis_downleft_label"
+         x="-6.4958901"
+         y="61.457336"
+         xml:space="preserve"
+         transform="rotate(-10.723)"
+         style="font-weight:bold;font-size:1.7639px;font-family:'Liberation Sans', Arial, sans-serif;text-align:start;text-anchor:start;fill:#4d4d4d"><tspan
+           id="feature_axis_downleft_label_line"
+           sodipodi:role="line"
+           x="-6.4958901"
+           y="61.457336">scaled sample<tspan
+   id="feature_axis_downleft_label_sub"
+   style="font-size:1.2347px;baseline-shift:sub">1</tspan> expr.</tspan></text>
       <path
          id="feature_axis_downright"
          d="M 33.000,54.500 L 55.900,63.850"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
-      <text id="feature_axis_downright_label" x="54.123" y="65.029" xml:space="preserve" transform="rotate(22.210 54.123 65.029)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:end;text-align:end;fill:#4D4D4D"><tspan id="feature_axis_downright_label_line" sodipodi:role="line" x="54.123" y="65.029">scaled sample<tspan id="feature_axis_downright_label_sub" style="font-size:1.2347px;baseline-shift:sub">2</tspan> expr.</tspan></text>
+      <text
+         id="feature_axis_downright_label"
+         x="74.110695"
+         y="39.730419"
+         xml:space="preserve"
+         transform="rotate(22.21)"
+         style="font-weight:bold;font-size:1.7639px;font-family:'Liberation Sans', Arial, sans-serif;text-align:end;text-anchor:end;fill:#4d4d4d"><tspan
+           id="feature_axis_downright_label_line"
+           sodipodi:role="line"
+           x="74.110695"
+           y="39.730419">scaled sample<tspan
+   id="feature_axis_downright_label_sub"
+   style="font-size:1.2347px;baseline-shift:sub">2</tspan> expr.</tspan></text>
     </g>
     <g
        id="layer_feature_origin_lines"
@@ -2450,12 +2474,36 @@
          id="sample_axis_downleft"
          d="M 101.000,54.500 L 70.900,60.200"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
-      <text id="sample_axis_downleft_label" x="72.407" y="61.709" xml:space="preserve" transform="rotate(-10.723 72.407 61.709)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:start;text-align:start;fill:#4D4D4D"><tspan id="sample_axis_downleft_label_line" sodipodi:role="line" x="72.407" y="61.709">scaled feature<tspan id="sample_axis_downleft_label_sub" style="font-size:1.2347px;baseline-shift:sub">1</tspan> expr.</tspan></text>
+      <text
+         id="sample_axis_downleft_label"
+         x="60.316704"
+         y="74.109489"
+         xml:space="preserve"
+         transform="rotate(-10.723)"
+         style="font-weight:bold;font-size:1.7639px;font-family:'Liberation Sans', Arial, sans-serif;text-align:start;text-anchor:start;fill:#4d4d4d"><tspan
+           id="sample_axis_downleft_label_line"
+           sodipodi:role="line"
+           x="60.316704"
+           y="74.109489">scaled feature<tspan
+   id="sample_axis_downleft_label_sub"
+   style="font-size:1.2347px;baseline-shift:sub">1</tspan> expr.</tspan></text>
       <path
          id="sample_axis_downright"
          d="M 101.000,54.500 L 123.900,63.850"
          style="fill:none;stroke:#4D4D4D;stroke-width:0.176;stroke-linecap:round;marker-end:url(#marker_axis_head_grey)" />
-      <text id="sample_axis_downright_label" x="122.123" y="65.029" xml:space="preserve" transform="rotate(22.210 122.123 65.029)" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:1.7639px;font-weight:bold;text-anchor:end;text-align:end;fill:#4D4D4D"><tspan id="sample_axis_downright_label_line" sodipodi:role="line" x="122.123" y="65.029">scaled feature<tspan id="sample_axis_downright_label_sub" style="font-size:1.2347px;baseline-shift:sub">2</tspan> expr.</tspan></text>
+      <text
+         id="sample_axis_downright_label"
+         x="137.06541"
+         y="14.026252"
+         xml:space="preserve"
+         transform="rotate(22.21)"
+         style="font-weight:bold;font-size:1.7639px;font-family:'Liberation Sans', Arial, sans-serif;text-align:end;text-anchor:end;fill:#4d4d4d"><tspan
+           id="sample_axis_downright_label_line"
+           sodipodi:role="line"
+           x="137.06541"
+           y="14.026252">scaled feature<tspan
+   id="sample_axis_downright_label_sub"
+   style="font-size:1.2347px;baseline-shift:sub">2</tspan> expr.</tspan></text>
     </g>
     <g
        id="layer_sample_origin_lines"
