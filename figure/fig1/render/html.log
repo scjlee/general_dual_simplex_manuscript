@@ -1,0 +1,5 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+Warning message:
+renv failed to acquire the lock at "~/.cache/R/renv/sandbox/linux-ubuntu-noble/R-4.5/x86_64-pc-linux-gnu/25ebdc09.lock"
+- cannot create dir '/home/paseo/.cache/R/renv/sandbox/linux-ubuntu-noble/R-4.5/x86_64-pc-linux-gnu/25ebdc09.lock', reason 'Read-only file system'
+- renv requires write access to this path to synchronize concurrent sessions. 

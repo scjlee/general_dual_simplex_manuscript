@@ -1,0 +1,132 @@
+Paper Title
+ ●
+    A Generalized Dual Simplex Method for Solving Deconvolution Problem.
+ ●
+
+
+
+
+                                                                           1
+Fig 1. By variance share redistribution, Sinkhorn scaling can cause poor subspace estimation and limit
+the deconvolution performance of the original DualSimplex method.
+ A) DualSimplex methods find solution vertices in the projected space of Sinkhorn scaled matrix.
+ B) Different noise model changes simplex geometry in the projected space differently.
+ C) DualSimplex method has different deconvolution accuracy under different noise models.
+ D) Sinkhorn scaling increases the variance share of low-expression features.
+ E) Variance share redistribution changes the signal-to-noise ratio (SNR).
+ F) Decreased SNR is associated with poor spectral separation by singular value decomposition (SVD).
+ G) Poor SVD subspace prevents simplex vertices recovery.
+
+
+
+
+                                                                                                       2
+Fig 1A. DualSimplex methods find solution vertices in the projected space of Sinkhorn scaled matrix.
+
+
+
+
+  (A) DualSimplex solves deconvolution in low-dimensional subspaces of Sinkhorn-scaled data. It uses the linked geometry of feature and
+  sample simplices induced by Sinkhorn scaling. Dashed triangles show the theoretical simplices of the true signal. Colored dots represent
+  inferred vertices, and black lines trace their optimization trajectories.
+
+
+
+
+                                                                                                                                             4
+Fig 1B. Different noise model changes simplex geometry in the projected space differently.
+                                                                                                       Noise        Variance type
+                                                                                                      Normal           constant‡
+                                                                                                      Poisson          linear (L)
+                                                                                                        Mul          quadratic (Q)
+                                                                                                        NB                L+Q
+
+  Example feature simplices from the same signal
+
+
+
+
+  (B) Perturbation experiment with four noise models differing in how their variance depends on the true signal. Example feature simplices
+  show the same signal perturbed at equal noise levels. Colored triangles indicate the true simplex. Mul: multiplicative log-normal; NB:
+  negative binomial. ‡ Normal noise is clipped to keep observed data non-negative.
+
+
+
+
+                                                                                                                                             5
+Fig 1C. DualSimplex method has different deconvolution accuracy under different noise models.
+                                                       ∑ Var [ϵ i , . |V *i , . ]       total perturbation variance in features
+                                  Noise level( L) = i=1. . m                        =
+                                                          ∑ Var [V ]      *
+                                                                          i ,.
+                                                                                           total signal variance in features
+                                                         i=1. . m
+
+
+
+
+  (C) Among tested noise models, DualSimplex is most robust to multiplicative log-normal noise, maintaining accuracy near the noiseless
+  baseline even when noise variance is twice the signal variance. Metrics are calculated in the original expression space after reverse
+  Sinkhorn procedure, with columns of W sum-to-one normalized.
+
+
+
+
+                                                                                                                                          8
+Fig 1D. Sinkhorn scaling increases the variance share of low-expression features.
+                                                                   Var [V i , . ]                   Var [( D r VD c )i , . ]
+                               Variance share of feature i :                        (raw) and                                  (scaled)
+                                                                ∑ Var [V i , . ]                 ∑ Var [( D r VD c )i , . ]
+                                                               i=1. . m                         i=1. . m
+
+
+
+
+  (D) Sinkhorn scaling increases the variance share of low-expression features. Points and shading show the mean and full range of variance
+  shares at each raw expression rank. Bars summarize variance shares by expression bin, with similar numbers of features per bin. D r and Dc
+  are the Sinkhorn scaling matrices for V. Noise level: 0.25.
+
+
+
+
+                                                                                                                                               9
+Fig 1E. Variance share redistribution changes the signal-to-noise ratio (SNR).
+
+
+
+
+  (E) Variance redistribution increases the noise share of total observed variance, except under multiplicative noise. Shares are calculated as
+  in D, using variances of V* and ε before scaling and DrV*Dc and DrεDc after scaling in the numerator. Covariance term is omitted from the
+  visualization. Left and center: noise level 0.25. Right: signal-to-noise ratio across noise levels.
+
+
+
+
+                                                                                                                                                  11
+Fig 1F. Decreased SNR is associated with poor spectral separation by singular value decomposition.
+
+
+
+
+  (F) Except under multiplicative noise, perturbation drastically narrows the gap between σ3 and σ4. Lower post-scaling SNR is associated
+  with weaker spectral separation. Left: mean normalized singular values across 20 simulations, with shading showing the full range, at noise
+  level 0.25. Center: singular-value ratios across noise levels. Right: post-scaling SNR versus singular-value ratio.
+
+
+
+
+                                                                                                                                                13
+Fig 1G. Poor SVD subspace limits simplex vertices recovery.
+
+
+
+
+  (G) Projection error increases with noise level when the true signal is projected onto SVD subspaces of noisy data. Projection-to-
+  deconvolution RMSE ratios approach one in some cases, which indicating subspace estimation can limit vertex recovery. Metrics are
+  calculated in the original expression space after reverse Sinkhorn procedure, with columns of W normalized to sum-to-one.
+
+
+
+
+                                                                                                                                       14
+

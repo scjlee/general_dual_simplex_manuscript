@@ -48,7 +48,9 @@ root too, for example `Rscript figure/fig1/panelA/points.R`.
   `renv::install("../general_dual_simplex")` and `renv::snapshot()`.
 - `DualSimplex` is pinned by its GitHub commit in `renv.lock`.
 - Approved packages: GeneralDualSimplex, DualSimplex, ggplot2, patchwork,
-  scales, svglite (plus their dependencies). Ask before adding others.
+  scales, svglite, data.table, ggh4x, colorspace, ggrastr, ggnewscale,
+  rmarkdown (plus their dependencies). The report packages were approved
+  for the Figure 1 Rmd on 2026-11-13. Ask before adding others.
 
 System tools: Inkscape 1.4 or later, Liberation Sans (or Arial), Python 3
 (standard library only).

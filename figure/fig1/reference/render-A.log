@@ -1,0 +1,6 @@
+
+** (inkscape:3): WARNING **: 03:24:13.201: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+
+** (inkscape:3): WARNING **: 03:24:13.261: Could not create extension error log file '/home/paseo/.config/inkscape/extension-errors.log'
+
+** (inkscape:3): WARNING **: 03:24:13.293: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.

@@ -1,0 +1,11 @@
+# Figure 1 SVG and panel selection review
+
+Recipient: Advisor - Claude (fresh reviewer).
+Repository: /workspace/dual_simplex_functional/general_dual_simplex_manuscript
+Workspace ID: wks_eae2eb8dafb28fa0
+
+Read-only review, except write findings to figure/fig1/review.md. All work for this task belongs under figure/fig1. Read README.md and AGENTS.md first. Do not modify data/, other repositories or pre-existing figures.
+
+The user asked for a cleaned Rmd exporting SVG and an editable one-page Inkscape figure containing only the panels in data/figure1/261104_figure1_outline.pdf, following data/NRJs-guide-to-preparing-final-artwork.pdf. Originals remain unchanged. New generator: figure/fig1/figure1_components.Rmd; helpers export_helpers.R and simulation_helpers.R. Compare selected computations, data filters, metrics, seeds and quantities against data/figure1/261106_figure1_components.Rmd and the PDF. Panel selection: A existing schematic; B existing signal/noise schematic plus variance table and five feature simplex examples; C W/H RMSE only; D rank variance shares and bin stacks only; E by-bin source shares, total shares and SNR; F normalized spectrum, singular-value ratio and SNR versus ratio only; G W/H projection RMSE and projection/reconstruction RMSE fraction only. All unused plots, disabled chunks and installation blocks removed. Plot styles and dimensions changed; bquote labels shortened without changing quantities. Figure/fig1/assemble.py imports the schematics and plots, creates layers and ids, and preserves outer placement on regeneration.
+
+The Rmd render is running; final figure1.svg and previews will follow shortly. Start by checking the analysis and panel mapping. Then inspect the final SVG/PDF/PNG when available, including for content selection or clipping problems. Do not rerun the heavy input load unnecessarily. You may wait for artifacts using short intervals. Verify any mathematical or scientific claims have not been silently changed; flag unsupported pre-existing claims rather than fixing them. Return verdict, findings with files and lines, and limits. Rendering success alone is not evidence for the scientific captions. No literature research is needed. Preserve the exact numerical data. Please do not create another agent.

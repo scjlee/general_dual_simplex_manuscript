@@ -1,0 +1,154 @@
+NATURE BRANDED RESEARCH JOURNALS                                                                       GUIDE TO PREPARING FINAL ARTWORK
+
+Please take particular care to follow these guidelines for your final submission. Figures submitted in inappropriate formats will cause delays in processing
+your manuscript for publication. All figures must meet Nature standards for content and visual quality and will be redrawn to house style by an art editor
+where necessary.
+
+Figure sizes                                                                           • We cannot publish images downloaded from the internet unless they are
+Provide files at approximately the optimal display size, as indicated below.             released under the correct Public Domain licence.
+Original research and review content                                                   • If you want to use an image obtained from a photo library, do not
+                                  Includes:                                              purchase it. Instead, supply us with the library catalogue number and a
+                                  Analysis, Article, Brief Communication,
+                                                                                         low-resolution placeholder. We will secure publication rights and obtain
+                                  Consensus Statement, Hypothesis, Letter,               the final version on your behalf.
+    1-column
+                                  Perspective, Progress Article, Resource,
+      width:
+     88 mm                        Review Article, Technical Report
+                                                                                       Saving figure panels
+                                                                                       Save graphs, charts, schematics or other line art as vector files.
+                                                                                       Save photographs or complex illustrations as bitmap files.
+         2-column width:
+             180 mm                                                                    Vector files: AI, EPS, PDF
+                                   Length             Maximum height of figure         All line art, graphs, charts and schematics should be saved/exported
+                                   of figure    1-column (88 mm)   2-column (180 mm)   directly from the original application and file in which they were generated.
+                                   caption      width figures      width figures
+                                                                                       • To create vector files, open the original figure file in the application that
+                                   <300 words ~130 mm              ~185 mm               it was created in. The text, data, lines and colours in this file should
+                                   <150 words   ~180 mm            ~210 mm               remain editable. Directly save/export the file as one of these file formats:
+                                   <50 words    ~220 mm            ~225 mm               AI, EPS or PDF. We cannot use bitmapped file types such as BMP, GIF,
+                                                                                         GIMP, JPG, PNG, Tex or TIFF for vector art.
+All other content
+                                                                                       Examples of figure types that should be supplied in vector format
+  1-column     2-column width:                                                                                                      R1        R1
+                                                                                             22   35     45
+    width:         121 mm                                                              1                                   R1                             R1
+
+
+   58 mm                                                                                                                        R2                R2
+                                                                                                                                         R2                R2
+
+                                                                                       0                            120˚            D1
+                                                                                                                                              J
+                                                                                                                                                   D1
+
+                                                                                                                               D2             K         D2
+                                                                                                                     Intra-dimer                                            Napoli
+         3-column width:
+                                                                                                                        interface
+                                                                                                                                                       gate
+
+             185 mm
+                                                                                                                                                       vestibule
+
+                                                                                                                                                       filter
+
+
+
+
+                                                                                       Difference between bitmap and vector
+                                                                                                                                                                   0.00
+                                                                                                                                                  0.75
+
+
+
+                                                                                                                                                  0.00
+
+
+                                                                                                       Bitmap
+                                                                                                                                                  -0.75
+                                                                                                                                                                   -0.75
+                                                                                                                                                                   Vector
+
+
+Text
+• All text should be sans-serif typeface, preferably Helvetica or Arial.               The pixelation becomes more apparent on bitmapped images the closer
+• Maximum text size is 7pt. Minimum text size is 5pt.                                  the reader zooms in.
+                                                                                       Bitmapped files: BMP, GIF, GIMP, JPG, PNG, Tex, TIFF
+Colour
+                                                                                       • All photos and complex technical illustrations, e.g. 3D-rendered graphics,
+• Original research content should be supplied in RGB colour mode.
+                                                                                         should be directly saved/scanned in at least 300 dpi resolution at the
+• All other content (including Perspectives, Progress Articles and
+                                                                                         maximum size that they could be used.
+  Review Articles) should be supplied in CMYK colour mode.
+                                                                                       • Do not artificially increase the resolution of images in graphics
+Chemical structures                                                                      applications such as Photoshop as this does not improve quality. Images
+                                                                                         should retain the best available resolution of the source files.
+• If you are supplying a composite figure in a format other than .cdx but
+  it contains ChemDraw structures, please also supply the ChemDraw                     Examples of figure types that should be supplied as high-resolution bitmaps
+  elements in a separate .cdx file following the style guidelines. Please
+  refer to the Chemical Structure Guide and use the downloadable
+  template to format your structures.
+
+Stereo images
+• In the final accepted version of the manuscript, submit stereo images at
+  their final print size.
+
+Permissions                                                                            Difference between high-resolution and low-resolution images
+• Clarify the source of any images that you do not own.
+• We cannot publish any third-party images without securing the
+  appropriate rights.
+
+BioRender
+• BioRender figures must be included on our Third Party Rights form. Please
+  confirm whether you own a full licence to publish or a free trial plan.
+                                                                                                               300 dpi                                 72 dpi
+• Wikimedia and Flickr: These public sites should be avoided as the                    The pixelation becomes more apparent on low-resolution images the closer
+  information of who holds copyright is often absent or unreliable.                    the reader zooms in.
+GUIDE TO PREPARING FINAL ARTWORK                                                                                 NATURE BRANDED RESEARCH JOURNALS
+
+
+Microsoft Office                                                                  Example of a figure with both vector and bitmapped parts
+• Word: We do not recommend using this because layers and vectorised
+                                                                                   a                                                    b
+  formats can downgrade and flatten depending on how an image will                                      40
+  import or paste.
+
+
+
+
+                                                                                       % of sequences
+                                                                                                        30
+• Excel: Please convert figures to PDF.
+                                                                                                        20
+• Powerpoint: We can accept this if the figures are fully editable.
+                                                                                                        10                                                                 N234
+• Do not add graphical effects (e.g. drop shadow, 3D rotate and bevel) to
+  objects, as these are exported as low resolution bitmaps                                              0
+                                                                                                             0     10  20    30    40
+                                                                                                                 CDRH3 length (AA)                                     N88
+Adobe Photoshop
+• We do not recommend Photoshop for creating figures. It is a ‘raster’                          Vector parts that should be separate and editable.
+  picture-based application, files are often large and difficult to process,                    Bitmapped parts that should be separate and at least 300 dpi resolution.
+  and vector data can easily become flattened. This causes further delay
+  when the production team have to retrieve editable files from authors.          Example of overlaying vector elements onto bitmapped image
+• If you do decide to use Photoshop, PSD, TIFF or EPS, files will work
+  provided that all text remains fully editable in ‘type layers’, and line-art
+  (e.g. graphs, diagrams and symbols) are preserved and embedded
+  within 'vector smart objects’.
+                                                                                                                                                 All overlaid elements
+Combining vectors and bitmaps for final layout                                                                                                     are separate and
+Compiling final figures                                                                                                                                 editable
+• When combining different figure parts into one file for layout, use a vector-
+  based application such as Adobe Illustrator or Microsoft Powerpoint. - We
+  recommend: AI, EPS, PDF, PPT
+• Do not use applications that do not support vector format. - We do not
+  accept: BMP, GIF, GIMP, JPG, PNG, Tex, TIFF
+• Place all bitmapped images into the layout application at 300 dpi or at the
+  native resolution if captured at less than the optimal 300 dpi.                                                                                 All elements have
+• All text, and any overlaying elements, such as lines, axes, boxes, arrows and                                                                   been flattened and
+  scale bars, should be in editable vector format and laid over the bitmapped                                                                      are not editable
+  images in the layout application.
+• Try to keep each final figure to a maximum of 50 MB file size.
+
