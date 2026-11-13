@@ -1,0 +1,80 @@
+{
+  "panel_data_changed": [],
+  "outer_layout_preserved": true,
+  "embedded_raster_layers": 10,
+  "master_bytes": 2544087,
+  "previous_master_bytes": 6501433,
+  "source_commit": "ce1218e54d983fa0f63ff2c5d52ffc4c741414ac",
+  "image_resolution_dpi": [
+    [
+      "panelB-feature-none-image-0015",
+      742,
+      702,
+      1200.5393258426966,
+      1200.2849679411067
+    ],
+    [
+      "panelB-feature-Normal-image-0015",
+      742,
+      702,
+      1200.5393258426966,
+      1200.2849679411067
+    ],
+    [
+      "panelB-feature-Poisson-image-0015",
+      742,
+      702,
+      1200.5393258426966,
+      1200.2849679411067
+    ],
+    [
+      "panelB-feature-Mul-image-0015",
+      742,
+      702,
+      1200.5393258426966,
+      1200.2849679411067
+    ],
+    [
+      "panelB-feature-NB-image-0015",
+      742,
+      702,
+      1200.5393258426966,
+      1200.2849679411067
+    ],
+    [
+      "panelD-rank-image-0020",
+      361,
+      1384,
+      1198.8929889298893,
+      1200.0
+    ],
+    [
+      "panelD-rank-image-0033",
+      361,
+      1384,
+      1198.8929889298893,
+      1200.0
+    ],
+    [
+      "panelD-rank-image-0046",
+      361,
+      1384,
+      1198.8929889298893,
+      1200.0
+    ],
+    [
+      "panelD-rank-image-0059",
+      361,
+      1384,
+      1198.8929889298893,
+      1200.0
+    ],
+    [
+      "panelD-rank-image-0072",
+      361,
+      1384,
+      1198.8929889298893,
+      1200.0
+    ]
+  ]
+}

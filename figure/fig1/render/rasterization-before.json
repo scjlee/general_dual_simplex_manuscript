@@ -1,0 +1,34 @@
+{
+  "figure/fig1/panelC/input_data.rds": {
+    "bytes": 7099,
+    "sha256": "390e9499b85708ef5d0289af87d681b72491c99b633442055230d6002a731b36"
+  },
+  "figure/fig1/panelD/input_data.rds": {
+    "bytes": 4318534,
+    "sha256": "65d0e253bcd617aff7d910f9c90f9d2b03b963d5dae0289465255bb66f08fc64"
+  },
+  "figure/fig1/panelE/input_data.rds": {
+    "bytes": 11119333,
+    "sha256": "1508f4a23500882c56be8217923826b4fead0af6e4f0156acccb68f2ee1ccaa9"
+  },
+  "figure/fig1/panelB/input_data.rds": {
+    "bytes": 201881,
+    "sha256": "f9456b8989f6620dc8700cdc8bbb838ff183c403026e8da697a167b9e7482e06"
+  },
+  "figure/fig1/panelF/input_data.rds": {
+    "bytes": 171423,
+    "sha256": "ce4bd7ada08894e34bc8c05f03cc332e8bf78b13df8ec5083135694dbd46844d"
+  },
+  "figure/fig1/panelG/input_data.rds": {
+    "bytes": 33027,
+    "sha256": "90c1f7236e4d30b345bdb68b8d988e0e36d47ad0f6ee9d43925b90c7fe1e1955"
+  },
+  "figure/fig1/figure1.svg": {
+    "bytes": 6501433,
+    "sha256": "1c4b8c1790f273aa341f7a39095e9f866feba04adc61651224585532cd2ddc44"
+  },
+  "figure/fig1/figure1.pdf": {
+    "bytes": 2418006,
+    "sha256": "79f3952625dd50a1214a141640daea6f9d21d49ef85985f6d01406882674cb13"
+  }
+}

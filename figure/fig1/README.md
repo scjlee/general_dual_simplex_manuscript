@@ -1,7 +1,7 @@
 # Figure 1 working draft
 
 Open **figure1.svg** in Inkscape. It is the editable single-page master;
-figure1.pdf is the vector preview and figure1.png is the 600 dpi raster preview.
+figure1.pdf is the PDF preview and figure1.png is the 600 dpi raster preview.
 The page is 180 × 225 mm. Layers A–G contain only the panels selected in the
 supplied outline. The long slide captions and definitions are kept separately
 in reference/outline-text.txt, not packed into the artwork.
@@ -49,8 +49,10 @@ spectral-gap alternatives, error-scatter alternatives, disabled blocks and the
 installation/sanity-check block were removed. F uses the singular-value ratio,
 as shown in the outline, not the unused gap plot.
 
-Plots export directly through svglite with real text. B's raster point layer
-is replaced with vector circles at the same coordinates. The existing
+Plots export directly through svglite with real text. Point layers in B's
+feature simplices and D's rank plot are embedded rasters at 1200 dpi, following
+the Rmd changes in commit ce1218e54d983fa0f63ff2c5d52ffc4c741414ac. Axes, labels,
+triangles, ribbons and the remaining plots stay vector. The existing
 schematics and their matrix/cloud values are illustrative; experimental plots
 use the supplied saved simulations. No new simulations were run. Caption
 claims in the supplied outline have not been established by this artwork task.

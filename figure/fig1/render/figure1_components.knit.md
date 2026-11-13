@@ -16,6 +16,7 @@ re-rendering replaces its named data groups, preserving the surrounding layout.
 library(data.table)
 library(GeneralDualSimplex)
 library(ggplot2)
+library(ggrastr)
 library(ggh4x)
 library(magrittr)
 f <- glue::glue

@@ -1,0 +1,21 @@
+{
+  "layer-background": "<ns0:g xmlns:ns0=\"http://www.w3.org/2000/svg\" xmlns:ns1=\"http://www.inkscape.org/namespaces/inkscape\" xmlns:ns2=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\" id=\"layer-background\" ns1:groupmode=\"layer\" ns1:label=\"Page\" ns2:insensitive=\"true\">\n    <ns0:rect id=\"page-white\" x=\"0\" y=\"0\" width=\"180\" height=\"225\" fill=\"white\" />\n  </ns0:g>\n  ",
+  "data-panelB-feature-none": "translate(93,25) scale(0.35277777777777775)",
+  "data-panelB-feature-Normal": "translate(110,25) scale(0.35277777777777775)",
+  "data-panelB-feature-Poisson": "translate(127,25) scale(0.35277777777777775)",
+  "data-panelB-feature-Mul": "translate(144,25) scale(0.35277777777777775)",
+  "data-panelB-feature-NB": "translate(161,25) scale(0.35277777777777775)",
+  "data-panelC-rmse-W": "translate(2,53) scale(0.35277777777777775)",
+  "data-panelC-rmse-H": "translate(47,53) scale(0.35277777777777775)",
+  "data-panelD-rank": "translate(95,53) scale(0.35277777777777775)",
+  "data-panelD-bins": "translate(144,53) scale(0.35277777777777775)",
+  "data-panelE-by-bin": "translate(2,96) scale(0.35277777777777775)",
+  "data-panelE-total": "translate(82,96) scale(0.35277777777777775)",
+  "data-panelE-snr": "translate(128,96) scale(0.35277777777777775)",
+  "data-panelF-spectrum": "translate(2,142) scale(0.35277777777777775)",
+  "data-panelF-ratio": "translate(57,142) scale(0.35277777777777775)",
+  "data-panelF-snr-ratio": "translate(125,142) scale(0.35277777777777775)",
+  "data-panelG-projection-W": "translate(2,188) scale(0.35277777777777775)",
+  "data-panelG-projection-H": "translate(59,188) scale(0.35277777777777775)",
+  "data-panelG-fraction": "translate(116,188) scale(0.35277777777777775)"
+}

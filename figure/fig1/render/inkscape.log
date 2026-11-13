@@ -1,18 +1,27 @@
 
-** (inkscape:5): WARNING **: 03:40:52.279: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+** (inkscape:4): WARNING **: 16:48:16.874: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
 
-** (inkscape:5): WARNING **: 03:40:52.320: Could not create extension error log file '/home/paseo/.config/inkscape/extension-errors.log'
+** (inkscape:4): WARNING **: 16:48:16.992: Could not create extension error log file '/home/paseo/.config/inkscape/extension-errors.log'
 
-** (inkscape:5): WARNING **: 03:40:53.122: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.
+** (inkscape:4): WARNING **: 16:48:17.188: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.
 
-** (inkscape:12): WARNING **: 03:40:55.161: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+** (inkscape:11): WARNING **: 16:48:18.305: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
 
-** (inkscape:12): WARNING **: 03:40:55.201: Could not create extension error log file '/home/paseo/.config/inkscape/extension-errors.log'
+** (inkscape:11): WARNING **: 16:48:18.380: Could not create extension error log file '/home/paseo/.config/inkscape/extension-errors.log'
 
-** (inkscape:12): WARNING **: 03:40:55.998: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.
+** (inkscape:11): WARNING **: 16:48:18.567: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.
 
-** (inkscape:19): WARNING **: 03:41:00.157: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+** (inkscape:18): WARNING **: 16:48:19.583: Failed to wrap object of type 'PangoFT2FontMap'. Hint: this error is commonly caused by failing to call a library init() function.
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
+Fontconfig error: No writable cache directories
 
-** (inkscape:19): WARNING **: 03:41:00.195: Could not create extension error log file '/home/paseo/.config/inkscape/extension-errors.log'
+** (inkscape:18): WARNING **: 16:48:19.680: Could not create extension error log file '/home/paseo/.config/inkscape/extension-errors.log'
 
-** (inkscape:19): WARNING **: 03:41:01.000: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.
+** (inkscape:18): WARNING **: 16:48:19.866: Failed to wrap object of type 'GtkRecentManager'. Hint: this error is commonly caused by failing to call a library init() function.
