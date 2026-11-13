@@ -2,21 +2,44 @@
 library(data.table)
 library(GeneralDualSimplex)
 library(ggplot2)
+library(ggtext)
+library(ggrastr)
 library(ggh4x)
 library(magrittr)
 f <- glue::glue
 pmap <- purrr::pmap
-source("figure/fig1/simulation_helpers.R")
-source("figure/fig1/export_helpers.R")
 knitr::opts_chunk$set(dev = "svglite", fig.ext = "svg",
   fig.path = "figure/fig1/render/", echo = FALSE, message = FALSE,
   warning = TRUE, cache = FALSE, fig.show = "hide")
-theme_set(theme_classic(base_family = "Liberation Sans", base_size = 5.5))
+theme_set(theme_classic(base_family = "Liberation Sans", base_size = 5.5) + theme(
+    text = element_text(family = "Liberation Sans", size = 5.5),
+    plot.title = element_text(size = 6, face = "plain", margin = margin(b = 2)),
+    axis.title = element_text(size = 5.5), axis.text = element_text(size = 5),
+    strip.text = element_text(size = 5, margin = margin(1, 1, 1, 1)),
+    legend.text = element_text(size = 5), legend.title = element_text(size = 5),
+    legend.key.size = grid::unit(2, "mm"),
+    legend.key.spacing = grid::unit(0.3, "mm"),
+    legend.spacing = grid::unit(0.5, "mm"),
+    legend.box.spacing = grid::unit(0.5, "mm"),
+    legend.margin = margin(0, 0, 0, 0),
+    panel.spacing = grid::unit(0.6, "mm"),
+    axis.ticks.length = grid::unit(0.6, "mm"),
+    axis.line = element_line(linewidth = 0.15),
+    axis.ticks = element_line(linewidth = 0.15),
+    strip.background = element_rect(linewidth = 0.15),
+    plot.margin = margin(1, 1, 1, 1)
+  ))
+# Subscript spans set their own 5 pt size; F ratio axis titles are 6.5 pt.
 update_geom_defaults("point", list(size = 0.35, stroke = 0.15))
 update_geom_defaults("line", list(linewidth = 0.15))
 update_geom_defaults("polygon", list(linewidth = 0.15))
 update_geom_defaults("boxplot", list(linewidth = 0.15, size = 0.3))
+# Labels for the narrow noiseless facet in the error and ratio plots.
+noise_strip_labels <- c(none = "0", Normal = "Normal", Poisson = "Poisson",
+  Mul = "Mul", NB = "NB")
 inputs <- list()
+source("figure/fig1/simulation_helpers.R", local = TRUE)
+source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ## ----gradient-----------------------------------------------------------------
@@ -88,16 +111,17 @@ for (noise in unique(experiments$NOISE)) {
       fill = "#E69F00",
       alpha = 0.25,
       color = "black",
-      linetype = "dashed"
+      linetype = "22"
     ) +
-    geom_point(
+    geom_point_rast(
       data = fdata,
       color = "gray50",
-      size = 0.08
+      size = 0.08,
+      raster.dpi = 1200
     ) +
     labs(title = show_names[[noise]]) +
     theme(
-      plot.title = element_text(hjust = 0.5, size = 20),
+      plot.title = element_text(hjust = 0.5, size = 5.5),
       axis.title = element_blank(),
       axis.ticks = element_blank(),
       axis.text = element_blank()
@@ -137,17 +161,18 @@ p <- ggplot(
   facet_grid(
     cols = vars(NOISE),
     space = "free",
-    scales = "free_x"
+    scales = "free_x",
+    labeller = labeller(NOISE = noise_strip_labels)
   ) +
   guides(color = "none") +
   labs(
-    title = f("Deconvolusion error of {which.side}"),
+    title = f("{which.side} deconvolution"),
     x = "Noise level",
-    y = "RMSE (lower is better)"
+    y = "RMSE"
   ) +
   theme(
     legend.position = "bottom",
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 60, hjust = 1)
   )
 export_plot(p, "panelC/rmse-W", 43, 37, evaluations[metric == "rmse" & side == which.side])
 
@@ -166,17 +191,18 @@ p <- ggplot(
   facet_grid(
     cols = vars(NOISE),
     space = "free",
-    scales = "free_x"
+    scales = "free_x",
+    labeller = labeller(NOISE = noise_strip_labels)
   ) +
   guides(color = "none") +
   labs(
-    title = f("Deconvolusion error of {which.side}"),
+    title = f("{which.side} deconvolution"),
     x = "Noise level",
-    y = "RMSE (lower is better)"
+    y = "RMSE"
   ) +
   theme(
     legend.position = "bottom",
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 60, hjust = 1)
   )
 export_plot(p, "panelC/rmse-H", 43, 37, evaluations[metric == "rmse" & side == which.side])
 
@@ -256,10 +282,13 @@ p <- ggplot(
     color = NA
   ) +
   scale_fill_manual(values = c("Before" = "#009E73", "After" = '#D55E00')) +
-  stat_summary(
-    geom = "point",
-    fun = mean,
-    size = 0.1
+  rasterize(
+    stat_summary(
+      geom = "point",
+      fun = mean,
+      size = 0.05 / 3
+    ),
+    dpi = 1200
   ) +
   scale_color_manual(values = c("Before" = "#009E73", "After" = '#D55E00')) +
   facet_grid(cols = vars(NOISE)) +
@@ -343,13 +372,14 @@ p <- ggplot(
     labels = bin_labels
   ) +
   labs(
-    x = "Noise",
+    x = NULL,
     y = "Mean variance share (%)",
     fill = "Expr. bin"
   ) +
   facet_grid(cols = vars(scaling)) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 60, hjust = 1),
+    axis.ticks.x = element_blank()
   )
 export_plot(p, "panelD/bins", 34, 37, plot_data)
 
@@ -398,7 +428,7 @@ p <- ggplot(
       seed = 1
     ),
     color = "black",
-    size = 0.8,
+    size = 0.8 / 3,
     alpha = 0.6,
     show.legend = FALSE
   ) +
@@ -434,13 +464,14 @@ p <- ggplot(
   ) +
   scale_fill_manual(values = c("Signal" = "#0072B2", "Noise" = '#CC79A7')) +
   labs(
-    x = "Noise",
+    x = NULL,
     y = "Mean variance share (%)",
     fill = "Source"
   ) +
   facet_grid(cols = vars(scaling)) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 60, hjust = 1),
+    axis.ticks.x = element_blank()
   )
 export_plot(p, "panelE/total", 43, 40, plot_dt_long)
 
@@ -471,10 +502,11 @@ p <- ggplot(
   ) +
   facet_grid(cols = vars(NOISE)) +
   labs(
-    title = "Signal-to-noise ratio",
+    title = NULL,
     x = "Noise level",
-    y = "SNR (higher is better)"
-  )
+    y = "Post-scaling SNR"
+  ) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
 export_plot(p, "panelE/snr", 50, 40, aggr_fdata)
 
 
@@ -540,18 +572,18 @@ p <- ggplot(
   stat_summary(
     geom = "point",
     fun = mean,
-    size = 2
+    size = 2 / 3
   ) +
   stat_summary(
     geom = "line",
     fun = mean,
-    linewidth = 1
+    linewidth = 0.15
   ) +
   scale_color_manual(values = expanded_color) +
   labs(
-    title = "Rank-3 signal (noise level = 0.25)",
+    title = "Rank 3; noise level 0.25",
     x = "k",
-    y = bquote(~ "Normalize singular value" ~ σ[k]),
+    y = "Normalized singular value",
     color = "Noise",
     fill = "Noise"
   ) +
@@ -571,15 +603,17 @@ p <- ggplot(
 ) +
   geom_boxplot(outlier.shape = NA) +
   geom_point() +  # aes(color = factor(SEED))) +
-  facet_grid(cols = vars(NOISE), space = "free", scales = "free_x") + # Locked y-axis across Normal, Mul, NB
+  facet_grid(cols = vars(NOISE), space = "free", scales = "free_x",
+    labeller = labeller(NOISE = noise_strip_labels)) + # Locked y-axis across Normal, Mul, NB
   guides(color = "none") +
   labs(
-    title = "Normalized singular value ratio",
+    title = NULL,
     x = "Noise level",
-    y = bquote(σ[k+1] / σ[k] ~ "(lower is better)")
+    y = "σ<sub><span style='font-size:5pt'>k+1</span></sub> / σ<sub><span style='font-size:5pt'>k</span></sub>"
   ) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 60, hjust = 1),
+    axis.title.y = element_markdown(size = 6.5)
   )
 export_plot(p, "panelF/ratio", 65, 39, evaluations[metric == "singular_value_ratio"])
 
@@ -622,7 +656,7 @@ p <- merge(
   scale_shape_manual(
     values = c("Normal" = 16, "Poisson" = 17, "Mul" = 15, "NB" = 3),
     guide = guide_legend(
-      override.aes = list(color = base_noise_colors, size = 3)
+      override.aes = list(color = base_noise_colors, size = 1)
     )
   ) +
   scale_fill_grey(
@@ -633,21 +667,81 @@ p <- merge(
       order = 2,
       override.aes = list(
         shape = 22, # Filled square icon
-        size  = 6,
+        size  = 1.5,
         color = NA 
       )
     )
   ) +
   labs(
-    title = "SNR vs σ ratio",
-    x = "SNR",
-    y = bquote(σ[k+1] / σ[k] ~ "(lower is better)")
+    title = NULL,
+    x = "Post-scaling SNR",
+    y = "σ<sub><span style='font-size:5pt'>k+1</span></sub> / σ<sub><span style='font-size:5pt'>k</span></sub>"
   ) +
   theme(
     legend.position = "right",
-    legend.box = "vertical"
+    legend.box = "vertical",
+    axis.title.y = element_markdown(size = 6.5)
   )
 export_plot(p, "panelF/snr-ratio", 53, 39, list(snr = aggr_fdata, evaluations = evaluations[metric == "singular_value_ratio"]))
+
+
+set.seed(1993)
+p <- merge(
+  aggr_fdata,
+  evaluations[metric == "singular_value_ratio", .(NOISE, NOISE_LEVEL, SEED, singular_value_ratio = value)],
+  by = c('NOISE', 'NOISE_LEVEL', 'SEED')
+) %>%
+  `[`(NOISE != "none") %>%
+  `[`(sample(.N)) %>%
+  ggplot(aes(x = snr, y = singular_value_ratio)) +
+  geom_point(
+    aes(
+      color = interaction(NOISE, NOISE_LEVEL),
+      shape = NOISE,
+      fill  = NOISE_LEVEL
+    )
+  ) +
+  scale_color_manual(
+    values = color_vals,
+    guide = "none"
+  ) +
+  scale_shape_manual(
+    values = c("Normal" = 16, "Poisson" = 17, "Mul" = 15, "NB" = 3),
+    guide = guide_legend(
+      override.aes = list(color = base_noise_colors, size = 1)
+    )
+  ) +
+  scale_fill_grey(
+    name  = "Noise level",
+    start = 0.85,
+    end   = 0.2,
+    guide = guide_legend(
+      order = 2,
+      override.aes = list(
+        shape = 22, # Filled square icon
+        size  = 1.5,
+        color = NA 
+      )
+    )
+  ) +
+  coord_transform(
+    x = "log10",
+    xlim = c(NA, aggr_fdata[NOISE_LEVEL != "0", max(snr)*1.05]),
+    expand = FALSE
+  ) +
+  guides(x = guide_axis(minor.ticks = TRUE)) +
+  labs(
+    title = NULL,
+    x = "Post-scaling SNR",
+    y = "σ<sub><span style='font-size:5pt'>k+1</span></sub> / σ<sub><span style='font-size:5pt'>k</span></sub>"
+  ) +
+  theme(
+    legend.position = "right",
+    legend.box = "vertical",
+    axis.title.y = element_markdown(size = 6.5)
+  )
+
+export_plot(p, "panelF/log-snr-ratio", 53, 39, list(snr = aggr_fdata, evaluations = evaluations[metric == "singular_value_ratio"]))
 
 
 ## ----G-W----------------------------------------------------------------------
@@ -661,15 +755,16 @@ p <- ggplot(
     ) +
       geom_boxplot(outlier.shape = NA) +
       geom_point() +  # aes(color = factor(SEED))) +
-      facet_grid(cols = vars(NOISE), space = "free", scales = "free_x") +
+      facet_grid(cols = vars(NOISE), space = "free", scales = "free_x",
+        labeller = labeller(NOISE = noise_strip_labels)) +
       guides(color = "none") +
       labs(
-        title =  f("{which.side}-side projection error"),
+        title =  f("{which.side} projection"),
         x = "Noise level",
-        y = "RMSE (lower is better)"
+        y = "RMSE"
       ) +
       theme(
-        axis.text.x = element_text(angle = 45, hjust = 1)
+        axis.text.x = element_text(angle = 60, hjust = 1)
       )
 export_plot(p, "panelG/projection-W", 54, 36, evaluations[metric == "oracle_rmse" & side == which.side])
 
@@ -685,15 +780,16 @@ p <- ggplot(
     ) +
       geom_boxplot(outlier.shape = NA) +
       geom_point() +  # aes(color = factor(SEED))) +
-      facet_grid(cols = vars(NOISE), space = "free", scales = "free_x") +
+      facet_grid(cols = vars(NOISE), space = "free", scales = "free_x",
+        labeller = labeller(NOISE = noise_strip_labels)) +
       guides(color = "none") +
       labs(
-        title =  f("{which.side}-side projection error"),
+        title =  f("{which.side} projection"),
         x = "Noise level",
-        y = "RMSE (lower is better)"
+        y = "RMSE"
       ) +
       theme(
-        axis.text.x = element_text(angle = 45, hjust = 1)
+        axis.text.x = element_text(angle = 60, hjust = 1)
       )
 export_plot(p, "panelG/projection-H", 54, 36, evaluations[metric == "oracle_rmse" & side == which.side])
 
@@ -743,21 +839,22 @@ p <- ggplot(
 ) +
   geom_boxplot(outlier.shape = NA) +
   geom_point(
-    size = 0.75
+    size = 0.75 / 3
   ) +
   facet_grid(
     rows = vars(side),
     cols = vars(NOISE),
     space = "free",
-    scales = "free"
+    scales = "free",
+    labeller = labeller(NOISE = noise_strip_labels)
   ) +
   guides(color = "none") +
   labs(
     x = "Noise level",
-    y = "RMSE ratio (projection / deconvolution)"
+    y = "Projection / deconvolution RMSE"
   ) +
   theme(
-    axis.text.x = element_text(angle = 45, hjust = 1)
+    axis.text.x = element_text(angle = 60, hjust = 1)
   )
 export_plot(p, "panelG/fraction", 62, 36, plot_data_wide)
 

@@ -1,0 +1,26 @@
+{
+  "figure/fig1/panelC/input_data.rds": {
+    "sha256": "390e9499b85708ef5d0289af87d681b72491c99b633442055230d6002a731b36",
+    "bytes": 7099
+  },
+  "figure/fig1/panelD/input_data.rds": {
+    "sha256": "65d0e253bcd617aff7d910f9c90f9d2b03b963d5dae0289465255bb66f08fc64",
+    "bytes": 4318534
+  },
+  "figure/fig1/panelE/input_data.rds": {
+    "sha256": "1508f4a23500882c56be8217923826b4fead0af6e4f0156acccb68f2ee1ccaa9",
+    "bytes": 11119333
+  },
+  "figure/fig1/panelB/input_data.rds": {
+    "sha256": "f9456b8989f6620dc8700cdc8bbb838ff183c403026e8da697a167b9e7482e06",
+    "bytes": 201881
+  },
+  "figure/fig1/panelF/input_data.rds": {
+    "sha256": "ce4bd7ada08894e34bc8c05f03cc332e8bf78b13df8ec5083135694dbd46844d",
+    "bytes": 171423
+  },
+  "figure/fig1/panelG/input_data.rds": {
+    "sha256": "90c1f7236e4d30b345bdb68b8d988e0e36d47ad0f6ee9d43925b90c7fe1e1955",
+    "bytes": 33027
+  }
+}

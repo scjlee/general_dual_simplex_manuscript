@@ -1,0 +1,56 @@
+{
+  "outer_layout_and_annotations_preserved": true,
+  "panel_input_checksums_unchanged": {
+    "figure/fig1/panelC/input_data.rds": true,
+    "figure/fig1/panelD/input_data.rds": true,
+    "figure/fig1/panelE/input_data.rds": true,
+    "figure/fig1/panelB/input_data.rds": true,
+    "figure/fig1/panelG/input_data.rds": true
+  },
+  "existing_F_entries_identical": true,
+  "F_new_entry": "log-snr-ratio",
+  "math_text": {
+    "ratio": [
+      {
+        "text": "k+1",
+        "size_pt": 5.0
+      },
+      {
+        "text": "k",
+        "size_pt": 5.0
+      }
+    ],
+    "snr-ratio": [
+      {
+        "text": "k+1",
+        "size_pt": 5.0
+      },
+      {
+        "text": "k",
+        "size_pt": 5.0
+      }
+    ],
+    "log-snr-ratio": [
+      {
+        "text": "k+1",
+        "size_pt": 5.0
+      },
+      {
+        "text": "k",
+        "size_pt": 5.0
+      }
+    ]
+  },
+  "optional_plot_excluded_from_assembly": true,
+  "export_helper_modifies_plots": false,
+  "validation": {
+    "page_mm": [
+      180,
+      225
+    ],
+    "text_objects": 391,
+    "duplicate_ids": 0,
+    "raster_images": 10,
+    "text_box_findings": []
+  }
+}

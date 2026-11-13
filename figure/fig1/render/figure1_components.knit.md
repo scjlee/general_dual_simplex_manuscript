@@ -5,7 +5,8 @@ output:
     self_contained: true
 ---
 
-This working copy keeps only panels shown in the supplied outline. Run from
+This working copy renders the panels shown in the supplied outline and an optional
+log-SNR plot that is excluded from assembly. Run from
 this repository root with `Rscript figure/fig1/render.R`. Generated panel SVGs
 are in each panel's `generated/` directory. Edit the assembled `figure1.svg`;
 re-rendering replaces its named data groups, preserving the surrounding layout.
@@ -16,22 +17,44 @@ re-rendering replaces its named data groups, preserving the surrounding layout.
 library(data.table)
 library(GeneralDualSimplex)
 library(ggplot2)
+library(ggtext)
 library(ggrastr)
 library(ggh4x)
 library(magrittr)
 f <- glue::glue
 pmap <- purrr::pmap
-source("figure/fig1/simulation_helpers.R", local = TRUE)
-source("figure/fig1/export_helpers.R", local = TRUE)
 knitr::opts_chunk$set(dev = "svglite", fig.ext = "svg",
   fig.path = "figure/fig1/render/", echo = FALSE, message = FALSE,
   warning = TRUE, cache = FALSE, fig.show = "hide")
-theme_set(theme_classic(base_family = "Liberation Sans", base_size = 5.5))
+theme_set(theme_classic(base_family = "Liberation Sans", base_size = 5.5) + theme(
+    text = element_text(family = "Liberation Sans", size = 5.5),
+    plot.title = element_text(size = 6, face = "plain", margin = margin(b = 2)),
+    axis.title = element_text(size = 5.5), axis.text = element_text(size = 5),
+    strip.text = element_text(size = 5, margin = margin(1, 1, 1, 1)),
+    legend.text = element_text(size = 5), legend.title = element_text(size = 5),
+    legend.key.size = grid::unit(2, "mm"),
+    legend.key.spacing = grid::unit(0.3, "mm"),
+    legend.spacing = grid::unit(0.5, "mm"),
+    legend.box.spacing = grid::unit(0.5, "mm"),
+    legend.margin = margin(0, 0, 0, 0),
+    panel.spacing = grid::unit(0.6, "mm"),
+    axis.ticks.length = grid::unit(0.6, "mm"),
+    axis.line = element_line(linewidth = 0.15),
+    axis.ticks = element_line(linewidth = 0.15),
+    strip.background = element_rect(linewidth = 0.15),
+    plot.margin = margin(1, 1, 1, 1)
+  ))
+# Subscript/superscript spans below set their own 5 pt size; F axis titles are 6.5 pt.
 update_geom_defaults("point", list(size = 0.35, stroke = 0.15))
 update_geom_defaults("line", list(linewidth = 0.15))
 update_geom_defaults("polygon", list(linewidth = 0.15))
 update_geom_defaults("boxplot", list(linewidth = 0.15, size = 0.3))
+# Labels for the narrow noiseless facet in the error and ratio plots.
+noise_strip_labels <- c(none = "0", Normal = "Normal", Poisson = "Poisson",
+  Mul = "Mul", NB = "NB")
 inputs <- list()
+source("figure/fig1/simulation_helpers.R", local = TRUE)
+source("figure/fig1/export_helpers.R", local = TRUE)
 ```
 
 
@@ -165,6 +188,10 @@ inputs <- list()
 ## panelF/snr-ratio : 53 x 39 mm
 ```
 
+```
+## panelF/log-snr-ratio : 53 x 39 mm
+```
+
 # G — projection RMSE and its fraction of deconvolution RMSE
 
 
@@ -261,6 +288,10 @@ inputs <- list()
 ![F: ratio](panelF/generated/ratio.svg)
 
 ![F: snr-ratio](panelF/generated/snr-ratio.svg)
+
+### Optional log-SNR plot — not assembled
+
+![F: log-snr-ratio](panelF/generated/log-snr-ratio.svg)
 
 
 ## Panel G

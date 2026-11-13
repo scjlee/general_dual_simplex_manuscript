@@ -8,9 +8,11 @@ in reference/outline-text.txt, not packed into the artwork.
 
 ## Files and editing
 
-- figure1_components.Rmd: cleaned, local-path Rmd; only the selected panels.
-- render.R, export_helpers.R, simulation_helpers.R: report runner, styling/SVG
-  export and the unchanged simulation-reader functions.
+- figure1_components.Rmd: common theme/geom settings at the top; panel-specific
+  labels and styling in each plot chunk. It also exports the optional log-SNR plot.
+- render.R, export_helpers.R, simulation_helpers.R: report runner, file export/
+  provenance only, and the unchanged simulation-reader functions. The export
+  helper does not alter plot labels, themes, layers or geometry.
 - panelB/generated/ through panelG/generated/: individual editable SVG plots.
 - panelB/input_data.rds through panelG/input_data.rds: compact plotted inputs.
 - panelA/fig1A.svg and panelB/fig1B_schematic.svg: existing schematic masters;
@@ -70,3 +72,21 @@ true signal, ε noise and V observed data, as in the source outline. Shortened
 axis labels in A still denote the scaled sample/feature expression coordinates.
 The narrow noiseless facet strips in C, F and G are labelled “0” (noise level
 zero) so that the text fits; the data and facet widths are unchanged.
+
+## Editable typography and optional plot
+
+The setup chunk in figure1_components.Rmd contains the shared theme and geom
+defaults. All plot-specific text, tick angles, line widths and point sizes are
+specified in the corresponding plot chunks, before export_plot(). The helpers
+only save the plot and record its data/provenance.
+
+F's ratio labels use ggtext::element_markdown(), 6.5 pt main text, and an explicit
+5 pt span inside each subscript. The exported SVG contains separate editable
+text elements for the sigma and each subscript. The ggtext dependency was
+approved by the user and recorded in renv.lock. This approach follows the
+package's [documented HTML/CSS support](https://wilkelab.org/ggtext/articles/introduction.html).
+
+panelF/generated/log-snr-ratio.svg is exported and shown in the HTML gallery,
+but excluded from assemble.py's placements and from the Inkscape master.
+D's bins and E's total-share barplots omit the x title and tick marks; their
+noise-model names remain, rotated by 60 degrees.

@@ -1,0 +1,33 @@
+- Querying repositories for available source packages ... Done!
+The following package(s) will be installed:
+- commonmark [2.0.0]
+- curl       [7.1.0]
+- ggtext     [0.1.2]
+- gridtext   [0.1.6]
+- jpeg       [0.1-11]
+- litedown   [0.9]
+- markdown   [2.0]
+- xml2       [1.5.2]
+These packages will be installed into "/workspace/dual_simplex_functional/general_dual_simplex_manuscript/renv/library/linux-ubuntu-noble/R-4.5/x86_64-pc-linux-gnu".
+
+# Downloading packages -------------------------------------------------------
+[?25l  (0/7) Downloading: jpeg, xml2, litedown, ggtext, ...                                                                                                          [32m✔[0m jpeg 0.1-11                              [30 kB in 0.4s]
+  (1/7) Downloading: xml2, litedown, ggtext, curl, ...                                                                                                          [32m✔[0m litedown 0.9                             [376 kB in 0.43s]
+  (2/7) Downloading: xml2, ggtext, curl, markdown, ...                                                                                                          [32m✔[0m markdown 2.0                             [64 kB in 0.44s]
+  (3/7) Downloading: xml2, ggtext, curl, gridtext                                                                                                               [32m✔[0m xml2 1.5.2                               [282 kB in 0.48s]
+  (4/7) Downloading: ggtext, curl, gridtext                                                                                                                     [32m✔[0m gridtext 0.1.6                           [361 kB in 0.5s]
+  (5/7) Downloading: ggtext, curl                                                                                                                               [32m✔[0m ggtext 0.1.2                             [1.3 MB in 0.51s]
+  (6/7) Downloading: curl                                                                                                                                       [32m✔[0m curl 7.1.0                               [775 kB in 0.51s]
+                                                                                Successfully downloaded 7 packages in 0.65 seconds.
+
+# Installing packages --------------------------------------------------------
+[32m✔[0m commonmark 2.0.0                         [linked from cache]
+                                                                                [32m✔[0m curl 7.1.0                               [installed binary]
+                                                                                [32m✔[0m jpeg 0.1-11                              [installed binary]
+                                                                                [32m✔[0m litedown 0.9                             [installed binary]
+                                                                                [32m✔[0m xml2 1.5.2                               [installed binary]
+                                                                                [32m✔[0m markdown 2.0                             [installed binary]
+                                                                                [32m✔[0m gridtext 0.1.6                           [installed binary]
+                                                                                [32m✔[0m ggtext 0.1.2                             [installed binary]
+Successfully installed 8 packages in 1.9 seconds.
+[?25h

@@ -3,7 +3,7 @@
     180,
     225
   ],
-  "text_objects": 385,
+  "text_objects": 391,
   "duplicate_ids": 0,
   "raster_images": 10,
   "text_box_findings": []

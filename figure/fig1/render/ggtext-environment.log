@@ -1,0 +1,15 @@
+- The project is out-of-sync -- use `renv::status()` for details.
+The following package(s) will be updated in the lockfile:
+
+# CRAN -----------------------------------------------------------------------
+- commonmark   [* -> 2.0.0]
+- curl         [* -> 7.1.0]
+- ggtext       [* -> 0.1.2]
+- gridtext     [* -> 0.1.6]
+- jpeg         [* -> 0.1-11]
+- litedown     [* -> 0.9]
+- markdown     [* -> 2.0]
+- xml2         [* -> 1.5.2]
+
+- Lockfile written to "/workspace/dual_simplex_functional/general_dual_simplex_manuscript/renv.lock".
+No issues found -- the project is in a consistent state.
