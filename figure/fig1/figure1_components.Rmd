@@ -678,6 +678,65 @@ p <- merge(
     legend.box = "vertical"
   )
 export_plot(p, "panelF/snr-ratio", 53, 39, list(snr = aggr_fdata, evaluations = evaluations[metric == "singular_value_ratio"]))
+
+
+set.seed(1993)
+p <- merge(
+  aggr_fdata,
+  evaluations[metric == "singular_value_ratio", .(NOISE, NOISE_LEVEL, SEED, singular_value_ratio = value)],
+  by = c('NOISE', 'NOISE_LEVEL', 'SEED')
+) %>%
+  `[`(NOISE != "none") %>%
+  `[`(sample(.N)) %>%
+  ggplot(aes(x = snr, y = singular_value_ratio)) +
+  geom_point(
+    aes(
+      color = interaction(NOISE, NOISE_LEVEL),
+      shape = NOISE,
+      fill  = NOISE_LEVEL
+    )
+  ) +
+  scale_color_manual(
+    values = color_vals,
+    guide = "none"
+  ) +
+  scale_shape_manual(
+    values = c("Normal" = 16, "Poisson" = 17, "Mul" = 15, "NB" = 3),
+    guide = guide_legend(
+      override.aes = list(color = base_noise_colors, size = 3)
+    )
+  ) +
+  scale_fill_grey(
+    name  = "Noise level",
+    start = 0.85,
+    end   = 0.2,
+    guide = guide_legend(
+      order = 2,
+      override.aes = list(
+        shape = 22, # Filled square icon
+        size  = 6,
+        color = NA 
+      )
+    )
+  ) +
+  coord_transform(
+    x = "log10",
+    xlim = c(NA, aggr_fdata[NOISE_LEVEL != "0", max(snr)*1.05]),
+    expand = FALSE
+  ) +
+  guides(x = guide_axis(minor.ticks = TRUE)) +
+  labs(
+    title = "SNR vs σ ratio",
+    x = "SNR",
+    y = bquote(σ[k+1] / σ[k] ~ "(lower is better)")
+  ) +
+  theme(
+    legend.position = "right",
+    legend.box = "vertical"
+  )
+
+print(p)
+export_plot(p, "panelF/log-snr-ratio", 53, 39, list(snr = aggr_fdata, evaluations = evaluations[metric == "singular_value_ratio"]))
 ```
 
 # G — projection RMSE and its fraction of deconvolution RMSE
