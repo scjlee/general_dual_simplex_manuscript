@@ -64,13 +64,13 @@ def layer(parent,id_,label):
     return ET.SubElement(parent,tag('g'),{'id':id_,'{'+INK+'}groupmode':'layer','{'+INK+'}label':label})
 
 placements=[
- ('panelB/feature-none',86,21),('panelB/feature-Normal',104.5,21),
- ('panelB/feature-Poisson',123,21),('panelB/feature-Mul',141.5,21),('panelB/feature-NB',160,21),
- ('panelC/rmse-W',2,53),('panelC/rmse-H',47,53),
- ('panelD/rank',95,53),('panelD/bins',144,53),
- ('panelE/by-bin',2,96),('panelE/total',82,96),('panelE/snr',128,96),
- ('panelF/spectrum',2,142),('panelF/ratio',57,142),('panelF/snr-ratio',125,142),
- ('panelG/projection-W',2,188),('panelG/projection-H',59,188),('panelG/fraction',116,188)
+ ('panelB/feature-none',86,21.45),('panelB/feature-Normal',104.5,21.45),
+ ('panelB/feature-Poisson',123,21.45),('panelB/feature-Mul',141.5,21.45),('panelB/feature-NB',160,21.45),
+ ('panelC/rmse-W',2,45.45),('panelC/rmse-H',47,45.45),
+ ('panelD/rank',95,45.45),('panelD/bins',144,45.45),
+ ('panelE/by-bin',2,89.45),('panelE/total',82,89.45),('panelE/snr',128,89.45),
+ ('panelF/spectrum',2,136.95),('panelF/ratio',57,136.95),('panelF/snr-ratio',125,136.95),
+ ('panelG/projection-W',2,183.45),('panelG/projection-H',54,183.45),('panelG/fraction',106,183.45)
 ]
 master=HERE/'figure1.svg'
 if master.exists():
@@ -84,9 +84,9 @@ else:
     bg.set('{'+SOD+'}insensitive','true')
     ET.SubElement(bg,tag('rect'),{'id':'page-white','x':'0','y':'0','width':'180','height':'225','fill':'white'})
     layers={letter:layer(root,'layer-panel'+letter,'Panel '+letter) for letter in 'ABCDEFG'}
-    for letter,x,y,heading in [('a',2,2.7,''),('b',86,2.7,''),('c',2,51,'Deconvolution'),('d',95,51,'Variance share'),('e',2,94,'Signal and noise'),('f',2,140,'Spectral separation'),('g',2,186,'Projection')]:
+    # Panel titles go in the legend; labels sit beside the content.
+    for letter,x,y in [('a',2,2.7),('b',84.3,2.7),('c',2,47.25),('d',95,47.25),('e',2,91.25),('f',2,138.75),('g',2,185.25)]:
         text(layers[letter.upper()],'panel-label-'+letter,x,y,letter,7,'bold')
-        if heading: text(layers[letter.upper()],'panel-heading-'+letter,x+4,y,heading,6)
     for letter,path,x,y,scale in [('A','panelA/fig1A.svg',2,4,0.64),('B','panelB/fig1B_schematic.svg',86,4,0.52)]:
         g=ET.SubElement(layers[letter],tag('g'),{'id':'schematic-panel'+letter,'transform':f'translate({x},{y}) scale({scale})'})
         g.append(import_art(HERE/path,'schematic'+letter,scale,True))

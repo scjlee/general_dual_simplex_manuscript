@@ -744,3 +744,37 @@ The minimum origin-line angles are unchanged: 19.61 and 12.34 degrees.
 
 Revisit if: the user wants panel b to align with panel d (at 95 mm), less tall
 simplex plots, or a fresh assembly that reproduces this layout.
+
+## 2026-11-13 — Remove Figure 1 panel titles and give the space to the plots
+
+Context: the user's second spec (`261113_figure1_modification.pdf`, pages 3–5,
+uploaded in this session) listed six changes. M1: move panel a's axis labels
+off their lines, aligned to the arrowheads. M2: remove all panel titles (they go
+in the legend) and let content use the label row. M3: make the simplices more
+square, bottom-aligned. M4: add "error" to the C and G plot titles. M5: name G's
+ratio axis "RMSE ratio (proj. / deconv.)". M6: give G's ratio plot more room so
+its W and H rows separate.
+
+Options: keep each label on its own row or let content sit beside it; give the
+freed height to the plots or leave it blank.
+
+Decision: as specified. Axis labels start or end 0.2 schematic units inside
+the arrow tip, with the baseline 3.2 units below the line (was 1.76, so the
+letters crossed the line). Row a/b content starts at y = 0.9 mm. The pipeline
+row moves 1.2 mm right to clear the "a"; the "b" moves to x = 84.3 mm,
+because B's header starts at its left edge. The simplices are 21.5 mm tall
+(was 24.6). With the titles gone, row heights grow by about 12%: C/D 41.5,
+E 45, F 44, G 40.4 mm, with 2.5 mm between rows. Panel G widths change from
+54/54/62 to 50/50/72 mm, and the ratio plot's gap between its W and H rows
+grows from 0.6 to 2 mm. Panel labels are drawn last in their layers, because
+the plots' white backgrounds now overlap them.
+
+Evidence: `figure/fig1/figure1.svg` (previous master
+`figure/fig1/backups/figure1-006.svg`); edit script in ignored
+`out/20261113_fig1_m/`. After the re-render, every `input_data.rds` and
+`package_commit.txt` was byte-identical (GeneralDualSimplex 0.38.0 at
+`09dd30edfd7a65715e6ec0261d3ea12b0cd0ee71`). `figure/fig1/verify.py` reports no
+text-box findings for 385 texts. Wording and layout only; no plotted value changed.
+
+Revisit if: the legend text is drafted (panel titles must appear there), or the
+gap between the B schematic and the simplex titles (about 4 mm) looks too large.

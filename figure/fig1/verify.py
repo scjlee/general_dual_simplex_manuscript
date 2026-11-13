@@ -13,14 +13,14 @@ for row in csv.reader((HERE/'render/object-boxes.csv').open()):
         try: boxes[row[0]]=tuple(float(v)*25.4/96 for v in row[1:])
         except ValueError: pass
 slots={
- 'panelB-feature-none':(86,21,17.9,24.6),'panelB-feature-Normal':(104.5,21,17.9,24.6),
- 'panelB-feature-Poisson':(123,21,17.9,24.6),'panelB-feature-Mul':(141.5,21,17.9,24.6),
- 'panelB-feature-NB':(160,21,17.9,24.6),
- 'panelC-rmse-W':(2,53,43,37),'panelC-rmse-H':(47,53,43,37),
- 'panelD-rank':(95,53,47,37),'panelD-bins':(144,53,34,37),
- 'panelE-by-bin':(2,96,77,40),'panelE-total':(82,96,43,40),'panelE-snr':(128,96,50,40),
- 'panelF-spectrum':(2,142,52,39),'panelF-ratio':(57,142,65,39),'panelF-snr-ratio':(125,142,53,39),
- 'panelG-projection-W':(2,188,54,36),'panelG-projection-H':(59,188,54,36),'panelG-fraction':(116,188,62,36)
+ 'panelB-feature-none':(86,21.45,17.9,21.5),'panelB-feature-Normal':(104.5,21.45,17.9,21.5),
+ 'panelB-feature-Poisson':(123,21.45,17.9,21.5),'panelB-feature-Mul':(141.5,21.45,17.9,21.5),
+ 'panelB-feature-NB':(160,21.45,17.9,21.5),
+ 'panelC-rmse-W':(2,45.45,43,41.5),'panelC-rmse-H':(47,45.45,43,41.5),
+ 'panelD-rank':(95,45.45,47,41.5),'panelD-bins':(144,45.45,34,41.5),
+ 'panelE-by-bin':(2,89.45,77,45),'panelE-total':(82,89.45,43,45),'panelE-snr':(128,89.45,50,45),
+ 'panelF-spectrum':(2,136.95,52,44),'panelF-ratio':(57,136.95,65,44),'panelF-snr-ratio':(125,136.95,53,44),
+ 'panelG-projection-W':(2,183.45,50,40.4),'panelG-projection-H':(54,183.45,50,40.4),'panelG-fraction':(106,183.45,72,40.4)
 }
 def contained(b,c,tol=.15):
     x,y,w,h=b; a,z,v,j=c

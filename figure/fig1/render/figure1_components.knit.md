@@ -71,23 +71,23 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelB/feature-none : 17.9 x 24.6 mm
+## panelB/feature-none : 17.9 x 21.5 mm
 ```
 
 ```
-## panelB/feature-Poisson : 17.9 x 24.6 mm
+## panelB/feature-Poisson : 17.9 x 21.5 mm
 ```
 
 ```
-## panelB/feature-NB : 17.9 x 24.6 mm
+## panelB/feature-NB : 17.9 x 21.5 mm
 ```
 
 ```
-## panelB/feature-Normal : 17.9 x 24.6 mm
+## panelB/feature-Normal : 17.9 x 21.5 mm
 ```
 
 ```
-## panelB/feature-Mul : 17.9 x 24.6 mm
+## panelB/feature-Mul : 17.9 x 21.5 mm
 ```
 
 # C — deconvolution RMSE
@@ -98,12 +98,12 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelC/rmse-W : 43 x 37 mm
+## panelC/rmse-W : 43 x 41.5 mm
 ```
 
 
 ```
-## panelC/rmse-H : 43 x 37 mm
+## panelC/rmse-H : 43 x 41.5 mm
 ```
 
 # D — variance share by rank and expression bin
@@ -126,7 +126,7 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelD/rank : 47 x 37 mm
+## panelD/rank : 47 x 41.5 mm
 ```
 
 
@@ -147,7 +147,7 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 ```
 
 ```
-## panelD/bins : 34 x 37 mm
+## panelD/bins : 34 x 41.5 mm
 ```
 
 # E — signal/noise variance shares and SNR
@@ -156,17 +156,17 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelE/by-bin : 77 x 40 mm
+## panelE/by-bin : 77 x 45 mm
 ```
 
 
 ```
-## panelE/total : 43 x 40 mm
+## panelE/total : 43 x 45 mm
 ```
 
 
 ```
-## panelE/snr : 50 x 40 mm
+## panelE/snr : 50 x 45 mm
 ```
 
 # F — spectral separation
@@ -175,17 +175,17 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelF/spectrum : 52 x 39 mm
+## panelF/spectrum : 52 x 44 mm
 ```
 
 
 ```
-## panelF/ratio : 65 x 39 mm
+## panelF/ratio : 65 x 44 mm
 ```
 
 
 ```
-## panelF/snr-ratio : 53 x 39 mm
+## panelF/snr-ratio : 53 x 44 mm
 ```
 
 ```
@@ -196,12 +196,12 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelG/projection-W : 54 x 36 mm
+## panelG/projection-W : 50 x 40.4 mm
 ```
 
 
 ```
-## panelG/projection-H : 54 x 36 mm
+## panelG/projection-H : 50 x 40.4 mm
 ```
 
 
@@ -222,7 +222,7 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelG/fraction : 62 x 36 mm
+## panelG/fraction : 72 x 40.4 mm
 ```
 
 
