@@ -15,6 +15,7 @@ re-rendering replaces its named data groups, preserving the surrounding layout.
 library(data.table)
 library(GeneralDualSimplex)
 library(ggplot2)
+library(ggrastr)
 library(ggh4x)
 library(magrittr)
 f <- glue::glue
@@ -105,12 +106,13 @@ for (noise in unique(experiments$NOISE)) {
       fill = "#E69F00",
       alpha = 0.25,
       color = "black",
-      linetype = "dashed"
+      linetype = "22"
     ) +
-    geom_point(
+    geom_point_rast(
       data = fdata,
       color = "gray50",
-      size = 0.08
+      size = 0.08,
+      raster.dpi = 1200
     ) +
     labs(title = show_names[[noise]]) +
     theme(
@@ -277,10 +279,13 @@ p <- ggplot(
     color = NA
   ) +
   scale_fill_manual(values = c("Before" = "#009E73", "After" = '#D55E00')) +
-  stat_summary(
-    geom = "point",
-    fun = mean,
-    size = 0.1
+  rasterize(
+    stat_summary(
+      geom = "point",
+      fun = mean,
+      size = 0.05
+    ),
+    dpi = 1200
   ) +
   scale_color_manual(values = c("Before" = "#009E73", "After" = '#D55E00')) +
   facet_grid(cols = vars(NOISE)) +
