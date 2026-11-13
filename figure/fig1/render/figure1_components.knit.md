@@ -44,7 +44,7 @@ theme_set(theme_classic(base_family = "Liberation Sans", base_size = 5.5) + them
     strip.background = element_rect(linewidth = 0.15),
     plot.margin = margin(1, 1, 1, 1)
   ))
-# Subscript/superscript spans below set their own 5 pt size; F axis titles are 6.5 pt.
+# Subscript spans set their own 5 pt size; F ratio axis titles are 6.5 pt.
 update_geom_defaults("point", list(size = 0.35, stroke = 0.15))
 update_geom_defaults("line", list(linewidth = 0.15))
 update_geom_defaults("polygon", list(linewidth = 0.15))
@@ -71,23 +71,23 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelB/feature-none : 16.4 x 18 mm
+## panelB/feature-none : 17.9 x 24.6 mm
 ```
 
 ```
-## panelB/feature-Poisson : 16.4 x 18 mm
+## panelB/feature-Poisson : 17.9 x 24.6 mm
 ```
 
 ```
-## panelB/feature-NB : 16.4 x 18 mm
+## panelB/feature-NB : 17.9 x 24.6 mm
 ```
 
 ```
-## panelB/feature-Normal : 16.4 x 18 mm
+## panelB/feature-Normal : 17.9 x 24.6 mm
 ```
 
 ```
-## panelB/feature-Mul : 16.4 x 18 mm
+## panelB/feature-Mul : 17.9 x 24.6 mm
 ```
 
 # C — deconvolution RMSE

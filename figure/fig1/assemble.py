@@ -51,28 +51,21 @@ def import_art(path,prefix,scale=1,clamp_text=False):
                 style=re.sub(r'font-size:[0-9.]+px',f'font-size:{size:.5f}px',style)
                 e.set('style',style)
     if prefix == 'schematicA':
-        labels={'feature_axis_downleft_label':'sample₁ expr.','feature_axis_downright_label':'sample₂ expr.',
-                'sample_axis_downleft_label':'feature₁ expr.','sample_axis_downright_label':'feature₂ expr.'}
+        labels={'feature_axis_downleft_label':'scaled sample₁','feature_axis_downright_label':'scaled sample₂',
+                'sample_axis_downleft_label':'scaled feature₁','sample_axis_downright_label':'scaled feature₂'}
         for e in g.iter(tag('text')):
             key=e.get('id','').removeprefix('schematicA-')
             if key in labels:
                 for child in list(e): e.remove(child)
                 e.text=labels[key]
-    if prefix == 'schematicB':
-        for e in g.iter(tag('text')):
-            short={'label_W':'W','label_H':'H','label_Vstar':'V*','label_epsilon':'ε','label_V':'V'}
-            key=e.get('id','').removeprefix('schematicB-')
-            if key in short:
-                for child in list(e): e.remove(child)
-                e.text=short[key]
     return g
 
 def layer(parent,id_,label):
     return ET.SubElement(parent,tag('g'),{'id':id_,'{'+INK+'}groupmode':'layer','{'+INK+'}label':label})
 
 placements=[
- ('panelB/feature-none',93,25),('panelB/feature-Normal',110,25),
- ('panelB/feature-Poisson',127,25),('panelB/feature-Mul',144,25),('panelB/feature-NB',161,25),
+ ('panelB/feature-none',86,21),('panelB/feature-Normal',104.5,21),
+ ('panelB/feature-Poisson',123,21),('panelB/feature-Mul',141.5,21),('panelB/feature-NB',160,21),
  ('panelC/rmse-W',2,53),('panelC/rmse-H',47,53),
  ('panelD/rank',95,53),('panelD/bins',144,53),
  ('panelE/by-bin',2,96),('panelE/total',82,96),('panelE/snr',128,96),
@@ -91,13 +84,12 @@ else:
     bg.set('{'+SOD+'}insensitive','true')
     ET.SubElement(bg,tag('rect'),{'id':'page-white','x':'0','y':'0','width':'180','height':'225','fill':'white'})
     layers={letter:layer(root,'layer-panel'+letter,'Panel '+letter) for letter in 'ABCDEFG'}
-    for letter,x,y,heading in [('a',2,2.7,''),('b',93,2.7,''),('c',2,51,'Deconvolution'),('d',95,51,'Variance share'),('e',2,94,'Signal and noise'),('f',2,140,'Spectral separation'),('g',2,186,'Projection')]:
+    for letter,x,y,heading in [('a',2,2.7,''),('b',86,2.7,''),('c',2,51,'Deconvolution'),('d',95,51,'Variance share'),('e',2,94,'Signal and noise'),('f',2,140,'Spectral separation'),('g',2,186,'Projection')]:
         text(layers[letter.upper()],'panel-label-'+letter,x,y,letter,7,'bold')
         if heading: text(layers[letter.upper()],'panel-heading-'+letter,x+4,y,heading,6)
-    for letter,path,x,y,scale in [('A','panelA/fig1A.svg',2,4,0.64),('B','panelB/fig1B_schematic.svg',93,4,62.5/134)]:
+    for letter,path,x,y,scale in [('A','panelA/fig1A.svg',2,4,0.64),('B','panelB/fig1B_schematic.svg',86,4,0.52)]:
         g=ET.SubElement(layers[letter],tag('g'),{'id':'schematic-panel'+letter,'transform':f'translate({x},{y}) scale({scale})'})
         g.append(import_art(HERE/path,'schematic'+letter,scale,True))
-    text(layers['B'],'panelB-example-note',93,22.5,'Feature simplices: seed 17; noise level 0.5')
     table=ET.SubElement(layers['B'],tag('g'),{'id':'noise-variance-table'})
     rows=[('Noise','Variance'),('Normal','constant‡'),('Poisson','linear (L)'),('Mul','quadratic (Q)'),('NB','L + Q')]
     for row,(a,b) in enumerate(rows):

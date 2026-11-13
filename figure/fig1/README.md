@@ -67,9 +67,16 @@ be revisited with the final caption length. Definitions and detailed legends
 remain in the companion reference text. Figure schematics use the existing
 Liberation Sans font, which is metrically compatible with Arial.
 
-In the compact schematic, W denotes feature profiles, H proportions, V* the
-true signal, ε noise and V observed data, as in the source outline. Shortened
-axis labels in A still denote the scaled sample/feature expression coordinates.
+The B schematic shows the original matrix titles: W (profiles), H (proportions),
+V* (true signal), ε (noise) and V (observed data). The axis labels in A read
+"scaled sample₁" and "scaled feature₁" (and ₂); they denote the scaled
+expression coordinates. The B feature simplices are exported at 17.9 × 24.6 mm.
+Their seed and noise level are given in caption_notes.md, not in the artwork.
+
+On 2026-11-13, panels a and b were re-laid out in figure1.svg only, following the
+user's spec: A is compacted horizontally and B is wider. The previous master is
+backups/figure1-005.svg. A fresh assembly from the schematic sources would not
+reproduce the rescaled planes, the narrower pipeline row or the moved B matrices.
 The narrow noiseless facet strips in C, F and G are labelled “0” (noise level
 zero) so that the text fits; the data and facet widths are unchanged.
 

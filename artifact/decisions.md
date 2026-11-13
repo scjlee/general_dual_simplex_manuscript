@@ -710,3 +710,37 @@ numbered backups are in ignored `out/20261108_fig1A_draft/` to
 
 Revisit if: the panel should show computed data, a caption draft is written, or the
 user wants a tracked generator for this panel.
+
+## 2026-11-13 — Compact Figure 1a and give 1b the freed width
+
+Context: the user's spec (`261113_figure1_modification.pdf`, uploaded in this
+session) asked to compact panel a horizontally and give panel b more space. Panel a
+axes should read "scaled sample₁ …" and "scaled feature₁ …". Panel b's schematic
+should be wider and get its matrix titles back. The "Feature simplices: seed 17;
+noise level 0.5" line should go, and the five simplices should fill the space.
+The NRJ artwork guide (`data/NRJs-guide-to-preparing-final-artwork.pdf`) sets
+180 mm width, 5–7 pt sans-serif text and editable vectors.
+
+Options: compress the two planes horizontally only, or rescale each plane
+uniformly; scale the simplex plot groups, or re-export them at the new size.
+
+Decision: each plane is rescaled uniformly by 0.95 (coordinates only, so dot radii,
+line widths and fonts are unchanged). The gap between the planes' lower corners
+shrinks from 5 to 3 schematic units (about 1.9 mm). A horizontal-only squeeze of
+0.93 was tried first and rejected: it moved the sample plane's green origin line
+to 11.5 degrees from the vertical axis (rule: at least 12) and changed the 66 degree
+corners. Panel a now spans 2.9–81.6 mm; panel b starts at 86 mm. The schematic is
+scaled by 0.52 with text kept at 5 pt. The simplices are re-exported through the
+README pipeline at 17.9 × 24.6 mm. The example note is removed; its seed and
+noise level remain in `figure/fig1/caption_notes.md`.
+
+Evidence: `figure/fig1/figure1.svg` (previous master
+`figure/fig1/backups/figure1-005.svg`); one-off edit script and previews in
+ignored `out/20261113_fig1_ab/`. The re-render left all panel C–G SVGs, every
+`package_commit.txt` and every `input_data.rds` byte-identical
+(GeneralDualSimplex 0.38.0 at `09dd30edfd7a65715e6ec0261d3ea12b0cd0ee71`, clean
+R/ and src/). `figure/fig1/verify.py` reports no text-box findings for 390 texts.
+The minimum origin-line angles are unchanged: 19.61 and 12.34 degrees.
+
+Revisit if: the user wants panel b to align with panel d (at 95 mm), less tall
+simplex plots, or a fresh assembly that reproduces this layout.

@@ -13,9 +13,9 @@ for row in csv.reader((HERE/'render/object-boxes.csv').open()):
         try: boxes[row[0]]=tuple(float(v)*25.4/96 for v in row[1:])
         except ValueError: pass
 slots={
- 'panelB-feature-none':(93,25,16.4,18),'panelB-feature-Normal':(110,25,16.4,18),
- 'panelB-feature-Poisson':(127,25,16.4,18),'panelB-feature-Mul':(144,25,16.4,18),
- 'panelB-feature-NB':(161,25,16.4,18),
+ 'panelB-feature-none':(86,21,17.9,24.6),'panelB-feature-Normal':(104.5,21,17.9,24.6),
+ 'panelB-feature-Poisson':(123,21,17.9,24.6),'panelB-feature-Mul':(141.5,21,17.9,24.6),
+ 'panelB-feature-NB':(160,21,17.9,24.6),
  'panelC-rmse-W':(2,53,43,37),'panelC-rmse-H':(47,53,43,37),
  'panelD-rank':(95,53,47,37),'panelD-bins':(144,53,34,37),
  'panelE-by-bin':(2,96,77,40),'panelE-total':(82,96,43,40),'panelE-snr':(128,96,50,40),

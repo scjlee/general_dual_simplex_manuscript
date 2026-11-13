@@ -145,7 +145,7 @@ for (noise in unique(experiments$NOISE)) {
       axis.text = element_blank()
     )
   
-  export_plot(p, paste0("panelB/feature-", noise), 16.4, 18, list(vertices = fvertex, points = fdata))
+  export_plot(p, paste0("panelB/feature-", noise), 17.9, 24.6, list(vertices = fvertex, points = fdata))
 }
 ```
 
