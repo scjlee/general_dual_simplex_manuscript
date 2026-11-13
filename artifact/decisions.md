@@ -778,3 +778,25 @@ text-box findings for 385 texts. Wording and layout only; no plotted value chang
 
 Revisit if: the legend text is drafted (panel titles must appear there), or the
 gap between the B schematic and the simplex titles (about 4 mm) looks too large.
+
+## 2026-11-13 — Shorten Figure 1 rows c–f to a 180 × 200 mm page
+
+Context: after tweaking panels a and b by hand (`d33760e`), the user asked to make
+the figure more compact without touching a and b. A 15% trial on rows e and f
+was legible, then the user chose 20% for e and 30% for f. They asked for rows c/d
+to match row g, and then for c/d to shrink until the page is 180 × 200 mm.
+
+Decision (user): row heights are c/d 38.7, e 36, f 30.8 and g 40.4 mm, with
+2.5 mm between rows. The page is 180 × 200 mm (was 225). The "f" label moved up
+0.8 mm because the shorter spectrum plot's y title came within 0.18 mm of it.
+Panels a and b are left exactly as the user saved them. The assembler rewrites
+the generated simplex groups in an equivalent form, so the user's copies were
+restored from `figure/fig1/backups/figure1-007.svg`.
+
+Evidence: exported PNG inspected at each step; `figure/fig1/verify.py` reports no
+text-box findings. Element-by-element hashes of layers A and B equal those of
+`d33760e`. Every `input_data.rds` and `package_commit.txt` is unchanged.
+Scratch scripts are in ignored `out/20261113_fig1_ef/`.
+
+Revisit if: row f's left plot needs a shorter y title, or the final caption
+length changes the height allowance.

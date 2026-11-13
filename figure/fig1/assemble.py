@@ -64,28 +64,28 @@ def layer(parent,id_,label):
     return ET.SubElement(parent,tag('g'),{'id':id_,'{'+INK+'}groupmode':'layer','{'+INK+'}label':label})
 
 placements=[
- ('panelB/feature-none',86,21.45),('panelB/feature-Normal',104.5,21.45),
- ('panelB/feature-Poisson',123,21.45),('panelB/feature-Mul',141.5,21.45),('panelB/feature-NB',160,21.45),
+ ('panelB/feature-none',86,19.33),('panelB/feature-Normal',104.5,19.33),
+ ('panelB/feature-Poisson',123,19.33),('panelB/feature-Mul',141.5,19.33),('panelB/feature-NB',160,19.33),
  ('panelC/rmse-W',2,45.45),('panelC/rmse-H',47,45.45),
  ('panelD/rank',95,45.45),('panelD/bins',144,45.45),
- ('panelE/by-bin',2,89.45),('panelE/total',82,89.45),('panelE/snr',128,89.45),
- ('panelF/spectrum',2,136.95),('panelF/ratio',57,136.95),('panelF/snr-ratio',125,136.95),
- ('panelG/projection-W',2,183.45),('panelG/projection-H',54,183.45),('panelG/fraction',106,183.45)
+ ('panelE/by-bin',2,86.65),('panelE/total',82,86.65),('panelE/snr',128,86.65),
+ ('panelF/spectrum',2,125.15),('panelF/ratio',57,125.15),('panelF/snr-ratio',125,125.15),
+ ('panelG/projection-W',2,158.45),('panelG/projection-H',54,158.45),('panelG/fraction',106,158.45)
 ]
 master=HERE/'figure1.svg'
 if master.exists():
     tree=ET.parse(master); root=tree.getroot()
 else:
-    root=ET.Element(tag('svg'),{'id':'figure1','width':'180mm','height':'225mm','viewBox':'0 0 180 225','version':'1.1','{'+INK+'}version':'1.4.4'})
+    root=ET.Element(tag('svg'),{'id':'figure1','width':'180mm','height':'200mm','viewBox':'0 0 180 200','version':'1.1','{'+INK+'}version':'1.4.4'})
     tree=ET.ElementTree(root)
     ET.SubElement(root,tag('title'),{'id':'figure1-title'}).text='Figure 1 draft: selected panels A–G'
     ET.SubElement(root,'{'+SOD+'}namedview',{'id':'figure1-view','{'+INK+'}document-units':'mm','pagecolor':'#ffffff','{'+INK+'}pageopacity':'1'})
     bg=layer(root,'layer-background','Page')
     bg.set('{'+SOD+'}insensitive','true')
-    ET.SubElement(bg,tag('rect'),{'id':'page-white','x':'0','y':'0','width':'180','height':'225','fill':'white'})
+    ET.SubElement(bg,tag('rect'),{'id':'page-white','x':'0','y':'0','width':'180','height':'200','fill':'white'})
     layers={letter:layer(root,'layer-panel'+letter,'Panel '+letter) for letter in 'ABCDEFG'}
     # Panel titles go in the legend; labels sit beside the content.
-    for letter,x,y in [('a',2,2.7),('b',84.3,2.7),('c',2,47.25),('d',95,47.25),('e',2,91.25),('f',2,138.75),('g',2,185.25)]:
+    for letter,x,y in [('a',2,2.7),('b',84.3,2.7),('c',2,47.25),('d',95,47.25),('e',2,88.45),('f',2,126.15),('g',2,160.25)]:
         text(layers[letter.upper()],'panel-label-'+letter,x,y,letter,7,'bold')
     for letter,path,x,y,scale in [('A','panelA/fig1A.svg',2,4,0.64),('B','panelB/fig1B_schematic.svg',86,4,0.52)]:
         g=ET.SubElement(layers[letter],tag('g'),{'id':'schematic-panel'+letter,'transform':f'translate({x},{y}) scale({scale})'})

@@ -1,7 +1,7 @@
 {
   "page_mm": [
     180,
-    225
+    200
   ],
   "text_objects": 385,
   "duplicate_ids": 0,

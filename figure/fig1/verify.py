@@ -13,14 +13,14 @@ for row in csv.reader((HERE/'render/object-boxes.csv').open()):
         try: boxes[row[0]]=tuple(float(v)*25.4/96 for v in row[1:])
         except ValueError: pass
 slots={
- 'panelB-feature-none':(86,21.45,17.9,21.5),'panelB-feature-Normal':(104.5,21.45,17.9,21.5),
- 'panelB-feature-Poisson':(123,21.45,17.9,21.5),'panelB-feature-Mul':(141.5,21.45,17.9,21.5),
- 'panelB-feature-NB':(160,21.45,17.9,21.5),
- 'panelC-rmse-W':(2,45.45,43,41.5),'panelC-rmse-H':(47,45.45,43,41.5),
- 'panelD-rank':(95,45.45,47,41.5),'panelD-bins':(144,45.45,34,41.5),
- 'panelE-by-bin':(2,89.45,77,45),'panelE-total':(82,89.45,43,45),'panelE-snr':(128,89.45,50,45),
- 'panelF-spectrum':(2,136.95,52,44),'panelF-ratio':(57,136.95,65,44),'panelF-snr-ratio':(125,136.95,53,44),
- 'panelG-projection-W':(2,183.45,50,40.4),'panelG-projection-H':(54,183.45,50,40.4),'panelG-fraction':(106,183.45,72,40.4)
+ 'panelB-feature-none':(86,19.33,17.9,21.5),'panelB-feature-Normal':(104.5,19.33,17.9,21.5),
+ 'panelB-feature-Poisson':(123,19.33,17.9,21.5),'panelB-feature-Mul':(141.5,19.33,17.9,21.5),
+ 'panelB-feature-NB':(160,19.33,17.9,21.5),
+ 'panelC-rmse-W':(2,45.45,43,38.7),'panelC-rmse-H':(47,45.45,43,38.7),
+ 'panelD-rank':(95,45.45,47,38.7),'panelD-bins':(144,45.45,34,38.7),
+ 'panelE-by-bin':(2,86.65,77,36),'panelE-total':(82,86.65,43,36),'panelE-snr':(128,86.65,50,36),
+ 'panelF-spectrum':(2,125.15,52,30.8),'panelF-ratio':(57,125.15,65,30.8),'panelF-snr-ratio':(125,125.15,53,30.8),
+ 'panelG-projection-W':(2,158.45,50,40.4),'panelG-projection-H':(54,158.45,50,40.4),'panelG-fraction':(106,158.45,72,40.4)
 }
 def contained(b,c,tol=.15):
     x,y,w,h=b; a,z,v,j=c
@@ -31,7 +31,7 @@ for e in root.iter(SVG+'text'):
     texts.append(id_)
     if b is None:
         fail.append((id_,'no query box'));continue
-    if not contained(b,(0,0,180,225)): fail.append((id_,'outside page',b))
+    if not contained(b,(0,0,180,200)): fail.append((id_,'outside page',b))
     for prefix,slot in slots.items():
         if id_.startswith(prefix+'-') and not contained(b,slot):
             fail.append((id_,'outside plot slot',b,slot))
@@ -40,7 +40,7 @@ for e in root.iter(SVG+'text'):
             box=boxes['schematicA-step_'+step+'_box']
             if not contained(b,box): fail.append((id_,'outside pipeline box',b,box))
 ids=[e.get('id') for e in root.iter() if e.get('id')]
-report={'page_mm':[180,225], 'text_objects':len(texts),'duplicate_ids':len(ids)-len(set(ids)),
+report={'page_mm':[180,200], 'text_objects':len(texts),'duplicate_ids':len(ids)-len(set(ids)),
  'raster_images':len(list(root.iter(SVG+'image'))),'text_box_findings':fail}
 (HERE/'render/verification.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

@@ -98,12 +98,12 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelC/rmse-W : 43 x 41.5 mm
+## panelC/rmse-W : 43 x 38.7 mm
 ```
 
 
 ```
-## panelC/rmse-H : 43 x 41.5 mm
+## panelC/rmse-H : 43 x 38.7 mm
 ```
 
 # D — variance share by rank and expression bin
@@ -126,7 +126,7 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelD/rank : 47 x 41.5 mm
+## panelD/rank : 47 x 38.7 mm
 ```
 
 
@@ -147,7 +147,7 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 ```
 
 ```
-## panelD/bins : 34 x 41.5 mm
+## panelD/bins : 34 x 38.7 mm
 ```
 
 # E — signal/noise variance shares and SNR
@@ -156,17 +156,17 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelE/by-bin : 77 x 45 mm
+## panelE/by-bin : 77 x 36 mm
 ```
 
 
 ```
-## panelE/total : 43 x 45 mm
+## panelE/total : 43 x 36 mm
 ```
 
 
 ```
-## panelE/snr : 50 x 45 mm
+## panelE/snr : 50 x 36 mm
 ```
 
 # F — spectral separation
@@ -175,17 +175,17 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelF/spectrum : 52 x 44 mm
+## panelF/spectrum : 52 x 30.8 mm
 ```
 
 
 ```
-## panelF/ratio : 65 x 44 mm
+## panelF/ratio : 65 x 30.8 mm
 ```
 
 
 ```
-## panelF/snr-ratio : 53 x 44 mm
+## panelF/snr-ratio : 53 x 30.8 mm
 ```
 
 ```

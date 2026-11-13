@@ -2,7 +2,7 @@
 
 Open **figure1.svg** in Inkscape. It is the editable single-page master;
 figure1.pdf is the PDF preview and figure1.png is the 600 dpi raster preview.
-The page is 180 × 225 mm. Layers A–G contain only the panels selected in the
+The page is 180 × 200 mm. Layers A–G contain only the panels selected in the
 supplied outline. The long slide captions and definitions are kept separately
 in reference/outline-text.txt, not packed into the artwork.
 
@@ -61,8 +61,10 @@ claims in the supplied outline have not been established by this artwork task.
 The archive records package version 0.38.0 but not its generating commit.
 
 The supplied artwork guide recommends 180 mm width, 5–7 pt sans-serif text,
-RGB and editable vector output. The 225 mm height is its maximum two-column
-height for a short caption. This is a working layout; submission height must
+RGB and editable vector output. Its maximum two-column height is 225 mm
+for a caption under 50 words; rows e and f were shortened by 20% and
+30% on 2026-11-13 (45 → 36 mm and 44 → 30.8 mm), and rows c/d were set to
+38.7 mm, giving the 200 mm page. This is a working layout; submission height must
 be revisited with the final caption length. Definitions and detailed legends
 remain in the companion reference text. Figure schematics use the existing
 Liberation Sans font, which is metrically compatible with Arial.
