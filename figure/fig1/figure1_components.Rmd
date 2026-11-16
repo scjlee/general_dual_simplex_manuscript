@@ -334,6 +334,7 @@ p <- ggplot(
     fill = "Scaling"
   ) +
   theme(
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 0.05),
     axis.ticks.x = element_blank(),
     axis.text.x = element_blank(),
     legend.position = "bottom"
