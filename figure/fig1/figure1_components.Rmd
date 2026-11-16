@@ -473,7 +473,7 @@ p <- ggplot(
   theme(
     axis.ticks.x = element_blank(),
     axis.text.x = element_blank(),
-    legend.position = "bottom"
+    legend.position = "none"
   )
 export_plot(p, "panelE/by-bin", 92, 36, plot_dt_long)
 ```
