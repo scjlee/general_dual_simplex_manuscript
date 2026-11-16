@@ -25,7 +25,10 @@ D. Variance share by raw expression rank and expression bin, before and after
 scaling, at noise level 1/4 with the noiseless baseline. Rank points show means
 and ribbons the full range, as in the source Rmd. The rank plot's upper y limit
 is the 99.9th percentile of the noiseless variance shares; extreme values are
-clipped by that existing limit. Bins use the source's pooled rank binning.
+clipped by that existing limit. Bins are fixed by raw expression rank across
+all runs: high, ranks 1–717; mid, ranks 718–1434; low, ranks 1435–2150.
+The bin width is the number of ranks divided by three, rounded up; the final
+bin contains the remaining ranks.
 
 E. Signal/noise variance shares by expression bin and in total at noise level
 1/4. Source covariance terms are omitted from these share visualizations.

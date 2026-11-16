@@ -829,3 +829,59 @@ under AGENTS.md.
 
 Revisit if: the user wants a different width allocation in e or a different
 notation for the noiseless model.
+
+## 2026-11-16 — Keep Before above After in Figure 1d's three-bin legend
+
+Context: the user committed three bins and high/mid/low labels for D/E in
+ac60e9c8c2f90c8c7246e026019e149da5b7a2a4 and removed E's bottom legend in
+bcc2af21e19a90e43cb4d791d1896e23ec49b691. They requested regeneration and
+restoration of the green Before legend above the orange After legend in D.
+
+Options: rely on ggplot's automatic ordering of the independent fill guides,
+or specify each guide's order.
+
+Decision (user): explicitly set the Before guide to order 1 and After to order 2
+in figure/fig1/figure1_components.Rmd. Regenerate with the user's committed
+three-bin settings. Preserve all saved master artwork outside D/E, including
+B's hand-edited titles; the previous master is backups/figure1-013.svg.
+
+Evidence: figure/fig1/figure1.svg, figure1.pdf and the 600 dpi figure1.png.
+The PNG and standalone D preview were opened. Inkscape's query and verify.py
+report no text-box findings. Only D/E input RDS files and their bin plot SVGs
+changed; all package provenance files are byte-identical. Independent Claude
+review approved the update; report and disposition are in
+artifact/20261116_fig1_three_bins_legend_review.md. The reviewer noted the
+existing pooled binning can split boundary ranks between bins across runs;
+that scientific follow-up was left unchanged. Scratch checks and render logs
+are in ignored out/20261116_fig1_legend/.
+
+Revisit if: the user requests consistent per-gene bin assignment across runs,
+or changes the bin count again.
+
+## 2026-11-16 — Assign expression bins by fixed rank boundaries in every run
+
+Context: after the independent review identified split boundary ranks in the
+pooled three-bin ntile assignment, the user requested that every rank 717 go
+to bin 1 and every rank 1434 go to bin 2, then asked to commit the result.
+
+Options: retain pooled assignment, or use the same rank intervals in every run.
+
+Decision (user): assign bin = ceiling(rank / ceiling(max(rank) / 3)). The
+inner ceiling sets the bin width to 717 for the 2150 saved ranks, giving
+high 1–717, mid 718–1434 and low 1435–2150. Update caption_notes.md to describe
+those fixed intervals. Retain the earlier green Before / orange After legend
+order. Preserve all master artwork outside D/E.
+
+Evidence: figure/fig1/figure1_components.Rmd, feature-data chunk;
+figure/fig1/caption_notes.md, D; regenerated panelD/input_data.rds and
+panelE/input_data.rds. The local check in
+out/20261116_fig1_fixed_bins/check.R verifies every D rank against explicit
+boundaries, a single bin per rank, unchanged non-bin row values in D/E and
+preserved D totals. Its output is check.log in that directory. The source
+baseline is manuscript commit bcc2af21e19a90e43cb4d791d1896e23ec49b691;
+package provenance files are unchanged. The prior master is
+figure/fig1/backups/figure1-014.svg. Final PNG opened; verify.py reports no
+text-box findings. Independent review is recorded in
+artifact/20261116_fig1_fixed_rank_bins_review.md.
+
+Revisit if: the rank count or requested bin count changes.
