@@ -437,6 +437,10 @@ setattr(plot_dt_long[["type"]], "levels", c("Noise", "Signal"))
 ```
 
 ```{r E-by-bin}
+n_outer <- 4
+n_inner <- 2
+gaps <- rep(c(rep(0.15, n_inner - 1), 0.3), length.out = (n_outer * n_inner) - 1)
+
 p <- ggplot(
   plot_dt_long[NOISE != "none", .(var_share = sum(var_share)), by = .(NOISE, scaling, bin, type, SEED)],
   mapping = aes(
@@ -473,6 +477,8 @@ p <- ggplot(
     fill = "Source"
   ) +
   theme(
+    panel.spacing.x = unit(gaps, "lines"),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 0.05),
     axis.ticks.x = element_blank(),
     axis.text.x = element_blank(),
     legend.position = "none"
