@@ -883,7 +883,7 @@
 </defs>
 <g clip-path='url(#cpMTkuODN8NjIuNzV8MS4wMHw3LjQ2)'>
 <rect x='19.83' y='1.00' width='42.93' height='6.46' style='stroke-width: 0.32; fill: #FFFFFF;' />
-<text x='41.29' y='5.95' text-anchor='middle' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>Normal</text>
+<text x='33.23' y='5.43' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>Normal</text>
 </g>
 <g clip-path='url(#cpMC4wMHwyMDQuMDl8MC4wMHwxMTQuNTI=)'>
 </g>
@@ -894,7 +894,7 @@
 </defs>
 <g clip-path='url(#cpNjQuNDZ8MTA3LjM4fDEuMDB8Ny40Ng==)'>
 <rect x='64.46' y='1.00' width='42.93' height='6.46' style='stroke-width: 0.32; fill: #FFFFFF;' />
-<text x='85.92' y='5.95' text-anchor='middle' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='17.78px' lengthAdjust='spacingAndGlyphs'>Poisson</text>
+<text x='77.03' y='5.43' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='17.78px' lengthAdjust='spacingAndGlyphs'>Poisson</text>
 </g>
 <g clip-path='url(#cpMC4wMHwyMDQuMDl8MC4wMHwxMTQuNTI=)'>
 </g>
@@ -905,7 +905,7 @@
 </defs>
 <g clip-path='url(#cpMTA5LjA4fDE1Mi4wMXwxLjAwfDcuNDY=)'>
 <rect x='109.08' y='1.00' width='42.93' height='6.46' style='stroke-width: 0.32; fill: #FFFFFF;' />
-<text x='130.55' y='5.95' text-anchor='middle' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='8.06px' lengthAdjust='spacingAndGlyphs'>Mul</text>
+<text x='126.51' y='5.43' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='8.06px' lengthAdjust='spacingAndGlyphs'>Mul</text>
 </g>
 <g clip-path='url(#cpMC4wMHwyMDQuMDl8MC4wMHwxMTQuNTI=)'>
 </g>
@@ -916,7 +916,7 @@
 </defs>
 <g clip-path='url(#cpMTUzLjcxfDE5Ni42M3wxLjAwfDcuNDY=)'>
 <rect x='153.71' y='1.00' width='42.93' height='6.46' style='stroke-width: 0.32; fill: #FFFFFF;' />
-<text x='175.17' y='5.95' text-anchor='middle' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='6.94px' lengthAdjust='spacingAndGlyphs'>NB</text>
+<text x='171.70' y='5.43' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='6.94px' lengthAdjust='spacingAndGlyphs'>NB</text>
 </g>
 <g clip-path='url(#cpMC4wMHwyMDQuMDl8MC4wMHwxMTQuNTI=)'>
 </g>

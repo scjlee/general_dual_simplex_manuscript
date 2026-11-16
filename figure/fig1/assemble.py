@@ -68,7 +68,7 @@ placements=[
  ('panelB/feature-Poisson',123,19.33),('panelB/feature-Mul',141.5,19.33),('panelB/feature-NB',160,19.33),
  ('panelC/rmse-W',2,45.45),('panelC/rmse-H',47,45.45),
  ('panelD/rank',95,45.45),('panelD/bins',144,45.45),
- ('panelE/by-bin',2,86.65),('panelE/total',82,86.65),('panelE/snr',128,86.65),
+ ('panelE/by-bin',2,86.65),('panelE/total',97,86.65),('panelE/snr',143,86.65),
  ('panelF/spectrum',2,125.15),('panelF/ratio',57,125.15),('panelF/snr-ratio',125,125.15),
  ('panelG/projection-W',2,158.45),('panelG/projection-H',54,158.45),('panelG/fraction',106,158.45)
 ]

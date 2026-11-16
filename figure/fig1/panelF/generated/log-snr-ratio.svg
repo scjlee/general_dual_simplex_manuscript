@@ -471,10 +471,10 @@
 <rect x='126.11' y='37.77' width='3.03' height='3.03' style='stroke-width: 0.21; stroke: none; fill: #888888;' />
 <rect x='124.79' y='42.11' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
 <rect x='126.11' y='43.43' width='3.03' height='3.03' style='stroke-width: 0.21; stroke: none; fill: #333333;' />
-<text x='131.31' y='29.66' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.95px' lengthAdjust='spacingAndGlyphs'>1/4</text>
-<text x='131.31' y='35.33' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.95px' lengthAdjust='spacingAndGlyphs'>1/2</text>
-<text x='131.31' y='41.00' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.78px' lengthAdjust='spacingAndGlyphs'>1</text>
-<text x='131.31' y='46.66' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.78px' lengthAdjust='spacingAndGlyphs'>2</text>
+<text x='131.31' y='29.14' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.95px' lengthAdjust='spacingAndGlyphs'>1/4</text>
+<text x='131.31' y='34.81' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.95px' lengthAdjust='spacingAndGlyphs'>1/2</text>
+<text x='131.31' y='40.48' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.78px' lengthAdjust='spacingAndGlyphs'>1</text>
+<text x='131.31' y='46.15' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.78px' lengthAdjust='spacingAndGlyphs'>2</text>
 <rect x='124.79' y='49.20' width='24.30' height='28.00' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
 <text x='124.79' y='53.15' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='15.55px' lengthAdjust='spacingAndGlyphs'>NOISE</text>
 <rect x='124.79' y='54.52' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
@@ -486,10 +486,10 @@
 <rect x='124.79' y='71.53' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
 <line x1='125.96' y1='74.36' x2='129.28' y2='74.36' style='stroke-width: 0.21; stroke: #009E73;' />
 <line x1='127.62' y1='76.02' x2='127.62' y2='72.70' style='stroke-width: 0.21; stroke: #009E73;' />
-<text x='131.31' y='59.07' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>Normal</text>
-<text x='131.31' y='64.74' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='17.78px' lengthAdjust='spacingAndGlyphs'>Poisson</text>
-<text x='131.31' y='70.41' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='8.06px' lengthAdjust='spacingAndGlyphs'>Mul</text>
-<text x='131.31' y='76.08' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.94px' lengthAdjust='spacingAndGlyphs'>NB</text>
+<text x='131.31' y='58.55' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>Normal</text>
+<text x='131.31' y='64.22' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='17.78px' lengthAdjust='spacingAndGlyphs'>Poisson</text>
+<text x='131.31' y='69.89' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='8.06px' lengthAdjust='spacingAndGlyphs'>Mul</text>
+<text x='131.31' y='75.56' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.94px' lengthAdjust='spacingAndGlyphs'>NB</text>
 </g>
 </g>
 </svg>

@@ -30,8 +30,8 @@ theme_set(theme_classic(base_family = "Liberation Sans", base_size = 5.5) + them
     text = element_text(family = "Liberation Sans", size = 5.5),
     plot.title = element_text(size = 6, face = "plain", margin = margin(b = 2)),
     axis.title = element_text(size = 5.5), axis.text = element_text(size = 5),
-    strip.text = element_text(size = 5, margin = margin(1, 1, 1, 1)),
-    legend.text = element_text(size = 5), legend.title = element_text(size = 5),
+    strip.text = element_markdown(size = 5, hjust = 0.5, vjust = 0.5, margin = margin(1, 1, 1, 1)),
+    legend.text = element_markdown(size = 5), legend.title = element_text(size = 5),
     legend.key.size = grid::unit(2, "mm"),
     legend.key.spacing = grid::unit(0.3, "mm"),
     legend.spacing = grid::unit(0.5, "mm"),
@@ -49,8 +49,9 @@ update_geom_defaults("point", list(size = 0.35, stroke = 0.15))
 update_geom_defaults("line", list(linewidth = 0.15))
 update_geom_defaults("polygon", list(linewidth = 0.15))
 update_geom_defaults("boxplot", list(linewidth = 0.15, size = 0.3))
-# Labels for the narrow noiseless facet in the error and ratio plots.
-noise_strip_labels <- c(none = "0", Normal = "Normal", Poisson = "Poisson",
+# Liberation Sans lacks ∅; use an installed glyph font for this symbol only.
+# Markdown keeps the symbol as editable text and measures its actual width.
+noise_strip_labels <- c(none = "<span style='font-family:DejaVu Sans'>∅</span>", Normal = "Normal", Poisson = "Poisson",
   Mul = "Mul", NB = "NB")
 inputs <- list()
 source("figure/fig1/simulation_helpers.R", local = TRUE)
@@ -156,7 +157,7 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelE/by-bin : 77 x 36 mm
+## panelE/by-bin : 92 x 36 mm
 ```
 
 
@@ -166,7 +167,7 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelE/snr : 50 x 36 mm
+## panelE/snr : 35 x 36 mm
 ```
 
 # F — spectral separation

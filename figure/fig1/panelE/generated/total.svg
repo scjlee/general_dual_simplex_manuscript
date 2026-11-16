@@ -71,7 +71,7 @@
 </defs>
 <g clip-path='url(#cpMTguNDR8NTcuOTB8MS4wMHw3LjQ2)'>
 <rect x='18.44' y='1.00' width='39.46' height='6.46' style='stroke-width: 0.32; fill: #FFFFFF;' />
-<text x='38.17' y='5.95' text-anchor='middle' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='14.73px' lengthAdjust='spacingAndGlyphs'>Before</text>
+<text x='30.80' y='5.43' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='14.73px' lengthAdjust='spacingAndGlyphs'>Before</text>
 </g>
 <g clip-path='url(#cpMC4wMHwxMjEuODl8MC4wMHwxMDIuMDU=)'>
 </g>
@@ -82,7 +82,7 @@
 </defs>
 <g clip-path='url(#cpNTkuNjB8OTkuMDd8MS4wMHw3LjQ2)'>
 <rect x='59.60' y='1.00' width='39.46' height='6.46' style='stroke-width: 0.32; fill: #FFFFFF;' />
-<text x='79.33' y='5.95' text-anchor='middle' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='10.56px' lengthAdjust='spacingAndGlyphs'>After</text>
+<text x='74.05' y='5.43' style='font-size: 5.00px;fill: #1A1A1A; font-family: "Liberation Sans";' textLength='10.56px' lengthAdjust='spacingAndGlyphs'>After</text>
 </g>
 <g clip-path='url(#cpMC4wMHwxMjEuODl8MC4wMHwxMDIuMDU=)'>
 <polyline points='18.44,82.32 57.90,82.32 ' style='stroke-width: 0.32; stroke-linecap: square;' />
@@ -113,8 +113,8 @@
 <rect x='100.84' y='42.24' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7;' />
 <rect x='100.48' y='47.55' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
 <rect x='100.84' y='47.91' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #0072B2;' />
-<text x='107.00' y='46.43' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='12.78px' lengthAdjust='spacingAndGlyphs'>Noise</text>
-<text x='107.00' y='52.10' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='13.89px' lengthAdjust='spacingAndGlyphs'>Signal</text>
+<text x='107.00' y='45.92' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='12.78px' lengthAdjust='spacingAndGlyphs'>Noise</text>
+<text x='107.00' y='51.58' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='13.89px' lengthAdjust='spacingAndGlyphs'>Signal</text>
 </g>
 </g>
 </svg>

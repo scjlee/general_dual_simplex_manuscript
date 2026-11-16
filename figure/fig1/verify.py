@@ -18,7 +18,7 @@ slots={
  'panelB-feature-NB':(160,19.33,17.9,21.5),
  'panelC-rmse-W':(2,45.45,43,38.7),'panelC-rmse-H':(47,45.45,43,38.7),
  'panelD-rank':(95,45.45,47,38.7),'panelD-bins':(144,45.45,34,38.7),
- 'panelE-by-bin':(2,86.65,77,36),'panelE-total':(82,86.65,43,36),'panelE-snr':(128,86.65,50,36),
+ 'panelE-by-bin':(2,86.65,92,36),'panelE-total':(97,86.65,43,36),'panelE-snr':(143,86.65,35,36),
  'panelF-spectrum':(2,125.15,52,30.8),'panelF-ratio':(57,125.15,65,30.8),'panelF-snr-ratio':(125,125.15,53,30.8),
  'panelG-projection-W':(2,158.45,50,40.4),'panelG-projection-H':(54,158.45,50,40.4),'panelG-fraction':(106,158.45,72,40.4)
 }

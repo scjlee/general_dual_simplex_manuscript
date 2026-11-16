@@ -800,3 +800,32 @@ Scratch scripts are in ignored `out/20261113_fig1_ef/`.
 
 Revisit if: row f's left plot needs a shorter y title, or the final caption
 length changes the height allowance.
+
+## 2026-11-16 — Use ∅ model labels, match RMSE scales and widen Figure 1e bars
+
+Context: the user requested ∅ for the none model, matching RMSE scales between
+c and g separately for W and H, and more width for e's leftmost plot taken
+from its rightmost plot.
+
+Options: stretch the existing artwork or re-export plots at the new widths;
+use independent error scales or compute one range per factor across c and g.
+
+Decision (user): label the noiseless model ∅ throughout (including the former
+0 facet strips and Noiseless title); retain the numerical noise-level tick 0.
+Set each factor's RMSE limits from zero through the maximum combined plotted
+RMSE in c and g. Re-export e's left and right plots at 92 and 35 mm (previously
+77 and 50 mm), keeping the middle plot 43 mm and both gaps 3 mm. The symbol
+alone uses DejaVu Sans because Liberation Sans lacks ∅; ggtext measures its
+width while preserving editable text. Preserve the user's a/b geometry.
+
+Evidence: master `figure/fig1/figure1.svg`; prior master
+`figure/fig1/backups/figure1-009.svg`; generator and placement changes in
+`figure1_components.Rmd`, `assemble.py` and `verify.py` in that directory.
+Scratch checks and rendering log are in ignored `out/20261116_fig1/`.
+Input RDS files and package provenance files are byte-identical. These are
+labels, axis display limits and layout changes; no formula, claim, plotted
+value or cited number changes, so independent scientific review is exempt
+under AGENTS.md.
+
+Revisit if: the user wants a different width allocation in e or a different
+notation for the noiseless model.

@@ -29,8 +29,8 @@ theme_set(theme_classic(base_family = "Liberation Sans", base_size = 5.5) + them
     text = element_text(family = "Liberation Sans", size = 5.5),
     plot.title = element_text(size = 6, face = "plain", margin = margin(b = 2)),
     axis.title = element_text(size = 5.5), axis.text = element_text(size = 5),
-    strip.text = element_text(size = 5, margin = margin(1, 1, 1, 1)),
-    legend.text = element_text(size = 5), legend.title = element_text(size = 5),
+    strip.text = element_markdown(size = 5, hjust = 0.5, vjust = 0.5, margin = margin(1, 1, 1, 1)),
+    legend.text = element_markdown(size = 5), legend.title = element_text(size = 5),
     legend.key.size = grid::unit(2, "mm"),
     legend.key.spacing = grid::unit(0.3, "mm"),
     legend.spacing = grid::unit(0.5, "mm"),
@@ -48,8 +48,9 @@ update_geom_defaults("point", list(size = 0.35, stroke = 0.15))
 update_geom_defaults("line", list(linewidth = 0.15))
 update_geom_defaults("polygon", list(linewidth = 0.15))
 update_geom_defaults("boxplot", list(linewidth = 0.15, size = 0.3))
-# Labels for the narrow noiseless facet in the error and ratio plots.
-noise_strip_labels <- c(none = "0", Normal = "Normal", Poisson = "Poisson",
+# Liberation Sans lacks ∅; use an installed glyph font for this symbol only.
+# Markdown keeps the symbol as editable text and measures its actual width.
+noise_strip_labels <- c(none = "<span style='font-family:DejaVu Sans'>∅</span>", Normal = "Normal", Poisson = "Poisson",
   Mul = "Mul", NB = "NB")
 inputs <- list()
 source("figure/fig1/simulation_helpers.R", local = TRUE)
@@ -90,7 +91,7 @@ EXAMPLE_L <- "1/2"
 EXAMPLE_SEED <- 17
 
 show_names <- list(
-  "none" = "Noiseless",
+  "none" = noise_strip_labels[["none"]],
   "Normal" = "Normal",
   "Poisson" = "Poisson",
   "Mul" = "Multiplicative",
@@ -139,7 +140,7 @@ for (noise in unique(experiments$NOISE)) {
     ) +
     labs(title = show_names[[noise]]) +
     theme(
-      plot.title = element_text(hjust = 0.5, size = 5.5),
+      plot.title = element_markdown(hjust = 0.5, size = 5.5),
       axis.title = element_blank(),
       axis.ticks = element_blank(),
       axis.text = element_blank()
@@ -165,6 +166,11 @@ evaluations[["NOISE"]] %<>% factor(levels = c("none", "Normal", "Poisson", "Mul"
 
 ```{r noise-models}
 noise_model_to_plot <- c("none", "Normal", "Poisson", "Mul", "NB")
+# Each factor uses the same RMSE range for deconvolution (C) and projection (G).
+rmse_limits <- setNames(lapply(c("W", "H"), function(which.side) {
+  range(c(0, evaluations[NOISE %in% noise_model_to_plot &
+    metric %in% c("rmse", "oracle_rmse") & side == which.side, value]))
+}), c("W", "H"))
 ```
 
 ```{r C-W}
@@ -184,6 +190,7 @@ p <- ggplot(
     scales = "free_x",
     labeller = labeller(NOISE = noise_strip_labels)
   ) +
+  scale_y_continuous(limits = rmse_limits[[which.side]]) +
   guides(color = "none") +
   labs(
     title = f("{which.side} deconvolution error"),
@@ -214,6 +221,7 @@ p <- ggplot(
     scales = "free_x",
     labeller = labeller(NOISE = noise_strip_labels)
   ) +
+  scale_y_continuous(limits = rmse_limits[[which.side]]) +
   guides(color = "none") +
   labs(
     title = f("{which.side} deconvolution error"),
@@ -313,7 +321,7 @@ p <- ggplot(
     dpi = 1200
   ) +
   scale_color_manual(values = c("Before" = "#009E73", "After" = '#D55E00')) +
-  facet_grid(cols = vars(NOISE)) +
+  facet_grid(cols = vars(NOISE), labeller = labeller(NOISE = noise_strip_labels)) +
   scale_y_continuous(expand = expansion(mult = c(0.01, 0))) +
   coord_cartesian(
     ylim = c(0, plot_dt_long[NOISE == "none", quantile(var_share, probs = 0.999)]),
@@ -399,8 +407,9 @@ p <- ggplot(
     fill = "Expr. bin"
   ) +
   facet_grid(cols = vars(scaling)) +
+  scale_x_discrete(labels = noise_strip_labels) +
   theme(
-    axis.text.x = element_text(angle = 60, hjust = 1),
+    axis.text.x = element_markdown(angle = 60, hjust = 1),
     axis.ticks.x = element_blank()
   )
 export_plot(p, "panelD/bins", 34, 38.7, plot_data)
@@ -468,7 +477,7 @@ p <- ggplot(
     axis.text.x = element_blank(),
     legend.position = "bottom"
   )
-export_plot(p, "panelE/by-bin", 77, 36, plot_dt_long)
+export_plot(p, "panelE/by-bin", 92, 36, plot_dt_long)
 ```
 
 ```{r E-total}
@@ -493,6 +502,7 @@ p <- ggplot(
     fill = "Source"
   ) +
   facet_grid(cols = vars(scaling)) +
+  scale_x_discrete(labels = noise_strip_labels) +
   theme(
     axis.text.x = element_text(angle = 60, hjust = 1),
     axis.ticks.x = element_blank()
@@ -524,14 +534,14 @@ p <- ggplot(
   geom_point(
     show.legend = FALSE
   ) +
-  facet_grid(cols = vars(NOISE)) +
+  facet_grid(cols = vars(NOISE), labeller = labeller(NOISE = noise_strip_labels)) +
   labs(
     title = NULL,
     x = "Noise level",
     y = "Post-scaling SNR"
   ) +
   theme(axis.text.x = element_text(angle = 60, hjust = 1))
-export_plot(p, "panelE/snr", 50, 36, aggr_fdata)
+export_plot(p, "panelE/snr", 35, 36, aggr_fdata)
 ```
 
 # F — spectral separation
@@ -594,7 +604,7 @@ p <- ggplot(
     alpha = 0.25,
     color = NA
   ) +
-  scale_fill_manual(values = expanded_color) +
+  scale_fill_manual(values = expanded_color, labels = noise_strip_labels) +
   stat_summary(
     geom = "point",
     fun = mean,
@@ -605,7 +615,7 @@ p <- ggplot(
     fun = mean,
     linewidth = 0.15
   ) +
-  scale_color_manual(values = expanded_color) +
+  scale_color_manual(values = expanded_color, labels = noise_strip_labels) +
   labs(
     title = "Rank 3; noise level 0.25",
     x = "k",
@@ -786,6 +796,7 @@ p <- ggplot(
       geom_point() +  # aes(color = factor(SEED))) +
       facet_grid(cols = vars(NOISE), space = "free", scales = "free_x",
         labeller = labeller(NOISE = noise_strip_labels)) +
+      scale_y_continuous(limits = rmse_limits[[which.side]]) +
       guides(color = "none") +
       labs(
         title =  f("{which.side} projection error"),
@@ -811,6 +822,7 @@ p <- ggplot(
       geom_point() +  # aes(color = factor(SEED))) +
       facet_grid(cols = vars(NOISE), space = "free", scales = "free_x",
         labeller = labeller(NOISE = noise_strip_labels)) +
+      scale_y_continuous(limits = rmse_limits[[which.side]]) +
       guides(color = "none") +
       labs(
         title =  f("{which.side} projection error"),

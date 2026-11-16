@@ -41,7 +41,8 @@
 <g clip-path='url(#cpMC4wMHw1MC43NHwwLjAwfDYwLjk0)'>
 <polyline points='1.00,59.95 1.00,7.92 ' style='stroke-width: 0.32; stroke-linecap: square;' />
 <polyline points='1.00,59.95 49.74,59.95 ' style='stroke-width: 0.32; stroke-linecap: square;' />
-<text x='25.37' y='4.78' text-anchor='middle' style='font-size: 5.50px; font-family: "Liberation Sans";' textLength='30.28px' lengthAdjust='spacingAndGlyphs'>Neg. Binom.</text>
+<text x='10.23' y='4.78' style='font-size: 5.50px; font-family: "Liberation Sans";' textLength='11.62px' lengthAdjust='spacingAndGlyphs'>Neg.</text>
+<text x='23.39' y='4.78' style='font-size: 5.50px; font-family: "Liberation Sans";' textLength='17.12px' lengthAdjust='spacingAndGlyphs'>Binom.</text>
 </g>
 </g>
 </svg>
