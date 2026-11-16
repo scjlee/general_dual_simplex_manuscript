@@ -274,7 +274,7 @@ fdata[, `:=`(
 
 fdata[, `:=`(
   var_share_ratio = scaled_var_share / var_share,
-  bin = factor(dplyr::ntile(rank, 5))
+  bin = factor(dplyr::ntile(rank, 3))
 )]
 
 n_seed <- length(unique(experiments$SEED))
@@ -345,19 +345,17 @@ export_plot(p, "panelD/rank", 47, 38.7, plot_dt_long)
 before_pal <- colorRampPalette(c(
   colorspace::darken("#009E73", amount = 0.2),
   colorspace::lighten("#009E73", amount = 0.8)
-))(5)
+))(3)
 after_pal  <- colorRampPalette(c(
   colorspace::darken("#D55E00", amount = 0.2),
   colorspace::lighten("#D55E00", amount = 0.75)
-))(5)
+))(3)
 
 
 bin_labels <- c(
-  "1 (high)",
-  "2",
-  "3",
-  "4",
-  "5 (low)"
+  "high",
+  "mid",
+  "low"
 )
 
 plot_data <- plot_dt_long[, .(var_share = sum(var_share) / n_seed), by = .(NOISE, scaling, bin)]
@@ -381,8 +379,8 @@ p <- ggplot(
   ) +
   scale_fill_manual(
     name = "Expr. bin",
-    values = setNames(before_pal, as.character(1:5)),
-    breaks = as.character(1:5),
+    values = setNames(before_pal, as.character(1:3)),
+    breaks = as.character(1:3),
     labels = bin_labels
   ) +
   ggnewscale::new_scale_fill() +
@@ -397,8 +395,8 @@ p <- ggplot(
   ) +
   scale_fill_manual(
     name = NULL,
-    values = setNames(after_pal, as.character(1:5)),
-    breaks = as.character(1:5),
+    values = setNames(after_pal, as.character(1:3)),
+    breaks = as.character(1:3),
     labels = bin_labels
   ) +
   labs(
