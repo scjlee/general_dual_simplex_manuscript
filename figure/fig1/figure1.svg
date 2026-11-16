@@ -885,7 +885,7 @@
           <g clip-path="url(#panelB-feature-none-cpMC4wMHw1MC43NHwwLjAwfDYwLjk0)" id="panelB-feature-none-g-0016">
             <polyline points="1.00,59.95 1.00,7.92 " style="stroke-width:0.32;stroke-linecap:square" id="panelB-feature-none-polyline-0017" />
             <polyline points="1.00,59.95 49.74,59.95 " style="stroke-width:0.32;stroke-linecap:square" id="panelB-feature-none-polyline-0018" />
-            <text x="25.370001" y="4.7800002" text-anchor="middle" style="font-size:5.5px;font-family:'Liberation Sans';font-family:DejaVu Sans" id="panelB-feature-none-text-0019">∅</text>
+            <text x="25.370001" y="4.7800002" text-anchor="middle" style="font-size:5.5px;font-family:'Liberation Sans';font-family:DejaVu Sans" id="panelB-feature-none-text-0019">∅<tspan id="panelB-feature-none-title-explanation" style="font-family:Liberation Sans"> (none)</tspan></text>
           </g>
         </g>
       </g>

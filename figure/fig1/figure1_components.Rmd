@@ -91,7 +91,7 @@ EXAMPLE_L <- "1/2"
 EXAMPLE_SEED <- 17
 
 show_names <- list(
-  "none" = noise_strip_labels[["none"]],
+  "none" = paste0(noise_strip_labels[["none"]], " (none)"),
   "Normal" = "Normal",
   "Poisson" = "Poisson",
   "Mul" = "Multiplicative",

@@ -41,7 +41,7 @@
 <g clip-path='url(#cpMC4wMHw1MC43NHwwLjAwfDYwLjk0)'>
 <polyline points='1.00,59.95 1.00,8.14 ' style='stroke-width: 0.32; stroke-linecap: square;' />
 <polyline points='1.00,59.95 49.74,59.95 ' style='stroke-width: 0.32; stroke-linecap: square;' />
-<text x='22.97' y='5.01' style='font-size: 5.50px; font-family: "DejaVu Sans";' textLength='4.80px' lengthAdjust='spacingAndGlyphs'>∅</text>
+<text id='pure-signal-title' x='25.37' y='5.01' text-anchor='middle' style='font-size:5.50px;font-family:DejaVu Sans'>∅<tspan id='pure-signal-title-explanation' style='font-family:Liberation Sans'> (none)</tspan></text>
 </g>
 </g>
 </svg>

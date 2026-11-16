@@ -85,8 +85,8 @@ panel titles were removed and every row moved up and grew into the freed space.
 The previous masters are backups/figure1-005.svg and figure1-006.svg. A fresh
 assembly from the schematic sources would not reproduce the rescaled planes, the
 moved pipeline row and axis labels, or the moved B matrices.
-The noiseless model is labelled “∅” throughout, including the narrow strips in
-C, F and G. Noise-level ticks still read “0”. Liberation Sans lacks ∅, so the
+The noiseless model is labelled “∅”, including the narrow strips in C, F and G;
+B's pure-signal example title reads “∅ (none)”. Noise-level ticks still read “0”. Liberation Sans lacks ∅, so the
 symbol alone uses DejaVu Sans through ggtext; other labels use Liberation Sans.
 C and G share RMSE limits separately for W and H, calculated from the combined
 plotted values and zero. E's left, middle and right plots are 92, 43 and 35 mm
