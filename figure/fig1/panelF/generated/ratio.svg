@@ -591,11 +591,11 @@
 <polyline points='20.49,24.20 22.19,24.20 ' style='stroke-width: 0.32; stroke-linecap: butt;' />
 <polyline points='20.49,10.20 22.19,10.20 ' style='stroke-width: 0.32; stroke-linecap: butt;' />
 <text x='102.72' y='85.17' text-anchor='middle' style='font-size: 5.50px; font-family: "Liberation Sans";' textLength='26.91px' lengthAdjust='spacingAndGlyphs'>Noise level</text>
-<text transform='translate(5.47,50.40) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='4.02px' lengthAdjust='spacingAndGlyphs'>σ</text>
-<text transform='translate(7.25,46.38) rotate(-90)' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='8.20px' lengthAdjust='spacingAndGlyphs'>k+1</text>
-<text transform='translate(5.47,36.37) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='1.81px' lengthAdjust='spacingAndGlyphs'>/</text>
-<text transform='translate(5.47,32.74) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='4.02px' lengthAdjust='spacingAndGlyphs'>σ</text>
-<text transform='translate(7.25,28.73) rotate(-90)' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.50px' lengthAdjust='spacingAndGlyphs'>k</text>
+<text transform='translate(5.47,47.83) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='4.02px' lengthAdjust='spacingAndGlyphs'>σ</text>
+<text transform='translate(7.25,43.81) rotate(-90)' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.78px' lengthAdjust='spacingAndGlyphs'>4</text>
+<text transform='translate(5.47,39.22) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='1.81px' lengthAdjust='spacingAndGlyphs'>/</text>
+<text transform='translate(5.47,35.59) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='4.02px' lengthAdjust='spacingAndGlyphs'>σ</text>
+<text transform='translate(7.25,31.58) rotate(-90)' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.78px' lengthAdjust='spacingAndGlyphs'>3</text>
 </g>
 </g>
 </svg>

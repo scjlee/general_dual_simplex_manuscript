@@ -646,7 +646,7 @@ p <- ggplot(
   labs(
     title = NULL,
     x = "Noise level",
-    y = "σ<sub><span style='font-size:5pt'>k+1</span></sub> / σ<sub><span style='font-size:5pt'>k</span></sub>"
+    y = "σ<sub><span style='font-size:5pt'>4</span></sub> / σ<sub><span style='font-size:5pt'>3</span></sub>"
   ) +
   theme(
     axis.text.x = element_text(angle = 60, hjust = 1),
@@ -712,7 +712,7 @@ p <- merge(
   labs(
     title = NULL,
     x = "Post-scaling SNR",
-    y = "σ<sub><span style='font-size:5pt'>k+1</span></sub> / σ<sub><span style='font-size:5pt'>k</span></sub>"
+    y = "σ<sub><span style='font-size:5pt'>4</span></sub> / σ<sub><span style='font-size:5pt'>3</span></sub>"
   ) +
   theme(
     legend.position = "right",
