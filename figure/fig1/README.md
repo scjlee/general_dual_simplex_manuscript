@@ -2,7 +2,7 @@
 
 Open **figure1.svg** in Inkscape. It is the editable single-page master;
 figure1.pdf is the PDF preview and figure1.png is the 600 dpi raster preview.
-The page is 180 × 200 mm. Layers A–G contain only the panels selected in the
+The page is 180 × 200 mm. Display panels a–i contain only the panels selected in the
 supplied outline. The long slide captions and definitions are kept separately
 in reference/outline-text.txt, not packed into the artwork.
 
@@ -109,3 +109,14 @@ panelF/generated/log-snr-ratio.svg is exported and shown in the HTML gallery,
 but excluded from assemble.py's placements and from the Inkscape master.
 D's bins and E's total-share barplots omit the x title and tick marks; their
 noise-model names remain, rotated by 60 degrees.
+
+## Display letters a–i (2026-11-16)
+
+The Inkscape master now uses a–i. Panel f contains the spectrum and the middle
+singular-value ratio plot; g is the right SNR/ratio plot; h contains the two
+projection RMSE plots; i is the final RMSE ratio plot. Plot paths retain their
+original panelF/panelG names. The assembler records all nine display letters,
+their positions, and the two renamed plot-group ids from the user's edit.
+Fresh assemblies put g and i in separate layers; existing label positions and
+layer edits are preserved. Labels are drawn above plot backgrounds.
+The spectrum title is “Rank 3 signal” and its noiseless legend entry is “∅ (none)”.

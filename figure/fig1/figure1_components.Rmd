@@ -584,6 +584,8 @@ plot_dt[["component"]] %<>%
 ```
 
 ```{r F-spectrum}
+spectrum_labels <- noise_strip_labels
+spectrum_labels[["none"]] <- paste0(spectrum_labels[["none"]], " (none)")
 expanded_color <- c("none" = "black", base_noise_colors)
   
 p <- ggplot(
@@ -604,7 +606,7 @@ p <- ggplot(
     alpha = 0.25,
     color = NA
   ) +
-  scale_fill_manual(values = expanded_color, labels = noise_strip_labels) +
+  scale_fill_manual(values = expanded_color, labels = spectrum_labels) +
   stat_summary(
     geom = "point",
     fun = mean,
@@ -615,9 +617,9 @@ p <- ggplot(
     fun = mean,
     linewidth = 0.15
   ) +
-  scale_color_manual(values = expanded_color, labels = noise_strip_labels) +
+  scale_color_manual(values = expanded_color, labels = spectrum_labels) +
   labs(
-    title = "Rank 3; noise level 0.25",
+    title = "Rank 3 signal",
     x = "k",
     y = "Normalized σ<sub><span style='font-size:5pt'>k</span></sub>",
     color = "Noise",

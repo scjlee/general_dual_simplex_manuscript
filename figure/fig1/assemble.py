@@ -72,21 +72,39 @@ placements=[
  ('panelF/spectrum',2,125.15),('panelF/ratio',57,125.15),('panelF/snr-ratio',125,125.15),
  ('panelG/projection-W',2,158.45),('panelG/projection-H',54,158.45),('panelG/fraction',106,158.45)
 ]
+# Display letters a–i retain the original plot file paths.
+# Coordinates and ids follow the user's Inkscape relabelling (1cf78d9).
+# Inkscape also renamed these two outer plot groups during relabelling.
+master_group_ids = {
+ 'panelF/snr-ratio': 'data-panelF-snr-ratio-0',
+ 'panelG/fraction': 'data-panelG-fraction-5',
+}
+panel_labels = [
+ ('panel-label-a', 'layer-panelA', 'a', 2, 2.7),
+ ('panel-label-b', 'layer-panelB', 'b', 83.770836, 2.7),
+ ('panel-label-c', 'layer-panelC', 'c', 2, 47.25),
+ ('panel-label-d', 'layer-panelD', 'd', 95, 47.25),
+ ('panel-label-e', 'layer-panelE', 'e', 2, 88.45),
+ ('panel-label-f', 'layer-panelF', 'f', 2, 126.15),
+ ('panel-label-f-9', 'layer1', 'g', 124.76664, 126.15),
+ ('panel-label-g', 'layer-panelG', 'h', 2, 160.25),
+ ('panel-label-g-3', 'layer2', 'i', 105.18748, 160.25),
+]
 master=HERE/'figure1.svg'
 if master.exists():
     tree=ET.parse(master); root=tree.getroot()
 else:
     root=ET.Element(tag('svg'),{'id':'figure1','width':'180mm','height':'200mm','viewBox':'0 0 180 200','version':'1.1','{'+INK+'}version':'1.4.4'})
     tree=ET.ElementTree(root)
-    ET.SubElement(root,tag('title'),{'id':'figure1-title'}).text='Figure 1 draft: selected panels A–G'
+    ET.SubElement(root,tag('title'),{'id':'figure1-title'}).text='Figure 1 draft: selected panels a–i'
     ET.SubElement(root,'{'+SOD+'}namedview',{'id':'figure1-view','{'+INK+'}document-units':'mm','pagecolor':'#ffffff','{'+INK+'}pageopacity':'1'})
     bg=layer(root,'layer-background','Page')
     bg.set('{'+SOD+'}insensitive','true')
     ET.SubElement(bg,tag('rect'),{'id':'page-white','x':'0','y':'0','width':'180','height':'200','fill':'white'})
-    layers={letter:layer(root,'layer-panel'+letter,'Panel '+letter) for letter in 'ABCDEFG'}
-    # Panel titles go in the legend; labels sit beside the content.
-    for letter,x,y in [('a',2,2.7),('b',84.3,2.7),('c',2,47.25),('d',95,47.25),('e',2,88.45),('f',2,126.15),('g',2,160.25)]:
-        text(layers[letter.upper()],'panel-label-'+letter,x,y,letter,7,'bold')
+    layers={letter:layer(root,'layer-panel'+letter,'Panel '+letter) for letter in 'ABCDEF'}
+    layers['splitG'] = layer(root, 'layer1', 'Panel G')
+    layers['G'] = layer(root, 'layer-panelG', 'Panel H')
+    layers['splitI'] = layer(root, 'layer2', 'Panel I')
     for letter,path,x,y,scale in [('A','panelA/fig1A.svg',2,4,0.64),('B','panelB/fig1B_schematic.svg',86,4,0.52)]:
         g=ET.SubElement(layers[letter],tag('g'),{'id':'schematic-panel'+letter,'transform':f'translate({x},{y}) scale({scale})'})
         g.append(import_art(HERE/path,'schematic'+letter,scale,True))
@@ -100,14 +118,25 @@ else:
     for name,x,y in placements:
         letter=name[5]
         ident=name.replace('/','-')
-        ET.SubElement(layers[letter],tag('g'),{'id':'data-'+ident,'transform':f'translate({x},{y}) scale({PT})'})
+        plot_layer = {'panelF/snr-ratio': 'splitG', 'panelG/fraction': 'splitI'}.get(name, letter)
+        ET.SubElement(layers[plot_layer],tag('g'),{'id':master_group_ids.get(name, 'data-'+ident),'transform':f'translate({x},{y}) scale({PT})'})
 # Replace only generated plot content, preserving the master document and placement.
 by_id={e.get('id'):e for e in root.iter()}
 for name,x,y in placements:
     ident=name.replace('/','-')
-    target=by_id['data-'+ident]
+    target_id = master_group_ids.get(name, 'data-'+ident)
+    target = by_id[target_id] if target_id in by_id else by_id['data-'+ident]
     for child in list(target): target.remove(child)
     target.append(import_art(HERE/name.split('/')[0]/'generated'/(name.split('/')[1]+'.svg'),ident))
+# Add missing display letters from the saved layout; preserve existing hand edits.
+# Keep letters above plot backgrounds, including on a fresh assembly.
+for id_, layer_id, letter, x, y in panel_labels:
+    parent = next(e for e in root if e.get('id') == layer_id)
+    label = next((e for e in parent if e.get('id') == id_), None)
+    if label is None:
+        label = text(parent, id_, x, y, letter, 7, 'bold')
+    parent.remove(label)
+    parent.append(label)
 # Preserve SVG text whitespace: pretty-printing inside xml:space=preserve text
 # inserts visible spaces and breaks multiline labels in Inkscape.
 for e in root.iter(tag('text')):

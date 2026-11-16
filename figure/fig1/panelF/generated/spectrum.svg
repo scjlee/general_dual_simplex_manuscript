@@ -137,34 +137,35 @@
 <text transform='translate(5.47,57.59) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='32.84px' lengthAdjust='spacingAndGlyphs'>Normalized</text>
 <text transform='translate(5.47,22.94) rotate(-90)' style='font-size: 6.50px; font-family: "Liberation Sans";' textLength='4.02px' lengthAdjust='spacingAndGlyphs'>σ</text>
 <text transform='translate(7.25,18.92) rotate(-90)' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='2.50px' lengthAdjust='spacingAndGlyphs'>k</text>
-<rect x='29.37' y='80.64' width='102.90' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
-<text x='29.37' y='85.19' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='12.78px' lengthAdjust='spacingAndGlyphs'>Noise</text>
-<rect x='43.00' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
-<rect x='43.36' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #000000; fill-opacity: 0.25;' />
-<circle cx='45.84' cy='83.48' r='0.82' style='stroke-width: 0.21; fill: #000000;' />
-<line x1='43.57' y1='83.48' x2='48.11' y2='83.48' style='stroke-width: 0.32; stroke-linecap: butt;' />
-<rect x='54.73' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
-<rect x='55.09' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7; fill-opacity: 0.25;' />
-<circle cx='57.57' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #CC79A7; fill: #CC79A7;' />
-<line x1='55.30' y1='83.48' x2='59.83' y2='83.48' style='stroke-width: 0.32; stroke: #CC79A7; stroke-linecap: butt;' />
-<rect x='78.23' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
-<rect x='78.58' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #D55E00; fill-opacity: 0.25;' />
-<circle cx='81.06' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #D55E00; fill: #D55E00;' />
-<line x1='78.79' y1='83.48' x2='83.33' y2='83.48' style='stroke-width: 0.32; stroke: #D55E00; stroke-linecap: butt;' />
-<rect x='103.38' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
-<rect x='103.73' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #0072B2; fill-opacity: 0.25;' />
-<circle cx='106.21' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #0072B2; fill: #0072B2;' />
-<line x1='103.95' y1='83.48' x2='108.48' y2='83.48' style='stroke-width: 0.32; stroke: #0072B2; stroke-linecap: butt;' />
-<rect x='118.81' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
-<rect x='119.17' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #009E73; fill-opacity: 0.25;' />
-<circle cx='121.65' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #009E73; fill: #009E73;' />
-<line x1='119.38' y1='83.48' x2='123.91' y2='83.48' style='stroke-width: 0.32; stroke: #009E73; stroke-linecap: butt;' />
-<text x='49.52' y='84.78' style='font-size: 5.00px; font-family: "DejaVu Sans";' textLength='4.36px' lengthAdjust='spacingAndGlyphs'>∅</text>
-<text x='61.25' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>Normal</text>
-<text x='84.75' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='17.78px' lengthAdjust='spacingAndGlyphs'>Poisson</text>
-<text x='109.90' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='8.06px' lengthAdjust='spacingAndGlyphs'>Mul</text>
-<text x='125.33' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.94px' lengthAdjust='spacingAndGlyphs'>NB</text>
-<text x='15.23' y='5.12' style='font-size: 6.00px; font-family: "Liberation Sans";' textLength='64.12px' lengthAdjust='spacingAndGlyphs'>Rank 3; noise level 0.25</text>
+<rect x='21.44' y='80.64' width='118.76' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
+<text x='21.44' y='85.19' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='12.78px' lengthAdjust='spacingAndGlyphs'>Noise</text>
+<rect x='35.07' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
+<rect x='35.43' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #000000; fill-opacity: 0.25;' />
+<circle cx='37.91' cy='83.48' r='0.82' style='stroke-width: 0.21; fill: #000000;' />
+<line x1='35.64' y1='83.48' x2='40.18' y2='83.48' style='stroke-width: 0.32; stroke-linecap: butt;' />
+<rect x='62.66' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
+<rect x='63.02' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CC79A7; fill-opacity: 0.25;' />
+<circle cx='65.50' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #CC79A7; fill: #CC79A7;' />
+<line x1='63.23' y1='83.48' x2='67.76' y2='83.48' style='stroke-width: 0.32; stroke: #CC79A7; stroke-linecap: butt;' />
+<rect x='86.16' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
+<rect x='86.51' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #D55E00; fill-opacity: 0.25;' />
+<circle cx='88.99' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #D55E00; fill: #D55E00;' />
+<line x1='86.72' y1='83.48' x2='91.26' y2='83.48' style='stroke-width: 0.32; stroke: #D55E00; stroke-linecap: butt;' />
+<rect x='111.31' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
+<rect x='111.66' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #0072B2; fill-opacity: 0.25;' />
+<circle cx='114.14' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #0072B2; fill: #0072B2;' />
+<line x1='111.88' y1='83.48' x2='116.41' y2='83.48' style='stroke-width: 0.32; stroke: #0072B2; stroke-linecap: butt;' />
+<rect x='126.74' y='80.64' width='5.67' height='5.67' style='stroke-width: 0.53; stroke: none; fill: #FFFFFF;' />
+<rect x='127.10' y='81.00' width='4.96' height='4.96' style='stroke-width: 0.53; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #009E73; fill-opacity: 0.25;' />
+<circle cx='129.58' cy='83.48' r='0.82' style='stroke-width: 0.21; stroke: #009E73; fill: #009E73;' />
+<line x1='127.31' y1='83.48' x2='131.84' y2='83.48' style='stroke-width: 0.32; stroke: #009E73; stroke-linecap: butt;' />
+<text x='41.59' y='84.78' style='font-size: 5.00px; font-family: "DejaVu Sans";' textLength='4.36px' lengthAdjust='spacingAndGlyphs'>∅</text>
+<text x='47.34' y='84.78' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='14.47px' lengthAdjust='spacingAndGlyphs'>(none)</text>
+<text x='69.18' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='16.12px' lengthAdjust='spacingAndGlyphs'>Normal</text>
+<text x='92.68' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='17.78px' lengthAdjust='spacingAndGlyphs'>Poisson</text>
+<text x='117.83' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='8.06px' lengthAdjust='spacingAndGlyphs'>Mul</text>
+<text x='133.26' y='84.67' style='font-size: 5.00px; font-family: "Liberation Sans";' textLength='6.94px' lengthAdjust='spacingAndGlyphs'>NB</text>
+<text x='15.23' y='5.12' style='font-size: 6.00px; font-family: "Liberation Sans";' textLength='36.39px' lengthAdjust='spacingAndGlyphs'>Rank 3 signal</text>
 </g>
 </g>
 </svg>
