@@ -942,3 +942,30 @@ manifest in out/20261117_fig1_widths/before.json. Layout only; independent
 scientific review is exempt under AGENTS.md.
 
 Revisit if: equal plot-region widths rather than wider projection plots are wanted.
+
+## 2026-11-17 — Preserve the compact copy and add h in simplified version 2
+
+Context: the user combined g/h in the full master and enabled E-left x text.
+They requested rendering E-left and a separate simplified version with h below
+f/g, splitting W/H horizontally. They explicitly excluded an update to the
+full assembly script.
+
+Options: replace the existing simplified copy or retain it with a new variant.
+Decision (user): retain it; add simplified-v2 with a 27 mm h row and a
+180 × 197.5 mm page. Use “RMSE ratio” and “(proj. / deconv.)” on two lines
+on the left, omit the right y title. Reuse saved h values without recomputing
+the ratios. Refresh only E-left in both existing masters; preserve every
+other element and the user's placements. Full and simplified backups are
+figure1-018.svg and figure1-simplified-002.svg in their backup directories.
+
+Evidence: figure/fig1/figure1_components.Rmd, H-side-by-side chunk;
+render_layout.R; assemble_simplified_v2.py; simplified-v2 SVG/PDF/600 dpi PNG.
+The final v2 PNG was opened. Inkscape queries and verify.py report no text-box
+findings or duplicate ids for all three masters. Semantic XML comparison
+confirms no existing master content outside E-left changed. All saved input
+RDS and provenance files are byte-identical to manuscript commit
+af1a8210ea04f24c465b025de8ad45a2722f0d8c.
+No simulations were run. Layout/labels only: independent scientific review
+is exempt under AGENTS.md. Existing assembly scripts are unchanged.
+
+Revisit if: the user requests a different h height or width allocation.

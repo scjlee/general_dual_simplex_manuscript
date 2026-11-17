@@ -145,3 +145,30 @@ The first simplified assembly copies the full master, then removes and
 repositions the selected groups. Later runs replace the four compact plot
 groups while preserving edits to the simplified master. The full master
 remains independent.
+
+## Simplified version 2 (2026-11-17)
+
+`simplified-v2/figure1-simplified-v2.svg` keeps the current simplified layout
+and adds h as a 27 mm bottom row, making the page 180 × 197.5 mm. W and H
+ratios are side by side, with a two-line y title on W and no y title on H.
+The values come directly from `panelG/input_data.rds`, entry `fraction`;
+no ratios are recomputed. Original input and provenance files remain in panelG.
+The current simplified master is retained. All three masters show the refreshed
+E-left x tick labels and title. The full assembly script is unchanged.
+
+To export just these layouts from saved plotted inputs, run from the root:
+
+```sh
+Rscript figure/fig1/render_layout.R
+python figure/fig1/assemble_simplified_v2.py
+inkscape figure/fig1/simplified-v2/figure1-simplified-v2.svg --export-type=pdf
+inkscape figure/fig1/simplified-v2/figure1-simplified-v2.svg --export-type=png --export-dpi=600
+inkscape figure/fig1/simplified-v2/figure1-simplified-v2.svg --query-all > figure/fig1/render/object-boxes-simplified-v2.csv
+python figure/fig1/verify.py --simplified-v2
+```
+
+`render_layout.R` exports E-left and the new h SVGs; it does not replace E in
+an existing master. The E replacements for this update were made directly in
+its named data group after saving backups 018 (full) and 002 (simplified).
+The verifier follows the saved hand placement of f's ratio in the simplified
+masters and the full master's combined g/h display label g.

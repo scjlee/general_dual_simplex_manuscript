@@ -918,6 +918,26 @@ p <- ggplot(
 export_plot(p, "panelG/fraction", 72, 40.4, plot_data_wide)
 ```
 
+```{r H-side-by-side}
+# Reuse the original h values; only the facet layout and export size change.
+for (which.side in c("W", "H")) {
+  p <- ggplot(plot_data_wide[side == which.side],
+    aes(x = NOISE_LEVEL, y = oracle_rmse_pct)) +
+    geom_boxplot(outlier.shape = NA) +
+    geom_point(size = 0.75 / 3) +
+    facet_grid(cols = vars(NOISE), space = "free", scales = "free_x",
+      labeller = labeller(NOISE = noise_strip_labels)) +
+    labs(title = which.side, x = "Noise level",
+      y = if (which.side == "W") "RMSE ratio\n(proj. / deconv.)" else NULL) +
+    theme(axis.text.x = element_text(angle = 60, hjust = 1))
+  dir.create("figure/fig1/simplified-v2/generated", recursive = TRUE, showWarnings = FALSE)
+  ggsave(paste0("figure/fig1/simplified-v2/generated/panelH-ratio-", which.side, ".svg"),
+    p, device = svglite::svglite, width = 86.5, height = 27, units = "mm", bg = "white")
+  cat("H", which.side, ": 86.5 x 27 mm; saved ratio values:",
+    nrow(plot_data_wide[side == which.side]), "\n")
+}
+```
+
 ```{r save-inputs}
 for (panel in names(inputs)) saveRDS(inputs[[panel]], file.path("figure/fig1", panel, "input_data.rds"))
 write_provenance()
