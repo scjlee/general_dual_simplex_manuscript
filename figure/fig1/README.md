@@ -2,7 +2,7 @@
 
 Open **figure1.svg** in Inkscape. It is the editable single-page master;
 figure1.pdf is the PDF preview and figure1.png is the 600 dpi raster preview.
-The page is 180 × 200 mm. Display panels a–i contain only the panels selected in the
+The page is 180 × 200 mm. Display panels a–h contain only the panels selected in the
 supplied outline. The long slide captions and definitions are kept separately
 in reference/outline-text.txt, not packed into the artwork.
 
@@ -110,13 +110,38 @@ but excluded from assemble.py's placements and from the Inkscape master.
 D's bins and E's total-share barplots omit the x title and tick marks; their
 noise-model names remain, rotated by 60 degrees.
 
-## Display letters a–i (2026-11-16)
+## Display letters a–h (2026-11-16)
 
-The Inkscape master now uses a–i. Panel f contains the spectrum and the middle
-singular-value ratio plot; g is the right SNR/ratio plot; h contains the two
-projection RMSE plots; i is the final RMSE ratio plot. Plot paths retain their
-original panelF/panelG names. The assembler records all nine display letters,
-their positions, and the two renamed plot-group ids from the user's edit.
-Fresh assemblies put g and i in separate layers; existing label positions and
-layer edits are preserved. Labels are drawn above plot backgrounds.
+The Inkscape master uses a–h. Panel f contains the spectrum, singular-value
+ratio and SNR/ratio plots; g contains the two projection RMSE plots; h is the
+final RMSE ratio plot. Plot paths retain their original panelF/panelG names.
+The assembler records all eight display letters and the renamed h group
+(`data-panelH`). Existing label positions and layer edits are preserved.
+Labels are drawn above plot backgrounds.
 The spectrum title is “Rank 3 signal” and its noiseless legend entry is “∅ (none)”.
+
+## Simplified copy
+
+`simplified/figure1-simplified.svg` is a separate 180 × 168 mm master with
+panels a–g. It omits f's rightmost SNR/ratio scatter and all of h, following
+the user's clarification. The remaining f and g plots share the bottom row:
+spectrum 40 mm, singular-value ratio 41 mm, and projection W/H 43 mm each,
+with 3 mm gaps. Plot heights are 40.4 mm. These are fresh exports at the new
+sizes, preserving text size and plotted values. Only the compact spectrum
+legend drops “(none)” after ∅. Input RDS and provenance remain in the original
+panelF/panelG folders; the compact artwork uses exactly those data.
+
+After running `render.R` and assembling the full figure, run:
+
+```sh
+python figure/fig1/assemble_simplified.py
+inkscape figure/fig1/simplified/figure1-simplified.svg --export-type=pdf
+inkscape figure/fig1/simplified/figure1-simplified.svg --export-type=png --export-dpi=600
+inkscape figure/fig1/simplified/figure1-simplified.svg --query-all > figure/fig1/render/object-boxes-simplified.csv
+python figure/fig1/verify.py --simplified
+```
+
+The first simplified assembly copies the full master, then removes and
+repositions the selected groups. Later runs replace the four compact plot
+groups while preserving edits to the simplified master. The full master
+remains independent.

@@ -637,6 +637,12 @@ p <- ggplot(
     axis.title.y = element_markdown(size = 6.5)
   )
 export_plot(p, "panelF/spectrum", 52, 30.8, plot_dt)
+compact_p <- p +
+  scale_fill_manual(values = expanded_color, labels = noise_strip_labels) +
+  scale_color_manual(values = expanded_color, labels = noise_strip_labels) +
+  theme(legend.key.width = grid::unit(1.5, "mm"),
+    legend.key.spacing.x = grid::unit(0.1, "mm"))
+export_simplified(compact_p, "panelF-spectrum", 40)
 ```
 
 ```{r F-ratio}
@@ -662,6 +668,7 @@ p <- ggplot(
     axis.title.y = element_markdown(size = 6.5)
   )
 export_plot(p, "panelF/ratio", 65, 30.8, evaluations[metric == "singular_value_ratio"])
+export_simplified(p, "panelF-ratio", 41)
 ```
 
 ```{r F-SNR-ratio}
@@ -816,6 +823,7 @@ p <- ggplot(
         axis.text.x = element_text(angle = 60, hjust = 1)
       )
 export_plot(p, "panelG/projection-W", 50, 40.4, evaluations[metric == "oracle_rmse" & side == which.side])
+export_simplified(p, "panelG-projection-W", 43)
 ```
 
 ```{r G-H}
@@ -842,6 +850,7 @@ p <- ggplot(
         axis.text.x = element_text(angle = 60, hjust = 1)
       )
 export_plot(p, "panelG/projection-H", 50, 40.4, evaluations[metric == "oracle_rmse" & side == which.side])
+export_simplified(p, "panelG-projection-H", 43)
 ```
 
 ```{r projection-ratios-data}

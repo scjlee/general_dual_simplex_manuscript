@@ -179,9 +179,17 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 ## panelF/spectrum : 52 x 30.8 mm
 ```
 
+```
+## Simplified panelF-spectrum : 40 x 40.4 mm
+```
+
 
 ```
 ## panelF/ratio : 65 x 30.8 mm
+```
+
+```
+## Simplified panelF-ratio : 41 x 40.4 mm
 ```
 
 
@@ -200,9 +208,17 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 ## panelG/projection-W : 50 x 40.4 mm
 ```
 
+```
+## Simplified panelG-projection-W : 43 x 40.4 mm
+```
+
 
 ```
 ## panelG/projection-H : 50 x 40.4 mm
+```
+
+```
+## Simplified panelG-projection-H : 43 x 40.4 mm
 ```
 
 

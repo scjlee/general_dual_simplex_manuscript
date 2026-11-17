@@ -44,8 +44,14 @@ author decision before submission; no numerical correction was made here.
 The scatter uses per-model colour gradients for noise level; the original grey
 legend is a light/dark proxy, not the literal point colours.
 
-G. Projection RMSE for W/H and the ratio of projection RMSE to deconvolution
-RMSE, using the source's saved metrics and formula `oracle_rmse / rmse`.
+G. Projection RMSE for W/H, using the source's saved metrics.
+
+H. Ratio of projection RMSE to deconvolution RMSE, using the source's saved
+metrics and formula `oracle_rmse / rmse`.
+
+The separate simplified version omits F's SNR/ratio scatter and all of H.
+It places the remaining F and G plots on one row. Spectrum legend label ∅
+omits “(none)” to fit the narrower plot. Plotted values are unchanged.
 
 The outline's causal claims and broader interpretations were not tested by
 this artwork task. All such claims remain draft text for scientific review.

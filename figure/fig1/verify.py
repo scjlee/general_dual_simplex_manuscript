@@ -2,13 +2,19 @@
 """Check Inkscape's measured text boxes against the page and plot slots."""
 import csv
 import json
+import argparse
 from pathlib import Path
 import xml.etree.ElementTree as ET
 HERE=Path(__file__).resolve().parent
 SVG='{http://www.w3.org/2000/svg}'
-root=ET.parse(HERE/'figure1.svg').getroot()
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--simplified', action='store_true')
+args=parser.parse_args()
+root=ET.parse(HERE/('simplified/figure1-simplified.svg' if args.simplified else 'figure1.svg')).getroot()
+page=tuple(map(float,root.get('viewBox').split()))
 boxes={}
-for row in csv.reader((HERE/'render/object-boxes.csv').open()):
+query='render/object-boxes-simplified.csv' if args.simplified else 'render/object-boxes.csv'
+for row in csv.reader((HERE/query).open()):
     if len(row)==5:
         try: boxes[row[0]]=tuple(float(v)*25.4/96 for v in row[1:])
         except ValueError: pass
@@ -22,6 +28,13 @@ slots={
  'panelF-spectrum':(2,125.15,52,30.8),'panelF-ratio':(57,125.15,65,30.8),'panelF-snr-ratio':(125,125.15,53,30.8),
  'panelG-projection-W':(2,158.45,50,40.4),'panelG-projection-H':(54,158.45,50,40.4),'panelG-fraction':(106,158.45,72,40.4)
 }
+if args.simplified:
+    slots.pop('panelF-snr-ratio')
+    slots.pop('panelG-fraction')
+    slots.update({
+      'panelF-spectrum':(2,125.15,40,40.4), 'panelF-ratio':(45,125.15,41,40.4),
+      'panelG-projection-W':(89,125.15,43,40.4), 'panelG-projection-H':(135,125.15,43,40.4)
+    })
 def contained(b,c,tol=.15):
     x,y,w,h=b; a,z,v,j=c
     return x>=a-tol and y>=z-tol and x+w<=a+v+tol and y+h<=z+j+tol
@@ -31,7 +44,7 @@ for e in root.iter(SVG+'text'):
     texts.append(id_)
     if b is None:
         fail.append((id_,'no query box'));continue
-    if not contained(b,(0,0,180,200)): fail.append((id_,'outside page',b))
+    if not contained(b,page): fail.append((id_,'outside page',b))
     for prefix,slot in slots.items():
         if id_.startswith(prefix+'-') and not contained(b,slot):
             fail.append((id_,'outside plot slot',b,slot))
@@ -40,7 +53,11 @@ for e in root.iter(SVG+'text'):
             box=boxes['schematicA-step_'+step+'_box']
             if not contained(b,box): fail.append((id_,'outside pipeline box',b,box))
 ids=[e.get('id') for e in root.iter() if e.get('id')]
-report={'page_mm':[180,200], 'text_objects':len(texts),'duplicate_ids':len(ids)-len(set(ids)),
+labels=[''.join(e.itertext()).strip() for e in root.iter(SVG+'text') if (e.get('id') or '').startswith('panel-label-')]
+expected=list('abcdefg' if args.simplified else 'abcdefgh')
+if labels!=expected: fail.append(('panel labels',labels,expected))
+report={'page_mm':list(page[2:]), 'text_objects':len(texts),'duplicate_ids':len(ids)-len(set(ids)),
  'raster_images':len(list(root.iter(SVG+'image'))),'text_box_findings':fail}
-(HERE/'render/verification.json').write_text(json.dumps(report,indent=2)+'\n')
+output='simplified/verification.json' if args.simplified else 'render/verification.json'
+(HERE/output).write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report,indent=2))

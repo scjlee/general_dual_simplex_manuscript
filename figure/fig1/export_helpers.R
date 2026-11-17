@@ -22,3 +22,11 @@ write_provenance <- function() {
   for (panel in names(inputs)) writeLines(note, file.path("figure/fig1", panel,
     if (panel == "panelB") "results_package_commit.txt" else "package_commit.txt"))
 }
+
+export_simplified <- function(p, stem, width_mm) {
+  folder <- "figure/fig1/simplified/generated"
+  dir.create(folder, recursive = TRUE, showWarnings = FALSE)
+  ggsave(file.path(folder, paste0(stem, ".svg")), p, device = svglite::svglite,
+    width = width_mm, height = 40.4, units = "mm", bg = "white")
+  cat("Simplified", stem, ":", width_mm, "x 40.4 mm\n")
+}

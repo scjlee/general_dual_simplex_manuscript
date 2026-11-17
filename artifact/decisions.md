@@ -885,3 +885,60 @@ text-box findings. Independent review is recorded in
 artifact/20261116_fig1_fixed_rank_bins_review.md.
 
 Revisit if: the rank count or requested bin count changes.
+
+## 2026-11-16 — Preserve a–h labels and add a separate compact a–g Figure 1
+
+Context: the user combined f/g and relabelled the full master a–h in
+4bf4b0131962870067f2e26d6aba2bbc26918f2e and
+0c329f715db31da16a9f5fe286c90424bbd4156e. They requested an updated assembler,
+a full re-render, and a simplified version. When asked to resolve the wording,
+they explicitly chose to remove f's rightmost plot and h entirely.
+
+Options: keep h beside f, or remove h. Decision (user): remove h and the
+rightmost f scatter in a separate copy. Place the remaining f and g plots on
+one bottom row. Keep the full master at a–h; the simplified copy uses a–g.
+The compact width allocation is 40/49/39/39 mm with 3 mm gaps and 40.4 mm height.
+Keep text sizes unchanged; shorten only the compact spectrum legend's noiseless
+entry to ∅ and narrow its legend keys to fit. The full version remains
+180 × 200 mm; the compact copy is 180 × 168 mm. These are layout choices,
+not changes to formulas or plotted values.
+
+Evidence: figure/fig1/assemble.py, assemble_simplified.py,
+figure1_components.Rmd, verify.py and README.md. The previous master is
+figure/fig1/backups/figure1-017.svg. Full and simplified SVG/PDF/600 dpi PNG
+outputs are in figure/fig1/ and figure/fig1/simplified/, respectively.
+Validation logs and the original data-file hash manifest are in ignored
+out/20261116_fig1_ah/. All input RDS files are byte-identical. Both PNGs and the compact f detail
+were opened. Full and compact verify.py checks report no text-box findings
+or duplicate ids; all checked facet labels fit their strip boxes. The renderer
+records the current package checkout d0684556ae4da117259eb8ccde7bbb0fe3c399db,
+installed version 0.38.0 and clean R/src; it previously recorded
+09dd30edfd7a65715e6ec0261d3ea12b0cd0ee71. No simulations were rerun.
+Independent scientific review is exempt: only labels, layout, plot export
+sizes and panel selection explicitly requested by the user changed.
+
+Revisit if: the user wants a different compact width allocation or to retain h.
+
+## 2026-11-17 — Give the simplified projection plots more width than f's ratio plot
+
+Context: the user requested narrowing f's right plot to give the neighboring
+projection plots at least the same width, referring to them as h. In the
+current simplified copy the neighboring projection plots are labelled g.
+
+Options: equal widths, or make the two projection plots slightly wider.
+Decision: keep the spectrum at 40 mm; narrow f's ratio from 49 to 41 mm;
+widen each projection plot from 39 to 43 mm. Preserve 3 mm gaps and the
+180 × 168 mm page. Move the projection plots and g label left accordingly.
+
+Evidence: compact export sizes in figure/fig1/figure1_components.Rmd,
+placements in assemble_simplified.py, slots in verify.py, and the simplified
+SVG/PDF/PNG outputs. The prior compact master is
+figure/fig1/simplified/backups/figure1-simplified-001.svg. The regenerated
+plot regions (excluding axes) also satisfy the requested width ordering.
+The assembled f/g detail PNGs were opened; verify.py --simplified reports
+no text-box findings or duplicate ids. Full master SVG/PDF/PNG, all saved
+input RDS files and provenance files are byte-identical to the pre-change
+manifest in out/20261117_fig1_widths/before.json. Layout only; independent
+scientific review is exempt under AGENTS.md.
+
+Revisit if: equal plot-region widths rather than wider projection plots are wanted.
