@@ -11,16 +11,19 @@ export_plot <- function(p, name, width_mm, height_mm, data) {
   invisible(p)
 }
 
-write_provenance <- function() {
+write_provenance <- function(simulation_archive) {
   commit <- system2("git", c("-C", "../general_dual_simplex", "rev-parse", "HEAD"), stdout = TRUE)
   dirty <- system2("git", c("-C", "../general_dual_simplex", "status", "--porcelain", "R", "src"), stdout = TRUE)
   note <- c(paste("Package commit:", commit),
     paste("Installed version:", as.character(packageVersion("GeneralDualSimplex"))),
     "git status --porcelain R src:", dirty,
-    "Input: data/figure1/k3_simulation_balanced-population.rds (supplied archive; generating commit unknown)",
+    paste0("Input: ", simulation_archive, " (supplied archive; generating commit unknown)"),
+    "Marginal: uniform",
     "Generator: figure/fig1/figure1_components.Rmd")
-  for (panel in names(inputs)) writeLines(note, file.path("figure/fig1", panel,
-    if (panel == "panelB") "results_package_commit.txt" else "package_commit.txt"))
+  for (panel in names(inputs)) {
+    writeLines(note, file.path("figure/fig1", panel,
+      if (panel == "panelB") "results_package_commit.txt" else "package_commit.txt"))
+  }
 }
 
 export_simplified <- function(p, stem, width_mm) {

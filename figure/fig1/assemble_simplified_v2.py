@@ -2,6 +2,7 @@
 """Add a short h row to a separate copy of the current simplified master."""
 import xml.etree.ElementTree as ET
 from assemble import HERE, PT, tag, import_art, layer, text
+from assemble_simplified import refresh_simplified_plots
 
 folder = HERE / 'simplified-v2'
 master = folder / 'figure1-simplified-v2.svg'
@@ -18,6 +19,7 @@ if not master.exists():
             'id': 'data-panelH-ratio-' + side,
             'transform': f'translate({x},168.05) scale({PT})'})
     text(parent, 'panel-label-h', 2, 169.85, 'h', 7, 'bold')
+refresh_simplified_plots(root)
 for side in ['W', 'H']:
     stem = 'panelH-ratio-' + side
     group = next(e for e in root.iter() if e.get('id') == 'data-' + stem)

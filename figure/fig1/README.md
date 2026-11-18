@@ -2,9 +2,8 @@
 
 Open **figure1.svg** in Inkscape. It is the editable single-page master;
 figure1.pdf is the PDF preview and figure1.png is the 600 dpi raster preview.
-The page is 180 × 200 mm. Display panels a–h contain only the panels selected in the
-supplied outline. The long slide captions and definitions are kept separately
-in reference/outline-text.txt, not packed into the artwork.
+The page is 180 × 200 mm and has display panels a–g. The long slide captions
+and definitions are in reference/outline-text.txt.
 
 ## Files and editing
 
@@ -21,8 +20,8 @@ in reference/outline-text.txt, not packed into the artwork.
   installed package version, current package commit, and source-tree status.
   The older panel B package_commit.txt continues to describe its schematic.
 - reference/: preserved outline PDF, original Rmd, artwork guide and inspection
-  previews. Source simulations remain at data/figure1/ to avoid duplicating the
-  large supplied archive. The originals in data/ are unchanged.
+  previews. The current simulation archive is read from /data/ without
+  duplicating it in this repository.
 - render/: logs, intermediate R/Markdown and verification results.
 - review.md: independent scientific/panel-selection review, when completed.
 
@@ -40,15 +39,16 @@ only groups named data-panelB-… through data-panelG-… in the master. It pres
 page geometry, panel placement, schematic edits and surrounding annotations.
 Edits inside those generated groups will be replaced; save a numbered backup
 before regenerating after hand edits. Edit the outer groups to move panels.
+Use `python figure/fig1/assemble.py --panel-g-only` to refresh just g.
 
 ## Content and limits
 
 The selected examples, data filters, formulas, metrics and seeds follow the
-original Rmd. The feature-simplex examples use seed 17 and noise level 1/2,
+source Rmds. The feature-simplex examples use seed 17 and noise level 1/2,
 with the noiseless baseline. D and the share plots in E use noise level 1/4.
 Sample-simplex plots, correlation-error alternatives, variance-ratio and
-spectral-gap alternatives, error-scatter alternatives, disabled blocks and the
-installation/sanity-check block were removed. F uses the singular-value ratio,
+spectral-gap alternatives, disabled blocks and the installation/sanity-check
+block were removed. F uses the singular-value ratio,
 as shown in the outline, not the unused gap plot.
 
 Plots export directly through svglite with real text. Point layers in B's
@@ -88,9 +88,9 @@ moved pipeline row and axis labels, or the moved B matrices.
 The noiseless model is labelled “∅”, including the narrow strips in C, F and G;
 B's pure-signal example title reads “∅ (none)”. Noise-level ticks still read “0”. Liberation Sans lacks ∅, so the
 symbol alone uses DejaVu Sans through ggtext; other labels use Liberation Sans.
-C and G share RMSE limits separately for W and H, calculated from the combined
-plotted values and zero. E's left, middle and right plots are 92, 43 and 35 mm
-wide, respectively, with 3 mm gaps.
+C and G's two boxplots share RMSE limits separately for W and H, calculated
+from their combined plotted values and zero. E's left, middle and right plots
+are 92, 43 and 35 mm wide, respectively, with 3 mm gaps.
 
 ## Editable typography and optional plot
 
@@ -110,21 +110,25 @@ but excluded from assemble.py's placements and from the Inkscape master.
 D's bins and E's total-share barplots omit the x title and tick marks; their
 noise-model names remain, rotated by 60 degrees.
 
-## Display letters a–h (2026-11-16)
+## Full Figure 1g (2026-11-18)
 
-The Inkscape master uses a–h. Panel f contains the spectrum, singular-value
-ratio and SNR/ratio plots; g contains the two projection RMSE plots; h is the
-final RMSE ratio plot. Plot paths retain their original panelF/panelG names.
-The assembler records all eight display letters and the renamed h group
-(`data-panelH`). Existing label positions and layer edits are preserved.
-Labels are drawn above plot backgrounds.
-The spectrum title is “Rank 3 signal” and its noiseless legend entry is “∅ (none)”.
+Panel g contains the W and H projection RMSE boxplots followed by the
+projection-versus-deconvolution RMSE scatter. The three slots are each
+57 × 40.4 mm, separated by 2.5 mm gaps. The first assembly of the earlier master
+replaces `data-panelH` and sets the g placements.
+
+The full and simplified figures all use the uniform-marginal runs in
+`/data/k3_simulation_balanced-population_with-pure_both-marginals.rds`.
+The scatter follows the penultimate plot in
+`reference/261118_figure1_components_render.Rmd` and pairs the saved metrics by
+seed, side (W or H), noise model and noise level. The archive checksum is
+recorded in caption_notes.md.
 
 ## Simplified copy
 
 `simplified/figure1-simplified.svg` is a separate 180 × 168 mm master with
-panels a–g. It omits f's rightmost SNR/ratio scatter and all of h, following
-the user's clarification. The remaining f and g plots share the bottom row:
+panels a–g. It omits the rightmost scatter in each of f and g. The remaining f
+and g plots share the bottom row:
 spectrum 40 mm, singular-value ratio 41 mm, and projection W/H 43 mm each,
 with 3 mm gaps. Plot heights are 40.4 mm. These are fresh exports at the new
 sizes, preserving text size and plotted values. Only the compact spectrum
@@ -142,8 +146,8 @@ python figure/fig1/verify.py --simplified
 ```
 
 The first simplified assembly copies the full master, then removes and
-repositions the selected groups. Later runs replace the four compact plot
-groups while preserving edits to the simplified master. The full master
+repositions the selected groups. Later runs refresh the generated plots in
+panels b–g while preserving the simplified master's layout. The full master
 remains independent.
 
 ## Simplified version 2 (2026-11-17)
@@ -154,7 +158,7 @@ ratios are side by side, with a two-line y title on W and no y title on H.
 The values come directly from `panelG/input_data.rds`, entry `fraction`;
 no ratios are recomputed. Original input and provenance files remain in panelG.
 The current simplified master is retained. All three masters show the refreshed
-E-left x tick labels and title. The full assembly script is unchanged.
+E-left x tick labels and title.
 
 To export just these layouts from saved plotted inputs, run from the root:
 

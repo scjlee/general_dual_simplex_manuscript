@@ -167,10 +167,22 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
+## Warning: Removed 2 rows containing non-finite outside the scale range
+## (`stat_boxplot()`).
+```
+
+```
+## Warning: Removed 2 rows containing missing values or values outside the scale range
+## (`geom_point()`).
+```
+
+```
 ## panelE/snr : 35 x 36 mm
 ```
 
 # F — spectral separation
+
+
 
 
 
@@ -193,19 +205,31 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 ```
 
 
+
+
+```
+## Warning: Removed 2 rows containing missing values or values outside the scale range
+## (`geom_point()`).
+```
+
 ```
 ## panelF/snr-ratio : 53 x 30.8 mm
+```
+
+```
+## Warning: Removed 2 rows containing missing values or values outside the scale range
+## (`geom_point()`).
 ```
 
 ```
 ## panelF/log-snr-ratio : 53 x 39 mm
 ```
 
-# G — projection RMSE and its fraction of deconvolution RMSE
+# G — projection RMSE and comparison with deconvolution RMSE
 
 
 ```
-## panelG/projection-W : 50 x 40.4 mm
+## panelG/projection-W : 57 x 40.4 mm
 ```
 
 ```
@@ -214,12 +238,21 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 
 ```
-## panelG/projection-H : 50 x 40.4 mm
+## panelG/projection-H : 57 x 40.4 mm
 ```
 
 ```
 ## Simplified panelG-projection-H : 43 x 40.4 mm
 ```
+
+
+
+
+```
+## panelG/error-scatter : 57 x 40.4 mm
+```
+
+## RMSE-ratio plots for the earlier layouts
 
 
 
@@ -240,6 +273,15 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 ```
 ## panelG/fraction : 72 x 40.4 mm
+```
+
+
+```
+## H W : 86.5 x 27 mm; saved ratio values: 320
+```
+
+```
+## H H : 86.5 x 27 mm; saved ratio values: 320
 ```
 
 
@@ -317,5 +359,5 @@ source("figure/fig1/export_helpers.R", local = TRUE)
 
 ![G: projection-H](panelG/generated/projection-H.svg)
 
-![G: fraction](panelG/generated/fraction.svg)
+![G: projection vs deconvolution RMSE](panelG/generated/error-scatter.svg)
 

@@ -70,18 +70,18 @@ make_gradient <- function(color, n = 4, darken.by = 0.2, lighten.by = 0.8) {
 
 ```{r load}
 K <- 3L
-
-experiments <- read_simulation_rds(f("data/figure1/k{K}_simulation_balanced-population.rds"))
+simulation_archive <- f("/data/k{K}_simulation_balanced-population_with-pure_both-marginals.rds")
+experiments <- readRDS(simulation_archive)[MARGINAL == "uniform" & NOISE_LEVEL != "1/3"]
+experiments[["result"]] <- lapply(experiments[["result"]], unpack_simulation_dso)
 experiments[["NOISE"]] %<>% factor(levels = c("none", "Normal", "Poisson", "Mul", "NB"))
 ```
 
 ```{r noise-levels}
 all_noise_levels <- unique(experiments$NOISE_LEVEL)
 
-experiments <- experiments[NOISE_LEVEL != "1/3"]
 experiments[["NOISE_LEVEL"]] %<>%
   as.character() %>%
-  factor(levels = all_noise_levels[all_noise_levels != "1/3"])
+  factor(levels = all_noise_levels)
 ```
 
 # B — feature simplices only
@@ -552,15 +552,16 @@ export_plot(p, "panelE/snr", 35, 36, aggr_fdata)
 
 # F — spectral separation
 
-```{r spectral-data}
+```{r noise-colors}
 base_noise_colors <- c(
   "Normal" = "#CC79A7", 
   "Poisson" = "#D55E00", 
   "Mul" = "#0072B2", 
   "NB" = "#009E73"
 )
+```
 
-
+```{r spectral-data}
 plot_dt <- experiments %>%
   pmap(function(..., result) {
     inertia <- result %>%
@@ -670,7 +671,7 @@ export_plot(p, "panelF/ratio", 65, 30.8, evaluations[metric == "singular_value_r
 export_simplified(p, "panelF-ratio", 41)
 ```
 
-```{r F-SNR-ratio}
+```{r noise-level-colors}
 EXAMPLE_Ls <- c("2","1", "1/2", "1/4")
 
 color_vals <- base_noise_colors %>%
@@ -683,8 +684,9 @@ color_vals <- base_noise_colors %>%
       rep(EXAMPLE_Ls, length(base_noise_colors))
     )
   )
+```
 
-
+```{r F-SNR-ratio}
 set.seed(1993)
 p <- merge(
   aggr_fdata,
@@ -796,7 +798,7 @@ p <- merge(
 export_plot(p, "panelF/log-snr-ratio", 53, 39, list(snr = aggr_fdata, evaluations = evaluations[metric == "singular_value_ratio"]))
 ```
 
-# G — projection RMSE and its fraction of deconvolution RMSE
+# G — projection RMSE and comparison with deconvolution RMSE
 
 ```{r G-W}
 which.side <- "W"
@@ -821,7 +823,7 @@ p <- ggplot(
       theme(
         axis.text.x = element_text(angle = 60, hjust = 1)
       )
-export_plot(p, "panelG/projection-W", 50, 40.4, evaluations[metric == "oracle_rmse" & side == which.side])
+export_plot(p, "panelG/projection-W", 57, 40.4, evaluations[metric == "oracle_rmse" & side == which.side])
 export_simplified(p, "panelG-projection-W", 43)
 ```
 
@@ -848,9 +850,45 @@ p <- ggplot(
       theme(
         axis.text.x = element_text(angle = 60, hjust = 1)
       )
-export_plot(p, "panelG/projection-H", 50, 40.4, evaluations[metric == "oracle_rmse" & side == which.side])
+export_plot(p, "panelG/projection-H", 57, 40.4, evaluations[metric == "oracle_rmse" & side == which.side])
 export_simplified(p, "panelG-projection-H", 43)
 ```
+
+```{r G-scatter-data}
+scatter_data <- dcast(evaluations[NOISE != "none" & metric %in% c("oracle_rmse", "rmse")],
+  side + NOISE + NOISE_LEVEL + SEED ~ metric, value.var = "value")
+scatter_data[, NOISE := factor(NOISE, levels = names(base_noise_colors))]
+scatter_data[, NOISE_LEVEL := factor(NOISE_LEVEL, levels = rev(EXAMPLE_Ls))]
+```
+
+```{r G-error-scatter}
+set.seed(1993)
+plots <- lapply(c("W", "H"), function(which.side) {
+  ggplot(scatter_data[side == which.side][sample(.N)],
+    aes(x = oracle_rmse, y = rmse)) +
+    geom_abline(slope = 1, intercept = 0, linetype = "dashed",
+      linewidth = 0.15, colour = "grey35") +
+    geom_point(aes(colour = interaction(NOISE, NOISE_LEVEL),
+      shape = NOISE, fill = NOISE_LEVEL)) +
+    scale_colour_manual(values = color_vals, guide = "none") +
+    scale_shape_manual(name = "Noise model",
+      values = c("Normal" = 16, "Poisson" = 17, "Mul" = 15, "NB" = 18),
+      guide = guide_legend(order = 2,
+        override.aes = list(colour = base_noise_colors, size = 1))) +
+    scale_fill_grey(name = "Noise level", start = 0.85, end = 0.2,
+      guide = guide_legend(order = 1,
+        override.aes = list(shape = 22, size = 1.5, colour = NA))) +
+    scale_x_continuous(n.breaks = 3) +
+    scale_y_continuous(n.breaks = 4) +
+    labs(title = which.side, x = "Projection RMSE", y = "Deconv. RMSE") +
+    theme(axis.text.x = element_text(angle = 30, hjust = 1))
+})
+p <- patchwork::wrap_plots(plots, nrow = 1, guides = "collect", axis_titles = "collect") &
+  theme(legend.position = "right", legend.box = "vertical")
+export_plot(p, "panelG/error-scatter", 57, 40.4, scatter_data)
+```
+
+## RMSE-ratio plots for the earlier layouts
 
 ```{r projection-ratios-data}
 plot_data_wide <- c("W", "H") %>%
@@ -919,7 +957,7 @@ export_plot(p, "panelG/fraction", 72, 40.4, plot_data_wide)
 ```
 
 ```{r H-side-by-side}
-# Reuse the original h values; only the facet layout and export size change.
+# Export the same ratios in the simplified layout with separate W and H plots.
 for (which.side in c("W", "H")) {
   p <- ggplot(plot_data_wide[side == which.side],
     aes(x = NOISE_LEVEL, y = oracle_rmse_pct)) +
@@ -940,7 +978,7 @@ for (which.side in c("W", "H")) {
 
 ```{r save-inputs}
 for (panel in names(inputs)) saveRDS(inputs[[panel]], file.path("figure/fig1", panel, "input_data.rds"))
-write_provenance()
+write_provenance(simulation_archive)
 cat("Retained simulations:", nrow(experiments), "\n")
 cat("Seeds:", n_seed, "\n")
 cat("Representative simplex: seed", EXAMPLE_SEED, "noise level", EXAMPLE_L, "\n")
@@ -1005,5 +1043,5 @@ cat("D and E selected noise level: 1/4; noiseless baseline retained in D.\n")
 
 ![G: projection-H](panelG/generated/projection-H.svg)
 
-![G: fraction](panelG/generated/fraction.svg)
+![G: projection vs deconvolution RMSE](panelG/generated/error-scatter.svg)
 

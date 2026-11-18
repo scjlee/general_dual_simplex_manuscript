@@ -2,6 +2,7 @@
 """Assemble the editable figure; later runs replace named generated groups only."""
 from pathlib import Path
 from copy import deepcopy
+import argparse
 import re
 import xml.etree.ElementTree as ET
 
@@ -70,13 +71,11 @@ placements=[
  ('panelD/rank',95,45.45),('panelD/bins',144,45.45),
  ('panelE/by-bin',2,86.65),('panelE/total',97,86.65),('panelE/snr',143,86.65),
  ('panelF/spectrum',2,125.15),('panelF/ratio',57,125.15),('panelF/snr-ratio',125,125.15),
- ('panelG/projection-W',2,158.45),('panelG/projection-H',54,158.45),('panelG/fraction',106,158.45)
+ ('panelG/projection-W',2,158.45),('panelG/projection-H',61.5,158.45),('panelG/error-scatter',121,158.45)
 ]
-# Display letters a–h retain the original plot file paths.
-# Group ids and labels follow the user's combined f/g artwork (0c329f7).
+# The aliases locate hand-edited groups in the master.
 master_group_ids = {
  'panelF/snr-ratio': 'data-panelF-snr-ratio-0',
- 'panelG/fraction': 'data-panelH',
 }
 panel_labels = [
  ('panel-label-a', 'layer-panelA', 'a', 2, 2.7),
@@ -86,22 +85,19 @@ panel_labels = [
  ('panel-label-e', 'layer-panelE', 'e', 2, 88.45),
  ('panel-label-f', 'layer-panelF', 'f', 2, 126.15),
  ('panel-label-g', 'layer-panelG', 'g', 2, 160.25),
- ('panel-label-h', 'layer2', 'h', 105.18748, 160.25),
 ]
-def assemble(master=HERE/'figure1.svg'):
+def assemble(master=HERE/'figure1.svg', *, panel_g_only=False):
     if master.exists():
         tree=ET.parse(master); root=tree.getroot()
     else:
         root=ET.Element(tag('svg'),{'id':'figure1','width':'180mm','height':'200mm','viewBox':'0 0 180 200','version':'1.1','{'+INK+'}version':'1.4.4'})
         tree=ET.ElementTree(root)
-        ET.SubElement(root,tag('title'),{'id':'figure1-title'}).text='Figure 1 draft: selected panels a–h'
+        ET.SubElement(root,tag('title'),{'id':'figure1-title'})
         ET.SubElement(root,'{'+SOD+'}namedview',{'id':'figure1-view','{'+INK+'}document-units':'mm','pagecolor':'#ffffff','{'+INK+'}pageopacity':'1'})
         bg=layer(root,'layer-background','Page')
         bg.set('{'+SOD+'}insensitive','true')
         ET.SubElement(bg,tag('rect'),{'id':'page-white','x':'0','y':'0','width':'180','height':'200','fill':'white'})
-        layers={letter:layer(root,'layer-panel'+letter,'Panel '+letter) for letter in 'ABCDEF'}
-        layers['G'] = layer(root, 'layer-panelG', 'Panel G')
-        layers['H'] = layer(root, 'layer2', 'Panel H')
+        layers={letter:layer(root,'layer-panel'+letter,'Panel '+letter) for letter in 'ABCDEFG'}
         for letter,path,x,y,scale in [('A','panelA/fig1A.svg',2,4,0.64),('B','panelB/fig1B_schematic.svg',86,4,0.52)]:
             g=ET.SubElement(layers[letter],tag('g'),{'id':'schematic-panel'+letter,'transform':f'translate({x},{y}) scale({scale})'})
             g.append(import_art(HERE/path,'schematic'+letter,scale,True))
@@ -115,20 +111,31 @@ def assemble(master=HERE/'figure1.svg'):
         for name,x,y in placements:
             letter=name[5]
             ident=name.replace('/','-')
-            plot_layer = {'panelG/fraction': 'H'}.get(name, letter)
-            ET.SubElement(layers[plot_layer],tag('g'),{'id':master_group_ids.get(name, 'data-'+ident),'transform':f'translate({x},{y}) scale({PT})'})
-    root.find(tag('title')).text = 'Figure 1 draft: selected panels a–h'
+            ET.SubElement(layers[letter],tag('g'),{'id':master_group_ids.get(name, 'data-'+ident),'transform':f'translate({x},{y}) scale({PT})'})
+        panel_g_only = False
+    root.find(tag('title')).text = 'Figure 1 draft: selected panels a–g'
     # Replace only generated plot content, preserving the master document and placement.
     by_id={e.get('id'):e for e in root.iter()}
+    migrate_g = 'data-panelG-error-scatter' not in by_id
+    if migrate_g:
+        target = by_id.pop('data-panelH')
+        target.set('id', 'data-panelG-error-scatter')
+        by_id['data-panelG-error-scatter'] = target
     for name,x,y in placements:
+        if panel_g_only and not name.startswith('panelG/'):
+            continue
         ident=name.replace('/','-')
         target_id = master_group_ids.get(name, 'data-'+ident)
         target = by_id[target_id] if target_id in by_id else by_id['data-'+ident]
+        if migrate_g and name.startswith('panelG/'):
+            target.set('transform', f'translate({x},{y}) scale({PT})')
         for child in list(target): target.remove(child)
         target.append(import_art(HERE/name.split('/')[0]/'generated'/(name.split('/')[1]+'.svg'),ident))
     # Add missing display letters from the saved layout; preserve existing hand edits.
     # Keep letters above plot backgrounds, including on a fresh assembly.
     for id_, layer_id, letter, x, y in panel_labels:
+        if panel_g_only and letter != 'g':
+            continue
         parent = next(e for e in root if e.get('id') == layer_id)
         label = next((e for e in parent if e.get('id') == id_), None)
         if label is None:
@@ -147,4 +154,6 @@ def assemble(master=HERE/'figure1.svg'):
 
 
 if __name__ == '__main__':
-    assemble()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--panel-g-only', action='store_true', help='refresh only the full master\'s panel g')
+    assemble(panel_g_only=parser.parse_args().panel_g_only)

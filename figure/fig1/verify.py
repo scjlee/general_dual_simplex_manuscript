@@ -28,11 +28,12 @@ slots={
  'panelD-rank':(95,45.45,47,38.7),'panelD-bins':(144,45.45,34,38.7),
  'panelE-by-bin':(2,86.65,92,36),'panelE-total':(97,86.65,43,36),'panelE-snr':(143,86.65,35,36),
  'panelF-spectrum':(2,125.15,52,30.8),'panelF-ratio':(57,125.15,65,30.8),'panelF-snr-ratio':(125,125.15,53,30.8),
- 'panelG-projection-W':(2,158.45,50,40.4),'panelG-projection-H':(54,158.45,50,40.4),'panelG-fraction':(106,158.45,72,40.4)
+ 'panelG-projection-W':(2,158.45,57,40.4),'panelG-projection-H':(61.5,158.45,57,40.4),
+ 'panelG-error-scatter':(121,158.45,57,40.4)
 }
 if variant:
     slots.pop('panelF-snr-ratio')
-    slots.pop('panelG-fraction')
+    slots.pop('panelG-error-scatter')
     slots.update({
       'panelF-spectrum':(2,125.15,40,40.4), 'panelF-ratio':(42.354165,125.15,41,40.4),
       'panelG-projection-W':(89,125.15,43,40.4), 'panelG-projection-H':(135,125.15,43,40.4)

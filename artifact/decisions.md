@@ -969,3 +969,65 @@ No simulations were run. Layout/labels only: independent scientific review
 is exempt under AGENTS.md. Existing assembly scripts are unchanged.
 
 Revisit if: the user requests a different h height or width allocation.
+
+## 2026-11-18 — Replace the rightmost plot in full Figure 1g with paired RMSE
+
+Context: the user supplied a new simulation archive, an Rmd and a screenshot.
+They requested the Rmd's penultimate W/H scatter in the rightmost slot of g,
+styled for the figure, with three equal-width plots.
+
+Options: replace the right plot and widen the existing boxplots, or migrate
+the rest of Figure 1 to the updated simulation archive.
+
+Decision: apply the requested right-plot replacement to the full master.
+Use 57 × 40.4 mm exports with 2.5 mm gaps. Use the updated archive's
+uniform-marginal runs for the scatter and the prior saved values for the
+two boxplots. The caption identifies the two sets of runs. Use editable
+Liberation Sans text and the shared line, point and colour settings. The
+earlier simplified layouts still use their saved plots.
+
+Evidence: figure/fig1/figure1_components.Rmd (G-scatter-data and
+G-error-scatter), panelG/input_data.rds, panelG/package_commit.txt and
+reference/input-manifest.tsv. Claude's independent review matched the
+scatter to the supplied Rmd and identified the difference between the old
+and new runs, which the caption now states. The saved-input check in
+out/20261118_fig1_g/verify-data.log confirms exact coordinate agreement and
+unchanged older G data. The PNG was opened and Inkscape's text-box check
+reported no findings or duplicate IDs. The old master is
+figure/fig1/backups/figure1-019.svg.
+
+Revisit if: the user requests an archive migration for the rest of Figure 1
+or wants the scatter added to a simplified layout.
+
+## 2026-11-18 — Use the updated archive for all Figure 1 plots
+
+Context: the rightmost scatter in full g used the new archive, while the
+other plots still used the earlier simulations. The user asked to change the
+data for the entire figure after a same-seed comparison of perturbed and
+noiseless runs from the new archive.
+
+Decision (user): render all simulation-driven plots from the uniform-marginal
+runs in /data/k3_simulation_balanced-population_with-pure_both-marginals.rds,
+following the supplied Rmd. Load the archive once and use its saved evaluations
+for C, F and G. Refresh both simplified layouts from the same generated plots
+and retain the illustrative schematics. Keep the equal-width full g layout.
+
+Evidence: figure/fig1/figure1_components.Rmd, figure1_components.html,
+caption_notes.md and per-panel provenance. The archive SHA-256 is in
+reference/input-manifest.tsv. The saved-input check in
+out/20261118_fig1_archive/verify-data.log matches C, F's ratio and G's boxplots,
+scatter and ratio against the independent archive extract. The three-bin
+rule yields ranks 1–718, 719–1436 and 1437–2153 under the updated input.
+The SNR check in the same directory identifies two missing values, recorded
+in the caption. All three previews were opened. Inkscape found no text-box
+overflow or duplicate IDs. The XML check verifies that all generated groups
+reference the refreshed artwork and that their positions are preserved.
+Independent Claude review approved the data migration. The caption ranges
+and noiseless tick description reflect the saved plots. Existing marker
+and axis styling was retained for this data refresh.
+
+The previous masters are figure1-020.svg, figure1-simplified-003.svg and
+figure1-simplified-v2-001.svg in their respective backups directories.
+
+Revisit if: the user selects a different marginal setting or changes the
+treatment of runs with missing SNR.

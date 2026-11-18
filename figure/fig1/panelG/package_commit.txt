@@ -1,5 +1,6 @@
-Package commit: d0684556ae4da117259eb8ccde7bbb0fe3c399db
+Package commit: df4a86591f9cabd3d66ca3af8db54dcd46552733
 Installed version: 0.38.0
 git status --porcelain R src:
-Input: data/figure1/k3_simulation_balanced-population.rds (supplied archive; generating commit unknown)
+Input: /data/k3_simulation_balanced-population_with-pure_both-marginals.rds (supplied archive; generating commit unknown)
+Marginal: uniform
 Generator: figure/fig1/figure1_components.Rmd
