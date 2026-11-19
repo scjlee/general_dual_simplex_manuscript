@@ -1,0 +1,4 @@
+This schematic uses no package code; values are illustrative.
+commit df4a86591f9cabd3d66ca3af8db54dcd46552733
+version 0.40.0
+git status --porcelain R src:

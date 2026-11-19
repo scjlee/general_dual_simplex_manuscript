@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg id="fig2B" version="1.1" width="176mm" height="34.4mm" viewBox="0 0 176 34.4"
+   sodipodi:docname="fig2B.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+<title id="fig2B_title">Figure 2b linked dual simplex factorization of the scaled matrix</title>
+<sodipodi:namedview id="fig2B_namedview" inkscape:document-units="mm" pagecolor="#ffffff"
+   inkscape:pageopacity="1" inkscape:current-layer="B_layer_labels"/>
+<defs id="fig2B_defs">
+<marker id="B_marker_arrow_head" orient="auto" markerUnits="strokeWidth" markerWidth="9" markerHeight="9"
+   viewBox="0 0 9 9" refX="8.5" refY="4.5" style="overflow:visible">
+<path id="B_marker_arrow_head_shape" d="M 0,0.5 L 9,4.5 L 0,8.5 Z" style="fill:#000000;stroke:none"/>
+</marker>
+</defs>
+<g id="B_layer_matrix_Vtilde" inkscape:groupmode="layer" inkscape:label="matrix Vtilde">
+<g id="B_Vtilde_cells">
+<rect id="B_Vtilde_r1_c1" x="18.600" y="9.800" width="4.000" height="4.000" style="fill:#37acbf;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r1_c2" x="22.600" y="9.800" width="4.000" height="4.000" style="fill:#3c9e55;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r1_c3" x="26.600" y="9.800" width="4.000" height="4.000" style="fill:#8a9f2e;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r1_c4" x="30.600" y="9.800" width="4.000" height="4.000" style="fill:#519e4b;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r1_c5" x="34.600" y="9.800" width="4.000" height="4.000" style="fill:#be9f14;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r2_c1" x="18.600" y="13.800" width="4.000" height="4.000" style="fill:#42afcd;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r2_c2" x="22.600" y="13.800" width="4.000" height="4.000" style="fill:#519e4b;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r2_c3" x="26.600" y="13.800" width="4.000" height="4.000" style="fill:#949f29;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r2_c4" x="30.600" y="13.800" width="4.000" height="4.000" style="fill:#749f39;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r2_c5" x="34.600" y="13.800" width="4.000" height="4.000" style="fill:#d19f0a;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r3_c1" x="18.600" y="17.800" width="4.000" height="4.000" style="fill:#1ca599;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r3_c2" x="22.600" y="17.800" width="4.000" height="4.000" style="fill:#31aab6;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r3_c3" x="26.600" y="17.800" width="4.000" height="4.000" style="fill:#22a7a2;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r3_c4" x="30.600" y="17.800" width="4.000" height="4.000" style="fill:#2e9e5c;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r3_c5" x="34.600" y="17.800" width="4.000" height="4.000" style="fill:#22a7a1;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r4_c1" x="18.600" y="21.800" width="4.000" height="4.000" style="fill:#459e50;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r4_c2" x="22.600" y="21.800" width="4.000" height="4.000" style="fill:#759f39;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r4_c3" x="26.600" y="21.800" width="4.000" height="4.000" style="fill:#ca9f0e;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r4_c4" x="30.600" y="21.800" width="4.000" height="4.000" style="fill:#b89f17;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r4_c5" x="34.600" y="21.800" width="4.000" height="4.000" style="fill:#e69f00;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r5_c1" x="18.600" y="25.800" width="4.000" height="4.000" style="fill:#12a38c;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r5_c2" x="22.600" y="25.800" width="4.000" height="4.000" style="fill:#1aa597;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r5_c3" x="26.600" y="25.800" width="4.000" height="4.000" style="fill:#56b4e9;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r5_c4" x="30.600" y="25.800" width="4.000" height="4.000" style="fill:#939f29;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r5_c5" x="34.600" y="25.800" width="4.000" height="4.000" style="fill:#1da59b;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r6_c1" x="18.600" y="29.800" width="4.000" height="4.000" style="fill:#059e70;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r6_c2" x="22.600" y="29.800" width="4.000" height="4.000" style="fill:#019e74;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r6_c3" x="26.600" y="29.800" width="4.000" height="4.000" style="fill:#4bb1db;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r6_c4" x="30.600" y="29.800" width="4.000" height="4.000" style="fill:#d69f08;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Vtilde_r6_c5" x="34.600" y="29.800" width="4.000" height="4.000" style="fill:#029f76;stroke:#ffffff;stroke-width:0.1411"/>
+</g>
+<rect id="B_Vtilde_frame" x="18.600" y="9.800" width="20.000" height="24.000" style="fill:none;stroke:#000000;stroke-width:0.1764"/>
+</g>
+<g id="B_layer_matrix_Wtilde" inkscape:groupmode="layer" inkscape:label="matrix Wtilde">
+<g id="B_Wtilde_cells">
+<rect id="B_Wtilde_r1_c1" x="58.600" y="9.800" width="4.000" height="4.000" style="fill:#de7f35;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r1_c2" x="62.600" y="9.800" width="4.000" height="4.000" style="fill:#e6a169;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r1_c3" x="66.600" y="9.800" width="4.000" height="4.000" style="fill:#edba91;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r2_c1" x="58.600" y="13.800" width="4.000" height="4.000" style="fill:#dc7728;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r2_c2" x="62.600" y="13.800" width="4.000" height="4.000" style="fill:#f6dbc6;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r2_c3" x="66.600" y="13.800" width="4.000" height="4.000" style="fill:#e9a977;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r3_c1" x="58.600" y="17.800" width="4.000" height="4.000" style="fill:#f1cbab;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r3_c2" x="62.600" y="17.800" width="4.000" height="4.000" style="fill:#e2904f;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r3_c3" x="66.600" y="17.800" width="4.000" height="4.000" style="fill:#ebb284;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r4_c1" x="58.600" y="21.800" width="4.000" height="4.000" style="fill:#d96f1a;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r4_c2" x="62.600" y="21.800" width="4.000" height="4.000" style="fill:#d55e00;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r4_c3" x="66.600" y="21.800" width="4.000" height="4.000" style="fill:#e4985c;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r5_c1" x="58.600" y="25.800" width="4.000" height="4.000" style="fill:#f8e4d3;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r5_c2" x="62.600" y="25.800" width="4.000" height="4.000" style="fill:#efc29e;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r5_c3" x="66.600" y="25.800" width="4.000" height="4.000" style="fill:#e08842;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r6_c1" x="58.600" y="29.800" width="4.000" height="4.000" style="fill:#f3d3b8;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r6_c2" x="62.600" y="29.800" width="4.000" height="4.000" style="fill:#faece0;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Wtilde_r6_c3" x="66.600" y="29.800" width="4.000" height="4.000" style="fill:#d7660d;stroke:#ffffff;stroke-width:0.1411"/>
+</g>
+<rect id="B_Wtilde_frame" x="58.600" y="9.800" width="12.000" height="24.000" style="fill:none;stroke:#000000;stroke-width:0.1764"/>
+</g>
+<g id="B_layer_matrix_M" inkscape:groupmode="layer" inkscape:label="matrix M">
+<g id="B_M_cells">
+<rect id="B_M_r1_c1" x="73.600" y="9.800" width="4.000" height="4.000" style="fill:#cc79a7;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r1_c2" x="77.600" y="9.800" width="4.000" height="4.000" style="fill:#ffffff;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r1_c3" x="81.600" y="9.800" width="4.000" height="4.000" style="fill:#ffffff;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r2_c1" x="73.600" y="13.800" width="4.000" height="4.000" style="fill:#ffffff;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r2_c2" x="77.600" y="13.800" width="4.000" height="4.000" style="fill:#e9c5d9;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r2_c3" x="81.600" y="13.800" width="4.000" height="4.000" style="fill:#ffffff;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r3_c1" x="73.600" y="17.800" width="4.000" height="4.000" style="fill:#ffffff;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r3_c2" x="77.600" y="17.800" width="4.000" height="4.000" style="fill:#ffffff;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_M_r3_c3" x="81.600" y="17.800" width="4.000" height="4.000" style="fill:#dca4c3;stroke:#ffffff;stroke-width:0.1411"/>
+</g>
+<rect id="B_M_frame" x="73.600" y="9.800" width="12.000" height="12.000" style="fill:none;stroke:#000000;stroke-width:0.1764"/>
+</g>
+<g id="B_layer_matrix_Htilde" inkscape:groupmode="layer" inkscape:label="matrix Htilde">
+<g id="B_Htilde_cells">
+<rect id="B_Htilde_r1_c1" x="88.600" y="9.800" width="4.000" height="4.000" style="fill:#e0eef6;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r1_c2" x="92.600" y="9.800" width="4.000" height="4.000" style="fill:#60a7cf;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r1_c3" x="96.600" y="9.800" width="4.000" height="4.000" style="fill:#4095c5;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r1_c4" x="100.600" y="9.800" width="4.000" height="4.000" style="fill:#80b9d9;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r1_c5" x="104.600" y="9.800" width="4.000" height="4.000" style="fill:#107bb7;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r2_c1" x="88.600" y="13.800" width="4.000" height="4.000" style="fill:#2084bc;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r2_c2" x="92.600" y="13.800" width="4.000" height="4.000" style="fill:#b0d3e7;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r2_c3" x="96.600" y="13.800" width="4.000" height="4.000" style="fill:#509eca;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r2_c4" x="100.600" y="13.800" width="4.000" height="4.000" style="fill:#308dc1;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r2_c5" x="104.600" y="13.800" width="4.000" height="4.000" style="fill:#c0dcec;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r3_c1" x="88.600" y="17.800" width="4.000" height="4.000" style="fill:#70b0d4;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r3_c2" x="92.600" y="17.800" width="4.000" height="4.000" style="fill:#90c2de;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r3_c3" x="96.600" y="17.800" width="4.000" height="4.000" style="fill:#d0e5f1;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r3_c4" x="100.600" y="17.800" width="4.000" height="4.000" style="fill:#0072b2;stroke:#ffffff;stroke-width:0.1411"/>
+<rect id="B_Htilde_r3_c5" x="104.600" y="17.800" width="4.000" height="4.000" style="fill:#a0cbe3;stroke:#ffffff;stroke-width:0.1411"/>
+</g>
+<rect id="B_Htilde_frame" x="88.600" y="9.800" width="20.000" height="12.000" style="fill:none;stroke:#000000;stroke-width:0.1764"/>
+</g>
+<g id="B_layer_labels" inkscape:groupmode="layer" inkscape:label="matrix labels">
+<text id="B_label_Vtilde" x="28.600" y="8.300" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_label_Vtilde_line1" sodipodi:role="line" x="28.600" y="8.300"><tspan id="B_label_Vtilde_line1_run1" style="font-weight:bold">Ṽ</tspan></tspan></text>
+<text id="B_label_Wtilde" x="64.600" y="8.300" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_label_Wtilde_line1" sodipodi:role="line" x="64.600" y="8.300"><tspan id="B_label_Wtilde_line1_run1" style="font-weight:bold">W̃</tspan></tspan></text>
+<text id="B_label_M" x="79.600" y="8.300" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_label_M_line1" sodipodi:role="line" x="79.600" y="8.300"><tspan id="B_label_M_line1_run1" style="font-weight:bold">M</tspan></tspan></text>
+<text id="B_label_Htilde" x="98.600" y="8.300" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_label_Htilde_line1" sodipodi:role="line" x="98.600" y="8.300"><tspan id="B_label_Htilde_line1_run1" style="font-weight:bold">H̃</tspan></tspan></text>
+</g>
+<g id="B_layer_marginals" inkscape:groupmode="layer" inkscape:label="marginal labels">
+<text id="B_column_marginal" x="28.600" y="3.400" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_column_marginal_line1" sodipodi:role="line" x="28.600" y="3.400"><tspan id="B_column_marginal_line1_run1" style="font-weight:normal">Column marginal = </tspan><tspan id="B_column_marginal_line1_run2" style="font-weight:bold">b</tspan></tspan></text>
+<text id="B_row_marginal" x="17.000" y="21.800" transform="rotate(-90,17.000,21.800)" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_row_marginal_line1" sodipodi:role="line" x="17.000" y="21.800"><tspan id="B_row_marginal_line1_run1" style="font-weight:normal">Row marginal = </tspan><tspan id="B_row_marginal_line1_run2" style="font-weight:bold">a</tspan></tspan></text>
+</g>
+<g id="B_layer_operators" inkscape:groupmode="layer" inkscape:label="operators">
+<text id="B_operator_equals" x="48.600" y="22.760" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.8222px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_operator_equals_line1" sodipodi:role="line" x="48.600" y="22.760"><tspan id="B_operator_equals_line1_run1" style="font-weight:bold">=</tspan></tspan></text>
+</g>
+<g id="B_layer_key_properties" inkscape:groupmode="layer" inkscape:label="key properties">
+<rect id="B_key_frame" x="136.700" y="0.500" width="39.000" height="33.300" rx="0.8" style="fill:#ffffff;stroke:#404040;stroke-width:0.1764"/>
+<g id="B_key_title">
+<rect id="B_key_title_box" x="136.700" y="0.500" width="39.000" height="4.600" rx="0.8" style="fill:#f2f2f2;stroke:#404040;stroke-width:0.1764"/>
+<text id="B_key_title_text" x="156.200" y="3.558" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:middle;fill:#000000"><tspan id="B_key_title_text_line1" sodipodi:role="line" x="156.200" y="3.558"><tspan id="B_key_title_text_line1_run1" style="font-weight:bold">Key properties</tspan></tspan></text>
+</g>
+<g id="B_key_property_1">
+<text id="B_key_property_1_marker" x="139.200" y="11.908" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_1_marker_line1" sodipodi:role="line" x="139.200" y="11.908"><tspan id="B_key_property_1_marker_line1_run1" style="font-weight:normal">•</tspan></tspan></text>
+<text id="B_key_property_1_text" x="141.700" y="11.908" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_1_text_line1" sodipodi:role="line" x="141.700" y="11.908"><tspan id="B_key_property_1_text_line1_run1" style="font-weight:normal">Columns of W̃ sum to 1</tspan></tspan></text>
+</g>
+<g id="B_key_property_2">
+<text id="B_key_property_2_marker" x="139.200" y="16.308" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_2_marker_line1" sodipodi:role="line" x="139.200" y="16.308"><tspan id="B_key_property_2_marker_line1_run1" style="font-weight:normal">•</tspan></tspan></text>
+<text id="B_key_property_2_text" x="141.700" y="16.308" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_2_text_line1" sodipodi:role="line" x="141.700" y="16.308"><tspan id="B_key_property_2_text_line1_run1" style="font-weight:normal">Rows of H̃ sum to 1</tspan></tspan></text>
+</g>
+<g id="B_key_property_3">
+<text id="B_key_property_3_marker" x="139.200" y="20.708" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_3_marker_line1" sodipodi:role="line" x="139.200" y="20.708"><tspan id="B_key_property_3_marker_line1_run1" style="font-weight:normal">•</tspan></tspan></text>
+<text id="B_key_property_3_text" x="141.700" y="20.708" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_3_text_line1" sodipodi:role="line" x="141.700" y="20.708"><tspan id="B_key_property_3_text_line1_run1" style="font-weight:normal">Diagonal of M sums to 1</tspan></tspan></text>
+</g>
+<g id="B_key_property_4">
+<text id="B_key_property_4_marker" x="139.200" y="25.108" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_4_marker_line1" sodipodi:role="line" x="139.200" y="25.108"><tspan id="B_key_property_4_marker_line1_run1" style="font-weight:normal">•</tspan></tspan></text>
+<text id="B_key_property_4_text" x="141.700" y="25.108" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_4_text_line1" sodipodi:role="line" x="141.700" y="25.108"><tspan id="B_key_property_4_text_line1_run1" style="font-weight:normal">sum(</tspan><tspan id="B_key_property_4_text_line1_run2" style="font-weight:bold">a</tspan><tspan id="B_key_property_4_text_line1_run3" style="font-weight:normal">) = sum(</tspan><tspan id="B_key_property_4_text_line1_run4" style="font-weight:bold">b</tspan><tspan id="B_key_property_4_text_line1_run5" style="font-weight:normal">) = 1</tspan></tspan></text>
+</g>
+<g id="B_key_property_5">
+<text id="B_key_property_5_marker" x="143.700" y="28.508" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_5_marker_line1" sodipodi:role="line" x="143.700" y="28.508"><tspan id="B_key_property_5_marker_line1_run1" style="font-weight:normal">–</tspan></tspan></text>
+<text id="B_key_property_5_text" x="146.200" y="28.508" xml:space="preserve" style="font-family:'Liberation Sans',Arial,sans-serif;font-size:2.1167px;line-height:1.2;text-anchor:start;fill:#000000"><tspan id="B_key_property_5_text_line1" sodipodi:role="line" x="146.200" y="28.508"><tspan id="B_key_property_5_text_line1_run1" style="font-weight:normal">sum(Ṽ) = 1</tspan></tspan></text>
+</g>
+</g>
+</svg>

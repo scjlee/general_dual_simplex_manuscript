@@ -1031,3 +1031,37 @@ figure1-simplified-v2-001.svg in their respective backups directories.
 
 Revisit if: the user selects a different marginal setting or changes the
 treatment of runs with missing SNR.
+
+## 2026-11-19 — Draw Figure 2a and 2b as separate SVG schematics in Figure 1's style
+
+Context: the user supplied a Figure 2 draft (261119_figure2_draft.pdf: outline,
+layout, hand sketch of a and b, example schema of b) and asked for a and b as
+two editable SVGs in Figure 1's style and text-size rules. The dashed box and
+zoom lines that tie b to a's Ṽ are deferred to the assembly.
+
+Options: overlay matrix symbols on the cells (page-4 example) or place them
+above the matrices (Figure 1b). Draw the matrices as placeholders, or compute
+one consistent illustrative example.
+
+Decision: symbols above matrices; Figure 1b colours (W orange, H blue, V on
+the blue–green–orange scale, M #CC79A7). One shared illustrative example in
+figure/fig2/schematic.py: Figure 1b's W and H (identical draws), noiseless
+V = WH, Sinkhorn to Dirichlet(4) prescribed marginals, then Z, W̃, M and H̃
+from README.md's definitions, so b's Ṽ is a's Ṽ. Text 6 pt, "=" 8 pt.
+"Row marginal = a" follows README.md and the hand sketch, not page 4's "b";
+"sum to 1s" reads "sum to 1"; step numbers and the page-4 note on a common
+total c are omitted. These choices are listed in figure/fig2/README.md.
+
+Evidence: figure/fig2/panelA/fig2A.svg and panelB/fig2B.svg (176 × 29.2 and
+176 × 34.4 mm), their generators, input_data.json, package_commit.txt
+(GeneralDualSimplex 0.40.0, df4a86591f9cabd3d66ca3af8db54dcd46552733, no
+package code used) and caption_notes.md. Both 600 dpi PNGs were opened.
+Inkscape queries show all text inside the page and its box, no duplicate ids.
+Generator checks: key-property sums differ from 1 by at most 1.2e-16;
+max |Ṽ − W̃MH̃| = 1.4e-17. Codex review (handoff
+20261119-1902_codex_fig2ab-review.md, out/20261119_fig2_ab/review.md):
+approve, no findings; it cautions that a restored common total c must be
+positive.
+
+Revisit if: the user prefers overlaid symbols, other sizes or colours, or
+wants the step numbers or the common-total note in the artwork.
